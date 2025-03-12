@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(description="IIIF Downloader", formatter_class=
 parser.add_argument("-m", "--manifest", default='manifest', help="Manifest name or url")
 parser.add_argument("-d", "--directory", default='.', help="Directory")
 parser.add_argument("-p", "--pages", default='all', help="Page range (e.g. 3-27)")
+parser.add_argument("--use-page-numbers",  action='store_true', help="Save the file with a progressive number")
 
 args = parser.parse_args()
 config = vars(args)
@@ -27,5 +28,6 @@ config = vars(args)
 main_dir = config['directory']
 manifest_name = config['manifest']
 firstpage, lastpage = get_pages(config['pages'])
+use_page_numbers = config['use_page_numbers']
 
-iiif.download_iiif_files_from_manifest(manifest_name, main_dir, firstpage, lastpage)
+iiif.download_iiif_files_from_manifest(manifest_name, main_dir, firstpage, lastpage, use_page_numbers)

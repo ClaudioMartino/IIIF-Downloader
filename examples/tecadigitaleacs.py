@@ -24,4 +24,4 @@ with open(url_file) as f:
 for i, manifest in enumerate(manifests):
     print('\033[95m' + '[' + str(i+1) + '/' + str(len(manifests)) + '] ' + manifest + '\033[0m')
 
-    iiif.download_iiif_files_from_manifest(manifest, maindir)
+    iiif.download_iiif_files_from_manifest(manifest, maindir, 1, -1, True)

@@ -3,7 +3,7 @@ import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
 
-# Doc: https://iiif.io/api/image/3.0/
+# Doc: https://iiif.io/api/image/2.0/
 
 def open_url(u):
   headers = {'User-Agent' : "Mozilla/5.0"}
@@ -52,14 +52,22 @@ def get_extension(mime_type):
     return mime_to_extension.get(mime_type, None)
 
 def get_img_url(iiif_id, ext):
-    region = 'full'
-    size = 'max' # or 'full'
-    rotation = '0'
-    quality = 'default'
-    img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
+    if(iiif_id.endswith(ext)):
+        img_url = iiif_id
+    else:
+        region = 'full'
+        size = 'max' # or 'full'
+        rotation = '0'
+        quality = 'default'
+        img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
     return img_url
 
 def read_iiif_json(d):
+    # Check
+    context = d['@context']
+    if(not context.endswith('2/context.json')):
+        raise Exception("Only IIIF 2.0 is supported today") 
+
     # Read label and use it as new directory title
     title = d['label']
 
@@ -93,7 +101,7 @@ def read_iiif_json(d):
 
     return title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
 
-def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1):
+def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_page_number = False):
     # Create sub-array
     totpages = len(iiif_ids)
     if(firstpage != 1 or lastpage != -1):
@@ -114,7 +122,10 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
         print('- Height: ' + str(iiif_h[cnt]) + 'px')
         img_url = get_img_url(iiif_id, ext)
         print('- URL: ' + img_url)
-        filename = 'p' + str(cnt + 1).zfill(3) + ext
+        if(use_page_number):
+            filename = 'p' + str(cnt + 1).zfill(3) + ext
+        else:
+            filename = labels[cnt] + ext
         if(download_file(img_url, subdir + '/' + filename)):
             print('\033[92m' + '- ' + filename + ' saved in ' + subdir + '.' + '\033[0m')
         else:
@@ -123,12 +134,13 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
 
     return some_error
 
-def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1):
+def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1, use_page_numbers = False):
     if(is_url(manifest_name)):
         d = json.loads(open_url(manifest_name))
     else:
         with open(manifest_name) as f:
             d = json.load(f)
+    #print(json.dumps(d, indent=4))
 
     # Read manifest
     title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h = read_iiif_json(d)
@@ -144,7 +156,7 @@ def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, las
     os.mkdir(subdir)
 
     # Download images from url
-    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage)
+    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage, use_page_numbers)
 
     # Rename directory if something was wrong
     if(some_error):
