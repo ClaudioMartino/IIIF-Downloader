@@ -11,7 +11,7 @@ This script needs only urllib!
 You run it as:
 
 ```
-python3 iiif_downloader.py -m manifest [-d directory]
+python3 iiif_downloader.py -m manifest [-d directory] [-p first-last]
 ```
 
 And that's all.

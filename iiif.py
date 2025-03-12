@@ -3,7 +3,8 @@ import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
 
-# TODO: download one specific page
+# Doc: https://iiif.io/api/image/3.0/
+
 # TODO: read manifest from url (don't download)
 
 def open_url(u):
@@ -91,10 +92,20 @@ def read_iiif_json(d):
 
     return title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
 
-def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir):
+def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1):
+    # Create sub-array
+    totpages = len(iiif_ids)
+    if(firstpage != 1 or lastpage != -1):
+        iiif_ids = iiif_ids[firstpage-1:]
+        iiif_ids = iiif_ids[:lastpage-firstpage+1]
+        print("- Downloading pages " + str(firstpage) + "-" + str(lastpage) + " from a total of " + str(totpages))
+
+    # Loop over each id
     some_error = False
     for cnt, iiif_id in enumerate(iiif_ids):
-        print('[' + str(cnt + 1) + '/' + str(len(iiif_ids)) + '] Label: ' + labels[cnt])
+        percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
+        cnt = cnt + firstpage - 1
+        print('[p.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
         print('- ID: ' + iiif_id)
         ext = get_extension(iiif_formats[cnt])
         print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
@@ -108,10 +119,10 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir):
         else:
             print('\033[91m' + '- Error!' + '\033[0m')
             some_error = True
+
     return some_error
 
-def download_iiif_files_from_manifest(manifest_name, maindir):
-    # Doc: https://iiif.io/api/image/3.0/
+def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1):
     with open(manifest_name) as f:
         d = json.load(f)
 
@@ -129,7 +140,7 @@ def download_iiif_files_from_manifest(manifest_name, maindir):
     os.mkdir(subdir)
 
     # Download images from url
-    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir)
+    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage)
 
     # Rename directory if something was wrong
     if(some_error):
