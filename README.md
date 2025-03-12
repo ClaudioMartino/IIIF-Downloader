@@ -16,6 +16,8 @@ python3 iiif_downloader.py -m manifest [-d directory] [-p first-last]
 
 And that's all.
 
+`manifest` can be a file on your computer or a http(s) link.
+
 ![Screenshot of the downloader.](img.png)
 
 ## Advanced usage

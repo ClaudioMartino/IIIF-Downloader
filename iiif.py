@@ -5,8 +5,6 @@ from urllib.request import urlopen, Request
 
 # Doc: https://iiif.io/api/image/3.0/
 
-# TODO: read manifest from url (don't download)
-
 def open_url(u):
   headers = {'User-Agent' : "Mozilla/5.0"}
   try:
@@ -27,6 +25,9 @@ def download_file(u, filepath):
       print(Exception, err)
       os.remove(filepath)
       return False
+
+def is_url(url):
+    return (url[:4] == 'http')
 
 def find_keys(data, key):
     if isinstance(data, dict):
@@ -123,8 +124,11 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
     return some_error
 
 def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1):
-    with open(manifest_name) as f:
-        d = json.load(f)
+    if(is_url(manifest_name)):
+        d = json.loads(open_url(manifest_name))
+    else:
+        with open(manifest_name) as f:
+            d = json.load(f)
 
     # Read manifest
     title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h = read_iiif_json(d)

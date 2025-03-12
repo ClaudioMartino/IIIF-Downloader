@@ -17,7 +17,7 @@ def get_pages(pages):
   return firstpage, lastpage
 
 parser = argparse.ArgumentParser(description="IIIF Downloader", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("-m", "--manifest", default='manifest', help="Manifest name")
+parser.add_argument("-m", "--manifest", default='manifest', help="Manifest name or url")
 parser.add_argument("-d", "--directory", default='.', help="Directory")
 parser.add_argument("-p", "--pages", default='all', help="Page range (e.g. 3-27)")
 
