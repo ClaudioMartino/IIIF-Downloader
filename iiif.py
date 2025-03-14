@@ -95,6 +95,11 @@ def read_iiif_json(d):
         # TODO Other standars
         raise Exception("Only IIIF 2.0 is supported today") 
 
+def sanitize_name(title):
+    title = title.replace("/", " ")
+    title = title.replace(":", "")
+    return title
+
 def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_page_number = False):
     # Create sub-array
     totpages = len(iiif_ids)
@@ -119,7 +124,7 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
         if(use_page_number):
             filename = 'p' + str(cnt + 1).zfill(3) + ext
         else:
-            filename = labels[cnt] + ext
+            filename = sanitize_name(labels[cnt]) + ext
         if(download_file(img_url, subdir + '/' + filename)):
             print('\033[92m' + '- ' + filename + ' saved in ' + subdir + '.' + '\033[0m')
         else:
@@ -141,11 +146,8 @@ def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, las
     print('- Title: ' + title)
     print('- Files: ' + str(len(labels)))
 
-    # TODO clean title for files as well
     # Create subdirectory from title
-    title = title.replace("/", " ")
-    title = title.replace(":", "")
-    subdir = maindir + '/' + title
+    subdir = maindir + '/' + sanitize_name(title)
     if os.path.exists(subdir):
         rmtree(subdir)
     os.mkdir(subdir)
