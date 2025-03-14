@@ -110,7 +110,7 @@ def sanitize_name(title):
     title = title.replace(":", "")
     return title
 
-def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_page_number = False):
+def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_labels = False):
     # Create sub-array
     totpages = len(iiif_ids)
     if(firstpage != 1 or lastpage != -1):
@@ -133,10 +133,10 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
         print('- Height: ' + str(iiif_h[cnt]) + ' px')
         img_url = get_img_url(iiif_id, ext)
         print('- URL: ' + img_url)
-        if(use_page_number):
-            filename = 'p' + str(cnt + 1).zfill(3) + ext
-        else:
+        if(use_labels):
             filename = sanitize_name(labels[cnt]) + ext
+        else:
+            filename = 'p' + str(cnt + 1).zfill(3) + ext
         filesize = download_file(img_url, subdir + '/' + filename)
         if(filesize > 0):
             print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
@@ -157,7 +157,7 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
 
     return some_error
 
-def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1, use_page_numbers = False):
+def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1, use_labels = False):
     if(is_url(manifest_name)):
         d = json.loads(open_url(manifest_name).read())
     else:
@@ -177,7 +177,7 @@ def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, las
     os.mkdir(subdir)
 
     # Download images from url
-    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage, use_page_numbers)
+    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage, use_labels)
 
     # Rename directory if something was wrong
     if(some_error):
