@@ -7,10 +7,11 @@ from urllib.request import urlopen, Request
 # Doc: https://iiif.io/api/image/2.0/
 
 class Conf:
-  def __init__(self, firstpage = 1, lastpage = -1, use_labels = False):
+  def __init__(self, firstpage = 1, lastpage = -1, use_labels = False, force = False):
     self.firstpage = firstpage;
     self.lastpage = lastpage;
     self.use_labels = use_labels;
+    self.force = force;
 
 def open_url(u):
   headers = {'User-Agent' : "Mozilla/5.0"}
@@ -32,7 +33,8 @@ def download_file(u, filepath):
   #file_size = res.headers['Content-Length']
   #print('- ' + str(file_size) + ' bytes')
 
-  with open(filepath, 'xb') as file:
+  # Create the file (binary) mode even when it exists
+  with open(filepath, 'wb') as file:
     try:
       file.write(res.read())
       file_size = os.path.getsize(filepath)
@@ -148,6 +150,9 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
             filename = sanitize_name(labels[cnt]) + ext
         else:
             filename = 'p' + str(cnt + 1).zfill(3) + ext
+        if(os.path.exists(subdir + '/' + filename) and not conf.force):
+            print(subdir + '/' + filename + " exists, skip.")
+            continue;
         filesize = download_file(img_url, subdir + '/' + filename)
         if(filesize > 0):
             print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
@@ -183,9 +188,8 @@ def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
 
     # Create subdirectory from title
     subdir = maindir + '/' + sanitize_name(title)
-    if os.path.exists(subdir):
-        rmtree(subdir)
-    os.mkdir(subdir)
+    if (not os.path.exists(subdir)):
+        os.mkdir(subdir)
 
     # Download images from url
     some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, conf)
