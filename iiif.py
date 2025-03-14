@@ -6,6 +6,12 @@ from urllib.request import urlopen, Request
 
 # Doc: https://iiif.io/api/image/2.0/
 
+class Conf:
+  def __init__(self, firstpage = 1, lastpage = -1, use_labels = False):
+    self.firstpage = firstpage;
+    self.lastpage = lastpage;
+    self.use_labels = use_labels;
+
 def open_url(u):
   headers = {'User-Agent' : "Mozilla/5.0"}
   try:
@@ -110,7 +116,12 @@ def sanitize_name(title):
     title = title.replace(":", "")
     return title
 
-def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_labels = False):
+def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, conf = Conf()):
+    # Read configuration parameters
+    firstpage = conf.firstpage
+    lastpage = conf.lastpage
+    use_labels = conf.use_labels
+
     # Create sub-array
     totpages = len(iiif_ids)
     if(firstpage != 1 or lastpage != -1):
@@ -157,7 +168,7 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
 
     return some_error
 
-def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1, use_labels = False):
+def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
     if(is_url(manifest_name)):
         d = json.loads(open_url(manifest_name).read())
     else:
@@ -177,7 +188,7 @@ def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, las
     os.mkdir(subdir)
 
     # Download images from url
-    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage, lastpage, use_labels)
+    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, conf)
 
     # Rename directory if something was wrong
     if(some_error):

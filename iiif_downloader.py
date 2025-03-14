@@ -2,7 +2,6 @@ import iiif
 from re import match 
 import argparse
 
-# TODO: one struct as arg
 # TODO: overwrite or not directory or files
 
 def get_pages(pages):
@@ -31,5 +30,6 @@ main_dir = config['directory']
 manifest_name = config['manifest']
 firstpage, lastpage = get_pages(config['pages'])
 use_labels = config['use_labels']
+conf = iiif.Conf(firstpage, lastpage, use_labels)
 
-iiif.download_iiif_files_from_manifest(manifest_name, main_dir, firstpage, lastpage, use_labels)
+iiif.download_iiif_files_from_manifest(manifest_name, main_dir, conf)
