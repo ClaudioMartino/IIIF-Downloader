@@ -1,4 +1,5 @@
 import json
+import time
 import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
@@ -9,22 +10,31 @@ def open_url(u):
   headers = {'User-Agent' : "Mozilla/5.0"}
   try:
     response = urlopen(Request(u, headers = headers), timeout = 30)
-    #print(response.getcode())
-    page = response.read()
-    return page
+    return response
   except Exception as err:
     print(Exception, err)
     return;
 
 def download_file(u, filepath):
+  try:
+    res = open_url(u)
+    #print(response.getcode())
+  except Exception as err:
+    print(Exception, err)
+    return -1
+
+  #file_size = res.headers['Content-Length']
+  #print('- ' + str(file_size) + ' bytes')
+
   with open(filepath, 'xb') as file:
     try:
-      file.write(open_url(u))
-      return True
+      file.write(res.read())
+      file_size = os.path.getsize(filepath)
+      return file_size
     except Exception as err:
       print(Exception, err)
       os.remove(filepath)
-      return False
+      return -1
 
 def is_url(url):
     return (url[:4] == 'http')
@@ -110,32 +120,46 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
 
     # Loop over each id
     some_error = False
+    total_filesize = 0
+    start_time = time.time()
     for cnt, iiif_id in enumerate(iiif_ids):
         percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
         cnt = cnt + firstpage - 1
-        print('[p.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
+        print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
         print('- ID: ' + iiif_id)
         ext = get_extension(iiif_formats[cnt])
         print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
-        print('- Width: ' + str(iiif_w[cnt]) + 'px')
-        print('- Height: ' + str(iiif_h[cnt]) + 'px')
+        print('- Width: ' + str(iiif_w[cnt]) + ' px')
+        print('- Height: ' + str(iiif_h[cnt]) + ' px')
         img_url = get_img_url(iiif_id, ext)
         print('- URL: ' + img_url)
         if(use_page_number):
             filename = 'p' + str(cnt + 1).zfill(3) + ext
         else:
             filename = sanitize_name(labels[cnt]) + ext
-        if(download_file(img_url, subdir + '/' + filename)):
-            print('\033[92m' + '- ' + filename + ' saved in ' + subdir + '.' + '\033[0m')
+        filesize = download_file(img_url, subdir + '/' + filename)
+        if(filesize > 0):
+            print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
+            total_filesize += filesize
         else:
             print('\033[91m' + '- Error!' + '\033[0m')
             some_error = True
+    end_time = time.time()
+
+    print("--- Stats ---")
+    print("- Files: " + str(len(iiif_ids)))
+    total_time = (end_time - start_time)
+    print("- Elapsed time: " + str(round(total_time)) + " s")
+    print("- Avg time/file: " + str(round(total_time/len(iiif_ids))) + " s")
+    print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
+    print("- Avg file size: " + str(round(total_filesize/(len(iiif_ids) * 1024))) + " KB")
+    print("-------------")
 
     return some_error
 
 def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, lastpage = -1, use_page_numbers = False):
     if(is_url(manifest_name)):
-        d = json.loads(open_url(manifest_name))
+        d = json.loads(open_url(manifest_name).read())
     else:
         with open(manifest_name) as f:
             d = json.load(f)
