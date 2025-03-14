@@ -29,16 +29,6 @@ def download_file(u, filepath):
 def is_url(url):
     return (url[:4] == 'http')
 
-def find_keys(data, key):
-    if isinstance(data, dict):
-        for k, v in data.items():
-            if k == key:
-                yield v
-            yield from find_keys(v, key)
-    elif isinstance(data, list):
-        for item in data:
-            yield from find_keys(item, key)
-
 def get_extension(mime_type):
     mime_to_extension = {
         'image/jpeg': '.jpg',
@@ -62,44 +52,48 @@ def get_img_url(iiif_id, ext):
         img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
     return img_url
 
-def read_iiif_json(d):
-    # Check
-    context = d['@context']
-    if(not context.endswith('2/context.json')):
-        raise Exception("Only IIIF 2.0 is supported today") 
-
-    # Read label and use it as new directory title
+def read_iiif2_json(d):
     title = d['label']
 
-    # Find canvases and resources in json
-    canvases = list(find_keys(d["sequences"], 'canvases'))
-    resources = list(find_keys(canvases[0], 'resource'))
-    
-    # Titles of the files in canvases (it is usually a number)
-    labels = []
-    for c in canvases[0]:
-        if 'label' in c:
-            labels.append(c['label'])
+    sequences = d["sequences"]
+    # Assumption: 1 sequence in sequences
+    sequence = sequences[0]
+    canvanses = sequence.get("canvases")
 
-    # Look for file features in resources
+    labels = []
+    images = []
+    for c in canvanses:
+        labels.append(c.get("label"))
+        # Assumption: 1 image in images
+        images.append(c.get("images")[0])
+
+    resources = []
+    for i in images:
+        resources.append(i.get("resource"))
+
     iiif_ids = []
     iiif_formats = []
     iiif_w = []
     iiif_h = []
     for r in resources:
-        if '@id' in r:
-            iiif_ids.append(r['@id'])
-        if 'format' in r:
-            iiif_formats.append(r['format'])
-        if 'width' in r:
-            iiif_w.append(r['width'])
-        if 'height' in r:
-            iiif_h.append(r['height'])
+        iiif_ids.append(r.get('@id'))
+        iiif_formats.append(r.get('format'))
+        iiif_w.append(r.get('width'))
+        iiif_h.append(r.get('height'))
 
     if(len(labels) != len(iiif_ids) != len(iiif_formats) != len(iiif_w) != len(iiif_h)):
         raise Exception("len discrepancy") 
 
     return title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
+
+def read_iiif_json(d):
+    # Check
+    context = d['@context']
+    if(context.endswith('2/context.json')):
+        return read_iiif2_json(d)
+    else:
+        # TODO Other standars
+        raise Exception("Only IIIF 2.0 is supported today") 
 
 def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, firstpage = 1, lastpage = -1, use_page_number = False):
     # Create sub-array
@@ -147,6 +141,7 @@ def download_iiif_files_from_manifest(manifest_name, maindir, firstpage = 1, las
     print('- Title: ' + title)
     print('- Files: ' + str(len(labels)))
 
+    # TODO clean title for files as well
     # Create subdirectory from title
     title = title.replace("/", " ")
     title = title.replace(":", "")
