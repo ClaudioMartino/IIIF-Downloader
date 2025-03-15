@@ -23,7 +23,7 @@ The manifest can be a file on your computer or a http(s) link. `manifest` is the
 * Specify the output directory with `-d directory`.
 * Specify the range of the pages to download with `-p first-last` (e.g. `10-20` for pages from 10 to 20, or `10-10` for page 10 only).
 * Use the `-f` flag to overwrite the files when they are already present in the directory.
-* Use the `--use-labels` flag to name the files with its label, instead of a progressive number.
+* Use the `--use-labels` flag to name the files with the manifest labels, instead of a progressive number.
 
 ## Advanced usage
 

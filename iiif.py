@@ -4,7 +4,9 @@ import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
 
-# Doc: https://iiif.io/api/image/2.0/
+# Doc:
+# - Image: https://iiif.io/api/image/2.0/
+# - Presentation: https://iiif.io/api/presentation/2.0/
 
 class Conf:
   def __init__(self, firstpage = 1, lastpage = -1, use_labels = False, force = False):
@@ -23,6 +25,7 @@ def open_url(u):
     return;
 
 def download_file(u, filepath):
+  print("- Downloading " + u)
   try:
     res = open_url(u)
     #print(response.getcode())
@@ -57,55 +60,61 @@ def get_extension(mime_type):
         'application/pdf': '.pdf',
         'image/webp': '.webp'
     }
-    return mime_to_extension.get(mime_type, None)
+    return mime_to_extension.get(mime_type, 'NA')
 
 def get_img_url(iiif_id, ext):
-    if(iiif_id.endswith(ext)):
-        img_url = iiif_id
-    else:
-        region = 'full'
-        size = 'max' # or 'full'
-        rotation = '0'
-        quality = 'default'
-        img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
+    region = 'full'
+    size = 'max' # or 'full'
+    rotation = '0'
+    quality = 'default'
+    img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
     return img_url
 
 def read_iiif2_json(d):
     title = d['label']
+    manifest_id = d['@id']
 
     sequences = d["sequences"]
-    # Assumption: 1 sequence in sequences
+    # Assumption #1: 1 sequence in sequences
     sequence = sequences[0]
+    #if(sequence.get("@type") != 'sc:Sequence'): raise Exception
+
     canvanses = sequence.get("canvases")
 
     labels = []
     images = []
+    iiif_w = []
+    iiif_h = []
     for c in canvanses:
+        #if(c.get("@type") != 'sc:Canvas'): raise Exception
         labels.append(c.get("label"))
-        # Assumption: 1 image in images
+        # Assumption #2: 1 image in images
         images.append(c.get("images")[0])
+        iiif_w.append(c.get('width'))
+        iiif_h.append(c.get('height'))
 
     resources = []
     for i in images:
+        #if(i.get('@type') != "oa:Annotation"): raise Exception
+        if((i.get('motivation')).lower() != "sc:painting"): # lower for "sc:Painting"
+            continue
         resources.append(i.get("resource"))
 
     iiif_ids = []
     iiif_formats = []
-    iiif_w = []
-    iiif_h = []
     for r in resources:
         iiif_ids.append(r.get('@id'))
-        iiif_formats.append(r.get('format'))
-        iiif_w.append(r.get('width'))
-        iiif_h.append(r.get('height'))
+        iiif_formats.append(r.get('format', 'NA'))
 
     if(len(labels) != len(iiif_ids) != len(iiif_formats) != len(iiif_w) != len(iiif_h)):
         raise Exception("len discrepancy") 
 
-    return title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
+    return manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
 
 def read_iiif_json(d):
-    # Check
+    if(d['@type'] != 'sc:Manifest'):
+        raise Exception("Not a manifest") 
+
     context = d['@context']
     if(context.endswith('2/context.json')):
         return read_iiif2_json(d)
@@ -138,30 +147,46 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
     for cnt, iiif_id in enumerate(iiif_ids):
         percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
         cnt = cnt + firstpage - 1
+
+        # Print counters and label
         print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
+
+        # Print file ID
         print('- ID: ' + iiif_id)
+
+        # Print file extension
         ext = get_extension(iiif_formats[cnt])
+        if(ext == 'NA' and '.' in iiif_id):
+          ext = '.' + iiif_id.split('.')[-1] # if format not defined, try take ext from file name
         print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
+
         print('- Width: ' + str(iiif_w[cnt]) + ' px')
         print('- Height: ' + str(iiif_h[cnt]) + ' px')
-        img_url = get_img_url(iiif_id, ext)
-        print('- URL: ' + img_url)
+
+        # Download file
         if(use_labels):
             filename = sanitize_name(labels[cnt]) + ext
         else:
             filename = 'p' + str(cnt + 1).zfill(3) + ext
         if(os.path.exists(subdir + '/' + filename) and not conf.force):
-            print(subdir + '/' + filename + " exists, skip.")
+            print('- ' + subdir + '/' + filename + " exists, skip.")
             continue;
+
+        img_url = get_img_url(iiif_id, ext)
         filesize = download_file(img_url, subdir + '/' + filename)
-        if(filesize > 0):
-            print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
-            total_filesize += filesize
-        else:
+        if(filesize <= 0):
+            filesize = download_file(iiif_id, subdir + '/' + filename)
+
+        if(filesize <= 0):
             print('\033[91m' + '- Error!' + '\033[0m')
             some_error = True
+        else:
+            print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
+            total_filesize += filesize
+
     end_time = time.time()
 
+    # TODO: distinguish downloaded and manifest files counts
     print("--- Stats ---")
     print("- Files: " + str(len(iiif_ids)))
     total_time = (end_time - start_time)
@@ -179,10 +204,10 @@ def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
     else:
         with open(manifest_name) as f:
             d = json.load(f)
-    #print(json.dumps(d, indent=4))
 
     # Read manifest
-    title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h = read_iiif_json(d)
+    manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h = read_iiif_json(d)
+    print('- Manifest ID: ' + manifest_id)
     print('- Title: ' + title)
     print('- Files: ' + str(len(labels)))
 
