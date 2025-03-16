@@ -19,7 +19,7 @@ def get_pages(pages):
   return firstpage, lastpage
 
 parser = argparse.ArgumentParser(description="IIIF Downloader", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("-m", "--manifest", default='manifest', help="Manifest name or url")
+parser.add_argument("-m", "--manifest", default='manifest', help="Manifest or collection of manifests (name or url)")
 parser.add_argument("-d", "--directory", default='.', help="Directory")
 parser.add_argument("-f", "--force",  action='store_true', help="Overwrite existing files")
 parser.add_argument("-p", "--pages", default='all', help="Page range (e.g. 3-27)")
@@ -34,4 +34,4 @@ use_labels = config['use_labels']
 force = config['force']
 conf = iiif.Conf(firstpage, lastpage, use_labels, force)
 
-iiif.download_iiif_files_from_manifest(manifest_name, main_dir, conf)
+iiif.download_iiif_files(manifest_name, main_dir, conf)

@@ -14,9 +14,9 @@ Run the script as:
 python3 iiif_downloader.py [-m manifest]
 ```
 
-The manifest can be a file on your computer or a http(s) link. `manifest` is the default value.
+All the images of the document with the default quality, not cropped, and not scaled, will be downloaded on your computer, named with a progressive number (`p001.jpg` etcetera).
 
-All the images of the document with the default quality, not cropped, and not scaled, will be downloaded on your computer, named with a progressive number (e.g. `p042.jpg`).
+The manifest can be a file on your computer or a http(s) link. `manifest` is the default value. You can also use a collection of manifests, the script will recognize it and download all the files from the manifests.
 
 ![Screenshot of the downloader.](img.png)
 
@@ -34,7 +34,7 @@ All the options can be displayed by running the helper (`iiif_downloader.py -h`)
 All the functions have been defined in `iiif.py`, you can include it in your project and run more complicated tasks. Have a look at the example directory.
 
 ## Working manifests
-The script has been tested with:
+The script has been tested with the following manifests and it worked:
 - https://api.irht.cnrs.fr/ark:/63955/fl685opg22dv/manifest.json
 - https://content.staatsbibliothek-berlin.de/dc/785884734/manifest
 - https://mss-cat.trin.cam.ac.uk/Manuscript/R.15.32/manifest.json
@@ -46,7 +46,6 @@ The script has been tested with:
 - https://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json
 - https://digital.library.villanova.edu/Item/vudl:92879/Manifest 
 
-## TODO
-Collections:
+Also with these collections:
 - https://iiif.wellcomecollection.org/presentation/v2/b20417081
 - https://images.lambethpalacelibrary.org.uk/luna/servlet/iiif/collection/s/y4pi93

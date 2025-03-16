@@ -76,7 +76,12 @@ def get_extension(mime_type):
 def get_img_url(iiif_id, ext, region = 'full', size = 'max', rotation = '0', quality = 'default'):
     return iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
 
-def read_iiif2_manifest(d):
+def sanitize_name(title):
+    title = title.replace("/", " ")
+    title = title.replace(":", "")
+    return title
+
+def read_iiif_manifest(d):
     # - label
     # - @id
     # - sequences:
@@ -128,113 +133,11 @@ def read_iiif2_manifest(d):
 
     return Info(manifest_id, manifest_label, labels, iiif_ids, iiif_formats, iiif_w, iiif_h)
 
-def read_iiif_manifest(d):
-    context = d['@context']
-    if(context.endswith('2/context.json')):
-        iiif_type = d.get('@type')
-        if(iiif_type != 'sc:Manifest'):
-            raise Exception("Not a manifest (type: " + iiif_type + ')') 
-        return read_iiif2_manifest(d)
-    else:
-        # TODO Other standars
-        raise Exception("Only IIIF 2.0 is supported today (context: " + context + ')') 
-
-def sanitize_name(title):
-    title = title.replace("/", " ")
-    title = title.replace(":", "")
-    return title
-
-def download_iiif_files(info, subdir, conf = Conf()):
-    # Read IIIF info
-    iiif_ids = info.iiif_ids
-    labels = info.labels
-    iiif_formats = info.iiif_formats
-    iiif_w = info.iiif_w
-    iiif_h = info.iiif_h
-
-    # Read configuration parameters
-    firstpage = conf.firstpage
-    lastpage = conf.lastpage
-    use_labels = conf.use_labels
-
-    # Create sub-array
-    totpages = len(iiif_ids)
-    if(firstpage != 1 or lastpage != -1):
-        iiif_ids = iiif_ids[firstpage-1:]
-        iiif_ids = iiif_ids[:lastpage-firstpage+1]
-        print("- Downloading pages " + str(firstpage) + "-" + str(lastpage) + " from a total of " + str(totpages))
-
-    # Loop over each id
-    some_error = False
-    total_filesize = 0
-    start_time = time.time()
-    downloaded_cnt = 0
-    for cnt, iiif_id in enumerate(iiif_ids):
-        percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
-        cnt = cnt + firstpage - 1
-
-        # Print counters and label
-        print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
-
-        # Print file ID
-        print('- ID: ' + iiif_id)
-
-        # Print file extension
-        ext = get_extension(iiif_formats[cnt])
-        if(ext == 'NA' and '.' in iiif_id):
-          ext = '.' + iiif_id.split('.')[-1] # if format not defined, try take ext from file name
-        print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
-
-        # Print file size
-        print('- Width: ' + str(iiif_w[cnt]) + ' px')
-        print('- Height: ' + str(iiif_h[cnt]) + ' px')
-
-        # Download file
-        if(use_labels):
-            filename = sanitize_name(labels[cnt]) + ext
-        else:
-            filename = 'p' + str(cnt + 1).zfill(3) + ext
-        if(os.path.exists(subdir + '/' + filename) and not conf.force):
-            print('- ' + subdir + '/' + filename + " exists, skip.")
-            continue;
-
-        img_url = get_img_url(iiif_id, ext)
-        filesize = download_file(img_url, subdir + '/' + filename)
-        if(filesize <= 0):
-            filesize = download_file(iiif_id, subdir + '/' + filename)
-
-        if(filesize <= 0):
-            print('\033[91m' + '- Error!' + '\033[0m')
-            some_error = True
-        else:
-            print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
-            total_filesize += filesize
-            downloaded_cnt = downloaded_cnt + 1
-
-    end_time = time.time()
-
-    print("--- Stats ---")
-    print("- Downloaded files: " + str(downloaded_cnt))
-    total_time = (end_time - start_time)
-    print("- Elapsed time: " + str(round(total_time)) + " s")
-    if(downloaded_cnt > 0):
-        print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
-        print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
-        print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1024))) + " KB")
-    print("-------------")
-
-    return some_error
-
-def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
-    if(is_url(manifest_name)):
-        d = json.loads(open_url(manifest_name).read())
-    else:
-        with open(manifest_name) as f:
-            d = json.load(f)
-
+def download_iiif_files_from_manifest(d, maindir, conf = Conf()):
     # Read manifest
     info = read_iiif_manifest(d)
 
+    # Print manifest feautures
     print('- Manifest ID: ' + info.manifest_id)
     print('- Title: ' + info.title)
     print('- Files: ' + str(len(info.labels)))
@@ -245,9 +148,85 @@ def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
         if (not os.path.exists(subdir)):
             os.mkdir(subdir)
     
-        # Download images from url
-        some_error = download_iiif_files(info, subdir, conf)
+        # Read IIIF info
+        iiif_ids = info.iiif_ids
+        labels = info.labels
+        iiif_formats = info.iiif_formats
+        iiif_w = info.iiif_w
+        iiif_h = info.iiif_h
     
+        # Read configuration parameters
+        firstpage = conf.firstpage
+        lastpage = conf.lastpage
+        use_labels = conf.use_labels
+    
+        # Create sub-array (firstpage, lastpage)
+        totpages = len(iiif_ids)
+        if(firstpage != 1 or lastpage != -1):
+            iiif_ids = iiif_ids[firstpage-1:]
+            iiif_ids = iiif_ids[:lastpage-firstpage+1]
+            print("- Downloading pages " + str(firstpage) + "-" + str(lastpage) + " from a total of " + str(totpages))
+    
+        # Loop over each id
+        some_error = False
+        total_filesize = 0
+        start_time = time.time()
+        downloaded_cnt = 0
+        for cnt, iiif_id in enumerate(iiif_ids):
+            percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
+            cnt = cnt + firstpage - 1
+    
+            # Print counters and label
+            print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
+    
+            # Print file ID
+            print('- ID: ' + iiif_id)
+    
+            # Print file extension
+            ext = get_extension(iiif_formats[cnt])
+            if(ext == 'NA' and '.' in iiif_id):
+              ext = '.' + iiif_id.split('.')[-1] # if format not defined, try take ext from file name
+            print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
+    
+            # Print file size
+            print('- Width: ' + str(iiif_w[cnt]) + ' px')
+            print('- Height: ' + str(iiif_h[cnt]) + ' px')
+    
+            # Download file
+            if(use_labels):
+                filename = sanitize_name(labels[cnt]) + ext
+            else:
+                filename = 'p' + str(cnt + 1).zfill(3) + ext
+            if(os.path.exists(subdir + '/' + filename) and not conf.force):
+                print('- ' + subdir + '/' + filename + " exists, skip.")
+                continue;
+    
+            img_url = get_img_url(iiif_id, ext)
+            filesize = download_file(img_url, subdir + '/' + filename)
+            if(filesize <= 0):
+                filesize = download_file(iiif_id, subdir + '/' + filename)
+    
+            if(filesize <= 0):
+                print('\033[91m' + '- Error!' + '\033[0m')
+                some_error = True
+            else:
+                print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
+                total_filesize += filesize
+                downloaded_cnt = downloaded_cnt + 1
+    
+        end_time = time.time()
+
+        # Print some statistics    
+        print("--- Stats ---")
+        print("- Downloaded files: " + str(downloaded_cnt))
+        total_time = (end_time - start_time)
+        print("- Elapsed time: " + str(round(total_time)) + " s")
+        if(downloaded_cnt > 0):
+            print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
+            print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
+            print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1024))) + " KB")
+        print("-------------")
+ 
         # Rename directory if something was wrong
         if(some_error):
             err_subdir = maindir + '/' + 'ERR_' + info.title
@@ -255,3 +234,31 @@ def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
                 rmtree(err_subdir)
             os.rename(subdir, err_subdir)
             print('\033[91m' + 'Some error with ' + info.title + '.\033[0m') 
+
+def download_iiif_files(input_name, maindir, conf = Conf()):
+    # Check if input is a file or a url and open it
+    if(is_url(input_name)):
+        d = json.loads(open_url(input_name).read())
+    else:
+        with open(input_name) as f:
+            d = json.load(f)
+
+    # Check API version
+    context = d['@context']
+    if(not context.endswith('2/context.json')):
+        # TODO Other standars
+        raise Exception("Only IIIF 2.0 is supported today (context: " + context + ')') 
+    else:
+        # Check if input file is manifest or a collection
+        iiif_type = d.get('@type')
+        if(iiif_type == 'sc:Manifest'):
+            download_iiif_files_from_manifest(d, maindir, conf)
+        elif(iiif_type == 'sc:Collection'):
+            # TODO: one directory for same collection?
+            manifests = d.get('manifests')
+            for m in manifests:
+                manifest_id = m.get('@id')
+                d = json.loads(open_url(manifest_id).read())
+                download_iiif_files_from_manifest(d, maindir, conf)
+        else:
+            raise Exception("Not a manifest or a collection of manifests (type: " + iiif_type + ')') 
