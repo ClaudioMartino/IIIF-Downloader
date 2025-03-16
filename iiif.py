@@ -169,6 +169,7 @@ def download_iiif_files(info, subdir, conf = Conf()):
     some_error = False
     total_filesize = 0
     start_time = time.time()
+    downloaded_cnt = 0
     for cnt, iiif_id in enumerate(iiif_ids):
         percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
         cnt = cnt + firstpage - 1
@@ -209,17 +210,18 @@ def download_iiif_files(info, subdir, conf = Conf()):
         else:
             print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
             total_filesize += filesize
+            downloaded_cnt = downloaded_cnt + 1
 
     end_time = time.time()
 
-    # TODO: distinguish downloaded and manifest files counts
     print("--- Stats ---")
-    print("- Files: " + str(len(iiif_ids)))
+    print("- Downloaded files: " + str(downloaded_cnt))
     total_time = (end_time - start_time)
     print("- Elapsed time: " + str(round(total_time)) + " s")
-    print("- Avg time/file: " + str(round(total_time/len(iiif_ids))) + " s")
-    print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
-    print("- Avg file size: " + str(round(total_filesize/(len(iiif_ids) * 1024))) + " KB")
+    if(downloaded_cnt > 0):
+        print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
+        print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
+        print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1024))) + " KB")
     print("-------------")
 
     return some_error
