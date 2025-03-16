@@ -89,7 +89,7 @@ def read_iiif2_manifest(d):
     #         - @id
     #         - format
 
-    title = d['label']
+    manifest_label = d['label']
     manifest_id = d['@id']
 
     sequences = d["sequences"]
@@ -97,13 +97,13 @@ def read_iiif2_manifest(d):
     sequence = sequences[0]
     #if(sequence.get("@type") != 'sc:Sequence'): raise Exception
 
-    canvanses = sequence.get("canvases")
+    canvases = sequence.get("canvases")
 
     labels = []
     images = []
     iiif_w = []
     iiif_h = []
-    for c in canvanses:
+    for c in canvases:
         #if(c.get("@type") != 'sc:Canvas'): raise Exception
         labels.append(c.get("label"))
         # Assumption #2: 1 image in images
@@ -114,9 +114,11 @@ def read_iiif2_manifest(d):
     resources = []
     for i in images:
         #if(i.get('@type') != "oa:Annotation"): raise Exception
-        if((i.get('motivation')).lower() != "sc:painting"): # lower for "sc:Painting"
-            continue
+        #if((i.get('motivation')).lower() != "sc:painting"): raise Exception
         resources.append(i.get("resource"))
+
+    if(len(canvases) != len(resources)):
+        raise Exception("len discrepancy (canvases: " + str(len(canvases)) + ", resources: " + str(len(resources)) + ")") 
 
     iiif_ids = []
     iiif_formats = []
@@ -124,10 +126,7 @@ def read_iiif2_manifest(d):
         iiif_ids.append(r.get('@id'))
         iiif_formats.append(r.get('format', 'NA'))
 
-    if(len(labels) != len(iiif_ids)):
-        raise Exception("len discrepancy") 
-
-    return Info(manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h)
+    return Info(manifest_id, manifest_label, labels, iiif_ids, iiif_formats, iiif_w, iiif_h)
 
 def read_iiif_manifest(d):
     context = d['@context']
