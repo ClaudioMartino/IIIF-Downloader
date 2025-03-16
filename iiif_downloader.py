@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import iiif
 from re import match 
 import argparse
