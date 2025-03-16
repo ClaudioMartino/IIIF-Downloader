@@ -5,47 +5,58 @@ from shutil import rmtree
 from urllib.request import urlopen, Request
 
 # Doc:
-# - Image: https://iiif.io/api/image/2.0/
 # - Presentation: https://iiif.io/api/presentation/2.0/
+# - Image: https://iiif.io/api/image/2.0/
 
 class Conf:
-  def __init__(self, firstpage = 1, lastpage = -1, use_labels = False, force = False):
-    self.firstpage = firstpage;
-    self.lastpage = lastpage;
-    self.use_labels = use_labels;
-    self.force = force;
+    def __init__(self, firstpage = 1, lastpage = -1, use_labels = False, force = False):
+        self.firstpage = firstpage
+        self.lastpage = lastpage
+        self.use_labels = use_labels
+        self.force = force
+
+class Info:
+    def __init__(self, manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h):
+        self.manifest_id = manifest_id
+        self.title = title
+        self.labels = labels
+        self.iiif_ids = iiif_ids
+        self.iiif_formats = iiif_formats
+        self.iiif_w = iiif_w
+        self.iiif_h = iiif_h
 
 def open_url(u):
-  headers = {'User-Agent' : "Mozilla/5.0"}
-  try:
-    response = urlopen(Request(u, headers = headers), timeout = 30)
-    return response
-  except Exception as err:
-    print(Exception, err)
-    return;
+    headers = {'User-Agent' : "Mozilla/5.0"}
+    try:
+        response = urlopen(Request(u, headers = headers), timeout = 30)
+        return response
+    except Exception as err:
+        print(Exception, err)
+        return;
 
 def download_file(u, filepath):
-  print("- Downloading " + u)
-  try:
-    res = open_url(u)
-    #print(response.getcode())
-  except Exception as err:
-    print(Exception, err)
-    return -1
-
-  #file_size = res.headers['Content-Length']
-  #print('- ' + str(file_size) + ' bytes')
-
-  # Create the file (binary) mode even when it exists
-  with open(filepath, 'wb') as file:
+    u = u.replace(" ", "%20")
+    print("- Downloading " + u)
     try:
-      file.write(res.read())
-      file_size = os.path.getsize(filepath)
-      return file_size
+        res = open_url(u)
+        #print(response.getcode())
     except Exception as err:
-      print(Exception, err)
-      os.remove(filepath)
-      return -1
+        print(Exception, err)
+        return -1
+  
+    #file_size = res.headers['Content-Length']
+    #print('- ' + str(file_size) + ' bytes')
+  
+    # Create the file (binary) mode even when it exists
+    with open(filepath, 'wb') as file:
+        try:
+            file.write(res.read())
+            file_size = os.path.getsize(filepath)
+            return file_size
+        except Exception as err:
+            print(Exception, err)
+            os.remove(filepath)
+            return -1
 
 def is_url(url):
     return (url[:4] == 'http')
@@ -62,15 +73,22 @@ def get_extension(mime_type):
     }
     return mime_to_extension.get(mime_type, 'NA')
 
-def get_img_url(iiif_id, ext):
-    region = 'full'
-    size = 'max' # or 'full'
-    rotation = '0'
-    quality = 'default'
-    img_url = iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
-    return img_url
+def get_img_url(iiif_id, ext, region = 'full', size = 'max', rotation = '0', quality = 'default'):
+    return iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
 
-def read_iiif2_json(d):
+def read_iiif2_manifest(d):
+    # - label
+    # - @id
+    # - sequences:
+    #   - canvases:
+    #     - label
+    #     - width
+    #     - height
+    #     - images (content):
+    #       - resource:
+    #         - @id
+    #         - format
+
     title = d['label']
     manifest_id = d['@id']
 
@@ -106,28 +124,35 @@ def read_iiif2_json(d):
         iiif_ids.append(r.get('@id'))
         iiif_formats.append(r.get('format', 'NA'))
 
-    if(len(labels) != len(iiif_ids) != len(iiif_formats) != len(iiif_w) != len(iiif_h)):
+    if(len(labels) != len(iiif_ids)):
         raise Exception("len discrepancy") 
 
-    return manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h
+    return Info(manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h)
 
-def read_iiif_json(d):
-    if(d['@type'] != 'sc:Manifest'):
-        raise Exception("Not a manifest") 
-
+def read_iiif_manifest(d):
     context = d['@context']
     if(context.endswith('2/context.json')):
-        return read_iiif2_json(d)
+        iiif_type = d.get('@type')
+        if(iiif_type != 'sc:Manifest'):
+            raise Exception("Not a manifest (type: " + iiif_type + ')') 
+        return read_iiif2_manifest(d)
     else:
         # TODO Other standars
-        raise Exception("Only IIIF 2.0 is supported today") 
+        raise Exception("Only IIIF 2.0 is supported today (context: " + context + ')') 
 
 def sanitize_name(title):
     title = title.replace("/", " ")
     title = title.replace(":", "")
     return title
 
-def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, conf = Conf()):
+def download_iiif_files(info, subdir, conf = Conf()):
+    # Read IIIF info
+    iiif_ids = info.iiif_ids
+    labels = info.labels
+    iiif_formats = info.iiif_formats
+    iiif_w = info.iiif_w
+    iiif_h = info.iiif_h
+
     # Read configuration parameters
     firstpage = conf.firstpage
     lastpage = conf.lastpage
@@ -160,6 +185,7 @@ def download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, 
           ext = '.' + iiif_id.split('.')[-1] # if format not defined, try take ext from file name
         print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
 
+        # Print file size
         print('- Width: ' + str(iiif_w[cnt]) + ' px')
         print('- Height: ' + str(iiif_h[cnt]) + ' px')
 
@@ -206,23 +232,25 @@ def download_iiif_files_from_manifest(manifest_name, maindir, conf = Conf()):
             d = json.load(f)
 
     # Read manifest
-    manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h = read_iiif_json(d)
-    print('- Manifest ID: ' + manifest_id)
-    print('- Title: ' + title)
-    print('- Files: ' + str(len(labels)))
+    info = read_iiif_manifest(d)
 
-    # Create subdirectory from title
-    subdir = maindir + '/' + sanitize_name(title)
-    if (not os.path.exists(subdir)):
-        os.mkdir(subdir)
+    print('- Manifest ID: ' + info.manifest_id)
+    print('- Title: ' + info.title)
+    print('- Files: ' + str(len(info.labels)))
 
-    # Download images from url
-    some_error = download_iiif_files(iiif_ids, labels, iiif_formats, iiif_w, iiif_h, subdir, conf)
-
-    # Rename directory if something was wrong
-    if(some_error):
-        err_subdir = maindir + '/' + 'ERR_' + title
-        if os.path.exists(err_subdir):
-            rmtree(err_subdir)
-        os.rename(subdir, err_subdir)
-        print('\033[91m' + 'Some error with ' + title + '.\033[0m') 
+    if(len(info.labels) > 0):
+        # Create subdirectory from title
+        subdir = maindir + '/' + sanitize_name(info.title)
+        if (not os.path.exists(subdir)):
+            os.mkdir(subdir)
+    
+        # Download images from url
+        some_error = download_iiif_files(info, subdir, conf)
+    
+        # Rename directory if something was wrong
+        if(some_error):
+            err_subdir = maindir + '/' + 'ERR_' + info.title
+            if os.path.exists(err_subdir):
+                rmtree(err_subdir)
+            os.rename(subdir, err_subdir)
+            print('\033[91m' + 'Some error with ' + info.title + '.\033[0m') 
