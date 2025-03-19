@@ -4,7 +4,7 @@ IIIF is the [International Image Interoperability Framework](https://iiif.io/), 
 
 Most of the Python scripts out there ask you to install plenty of heavy external libraries. This script needs only standard libraries!
 
-For now it works with the [2.0 API](https://iiif.io/api/presentation/2.0) only. We assume that there is only one sequence per manifest and that each "images" field defines one image.
+It works with the [2.0 API](https://iiif.io/api/presentation/2.0) and the [3.0 API](https://iiif.io/api/presentation/3.0) (beta version).
 
 ## Basic usage
 
@@ -14,9 +14,9 @@ Run the script as:
 python3 iiif_downloader.py [-m manifest]
 ```
 
-All the images of the document with the default quality, not cropped, and not scaled, will be downloaded on your computer, named with a progressive number (`p001.jpg` etcetera).
+All the images of the document with the default quality, not cropped, and not scaled, will be downloaded on your computer, named with a progressive number (`p001.jpg` et cetera).
 
-The manifest can be a file on your computer or a http(s) link. `manifest` is the default value. You can also use a collection of manifests, the script will recognize it and download all the files from the manifests.
+The manifest can be a file on your computer or a http(s) link. `manifest` is the default value. You can also use a collection of manifests, the script will recognize it and download all the files from the manifests in different directories.
 
 ![Screenshot of the downloader.](img.png)
 
@@ -34,7 +34,7 @@ All the options can be displayed by running the helper (`iiif_downloader.py -h`)
 All the functions have been defined in `iiif.py`, you can include it in your project and run more complicated tasks. Have a look at the example directory.
 
 ## Working manifests
-The script has been tested with the following manifests and it worked:
+The script has been tested with the following 2.0 manifests and it worked:
 - https://api.irht.cnrs.fr/ark:/63955/fl685opg22dv/manifest.json
 - https://content.staatsbibliothek-berlin.de/dc/785884734/manifest
 - https://mss-cat.trin.cam.ac.uk/Manuscript/R.15.32/manifest.json
@@ -46,6 +46,15 @@ The script has been tested with the following manifests and it worked:
 - https://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json
 - https://digital.library.villanova.edu/Item/vudl:92879/Manifest 
 
-Also with these collections:
+Also with these 2.0 collections:
 - https://iiif.wellcomecollection.org/presentation/v2/b20417081
 - https://images.lambethpalacelibrary.org.uk/luna/servlet/iiif/collection/s/y4pi93
+
+And with these 3.0 manifests:
+- https://iiif.io/api/cookbook/recipe/0001-mvm-image/manifest.json
+- https://iiif.io/api/cookbook/recipe/0004-canvas-size/manifest.json
+- https://iiif.io/api/cookbook/recipe/0005-image-service/manifest.json
+- https://iiif.io/api/cookbook/recipe/0009-book-1/manifest.json
+
+And with this 3.0 collection:
+- https://iiif.io/api/cookbook/recipe/0032-collection/collection.json
