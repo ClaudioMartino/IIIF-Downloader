@@ -16,14 +16,12 @@ class Conf:
         self.force = force
 
 class Info:
-    def __init__(self, manifest_id, title, labels, iiif_ids, iiif_formats, iiif_w, iiif_h):
-        self.manifest_id = manifest_id
-        self.title = title
-        self.labels = labels
-        self.iiif_ids = iiif_ids
-        self.iiif_formats = iiif_formats
-        self.iiif_w = iiif_w
-        self.iiif_h = iiif_h
+    def __init__(self, label, iiif_id, iiif_format, iiif_w, iiif_h):
+        self.label = label
+        self.id = iiif_id
+        self.format = iiif_format
+        self.w = iiif_w
+        self.h = iiif_h
 
 def open_url(u):
     headers = {'User-Agent' : "Mozilla/5.0"}
@@ -104,56 +102,40 @@ def read_iiif_manifest(d):
 
     canvases = sequence.get("canvases")
 
-    labels = []
-    images = []
-    iiif_w = []
-    iiif_h = []
+    infos = []
     for c in canvases:
         #if(c.get("@type") != 'sc:Canvas'): raise Exception
-        labels.append(c.get("label"))
+        label = c.get("label")
         # Assumption #2: 1 image in images
-        images.append(c.get("images")[0])
-        iiif_w.append(c.get('width'))
-        iiif_h.append(c.get('height'))
-
-    resources = []
-    for i in images:
+        i = c.get("images")[0]
+        iiif_w = c.get('width')
+        iiif_h = c.get('height')
         #if(i.get('@type') != "oa:Annotation"): raise Exception
         #if((i.get('motivation')).lower() != "sc:painting"): raise Exception
-        resources.append(i.get("resource"))
 
-    if(len(canvases) != len(resources)):
-        raise Exception("len discrepancy (canvases: " + str(len(canvases)) + ", resources: " + str(len(resources)) + ")") 
+        resource = i.get("resource")
+        # "The image MUST have an @id field [...] Its media type MAY be listed in format"
+        iiif_id = resource.get('@id')
+        iiif_format = resource.get('format', 'NA')
 
-    iiif_ids = []
-    iiif_formats = []
-    for r in resources:
-        iiif_ids.append(r.get('@id'))
-        iiif_formats.append(r.get('format', 'NA'))
+        infos.append(Info(label, iiif_id, iiif_format, iiif_w, iiif_h))
 
-    return Info(manifest_id, manifest_label, labels, iiif_ids, iiif_formats, iiif_w, iiif_h)
+    return manifest_label, manifest_id, infos
 
 def download_iiif_files_from_manifest(d, maindir, conf = Conf()):
     # Read manifest
-    info = read_iiif_manifest(d)
+    manifest_label, manifest_id, infos = read_iiif_manifest(d)
 
     # Print manifest feautures
-    print('- Manifest ID: ' + info.manifest_id)
-    print('- Title: ' + info.title)
-    print('- Files: ' + str(len(info.labels)))
+    print('- Manifest ID: ' + manifest_id)
+    print('- Title: ' + manifest_label)
+    print('- Files: ' + str(len(infos)))
 
-    if(len(info.labels) > 0):
-        # Create subdirectory from title
-        subdir = maindir + '/' + sanitize_name(info.title)
+    if(len(infos) > 0):
+        # Create subdirectory from manifest label
+        subdir = maindir + '/' + sanitize_name(manifest_label)
         if (not os.path.exists(subdir)):
             os.mkdir(subdir)
-    
-        # Read IIIF info
-        iiif_ids = info.iiif_ids
-        labels = info.labels
-        iiif_formats = info.iiif_formats
-        iiif_w = info.iiif_w
-        iiif_h = info.iiif_h
     
         # Read configuration parameters
         firstpage = conf.firstpage
@@ -161,10 +143,10 @@ def download_iiif_files_from_manifest(d, maindir, conf = Conf()):
         use_labels = conf.use_labels
     
         # Create sub-array (firstpage, lastpage)
-        totpages = len(iiif_ids)
+        totpages = len(infos)
         if(firstpage != 1 or lastpage != -1):
-            iiif_ids = iiif_ids[firstpage-1:]
-            iiif_ids = iiif_ids[:lastpage-firstpage+1]
+            infos = infos[firstpage-1:]
+            infos = infos[:lastpage-firstpage+1]
             print("- Downloading pages " + str(firstpage) + "-" + str(lastpage) + " from a total of " + str(totpages))
     
         # Loop over each id
@@ -172,39 +154,39 @@ def download_iiif_files_from_manifest(d, maindir, conf = Conf()):
         total_filesize = 0
         start_time = time.time()
         downloaded_cnt = 0
-        for cnt, iiif_id in enumerate(iiif_ids):
-            percentage = round((cnt + 1) / len(iiif_ids) * 100, 1)
+        for cnt, info in enumerate(infos):
+            percentage = round((cnt + 1) / len(infos) * 100, 1)
             cnt = cnt + firstpage - 1
     
             # Print counters and label
-            print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + labels[cnt])
+            print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + info.label)
     
             # Print file ID
-            print('- ID: ' + iiif_id)
+            print('- ID: ' + info.id)
     
             # Print file extension
-            ext = get_extension(iiif_formats[cnt])
-            if(ext == 'NA' and '.' in iiif_id):
-              ext = '.' + iiif_id.split('.')[-1] # if format not defined, try take ext from file name
-            print('- Format: ' + iiif_formats[cnt] + ' => Extension: ' + ext)
+            ext = get_extension(info.format)
+            if(ext == 'NA' and '.' in info.id):
+                ext = '.' + info.id.split('.')[-1] # if format not defined, try take ext from file name
+            print('- Format: ' + info.format + ' => Extension: ' + ext)
     
             # Print file size
-            print('- Width: ' + str(iiif_w[cnt]) + ' px')
-            print('- Height: ' + str(iiif_h[cnt]) + ' px')
+            print('- Width: '  + str(info.w) + ' px')
+            print('- Height: ' + str(info.h) + ' px')
     
             # Download file
             if(use_labels):
-                filename = sanitize_name(labels[cnt]) + ext
+                filename = sanitize_name(info.label) + ext
             else:
                 filename = 'p' + str(cnt + 1).zfill(3) + ext
             if(os.path.exists(subdir + '/' + filename) and not conf.force):
                 print('- ' + subdir + '/' + filename + " exists, skip.")
                 continue;
     
-            img_url = get_img_url(iiif_id, ext)
+            img_url = get_img_url(info.id, ext)
             filesize = download_file(img_url, subdir + '/' + filename)
             if(filesize <= 0):
-                filesize = download_file(iiif_id, subdir + '/' + filename)
+                filesize = download_file(info.id, subdir + '/' + filename)
     
             if(filesize <= 0):
                 print('\033[91m' + '- Error!' + '\033[0m')
@@ -229,11 +211,11 @@ def download_iiif_files_from_manifest(d, maindir, conf = Conf()):
  
         # Rename directory if something was wrong
         if(some_error):
-            err_subdir = maindir + '/' + 'ERR_' + info.title
+            err_subdir = maindir + '/' + 'ERR_' + manifest_label
             if os.path.exists(err_subdir):
                 rmtree(err_subdir)
             os.rename(subdir, err_subdir)
-            print('\033[91m' + 'Some error with ' + info.title + '.\033[0m') 
+            print('\033[91m' + 'Some error with ' + manifest_label + '.\033[0m') 
 
 def download_iiif_files(input_name, maindir, conf = Conf()):
     # Check if input is a file or a url and open it
