@@ -174,11 +174,19 @@ def read_iiif_manifest3(d):
             annotation = annotation_page.get('items')[0]
             #if(annotation.get('type') != "Annotation"): raise Exception
 
-            # Read body
-            iiif_id = annotation.get('body').get('id')
-            iiif_format = annotation.get('body').get('format')
-            iiif_w = annotation.get('body').get('width')
-            iiif_h = annotation.get('body').get('height')
+            # Read body or body.source
+            body = annotation.get('body')
+            body_type = body.get('type')
+            if(body_type == 'Image'):
+                source = body
+            elif(body_type == 'SpecificResource'):
+                source = body.get('source')
+            else:
+                raise Exception("Unsupported body type: " + body_type)
+            iiif_id = source.get('id')
+            iiif_format = source.get('format')
+            iiif_w = source.get('width')
+            iiif_h = source.get('height')
 
             infos.append(Info(l, iiif_id, iiif_format, iiif_w, iiif_h))
 
@@ -192,6 +200,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         manifest_label, manifest_id, infos = read_iiif_manifest3(d)
 
     # Print manifest feautures
+    print('- API: ' + str(api) + '.0')
     print('- Manifest ID: ' + manifest_id)
     print('- Title: ' + manifest_label)
     print('- Files: ' + str(len(infos)))
@@ -218,8 +227,8 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         some_error = False
         try_with_id = True
         total_filesize = 0
-        start_time = time.time()
         downloaded_cnt = 0
+        start_time = time.time()
         for cnt, info in enumerate(infos):
             percentage = round((cnt + 1) / len(infos) * 100, 1)
             cnt = cnt + firstpage - 1
@@ -302,7 +311,10 @@ def download_iiif_files(input_name, maindir, conf = Conf()):
             d = json.load(f)
 
     # Check API version and define json dictionary elements accordingly
-    context = d['@context']
+    context = d.get('@context')
+    # 3.0 API: "The value of the @context property must be either the URI or a JSON array with the URI as the last item"
+    if(isinstance(context, list)):
+        context = context[-1]
     if(context.endswith('2/context.json')):
         api = 2
         type_key = '@type'
