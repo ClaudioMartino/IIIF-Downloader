@@ -28,6 +28,16 @@ def open_url(u):
         print(Exception, err)
         return;
 
+def print_statistics(downloaded_cnt, total_time, total_filesize):
+    print("--- Stats ---")
+    print("- Downloaded files: " + str(downloaded_cnt))
+    print("- Elapsed time: " + str(round(total_time)) + " s")
+    if(downloaded_cnt > 0):
+        print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
+        print("- Disc usage: " + str(round(total_filesize/1000)) + " kB")
+        print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1000))) + " kB")
+    print("-------------")
+ 
 def download_file(u, filepath):
     u = u.replace(" ", "%20")
     print("- Downloading " + u)
@@ -199,7 +209,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
     elif(api == 3):
         manifest_label, manifest_id, infos = read_iiif_manifest3(d)
 
-    # Print manifest feautures
+    # Print manifest features
     print('- API: ' + str(api) + '.0')
     print('- Manifest ID: ' + manifest_id)
     print('- Title: ' + manifest_label)
@@ -281,19 +291,11 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
                 total_filesize += filesize
                 downloaded_cnt = downloaded_cnt + 1
  
-        end_time = time.time()
+        total_time = time.time() - start_time
 
         # Print some statistics    
-        print("--- Stats ---")
-        print("- Downloaded files: " + str(downloaded_cnt))
-        total_time = (end_time - start_time)
-        print("- Elapsed time: " + str(round(total_time)) + " s")
-        if(downloaded_cnt > 0):
-            print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
-            print("- Disc usage: " + str(round(total_filesize/1024)) + " KB")
-            print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1024))) + " KB")
-        print("-------------")
- 
+        print_statistics(downloaded_cnt, total_time, total_filesize)
+
         # Rename directory if something was wrong
         if(some_error):
             err_subdir = maindir + '/' + 'ERR_' + sanitize_name(manifest_label)
