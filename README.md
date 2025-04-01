@@ -31,7 +31,8 @@ All the options can be displayed by running the helper (`iiif_downloader.py -h`)
 
 ## Advanced usage
 
-All the functions have been defined in `iiif.py`, you can include it in your project and run more complicated tasks. Have a look at the example directory.
+You can include the library in your project and run more complicated tasks. Have a look at the example directory.
 
 ## Testings
+
 The script has been tested with the manifests and the collections listed in the text files of the `testing` directory.

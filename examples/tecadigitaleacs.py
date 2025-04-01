@@ -2,7 +2,7 @@
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-import iiif # import ../iiif.py
+import iiif_downloader # import ../iiif_downloader.py
 
 # DESCRIPTION:
 # Read tecadigitaleacs.cultura.gov.it urls from .txt file
@@ -26,4 +26,4 @@ with open(url_file) as f:
 for i, manifest in enumerate(manifests):
     print('\033[95m' + '[' + str(i+1) + '/' + str(len(manifests)) + '] ' + manifest + '\033[0m')
 
-    iiif.download_iiif_files(manifest, maindir)
+    iiif_downloader.download_iiif_files(manifest, maindir)
