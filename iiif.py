@@ -98,42 +98,45 @@ def read_iiif_manifest2(d):
     #         - @id
     #         - format
 
+    # Read label
     manifest_label = d.get('label')
-    if(manifest_label == None): raise Exception
+    assert manifest_label is not None, "'label' not found."
 
+    # Read id
     manifest_id = d.get('@id')
-    if(manifest_id == None): raise Exception
+    assert manifest_id is not None, "'@id' not found."
 
     # Read sequences
     sequences = d.get('sequences')
-    if(sequences == None): raise Exception
+    assert sequences is not None, "'sequences' not found."
     # Assumption #1: 1 sequence in sequences
     sequence = sequences[0]
-    #if(sequence.get("@type") != 'sc:Sequence'): raise Exception
+    #assert sequence.get("@type") == 'sc:Sequence'
 
     # Read canvases
     canvases = sequence.get("canvases")
-
     infos = []
     for c in canvases:
-        #if(c.get("@type") != 'sc:Canvas'): raise Exception
+        #assert c.get("@type") == 'sc:Canvas'
+
+        # Read label
         label = c.get("label")
 
-        # Read images
-        images = c.get("images")
-        if(images == None): raise Exception
-        # Assumption #2: 1 image in images
-        i = images[0]
-        #if(i.get('@type') != "oa:Annotation"): raise Exception
-        #if((i.get('motivation')).lower() != "sc:painting"): raise Exception
+        # Read width and height
         iiif_w = c.get('width')
         iiif_h = c.get('height')
 
-        # Read resource
+        # Read images
+        images = c.get("images")
+        assert images is not None, "'images' not found."
+        # Assumption #2: 1 image in images
+        i = images[0]
+        #assert i.get('@type') == "oa:Annotation"
+        #assert (i.get('motivation')).lower() == "sc:painting"
         resource = i.get("resource")
         # "The image MUST have an @id field [...] Its media type MAY be listed in format"
         iiif_id = resource.get('@id')
-        if(iiif_id == None): raise Exception
+        assert iiif_id is not None, "'@id' not found."
         iiif_format = resource.get('format', 'NA')
 
         infos.append(Info(label, iiif_id, iiif_format, iiif_w, iiif_h))
@@ -153,21 +156,22 @@ def read_iiif_manifest3(d):
     #         - width
     #         - height
 
+    # Read label
     manifest_label = d.get('label')
-    if(manifest_label == None): raise Exception
+    assert manifest_label is not None, "'label' not found."
     if(isinstance(manifest_label, dict)):
         manifest_label = next(iter(manifest_label.values())) # take first value
     manifest_label = manifest_label[0]
 
+    # Read id
     manifest_id = d.get('id')
-    if(manifest_id == None): raise Exception
+    assert manifest_id is not None, "'id' not found."
 
     # Read canvas
     items = d.get('items')
-    #if(items == None): raise Exception
     infos = []
     for i in items:
-        #if(i.get('type') != "Canvas"): raise Exception
+        #assert i.get('type') == "Canvas"
         l = i.get('label', 'NA')
         if(isinstance(l, dict)):
             l = next(iter(l.values())) # take first value
@@ -178,17 +182,17 @@ def read_iiif_manifest3(d):
         else:
             # Read annotation page
             annotation_page = i.get('items')
-            if(annotation_page == None): raise Exception
+            assert annotation_page is not None, "'items' (annotation page) not found."
             # Assumption #1: 1 annotation page in canvas
             annotation_page = annotation_page[0]
 
             # Read annotation
-            #if(annotation_page.get('type') != "AnnotationPage"): raise Exception
+            #assert annotation_page.get('type') == "AnnotationPage"
             annotation = annotation_page.get('items')
-            if(annotation == None): raise Exception
+            assert annotation is not None, "'items' (annotation) not found."
             # Assumption #2: 1 annotation in annotation page
             annotation = annotation[0]
-            #if(annotation.get('type') != "Annotation"): raise Exception
+            #assert annotation.get('type') == "Annotation"
 
             # Read body or body.source
             body = annotation.get('body')
@@ -214,6 +218,8 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         manifest_label, manifest_id, infos = read_iiif_manifest2(d)
     elif(api == 3):
         manifest_label, manifest_id, infos = read_iiif_manifest3(d)
+    else:
+        raise Exception("Unsupported API (api: " + str(api) + ')')
 
     # Print manifest features
     print('- API: ' + str(api) + '.0')
