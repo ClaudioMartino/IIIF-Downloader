@@ -31,7 +31,7 @@ All the options can be displayed by running the helper (`iiif_downloader.py -h`)
 
 ## Advanced usage
 
-You can include the library in your project and run more complicated tasks. Have a look at the example directory.
+You can include the library in your project and run more complicated tasks. You can set what level of log messages you want to record. Have a look at the example directory.
 
 ## Testings
 

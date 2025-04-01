@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+import logging
 from re import match 
 import argparse
 import json
@@ -23,37 +24,37 @@ class Info:
         self.w = iiif_w
         self.h = iiif_h
 
+def print_statistics(downloaded_cnt, total_time, total_filesize):
+    logging.info("--- Stats ---")
+    logging.info("- Downloaded files: " + str(downloaded_cnt))
+    logging.info("- Elapsed time: " + str(round(total_time)) + " s")
+    if(downloaded_cnt > 0):
+        logging.info("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
+        logging.info("- Disc usage: " + str(round(total_filesize/1000)) + " kB")
+        logging.info("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1000))) + " kB")
+    logging.info("-------------")
+ 
 def open_url(u):
     headers = {'User-Agent' : "Mozilla/5.0"}
     try:
         response = urlopen(Request(u, headers = headers), timeout = 30)
         return response
     except Exception as err:
-        print(Exception, err)
+        logging.error(Exception, err)
         return None;
 
-def print_statistics(downloaded_cnt, total_time, total_filesize):
-    print("--- Stats ---")
-    print("- Downloaded files: " + str(downloaded_cnt))
-    print("- Elapsed time: " + str(round(total_time)) + " s")
-    if(downloaded_cnt > 0):
-        print("- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
-        print("- Disc usage: " + str(round(total_filesize/1000)) + " kB")
-        print("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1000))) + " kB")
-    print("-------------")
- 
 def download_file(u, filepath):
     u = u.replace(" ", "%20")
-    print("- Downloading " + u)
+    logging.info("- Downloading " + u)
     try:
         res = open_url(u)
     except Exception as err:
-        print(Exception, err)
-        #print(res.getcode())
+        logging.error(Exception, err)
+        #logging.error(res.getcode())
         return -1
   
     #file_size = res.headers['Content-Length']
-    #print('- ' + str(file_size) + ' bytes')
+    #logging.info('- ' + str(file_size) + ' bytes')
   
     # Create the file (binary) mode even when it exists
     with open(filepath, 'wb') as file:
@@ -62,7 +63,7 @@ def download_file(u, filepath):
             file_size = os.path.getsize(filepath)
             return file_size
         except Exception as err:
-            print(Exception, err)
+            logging.error(Exception, err)
             os.remove(filepath)
             return -1
 
@@ -226,10 +227,10 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         raise Exception("Unsupported API (api: " + str(api) + ')')
 
     # Print manifest features
-    print('- API: ' + str(api) + '.0')
-    print('- Manifest ID: ' + manifest_id)
-    print('- Title: ' + manifest_label)
-    print('- Files: ' + str(len(infos)))
+    logging.info('- API: ' + str(api) + '.0')
+    logging.info('- Manifest ID: ' + manifest_id)
+    logging.info('- Title: ' + manifest_label)
+    logging.info('- Files: ' + str(len(infos)))
 
     if(len(infos) > 0):
         # Create subdirectory from manifest label
@@ -242,7 +243,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         if(conf.firstpage != 1 or conf.lastpage != -1):
             infos = infos[conf.firstpage-1:]
             infos = infos[:conf.lastpage-conf.firstpage+1]
-            print("- Downloading pages " + str(conf.firstpage) + "-" + str(conf.lastpage) + " from a total of " + str(totpages))
+            logging.info("- Downloading pages " + str(conf.firstpage) + "-" + str(conf.lastpage) + " from a total of " + str(totpages))
     
         # Loop over each id
         some_error = False
@@ -255,10 +256,10 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             cnt = cnt + conf.firstpage - 1
     
             # Print counters and label
-            print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + info.label)
+            logging.info('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + info.label)
     
             # Print file ID
-            print('- ID: ' + info.id)
+            logging.info('- ID: ' + info.id)
             if(info.id == 'NA'):
                 continue
    
@@ -266,11 +267,11 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             ext = get_extension(info.format)
             if(ext == 'NA' and '.' in info.id):
                 ext = '.' + info.id.split('.')[-1] # if format not defined, try take ext from file name
-            print('- Format: ' + info.format + ' => Extension: ' + ext)
+            logging.info('- Format: ' + info.format + ' => Extension: ' + ext)
     
             # Print file size
-            print('- Width: '  + str(info.w) + ' px')
-            print('- Height: ' + str(info.h) + ' px')
+            logging.info('- Width: '  + str(info.w) + ' px')
+            logging.info('- Height: ' + str(info.h) + ' px')
     
             # Download file
             if(conf.use_labels):
@@ -278,7 +279,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             else:
                 filename = 'p' + str(cnt + 1).zfill(3) + ext
             if(os.path.exists(subdir + '/' + filename) and not conf.force):
-                print('- ' + subdir + '/' + filename + " exists, skip.")
+                logging.info('- ' + subdir + '/' + filename + " exists, skip.")
                 continue
 
             # Priority to image id, but if it doesn't work we move
@@ -287,7 +288,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             if(try_with_id): 
                 filesize = download_file(info.id, subdir + '/' + filename)
                 if(filesize <= 0):
-                    print("- Cannot download " + info.id)
+                    logging.info("- Cannot download " + info.id)
                     try_with_id = False
 
             if(filesize <= 0):
@@ -295,10 +296,10 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
                 filesize = download_file(img_url, subdir + '/' + filename)
     
             if(filesize <= 0):
-                print('\033[91m' + '- Error!' + '\033[0m')
+                logging.error('\033[91m' + '- Error!' + '\033[0m')
                 some_error = True
             else:
-                print('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
+                logging.info('\033[92m' + '- ' + filename + ' (' + str(round(filesize / 1000)) + ' KB) saved in ' + subdir + '.' + '\033[0m')
                 total_filesize += filesize
                 downloaded_cnt = downloaded_cnt + 1
  
@@ -313,7 +314,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             if os.path.exists(err_subdir):
                 rmtree(err_subdir)
             os.rename(subdir, err_subdir)
-            print('\033[91m' + 'Some error with ' + sanitize_name(manifest_label) + '.\033[0m') 
+            logging.error('\033[91m' + 'Some error with ' + sanitize_name(manifest_label) + '.\033[0m') 
 
 def download_iiif_files(input_name, maindir, conf = Conf()):
     # Check if input is a file or an url and open it
@@ -392,6 +393,9 @@ if __name__ == "__main__":
     use_labels = config['use_labels']
     force = config['force']
     conf = Conf(firstpage, lastpage, use_labels, force)
+
+    # Configure logger
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
 
     # Call download function
     download_iiif_files(manifest_name, main_dir, conf)

@@ -3,6 +3,7 @@
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import iiif_downloader # import ../iiif_downloader.py
+import logging
 
 # DESCRIPTION:
 # Read tecadigitaleacs.cultura.gov.it urls from .txt file
@@ -12,6 +13,9 @@ import iiif_downloader # import ../iiif_downloader.py
 # Make main directory
 maindir = 'tecadigitaleacs'
 os.system('mkdir ' + maindir)
+
+# Configure logger
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 # From urls to manifests urls
 url_file = 'tecadigitaleacs.txt'
