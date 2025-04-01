@@ -26,7 +26,7 @@ def open_url(u):
         return response
     except Exception as err:
         print(Exception, err)
-        return;
+        return None;
 
 def print_statistics(downloaded_cnt, total_time, total_filesize):
     print("--- Stats ---")
@@ -120,8 +120,10 @@ def read_iiif_manifest2(d):
         label = c.get("label")
 
         # Read images
+        images = c.get("images")
+        if(images == None): raise Exception
         # Assumption #2: 1 image in images
-        i = c.get("images")[0]
+        i = images[0]
         #if(i.get('@type') != "oa:Annotation"): raise Exception
         #if((i.get('motivation')).lower() != "sc:painting"): raise Exception
         iiif_w = c.get('width')
@@ -175,13 +177,17 @@ def read_iiif_manifest3(d):
             infos.append(Info(l, 'NA', 'NA', 0, 0))
         else:
             # Read annotation page
+            annotation_page = i.get('items')
+            if(annotation_page == None): raise Exception
             # Assumption #1: 1 annotation page in canvas
-            annotation_page = i.get('items')[0]
+            annotation_page = annotation_page[0]
 
             # Read annotation
             #if(annotation_page.get('type') != "AnnotationPage"): raise Exception
+            annotation = annotation_page.get('items')
+            if(annotation == None): raise Exception
             # Assumption #2: 1 annotation in annotation page
-            annotation = annotation_page.get('items')[0]
+            annotation = annotation[0]
             #if(annotation.get('type') != "Annotation"): raise Exception
 
             # Read body or body.source
@@ -221,17 +227,12 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         if (not os.path.exists(subdir)):
             os.mkdir(subdir)
     
-        # Read configuration parameters
-        firstpage = conf.firstpage
-        lastpage = conf.lastpage
-        use_labels = conf.use_labels
-    
-        # Create sub-array (firstpage, lastpage)
+        # Create sub-array (conf.firstpage, conf.lastpage)
         totpages = len(infos)
-        if(firstpage != 1 or lastpage != -1):
-            infos = infos[firstpage-1:]
-            infos = infos[:lastpage-firstpage+1]
-            print("- Downloading pages " + str(firstpage) + "-" + str(lastpage) + " from a total of " + str(totpages))
+        if(conf.firstpage != 1 or conf.lastpage != -1):
+            infos = infos[conf.firstpage-1:]
+            infos = infos[:conf.lastpage-conf.firstpage+1]
+            print("- Downloading pages " + str(conf.firstpage) + "-" + str(conf.lastpage) + " from a total of " + str(totpages))
     
         # Loop over each id
         some_error = False
@@ -241,7 +242,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
         start_time = time.time()
         for cnt, info in enumerate(infos):
             percentage = round((cnt + 1) / len(infos) * 100, 1)
-            cnt = cnt + firstpage - 1
+            cnt = cnt + conf.firstpage - 1
     
             # Print counters and label
             print('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '  + str(percentage) + '%] Label: ' + info.label)
@@ -262,7 +263,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             print('- Height: ' + str(info.h) + ' px')
     
             # Download file
-            if(use_labels):
+            if(conf.use_labels):
                 filename = sanitize_name(info.label) + ext
             else:
                 filename = 'p' + str(cnt + 1).zfill(3) + ext
