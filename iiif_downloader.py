@@ -8,23 +8,24 @@ import time
 import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
+from typing import List, Tuple, Dict, Any
 
 class Conf:
-    def __init__(self, firstpage = 1, lastpage = -1, use_labels = False, force = False):
+    def __init__(self, firstpage: int = 1, lastpage: int = -1, use_labels: bool = False, force: bool = False):
         self.firstpage = firstpage
         self.lastpage = lastpage
         self.use_labels = use_labels
         self.force = force
 
 class Info:
-    def __init__(self, label, iiif_id, iiif_format, iiif_w, iiif_h):
+    def __init__(self, label: str, iiif_id: str, iiif_format: str, iiif_w: int, iiif_h: int):
         self.label = label
         self.id = iiif_id
         self.format = iiif_format
         self.w = iiif_w
         self.h = iiif_h
 
-def print_statistics(downloaded_cnt, total_time, total_filesize):
+def print_statistics(downloaded_cnt: int, total_time: float, total_filesize: int) -> None:
     logging.info("--- Stats ---")
     logging.info("- Downloaded files: " + str(downloaded_cnt))
     logging.info("- Elapsed time: " + str(round(total_time)) + " s")
@@ -33,30 +34,29 @@ def print_statistics(downloaded_cnt, total_time, total_filesize):
         logging.info("- Disc usage: " + str(round(total_filesize/1000)) + " kB")
         logging.info("- Avg file size: " + str(round(total_filesize/(downloaded_cnt * 1000))) + " kB")
     logging.info("-------------")
- 
-def open_url(u):
-    headers = {'User-Agent' : "Mozilla/5.0"}
+
+def open_url(u: str):
+    headers = {'User-Agent': "Mozilla/5.0"}
     try:
         response = urlopen(Request(u, headers = headers), timeout = 30)
         return response
     except Exception as err:
         logging.error(Exception, err)
         return None;
-
-def download_file(u, filepath):
+ 
+def download_file(u: str, filepath: str) -> int:
     u = u.replace(" ", "%20")
     logging.info("- Downloading " + u)
-    try:
-        res = open_url(u)
-    except Exception as err:
-        logging.error(Exception, err)
-        #logging.error(res.getcode())
+
+    # Read the remote file from url
+    res = open_url(u)
+    #logging.info(res.getcode())
+    if(res is None):
         return -1
-  
+
     #file_size = res.headers['Content-Length']
-    #logging.info('- ' + str(file_size) + ' bytes')
-  
-    # Create the file (binary) mode even when it exists
+
+    # Create the file (binary mode) even when it exists
     with open(filepath, 'wb') as file:
         try:
             file.write(res.read())
@@ -67,10 +67,10 @@ def download_file(u, filepath):
             os.remove(filepath)
             return -1
 
-def is_url(url):
+def is_url(url: str) -> bool:
     return (url[:4] == 'http')
 
-def get_extension(mime_type):
+def get_extension(mime_type: str) -> str:
     mime_to_extension = {
         'image/jpeg': '.jpg',
         'image/tiff': '.tif',
@@ -82,15 +82,15 @@ def get_extension(mime_type):
     }
     return mime_to_extension.get(mime_type, 'NA')
 
-def get_img_url(iiif_id, ext, region = 'full', size = 'max', rotation = '0', quality = 'default'):
+def get_img_url(iiif_id: str, ext: str, region: str = 'full', size: str = 'max', rotation: str = '0', quality: str = 'default') -> str:
     return iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
 
-def sanitize_name(title):
+def sanitize_name(title: str) -> str:
     title = title.replace("/", " ")
     title = title.replace(":", "")
     return title
 
-def read_iiif_manifest2(d):
+def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # - label
     # - @id
     # - sequences:
@@ -148,7 +148,7 @@ def read_iiif_manifest2(d):
 
     return manifest_label, manifest_id, infos
 
-def read_iiif_manifest3(d):
+def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     # - label
     # - id
     # - items (type: Canvas):
@@ -173,7 +173,7 @@ def read_iiif_manifest3(d):
     assert manifest_id is not None, "'id' not found."
 
     # Read canvas
-    items = d.get('items')
+    items : Any = d.get('items')
     infos = []
     for i in items:
         #assert i.get('type') == "Canvas"
@@ -217,7 +217,7 @@ def read_iiif_manifest3(d):
 
     return manifest_label, manifest_id, infos
 
-def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
+def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str, conf: Conf = Conf()) -> None:
     # Read manifest
     if(api == 2):
         manifest_label, manifest_id, infos = read_iiif_manifest2(d)
@@ -316,7 +316,7 @@ def download_iiif_files_from_manifest(api, d, maindir, conf = Conf()):
             os.rename(subdir, err_subdir)
             logging.error('\033[91m' + 'Some error with ' + sanitize_name(manifest_label) + '.\033[0m') 
 
-def download_iiif_files(input_name, maindir, conf = Conf()):
+def download_iiif_files(input_name: str, maindir: str, conf: Conf = Conf()) -> None:
     # Check if input is a file or an url and open it
     if(is_url(input_name)):
         d = json.loads(open_url(input_name).read())
@@ -360,9 +360,9 @@ def download_iiif_files(input_name, maindir, conf = Conf()):
     else:
         raise Exception("Not a manifest or a collection of manifests (type: " + iiif_type + ')')
 
-def get_pages(pages):
+def get_pages(pages: str) -> Tuple[int, int]:
     if(pages != 'all'):
-        # two numbers > 0 separated by -
+        # Two positive numbers separated by -
         pattern = r'^(?!0-0)([1-9]\d*)-([1-9]\d*)$'
         if(match(pattern, pages)):
             firstpage, lastpage = map(int, pages.split('-'))
@@ -383,10 +383,10 @@ if __name__ == "__main__":
     parser.add_argument("-f", "--force",  action='store_true', help="Overwrite existing files")
     parser.add_argument("-p", "--pages", default='all', help="Page range (e.g. 3-27)")
     parser.add_argument("--use-labels",  action='store_true', help="Name the files with the labels")
-
     args = parser.parse_args()
     config = vars(args)
-    
+
+    # Create configuration structure
     manifest_name = config['manifest']
     main_dir = config['directory']
     firstpage, lastpage = get_pages(config['pages'])
