@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+"""Download all images from an IIIF manifest."""
 
 import logging
 from re import match 
@@ -11,6 +11,7 @@ from urllib.request import urlopen, Request
 from typing import List, Tuple, Dict, Any
 
 class Conf:
+    """A class containing all user configurations."""
     def __init__(self, firstpage: int = 1, lastpage: int = -1, use_labels: bool = False, force: bool = False):
         self.firstpage = firstpage
         self.lastpage = lastpage
@@ -18,6 +19,7 @@ class Conf:
         self.force = force
 
 class Info:
+    """A class containing a file features."""
     def __init__(self, label: str, iiif_id: str, iiif_format: str, iiif_w: int, iiif_h: int):
         self.label = label
         self.id = iiif_id
@@ -26,6 +28,7 @@ class Info:
         self.h = iiif_h
 
 def print_statistics(downloaded_cnt: int, total_time: float, total_filesize: int) -> None:
+    """Print useful statistics."""
     logging.info("--- Stats ---")
     logging.info("- Downloaded files: " + str(downloaded_cnt))
     logging.info("- Elapsed time: " + str(round(total_time)) + " s")
@@ -36,6 +39,7 @@ def print_statistics(downloaded_cnt: int, total_time: float, total_filesize: int
     logging.info("-------------")
 
 def open_url(u: str):
+    """Open Url."""
     headers = {'User-Agent': "Mozilla/5.0"}
     try:
         response = urlopen(Request(u, headers = headers), timeout = 30)
@@ -45,6 +49,7 @@ def open_url(u: str):
         return None;
  
 def download_file(u: str, filepath: str) -> int:
+    """Open a remote file and save it locally."""
     u = u.replace(" ", "%20")
     logging.info("- Downloading " + u)
 
@@ -68,9 +73,11 @@ def download_file(u: str, filepath: str) -> int:
             return -1
 
 def is_url(url: str) -> bool:
+    """Check if string is an URL."""
     return (url[:4] == 'http')
 
 def get_extension(mime_type: str) -> str:
+    """Return extension given MIME type (IIIF format)."""
     mime_to_extension = {
         'image/jpeg': '.jpg',
         'image/tiff': '.tif',
@@ -83,14 +90,17 @@ def get_extension(mime_type: str) -> str:
     return mime_to_extension.get(mime_type, 'NA')
 
 def get_img_url(iiif_id: str, ext: str, region: str = 'full', size: str = 'max', rotation: str = '0', quality: str = 'default') -> str:
+    """Return image url."""
     return iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + quality + ext
 
 def sanitize_name(title: str) -> str:
+    """Sanityze file name in order to avoid errors."""
     title = title.replace("/", " ")
     title = title.replace(":", "")
     return title
 
 def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
+    """Download all the files from a 2.0 manifest."""
     # - label
     # - @id
     # - sequences:
@@ -149,6 +159,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     return manifest_label, manifest_id, infos
 
 def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
+    """Download all the files from a 3.0 manifest."""
     # - label
     # - id
     # - items (type: Canvas):
@@ -218,6 +229,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     return manifest_label, manifest_id, infos
 
 def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str, conf: Conf = Conf()) -> None:
+    """Download all the files from a manifest."""
     # Read manifest
     if(api == 2):
         manifest_label, manifest_id, infos = read_iiif_manifest2(d)
@@ -317,6 +329,7 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str, conf: Con
             logging.error('\033[91m' + 'Some error with ' + sanitize_name(manifest_label) + '.\033[0m') 
 
 def download_iiif_files(input_name: str, maindir: str, conf: Conf = Conf()) -> None:
+    """Download all the files from a manifest or a collection."""
     # Check if input is a file or an url and open it
     if(is_url(input_name)):
         d = json.loads(open_url(input_name).read())
@@ -361,6 +374,7 @@ def download_iiif_files(input_name: str, maindir: str, conf: Conf = Conf()) -> N
         raise Exception("Not a manifest or a collection of manifests (type: " + iiif_type + ')')
 
 def get_pages(pages: str) -> Tuple[int, int]:
+    """Return the first and the last page as integers given one string."""
     if(pages != 'all'):
         # Two positive numbers separated by -
         pattern = r'^(?!0-0)([1-9]\d*)-([1-9]\d*)$'
