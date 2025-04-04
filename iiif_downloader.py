@@ -41,7 +41,7 @@ def open_url(u: str):
         response = urlopen(Request(u, headers = headers), timeout = 30)
         return response
     except Exception as err:
-        logging.error(Exception, err)
+        logging.error(err)
         return None;
  
 def download_file(u: str, filepath: str) -> int:
@@ -63,7 +63,7 @@ def download_file(u: str, filepath: str) -> int:
             file_size = os.path.getsize(filepath)
             return file_size
         except Exception as err:
-            logging.error(Exception, err)
+            logging.error(err)
             os.remove(filepath)
             return -1
 
