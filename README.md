@@ -1,10 +1,9 @@
-# Download all the images from an IIIF manifest
+# IIIF Downloader
+A Python 3 script to download all the images from an IIIF manifest.
 
-IIIF is the [International Image Interoperability Framework](https://iiif.io/), a set of open standards for digital objects online.
+IIIF is the [International Image Interoperability Framework](https://iiif.io/), a set of open standards for digital objects online. Most of the Python scripts out there ask you to install plenty of heavy external libraries. This script needs only standard libraries! It works with the [2.0](https://iiif.io/api/presentation/2.0) and the [3.0](https://iiif.io/api/presentation/3.0) versions of the standard.
 
-Most of the Python scripts out there ask you to install plenty of heavy external libraries. This script needs only standard libraries!
-
-It works with the [2.0 API](https://iiif.io/api/presentation/2.0) and the [3.0 API](https://iiif.io/api/presentation/3.0).
+[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/MIT) [![Tests status](https://github.com/ClaudioMartino/IIIF-Downloader/actions/workflows/tests.yml/badge.svg)](https://github.com/ClaudioMartino/IIIF-Downloader/actions)
 
 ## Basic usage
 
@@ -31,8 +30,12 @@ All the options can be displayed by running the helper (`iiif_downloader.py -h`)
 
 ## Advanced usage
 
-You can include the library in your project and run more complicated tasks. You can set what level of log messages you want to record. Have a look at the example directory.
+You can include the library in your project and run more complicated tasks. You can set what level of log messages you want to record. Have a look at the [examples](examples) directory.
 
-## Testings
+## Testing
 
-The script has been tested with the manifests and the collections listed in the text files of the `testing` directory.
+The script has been tested with the manifests listed in the [testing](testing) directory.
+
+## Contributing
+
+Contributions are most welcome by forking the repository and sending a pull request.
