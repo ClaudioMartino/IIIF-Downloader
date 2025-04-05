@@ -5,14 +5,6 @@ import json
 import logging
 import argparse
 
-#url_file = 'manifests2.txt'
-#manifests = []
-#with open(url_file) as f:
-#    for manifest_url in f:
-#        manifests.append(manifest_url.strip())
-#for i, manifest in enumerate(manifests):
-#    iiif_downloader.download_file(manifest, "manifest" + str(i).zfill(2) + ".json")
-
 api_dict = {
     '2': {
         'reader': iiif_downloader.read_iiif_manifest2,
