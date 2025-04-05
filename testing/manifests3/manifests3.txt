@@ -13,8 +13,6 @@ https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/manifest-rtl.j
 https://iiif.io/api/cookbook/recipe/0283-missing-image/manifest.json
 https://iiif.io/api/cookbook/recipe/0117-add-image-thumbnail/manifest.json
 https://iiif.io/api/cookbook/recipe/0202-start-canvas/manifest.json
-https://iiif.io/api/cookbook/recipe/0230-navdate/navdate-collection.json
 https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json
 https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases/manifest.json
 https://iiif.io/api/cookbook/recipe/0234-provider/manifest.json
-https://iiif.io/api/cookbook/recipe/0032-collection/collection.json

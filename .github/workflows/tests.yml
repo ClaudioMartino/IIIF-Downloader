@@ -1,0 +1,43 @@
+name: manifest parsing testing
+run-name: manifest parsing tests
+
+on: push
+
+jobs:
+  API-2:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: testing
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run API 2.0 tests
+        run: python3 test.py --api 2
+
+  API-3:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: testing
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run API 3.0 tests
+        run: python3 test.py --api 3

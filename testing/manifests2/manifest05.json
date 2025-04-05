@@ -1,0 +1,3945 @@
+{
+  "@context" : "http://iiif.io/api/presentation/2/context.json",
+  "@type" : "sc:Manifest",
+  "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/manifest",
+  "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08)",
+  "metadata" : [ {
+    "label" : "pressmark",
+    "value" : "ACC - LOTTO_21/1053A/11005_142_2_1"
+  }, {
+    "label" : "sgtt",
+    "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08)"
+  }, {
+    "label" : "sgti",
+    "value" : "Si segnalano atti di processi nell'ambito dell'epurazione fascista"
+  }, {
+    "label" : "uuid",
+    "value" : "bdd8df6f-dc05-431c-955a-be2078018553"
+  } ],
+  "sequences" : [ {
+    "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/sequence/default",
+    "@type" : "sc:Sequence",
+    "label" : "default",
+    "startCanvas" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc",
+    "canvases" : [ {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 1 - 0001",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 1 - 0001"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/169cc784-d7de-4f8a-9384-24e890d26179",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 2 - 0002",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 2 - 0002"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/169cc784-d7de-4f8a-9384-24e890d26179",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/169cc784-d7de-4f8a-9384-24e890d26179",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/169cc784-d7de-4f8a-9384-24e890d26179"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e6945cdf-f6df-4e1c-8981-af169ed9e7e4",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 3 - 0003",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 3 - 0003"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e6945cdf-f6df-4e1c-8981-af169ed9e7e4",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e6945cdf-f6df-4e1c-8981-af169ed9e7e4",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e6945cdf-f6df-4e1c-8981-af169ed9e7e4"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/de886637-8a32-4976-8cb2-b7a552ab7369",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 4 - 0004",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 4 - 0004"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/de886637-8a32-4976-8cb2-b7a552ab7369",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/de886637-8a32-4976-8cb2-b7a552ab7369",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/de886637-8a32-4976-8cb2-b7a552ab7369"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3921af98-f623-4d4f-a7d9-d96ae530c565",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 5 - 0005",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 5 - 0005"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3921af98-f623-4d4f-a7d9-d96ae530c565",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3921af98-f623-4d4f-a7d9-d96ae530c565",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3921af98-f623-4d4f-a7d9-d96ae530c565"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/366d146b-203e-4e57-b72a-0ca4bed92782",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 6 - 0006",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 6 - 0006"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/366d146b-203e-4e57-b72a-0ca4bed92782",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/366d146b-203e-4e57-b72a-0ca4bed92782",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/366d146b-203e-4e57-b72a-0ca4bed92782"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72a76426-b2da-4af1-8712-f62b4bcc2a92",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 7 - 0007",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 7 - 0007"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72a76426-b2da-4af1-8712-f62b4bcc2a92",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72a76426-b2da-4af1-8712-f62b4bcc2a92",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72a76426-b2da-4af1-8712-f62b4bcc2a92"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/000448d1-0bca-4f81-828c-5e2d201fa066",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 8 - 0008",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 8 - 0008"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/000448d1-0bca-4f81-828c-5e2d201fa066",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/000448d1-0bca-4f81-828c-5e2d201fa066",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/000448d1-0bca-4f81-828c-5e2d201fa066"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/be80e7c6-01a7-4d19-936f-0eae43b489c8",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 9 - 0009",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 9 - 0009"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/be80e7c6-01a7-4d19-936f-0eae43b489c8",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/be80e7c6-01a7-4d19-936f-0eae43b489c8",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/be80e7c6-01a7-4d19-936f-0eae43b489c8"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7bd12c05-5541-435b-8889-e83f01d32d01",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 10 - 0010",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 10 - 0010"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7bd12c05-5541-435b-8889-e83f01d32d01",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7bd12c05-5541-435b-8889-e83f01d32d01",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7bd12c05-5541-435b-8889-e83f01d32d01"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2699332e-bea4-47c7-8cca-aedf3bfd64c2",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 11 - 0011",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 11 - 0011"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2699332e-bea4-47c7-8cca-aedf3bfd64c2",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2699332e-bea4-47c7-8cca-aedf3bfd64c2",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2699332e-bea4-47c7-8cca-aedf3bfd64c2"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6d3b041a-1a88-450b-8d6b-2c440a8b4c3c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 12 - 0012",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 12 - 0012"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6d3b041a-1a88-450b-8d6b-2c440a8b4c3c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6d3b041a-1a88-450b-8d6b-2c440a8b4c3c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6d3b041a-1a88-450b-8d6b-2c440a8b4c3c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c067e2d5-65a1-4e74-84b8-ffb34dbc789c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 13 - 0013",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 13 - 0013"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c067e2d5-65a1-4e74-84b8-ffb34dbc789c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c067e2d5-65a1-4e74-84b8-ffb34dbc789c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c067e2d5-65a1-4e74-84b8-ffb34dbc789c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c9d29e39-7ffc-48d1-b166-5d8e8e2c8c6d",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 14 - 0014",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 14 - 0014"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c9d29e39-7ffc-48d1-b166-5d8e8e2c8c6d",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c9d29e39-7ffc-48d1-b166-5d8e8e2c8c6d",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c9d29e39-7ffc-48d1-b166-5d8e8e2c8c6d"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/470df229-287d-4f6c-9087-b273a35ebfca",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 15 - 0015",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 15 - 0015"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/470df229-287d-4f6c-9087-b273a35ebfca",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/470df229-287d-4f6c-9087-b273a35ebfca",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/470df229-287d-4f6c-9087-b273a35ebfca"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b6e13f71-8951-43d0-8a61-afe4062b1604",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 16 - 0016",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 16 - 0016"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b6e13f71-8951-43d0-8a61-afe4062b1604",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b6e13f71-8951-43d0-8a61-afe4062b1604",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b6e13f71-8951-43d0-8a61-afe4062b1604"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72e26c74-4cb3-45e3-bbf9-722a96ba3d27",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 17 - 0017",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 17 - 0017"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72e26c74-4cb3-45e3-bbf9-722a96ba3d27",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72e26c74-4cb3-45e3-bbf9-722a96ba3d27",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72e26c74-4cb3-45e3-bbf9-722a96ba3d27"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8f53a8f0-1265-4e6f-a64f-66727afe2283",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 18 - 0018",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 18 - 0018"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8f53a8f0-1265-4e6f-a64f-66727afe2283",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8f53a8f0-1265-4e6f-a64f-66727afe2283",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8f53a8f0-1265-4e6f-a64f-66727afe2283"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/168efdbf-5684-4a22-a58c-faed95b1b81e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 19 - 0019",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 19 - 0019"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/168efdbf-5684-4a22-a58c-faed95b1b81e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/168efdbf-5684-4a22-a58c-faed95b1b81e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/168efdbf-5684-4a22-a58c-faed95b1b81e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/fd46131b-7e80-462d-b211-e1adda4283af",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 20 - 0020",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 20 - 0020"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/fd46131b-7e80-462d-b211-e1adda4283af",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/fd46131b-7e80-462d-b211-e1adda4283af",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/fd46131b-7e80-462d-b211-e1adda4283af"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/28fea973-3008-496c-a12d-cfce8be7c713",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 21 - 0021",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 21 - 0021"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/28fea973-3008-496c-a12d-cfce8be7c713",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/28fea973-3008-496c-a12d-cfce8be7c713",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/28fea973-3008-496c-a12d-cfce8be7c713"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6dc267e0-d41e-419d-a8cb-75f0e8e72310",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 22 - 0022",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 22 - 0022"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6dc267e0-d41e-419d-a8cb-75f0e8e72310",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6dc267e0-d41e-419d-a8cb-75f0e8e72310",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6dc267e0-d41e-419d-a8cb-75f0e8e72310"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d876633b-7938-4fbf-8d46-1ee82b5c259b",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 23 - 0023",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 23 - 0023"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d876633b-7938-4fbf-8d46-1ee82b5c259b",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d876633b-7938-4fbf-8d46-1ee82b5c259b",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d876633b-7938-4fbf-8d46-1ee82b5c259b"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/bde87ad1-366d-4643-8ad0-0040d69d897a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 24 - 0024",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 24 - 0024"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/bde87ad1-366d-4643-8ad0-0040d69d897a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/bde87ad1-366d-4643-8ad0-0040d69d897a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/bde87ad1-366d-4643-8ad0-0040d69d897a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8e063f29-9a7d-4d88-a72a-172f30cfba3c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 25 - 0025",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 25 - 0025"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8e063f29-9a7d-4d88-a72a-172f30cfba3c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8e063f29-9a7d-4d88-a72a-172f30cfba3c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8e063f29-9a7d-4d88-a72a-172f30cfba3c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4da94bca-6aae-4c4c-84ce-581d3b2e4e6b",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 26 - 0026",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 26 - 0026"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4da94bca-6aae-4c4c-84ce-581d3b2e4e6b",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4da94bca-6aae-4c4c-84ce-581d3b2e4e6b",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4da94bca-6aae-4c4c-84ce-581d3b2e4e6b"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1459ff99-a3a0-4f2e-a073-88f501e5e382",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 27 - 0027",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 27 - 0027"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1459ff99-a3a0-4f2e-a073-88f501e5e382",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1459ff99-a3a0-4f2e-a073-88f501e5e382",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1459ff99-a3a0-4f2e-a073-88f501e5e382"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b58c4f8a-a8ca-432c-b49f-c8a12bfe6d1f",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 28 - 0028",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 28 - 0028"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b58c4f8a-a8ca-432c-b49f-c8a12bfe6d1f",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b58c4f8a-a8ca-432c-b49f-c8a12bfe6d1f",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b58c4f8a-a8ca-432c-b49f-c8a12bfe6d1f"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ae39fcc6-d557-4f42-b8ce-71b3d7fdddc5",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 29 - 0029",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 29 - 0029"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ae39fcc6-d557-4f42-b8ce-71b3d7fdddc5",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ae39fcc6-d557-4f42-b8ce-71b3d7fdddc5",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ae39fcc6-d557-4f42-b8ce-71b3d7fdddc5"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/36df914b-9bd3-439c-9040-ddee19ee7665",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 30 - 0030",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 30 - 0030"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/36df914b-9bd3-439c-9040-ddee19ee7665",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/36df914b-9bd3-439c-9040-ddee19ee7665",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/36df914b-9bd3-439c-9040-ddee19ee7665"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/804a3cee-26ed-408f-a6db-610336c06ef9",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 31 - 0031",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 31 - 0031"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/804a3cee-26ed-408f-a6db-610336c06ef9",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/804a3cee-26ed-408f-a6db-610336c06ef9",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/804a3cee-26ed-408f-a6db-610336c06ef9"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/26c7a5f9-9aea-44fc-81f9-851538d05c5b",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 32 - 0032",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 32 - 0032"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/26c7a5f9-9aea-44fc-81f9-851538d05c5b",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/26c7a5f9-9aea-44fc-81f9-851538d05c5b",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/26c7a5f9-9aea-44fc-81f9-851538d05c5b"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1552d75b-7d83-43fc-8c60-7cef9a55119c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 33 - 0033",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 33 - 0033"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1552d75b-7d83-43fc-8c60-7cef9a55119c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1552d75b-7d83-43fc-8c60-7cef9a55119c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1552d75b-7d83-43fc-8c60-7cef9a55119c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4f056232-e541-4b7a-865a-dfbee0e7b81c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 34 - 0034",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 34 - 0034"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4f056232-e541-4b7a-865a-dfbee0e7b81c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4f056232-e541-4b7a-865a-dfbee0e7b81c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4f056232-e541-4b7a-865a-dfbee0e7b81c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/67bf5d09-de9e-4103-884f-7dab69ae6d81",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 35 - 0035",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 35 - 0035"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/67bf5d09-de9e-4103-884f-7dab69ae6d81",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/67bf5d09-de9e-4103-884f-7dab69ae6d81",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/67bf5d09-de9e-4103-884f-7dab69ae6d81"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0beb5c84-f123-40ce-8117-ceaae2e83385",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 36 - 0036",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 36 - 0036"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0beb5c84-f123-40ce-8117-ceaae2e83385",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0beb5c84-f123-40ce-8117-ceaae2e83385",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0beb5c84-f123-40ce-8117-ceaae2e83385"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9b30b5d9-4334-4d91-adfd-5231364e8b08",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 37 - 0037",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 37 - 0037"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9b30b5d9-4334-4d91-adfd-5231364e8b08",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9b30b5d9-4334-4d91-adfd-5231364e8b08",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9b30b5d9-4334-4d91-adfd-5231364e8b08"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a2f30d39-4993-4153-bec8-17b5afe9661a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 38 - 0038",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 38 - 0038"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a2f30d39-4993-4153-bec8-17b5afe9661a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a2f30d39-4993-4153-bec8-17b5afe9661a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a2f30d39-4993-4153-bec8-17b5afe9661a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/532566e7-df99-4c73-acf7-c14884630c67",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 39 - 0039",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 39 - 0039"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/532566e7-df99-4c73-acf7-c14884630c67",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/532566e7-df99-4c73-acf7-c14884630c67",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/532566e7-df99-4c73-acf7-c14884630c67"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/984d5471-27e0-4863-ba75-1b198b972479",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 40 - 0040",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 40 - 0040"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/984d5471-27e0-4863-ba75-1b198b972479",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/984d5471-27e0-4863-ba75-1b198b972479",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/984d5471-27e0-4863-ba75-1b198b972479"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/97098824-5bd3-463f-bb38-0c8c2ff1ec33",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 41 - 0041",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 41 - 0041"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/97098824-5bd3-463f-bb38-0c8c2ff1ec33",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/97098824-5bd3-463f-bb38-0c8c2ff1ec33",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/97098824-5bd3-463f-bb38-0c8c2ff1ec33"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2096dbb1-f201-4f0a-9d87-a1ba7ae582d8",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 42 - 0042",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 42 - 0042"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2096dbb1-f201-4f0a-9d87-a1ba7ae582d8",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2096dbb1-f201-4f0a-9d87-a1ba7ae582d8",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2096dbb1-f201-4f0a-9d87-a1ba7ae582d8"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8cf11077-0840-4b78-993e-c4d38497e5f3",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 43 - 0043",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 43 - 0043"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8cf11077-0840-4b78-993e-c4d38497e5f3",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8cf11077-0840-4b78-993e-c4d38497e5f3",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8cf11077-0840-4b78-993e-c4d38497e5f3"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e94f5694-5c7f-4f44-9ce2-f7d10fa31a8a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 44 - 0044",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 44 - 0044"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e94f5694-5c7f-4f44-9ce2-f7d10fa31a8a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e94f5694-5c7f-4f44-9ce2-f7d10fa31a8a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e94f5694-5c7f-4f44-9ce2-f7d10fa31a8a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/f3707ddd-3528-4210-b190-f42e5fe2301f",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 45 - 0045",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 45 - 0045"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/f3707ddd-3528-4210-b190-f42e5fe2301f",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/f3707ddd-3528-4210-b190-f42e5fe2301f",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/f3707ddd-3528-4210-b190-f42e5fe2301f"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/19f783da-7b5f-44a7-9d39-128c48ae439c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 46 - 0046",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 46 - 0046"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/19f783da-7b5f-44a7-9d39-128c48ae439c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/19f783da-7b5f-44a7-9d39-128c48ae439c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/19f783da-7b5f-44a7-9d39-128c48ae439c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ff8b22b1-baf8-4510-81bd-92717ccba194",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 47 - 0047",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 47 - 0047"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ff8b22b1-baf8-4510-81bd-92717ccba194",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ff8b22b1-baf8-4510-81bd-92717ccba194",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ff8b22b1-baf8-4510-81bd-92717ccba194"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0c0d73ab-dc2d-4311-9e02-cb3c39dca805",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 48 - 0048",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 48 - 0048"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0c0d73ab-dc2d-4311-9e02-cb3c39dca805",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0c0d73ab-dc2d-4311-9e02-cb3c39dca805",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0c0d73ab-dc2d-4311-9e02-cb3c39dca805"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/130c074c-d288-4c9c-bb7e-cc56c08bd32e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 49 - 0049",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 49 - 0049"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/130c074c-d288-4c9c-bb7e-cc56c08bd32e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/130c074c-d288-4c9c-bb7e-cc56c08bd32e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/130c074c-d288-4c9c-bb7e-cc56c08bd32e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/14464be2-3d00-49cb-b3fd-73852830cdb8",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 50 - 0050",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 50 - 0050"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/14464be2-3d00-49cb-b3fd-73852830cdb8",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/14464be2-3d00-49cb-b3fd-73852830cdb8",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/14464be2-3d00-49cb-b3fd-73852830cdb8"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/5e63f002-315f-4aa4-b002-2ae7a480567f",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 51 - 0051",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 51 - 0051"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/5e63f002-315f-4aa4-b002-2ae7a480567f",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/5e63f002-315f-4aa4-b002-2ae7a480567f",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/5e63f002-315f-4aa4-b002-2ae7a480567f"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/352d3e24-97fb-41e7-97a3-6a5e0faca017",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 52 - 0052",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 52 - 0052"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/352d3e24-97fb-41e7-97a3-6a5e0faca017",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/352d3e24-97fb-41e7-97a3-6a5e0faca017",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/352d3e24-97fb-41e7-97a3-6a5e0faca017"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3b96e5c9-25cb-4b1c-9820-22ac98065d98",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 53 - 0053",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 53 - 0053"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3b96e5c9-25cb-4b1c-9820-22ac98065d98",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3b96e5c9-25cb-4b1c-9820-22ac98065d98",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3b96e5c9-25cb-4b1c-9820-22ac98065d98"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ed001015-783b-4c56-8b59-7e1891991124",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 54 - 0054",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 54 - 0054"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ed001015-783b-4c56-8b59-7e1891991124",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ed001015-783b-4c56-8b59-7e1891991124",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ed001015-783b-4c56-8b59-7e1891991124"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c6848ab3-9d00-44d0-b40d-40557c7aa2da",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 55 - 0055",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 55 - 0055"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c6848ab3-9d00-44d0-b40d-40557c7aa2da",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c6848ab3-9d00-44d0-b40d-40557c7aa2da",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c6848ab3-9d00-44d0-b40d-40557c7aa2da"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0128a58c-ca80-4439-951a-5b90029c2b4e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 56 - 0056",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 56 - 0056"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0128a58c-ca80-4439-951a-5b90029c2b4e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0128a58c-ca80-4439-951a-5b90029c2b4e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0128a58c-ca80-4439-951a-5b90029c2b4e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/70f16cc6-e8c7-4047-b472-fbdbb6485a9a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 57 - 0057",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 57 - 0057"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/70f16cc6-e8c7-4047-b472-fbdbb6485a9a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/70f16cc6-e8c7-4047-b472-fbdbb6485a9a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/70f16cc6-e8c7-4047-b472-fbdbb6485a9a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ebf58a22-ef09-4b6f-a8a2-07bb4eee39ef",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 58 - 0058",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 58 - 0058"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ebf58a22-ef09-4b6f-a8a2-07bb4eee39ef",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ebf58a22-ef09-4b6f-a8a2-07bb4eee39ef",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ebf58a22-ef09-4b6f-a8a2-07bb4eee39ef"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1de6523d-28be-4fcd-b2fc-25c34011334a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 59 - 0059",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 59 - 0059"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1de6523d-28be-4fcd-b2fc-25c34011334a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1de6523d-28be-4fcd-b2fc-25c34011334a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1de6523d-28be-4fcd-b2fc-25c34011334a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b3c25ac3-c8e0-40ad-8098-9d80bfe634e4",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 60 - 0060",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 60 - 0060"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b3c25ac3-c8e0-40ad-8098-9d80bfe634e4",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b3c25ac3-c8e0-40ad-8098-9d80bfe634e4",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b3c25ac3-c8e0-40ad-8098-9d80bfe634e4"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8a823e12-0fd0-4ba4-abd6-447f798f2ce1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 61 - 0061",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 61 - 0061"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8a823e12-0fd0-4ba4-abd6-447f798f2ce1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8a823e12-0fd0-4ba4-abd6-447f798f2ce1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8a823e12-0fd0-4ba4-abd6-447f798f2ce1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b9e3d63f-2a39-4af9-b36d-35d9a9805089",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 62 - 0062",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 62 - 0062"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b9e3d63f-2a39-4af9-b36d-35d9a9805089",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b9e3d63f-2a39-4af9-b36d-35d9a9805089",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b9e3d63f-2a39-4af9-b36d-35d9a9805089"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9654688a-f0c7-4c56-8375-f0f8493890bc",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 63 - 0063",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 63 - 0063"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9654688a-f0c7-4c56-8375-f0f8493890bc",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9654688a-f0c7-4c56-8375-f0f8493890bc",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9654688a-f0c7-4c56-8375-f0f8493890bc"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/69d6416e-0645-4ce3-960a-3b549b068ede",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 64 - 0064",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 64 - 0064"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/69d6416e-0645-4ce3-960a-3b549b068ede",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/69d6416e-0645-4ce3-960a-3b549b068ede",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/69d6416e-0645-4ce3-960a-3b549b068ede"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/57059b4b-5b7f-491e-bad4-49a6dc1f2bac",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 65 - 0065",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 65 - 0065"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/57059b4b-5b7f-491e-bad4-49a6dc1f2bac",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/57059b4b-5b7f-491e-bad4-49a6dc1f2bac",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/57059b4b-5b7f-491e-bad4-49a6dc1f2bac"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/30bbcf3e-0ef0-422e-8497-c77ae69c28af",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 66 - 0066",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 66 - 0066"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/30bbcf3e-0ef0-422e-8497-c77ae69c28af",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/30bbcf3e-0ef0-422e-8497-c77ae69c28af",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/30bbcf3e-0ef0-422e-8497-c77ae69c28af"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/afb1ca43-9a40-4ed9-b326-ba12416b824e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 67 - 0067",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 67 - 0067"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/afb1ca43-9a40-4ed9-b326-ba12416b824e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/afb1ca43-9a40-4ed9-b326-ba12416b824e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/afb1ca43-9a40-4ed9-b326-ba12416b824e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1377dfc7-90c5-4318-97d3-09ba190d3f29",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 68 - 0068",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 68 - 0068"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1377dfc7-90c5-4318-97d3-09ba190d3f29",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1377dfc7-90c5-4318-97d3-09ba190d3f29",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1377dfc7-90c5-4318-97d3-09ba190d3f29"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a66828bf-7847-4663-8236-2af828ceaabd",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 69 - 0069",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 69 - 0069"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a66828bf-7847-4663-8236-2af828ceaabd",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a66828bf-7847-4663-8236-2af828ceaabd",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a66828bf-7847-4663-8236-2af828ceaabd"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a839f117-b891-45b9-8c6c-6843acc3b5be",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 70 - 0070",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 70 - 0070"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a839f117-b891-45b9-8c6c-6843acc3b5be",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a839f117-b891-45b9-8c6c-6843acc3b5be",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a839f117-b891-45b9-8c6c-6843acc3b5be"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a0b1db90-1534-4b15-be74-78f3d05f8271",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 71 - 0071",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 71 - 0071"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a0b1db90-1534-4b15-be74-78f3d05f8271",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a0b1db90-1534-4b15-be74-78f3d05f8271",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a0b1db90-1534-4b15-be74-78f3d05f8271"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2fbb4ffb-3330-463d-b476-e6cc4ddf3fb1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 72 - 0072",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 72 - 0072"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2fbb4ffb-3330-463d-b476-e6cc4ddf3fb1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2fbb4ffb-3330-463d-b476-e6cc4ddf3fb1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2fbb4ffb-3330-463d-b476-e6cc4ddf3fb1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/af040b3e-6bd9-4113-88b1-59ee50dba4bd",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 73 - 0073",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 73 - 0073"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/af040b3e-6bd9-4113-88b1-59ee50dba4bd",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/af040b3e-6bd9-4113-88b1-59ee50dba4bd",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/af040b3e-6bd9-4113-88b1-59ee50dba4bd"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2c8f5941-4bdd-4134-a629-59e39f3c989e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 74 - 0074",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 74 - 0074"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2c8f5941-4bdd-4134-a629-59e39f3c989e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2c8f5941-4bdd-4134-a629-59e39f3c989e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2c8f5941-4bdd-4134-a629-59e39f3c989e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9fee9995-33dd-4730-a073-8c7e02dd9be4",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 75 - 0075",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 75 - 0075"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9fee9995-33dd-4730-a073-8c7e02dd9be4",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9fee9995-33dd-4730-a073-8c7e02dd9be4",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9fee9995-33dd-4730-a073-8c7e02dd9be4"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/f084dbe2-88a1-494b-87ca-3bcd8cc929a1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 76 - 0076",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 76 - 0076"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/f084dbe2-88a1-494b-87ca-3bcd8cc929a1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/f084dbe2-88a1-494b-87ca-3bcd8cc929a1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/f084dbe2-88a1-494b-87ca-3bcd8cc929a1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/35c96fee-d19e-428f-b05d-eeed59cdbe15",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 77 - 0077",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 77 - 0077"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/35c96fee-d19e-428f-b05d-eeed59cdbe15",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/35c96fee-d19e-428f-b05d-eeed59cdbe15",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/35c96fee-d19e-428f-b05d-eeed59cdbe15"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/05a7ae50-217c-4415-9d9e-101ca22c7749",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 78 - 0078",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 78 - 0078"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/05a7ae50-217c-4415-9d9e-101ca22c7749",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/05a7ae50-217c-4415-9d9e-101ca22c7749",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/05a7ae50-217c-4415-9d9e-101ca22c7749"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2ec4360c-2f5d-4d8f-a79e-dab82bd202df",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 79 - 0079",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 79 - 0079"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2ec4360c-2f5d-4d8f-a79e-dab82bd202df",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/2ec4360c-2f5d-4d8f-a79e-dab82bd202df",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/2ec4360c-2f5d-4d8f-a79e-dab82bd202df"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d4ca4c8b-9000-4f3c-832b-b8fb430864b5",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 80 - 0080",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 80 - 0080"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d4ca4c8b-9000-4f3c-832b-b8fb430864b5",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d4ca4c8b-9000-4f3c-832b-b8fb430864b5",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d4ca4c8b-9000-4f3c-832b-b8fb430864b5"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/50b45ed5-d452-4c4d-bea1-e9a42959d99e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 81 - 0081",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 81 - 0081"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/50b45ed5-d452-4c4d-bea1-e9a42959d99e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/50b45ed5-d452-4c4d-bea1-e9a42959d99e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/50b45ed5-d452-4c4d-bea1-e9a42959d99e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b296b43b-fb45-44df-8483-63018ce3c50e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 82 - 0082",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 82 - 0082"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b296b43b-fb45-44df-8483-63018ce3c50e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b296b43b-fb45-44df-8483-63018ce3c50e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b296b43b-fb45-44df-8483-63018ce3c50e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc78516f-14bc-4475-bbaa-1f5356125df8",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 83 - 0083",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 83 - 0083"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc78516f-14bc-4475-bbaa-1f5356125df8",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc78516f-14bc-4475-bbaa-1f5356125df8",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc78516f-14bc-4475-bbaa-1f5356125df8"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/cb667200-78d7-4bf3-9c6d-0a60b5c60f90",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 84 - 0084",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 84 - 0084"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/cb667200-78d7-4bf3-9c6d-0a60b5c60f90",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/cb667200-78d7-4bf3-9c6d-0a60b5c60f90",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/cb667200-78d7-4bf3-9c6d-0a60b5c60f90"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72408a33-1beb-4815-94dd-0dd03c4b9094",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 85 - 0085",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 85 - 0085"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72408a33-1beb-4815-94dd-0dd03c4b9094",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/72408a33-1beb-4815-94dd-0dd03c4b9094",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/72408a33-1beb-4815-94dd-0dd03c4b9094"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/797be833-0da7-4937-90f3-eaddd2bd4818",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 86 - 0086",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 86 - 0086"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/797be833-0da7-4937-90f3-eaddd2bd4818",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/797be833-0da7-4937-90f3-eaddd2bd4818",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/797be833-0da7-4937-90f3-eaddd2bd4818"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1586d25e-008d-4729-b0f6-eec0763bb401",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 87 - 0087",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 87 - 0087"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1586d25e-008d-4729-b0f6-eec0763bb401",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1586d25e-008d-4729-b0f6-eec0763bb401",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1586d25e-008d-4729-b0f6-eec0763bb401"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/64d632a0-1bf6-4b36-9a51-5aa025398133",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 88 - 0088",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 88 - 0088"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/64d632a0-1bf6-4b36-9a51-5aa025398133",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/64d632a0-1bf6-4b36-9a51-5aa025398133",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/64d632a0-1bf6-4b36-9a51-5aa025398133"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ba776beb-617c-41db-b54d-c7f4296c84b1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 89 - 0089",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 89 - 0089"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ba776beb-617c-41db-b54d-c7f4296c84b1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ba776beb-617c-41db-b54d-c7f4296c84b1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ba776beb-617c-41db-b54d-c7f4296c84b1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e2f76bf5-8f1b-47c2-a1db-e2740cfaf545",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 90 - 0090",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 90 - 0090"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e2f76bf5-8f1b-47c2-a1db-e2740cfaf545",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e2f76bf5-8f1b-47c2-a1db-e2740cfaf545",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e2f76bf5-8f1b-47c2-a1db-e2740cfaf545"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/828287c5-64d6-41ab-ac5a-b34f10d15624",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 91 - 0091",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 91 - 0091"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/828287c5-64d6-41ab-ac5a-b34f10d15624",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/828287c5-64d6-41ab-ac5a-b34f10d15624",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/828287c5-64d6-41ab-ac5a-b34f10d15624"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/34e4fcc1-3b92-47c6-9ce4-53570bf0c6ae",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 92 - 0092",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 92 - 0092"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/34e4fcc1-3b92-47c6-9ce4-53570bf0c6ae",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/34e4fcc1-3b92-47c6-9ce4-53570bf0c6ae",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/34e4fcc1-3b92-47c6-9ce4-53570bf0c6ae"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b6848ace-dbe5-4b9c-866e-a51f80357e30",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 93 - 0093",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 93 - 0093"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b6848ace-dbe5-4b9c-866e-a51f80357e30",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/b6848ace-dbe5-4b9c-866e-a51f80357e30",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/b6848ace-dbe5-4b9c-866e-a51f80357e30"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ca0abfa4-d340-44ae-a517-732b2266dbec",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 94 - 0094",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 94 - 0094"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ca0abfa4-d340-44ae-a517-732b2266dbec",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/ca0abfa4-d340-44ae-a517-732b2266dbec",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/ca0abfa4-d340-44ae-a517-732b2266dbec"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d7fc9b23-49c8-42b4-873e-078a363f30e2",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 95 - 0095",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 95 - 0095"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d7fc9b23-49c8-42b4-873e-078a363f30e2",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d7fc9b23-49c8-42b4-873e-078a363f30e2",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d7fc9b23-49c8-42b4-873e-078a363f30e2"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0c0b4261-5429-4e4a-9c80-2a20a5710ef6",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 96 - 0096",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 96 - 0096"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0c0b4261-5429-4e4a-9c80-2a20a5710ef6",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0c0b4261-5429-4e4a-9c80-2a20a5710ef6",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0c0b4261-5429-4e4a-9c80-2a20a5710ef6"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6d23d90e-de66-46c3-b438-8fd38b4d78ad",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 97 - 0097",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 97 - 0097"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6d23d90e-de66-46c3-b438-8fd38b4d78ad",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6d23d90e-de66-46c3-b438-8fd38b4d78ad",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6d23d90e-de66-46c3-b438-8fd38b4d78ad"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/79235c57-a491-4c30-a9c4-3884ae95b0bb",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 98 - 0098",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 98 - 0098"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/79235c57-a491-4c30-a9c4-3884ae95b0bb",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/79235c57-a491-4c30-a9c4-3884ae95b0bb",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/79235c57-a491-4c30-a9c4-3884ae95b0bb"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/65c30e5e-ac08-4aa6-979f-257f4ff5dfdd",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 99 - 0099",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 99 - 0099"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/65c30e5e-ac08-4aa6-979f-257f4ff5dfdd",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/65c30e5e-ac08-4aa6-979f-257f4ff5dfdd",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/65c30e5e-ac08-4aa6-979f-257f4ff5dfdd"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3a4e7482-f232-4ad2-a21c-90885bd3f913",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 100 - 0100",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 100 - 0100"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3a4e7482-f232-4ad2-a21c-90885bd3f913",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3a4e7482-f232-4ad2-a21c-90885bd3f913",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3a4e7482-f232-4ad2-a21c-90885bd3f913"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e8a1ab68-c6d4-4ec5-b0d4-8b2734ebdeed",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 101 - 0101",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 101 - 0101"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e8a1ab68-c6d4-4ec5-b0d4-8b2734ebdeed",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e8a1ab68-c6d4-4ec5-b0d4-8b2734ebdeed",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e8a1ab68-c6d4-4ec5-b0d4-8b2734ebdeed"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d0c2fce1-ea52-49d0-9347-4436580d3b65",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 102 - 0102",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 102 - 0102"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d0c2fce1-ea52-49d0-9347-4436580d3b65",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d0c2fce1-ea52-49d0-9347-4436580d3b65",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d0c2fce1-ea52-49d0-9347-4436580d3b65"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8106069b-00bc-4a72-a383-a9a3c8cbd2fb",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 103 - 0103",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 103 - 0103"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8106069b-00bc-4a72-a383-a9a3c8cbd2fb",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8106069b-00bc-4a72-a383-a9a3c8cbd2fb",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8106069b-00bc-4a72-a383-a9a3c8cbd2fb"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e4b74e45-0b27-4f40-8223-f1ad5ac73038",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 104 - 0104",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 104 - 0104"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e4b74e45-0b27-4f40-8223-f1ad5ac73038",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e4b74e45-0b27-4f40-8223-f1ad5ac73038",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e4b74e45-0b27-4f40-8223-f1ad5ac73038"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/180fa542-a1f4-4e06-96b7-f159460b109a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 105 - 0105",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 105 - 0105"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/180fa542-a1f4-4e06-96b7-f159460b109a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/180fa542-a1f4-4e06-96b7-f159460b109a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/180fa542-a1f4-4e06-96b7-f159460b109a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/30186d04-31dd-4018-9a8c-90da44c93564",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 106 - 0106",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 106 - 0106"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/30186d04-31dd-4018-9a8c-90da44c93564",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/30186d04-31dd-4018-9a8c-90da44c93564",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/30186d04-31dd-4018-9a8c-90da44c93564"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/887d14e2-8cc8-4296-a764-5cfa65bcec75",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 107 - 0107",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 107 - 0107"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/887d14e2-8cc8-4296-a764-5cfa65bcec75",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/887d14e2-8cc8-4296-a764-5cfa65bcec75",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/887d14e2-8cc8-4296-a764-5cfa65bcec75"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/af994e61-177f-4318-abc5-740a81aff5ee",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 108 - 0108",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 108 - 0108"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/af994e61-177f-4318-abc5-740a81aff5ee",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/af994e61-177f-4318-abc5-740a81aff5ee",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/af994e61-177f-4318-abc5-740a81aff5ee"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/aef57136-4327-4638-8e0c-1cfd3147d753",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 109 - 0109",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 109 - 0109"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/aef57136-4327-4638-8e0c-1cfd3147d753",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/aef57136-4327-4638-8e0c-1cfd3147d753",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/aef57136-4327-4638-8e0c-1cfd3147d753"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8234fdfa-76f8-4f03-8420-d7a7e06caeb1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 110 - 0110",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 110 - 0110"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8234fdfa-76f8-4f03-8420-d7a7e06caeb1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8234fdfa-76f8-4f03-8420-d7a7e06caeb1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8234fdfa-76f8-4f03-8420-d7a7e06caeb1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4a0dd534-fc06-469f-a7e7-3b07060fed21",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 111 - 0111",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 111 - 0111"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4a0dd534-fc06-469f-a7e7-3b07060fed21",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4a0dd534-fc06-469f-a7e7-3b07060fed21",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4a0dd534-fc06-469f-a7e7-3b07060fed21"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8417119c-288f-4744-b643-d65e77cc76cd",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 112 - 0112",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 112 - 0112"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8417119c-288f-4744-b643-d65e77cc76cd",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/8417119c-288f-4744-b643-d65e77cc76cd",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/8417119c-288f-4744-b643-d65e77cc76cd"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7a846141-f744-47e3-a39d-6bd57aef30ac",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 113 - 0113",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 113 - 0113"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7a846141-f744-47e3-a39d-6bd57aef30ac",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7a846141-f744-47e3-a39d-6bd57aef30ac",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7a846141-f744-47e3-a39d-6bd57aef30ac"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/120b7969-92ec-4f09-993f-89eaffb639f2",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 114 - 0114",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 114 - 0114"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/120b7969-92ec-4f09-993f-89eaffb639f2",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/120b7969-92ec-4f09-993f-89eaffb639f2",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/120b7969-92ec-4f09-993f-89eaffb639f2"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0929c79c-e27c-4ba3-8175-0405d821fe40",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 115 - 0115",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 115 - 0115"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0929c79c-e27c-4ba3-8175-0405d821fe40",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0929c79c-e27c-4ba3-8175-0405d821fe40",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0929c79c-e27c-4ba3-8175-0405d821fe40"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7dda983b-7e70-496a-a989-1d1403146ae3",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 116 - 0116",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 116 - 0116"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7dda983b-7e70-496a-a989-1d1403146ae3",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/7dda983b-7e70-496a-a989-1d1403146ae3",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/7dda983b-7e70-496a-a989-1d1403146ae3"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4ecff7e6-03b2-4921-b960-f0f596a03033",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 117 - 0117",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 117 - 0117"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4ecff7e6-03b2-4921-b960-f0f596a03033",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4ecff7e6-03b2-4921-b960-f0f596a03033",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4ecff7e6-03b2-4921-b960-f0f596a03033"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/99389c6d-344e-4b3c-9f2f-30f8c55d4a98",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 118 - 0118",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 118 - 0118"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/99389c6d-344e-4b3c-9f2f-30f8c55d4a98",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/99389c6d-344e-4b3c-9f2f-30f8c55d4a98",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/99389c6d-344e-4b3c-9f2f-30f8c55d4a98"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/94160de3-1967-4043-8105-f1762d62f3d4",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 119 - 0119",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 119 - 0119"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/94160de3-1967-4043-8105-f1762d62f3d4",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/94160de3-1967-4043-8105-f1762d62f3d4",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/94160de3-1967-4043-8105-f1762d62f3d4"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/84745b9b-8d41-408f-a42f-ef3ce6a91a06",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 120 - 0120",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 120 - 0120"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/84745b9b-8d41-408f-a42f-ef3ce6a91a06",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/84745b9b-8d41-408f-a42f-ef3ce6a91a06",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/84745b9b-8d41-408f-a42f-ef3ce6a91a06"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/717ef180-e639-4cc2-a40a-abf439e0339d",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 121 - 0121",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 121 - 0121"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/717ef180-e639-4cc2-a40a-abf439e0339d",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/717ef180-e639-4cc2-a40a-abf439e0339d",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/717ef180-e639-4cc2-a40a-abf439e0339d"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/da96b02d-de99-4985-aa1b-510644f386af",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 122 - 0122",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 122 - 0122"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/da96b02d-de99-4985-aa1b-510644f386af",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/da96b02d-de99-4985-aa1b-510644f386af",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/da96b02d-de99-4985-aa1b-510644f386af"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/590ab317-56dc-4355-b703-b168cb5e7d10",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 123 - 0123",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 123 - 0123"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/590ab317-56dc-4355-b703-b168cb5e7d10",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/590ab317-56dc-4355-b703-b168cb5e7d10",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/590ab317-56dc-4355-b703-b168cb5e7d10"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d8d369ab-5d7f-4367-aee7-63dfc20d9510",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 124 - 0124",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 124 - 0124"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d8d369ab-5d7f-4367-aee7-63dfc20d9510",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/d8d369ab-5d7f-4367-aee7-63dfc20d9510",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/d8d369ab-5d7f-4367-aee7-63dfc20d9510"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc32a282-1846-4e1b-abe4-a5f63c5a7064",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 125 - 0125",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 125 - 0125"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc32a282-1846-4e1b-abe4-a5f63c5a7064",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/dc32a282-1846-4e1b-abe4-a5f63c5a7064",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/dc32a282-1846-4e1b-abe4-a5f63c5a7064"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/769306e5-5717-4c40-ab4d-57e594ab622c",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 126 - 0126",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 126 - 0126"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/769306e5-5717-4c40-ab4d-57e594ab622c",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/769306e5-5717-4c40-ab4d-57e594ab622c",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/769306e5-5717-4c40-ab4d-57e594ab622c"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0dd87613-3875-4566-b545-416afca0293d",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 127 - 0127",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 127 - 0127"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0dd87613-3875-4566-b545-416afca0293d",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/0dd87613-3875-4566-b545-416afca0293d",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/0dd87613-3875-4566-b545-416afca0293d"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/08605c27-82c7-42e7-b7cb-37cad6527d55",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 128 - 0128",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 128 - 0128"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/08605c27-82c7-42e7-b7cb-37cad6527d55",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/08605c27-82c7-42e7-b7cb-37cad6527d55",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/08605c27-82c7-42e7-b7cb-37cad6527d55"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/45540052-39c5-470d-9cb3-641b8c3583bc",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 129 - 0129",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 129 - 0129"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/45540052-39c5-470d-9cb3-641b8c3583bc",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/45540052-39c5-470d-9cb3-641b8c3583bc",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/45540052-39c5-470d-9cb3-641b8c3583bc"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e4b8cac4-a0ac-462b-9a51-ac52485627a1",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 130 - 0130",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 130 - 0130"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e4b8cac4-a0ac-462b-9a51-ac52485627a1",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/e4b8cac4-a0ac-462b-9a51-ac52485627a1",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/e4b8cac4-a0ac-462b-9a51-ac52485627a1"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6393c145-3c47-45fb-9715-de1e8810b329",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 131 - 0131",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 131 - 0131"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6393c145-3c47-45fb-9715-de1e8810b329",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/6393c145-3c47-45fb-9715-de1e8810b329",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/6393c145-3c47-45fb-9715-de1e8810b329"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/afe7d950-3bb3-4671-8e45-26313ed555ca",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 132 - 0132",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 132 - 0132"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/afe7d950-3bb3-4671-8e45-26313ed555ca",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/afe7d950-3bb3-4671-8e45-26313ed555ca",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/afe7d950-3bb3-4671-8e45-26313ed555ca"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/628b8b56-415e-415d-ae5e-e12ee37f7c6a",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 133 - 0133",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 133 - 0133"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/628b8b56-415e-415d-ae5e-e12ee37f7c6a",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/628b8b56-415e-415d-ae5e-e12ee37f7c6a",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/628b8b56-415e-415d-ae5e-e12ee37f7c6a"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c02e06e4-3622-4dfc-b2c2-3065b042628e",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 134 - 0134",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 134 - 0134"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c02e06e4-3622-4dfc-b2c2-3065b042628e",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c02e06e4-3622-4dfc-b2c2-3065b042628e",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c02e06e4-3622-4dfc-b2c2-3065b042628e"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9edf2580-8b08-4031-bc1f-02f8e26d20b4",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 135 - 0135",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 135 - 0135"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9edf2580-8b08-4031-bc1f-02f8e26d20b4",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9edf2580-8b08-4031-bc1f-02f8e26d20b4",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9edf2580-8b08-4031-bc1f-02f8e26d20b4"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4eaaea19-30fb-45da-966d-aac9f525c4bb",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 136 - 0136",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 136 - 0136"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4eaaea19-30fb-45da-966d-aac9f525c4bb",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/4eaaea19-30fb-45da-966d-aac9f525c4bb",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/4eaaea19-30fb-45da-966d-aac9f525c4bb"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1c512335-a476-49a1-8d38-5282f529cff2",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 137 - 0137",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 137 - 0137"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1c512335-a476-49a1-8d38-5282f529cff2",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/1c512335-a476-49a1-8d38-5282f529cff2",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/1c512335-a476-49a1-8d38-5282f529cff2"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a3cc1c04-4a10-4c02-b23e-82e39a7351ae",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 138 - 0138",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 138 - 0138"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a3cc1c04-4a10-4c02-b23e-82e39a7351ae",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/a3cc1c04-4a10-4c02-b23e-82e39a7351ae",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/a3cc1c04-4a10-4c02-b23e-82e39a7351ae"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3eea57cd-ea24-4633-bb1d-de5d7657faef",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 139 - 0139",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 139 - 0139"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3eea57cd-ea24-4633-bb1d-de5d7657faef",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3eea57cd-ea24-4633-bb1d-de5d7657faef",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3eea57cd-ea24-4633-bb1d-de5d7657faef"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c45c2993-8e48-4ce0-8811-9c6adba35f82",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 140 - 0140",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 140 - 0140"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c45c2993-8e48-4ce0-8811-9c6adba35f82",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/c45c2993-8e48-4ce0-8811-9c6adba35f82",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/c45c2993-8e48-4ce0-8811-9c6adba35f82"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9bf88fae-a4a9-4dd2-8a67-4c4fd00f12bf",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 141 - 0141",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 141 - 0141"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9bf88fae-a4a9-4dd2-8a67-4c4fd00f12bf",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/9bf88fae-a4a9-4dd2-8a67-4c4fd00f12bf",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/9bf88fae-a4a9-4dd2-8a67-4c4fd00f12bf"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3d8b311b-f8e4-43c9-9292-cf6eddf33e1f",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 142 - 0142",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 142 - 0142"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3d8b311b-f8e4-43c9-9292-cf6eddf33e1f",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/3d8b311b-f8e4-43c9-9292-cf6eddf33e1f",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/3d8b311b-f8e4-43c9-9292-cf6eddf33e1f"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/31c452e0-2768-4267-a012-1e7873cdd592",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 143 - 0143",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 143 - 0143"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/31c452e0-2768-4267-a012-1e7873cdd592",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/31c452e0-2768-4267-a012-1e7873cdd592",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/31c452e0-2768-4267-a012-1e7873cdd592"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/19dddbe8-ced3-49b5-ae44-b8b6d6c06baa",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 144 - 0144",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 144 - 0144"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/19dddbe8-ced3-49b5-ae44-b8b6d6c06baa",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/19dddbe8-ced3-49b5-ae44-b8b6d6c06baa",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/19dddbe8-ced3-49b5-ae44-b8b6d6c06baa"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    }, {
+      "@id" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/90e56fd1-7ac6-4487-8b64-50d4114b5308",
+      "@type" : "sc:Canvas",
+      "label" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 145 - 0145",
+      "metadata" : [ {
+        "label" : "sgtt",
+        "value" : "000002/1: ADMINISTRATION FILE (1945-07/1945-08) - 145 - 0145"
+      } ],
+      "images" : [ {
+        "@type" : "oa:Annotation",
+        "motivation" : "sc:painting",
+        "resource" : {
+          "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/90e56fd1-7ac6-4487-8b64-50d4114b5308",
+          "@type" : "dctypes:Image",
+          "service" : {
+            "@context" : "http://iiif.io/api/image/2/context.json",
+            "@id" : "https://acs.jarvis.memooria.org/images/iiif/db/90e56fd1-7ac6-4487-8b64-50d4114b5308",
+            "profile" : "http://iiif.io/api/image/2/level2.json"
+          },
+          "format" : "image/jpeg",
+          "width" : 582,
+          "height" : 1024
+        },
+        "on" : "https://acs.jarvis.memooria.org/meta/iiif/bdd8df6f-dc05-431c-955a-be2078018553/canvas/90e56fd1-7ac6-4487-8b64-50d4114b5308"
+      } ],
+      "width" : 582,
+      "height" : 1024
+    } ]
+  } ],
+  "thumbnail" : {
+    "@id" : "https://acs.jarvis.memooria.org/images/db/dc6e2c02-5abe-4a06-9ba5-5cd24dbd67fc/thumb.jpg",
+    "format" : "image/jpeg"
+  }
+}

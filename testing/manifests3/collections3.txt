@@ -1,0 +1,2 @@
+https://iiif.io/api/cookbook/recipe/0230-navdate/navdate-collection.json
+https://iiif.io/api/cookbook/recipe/0032-collection/collection.json
