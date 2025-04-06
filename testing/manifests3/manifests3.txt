@@ -16,3 +16,4 @@ https://iiif.io/api/cookbook/recipe/0202-start-canvas/manifest.json
 https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json
 https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases/manifest.json
 https://iiif.io/api/cookbook/recipe/0234-provider/manifest.json
+https://polona.pl/api/search-index/search/iiif/a399f131-4051-4562-8d46-c0004717c879/manifest.json

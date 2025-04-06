@@ -4,17 +4,7 @@ import iiif_downloader # import ../iiif_downloader.py
 import json
 import logging
 import argparse
-
-ver_dict = {
-    '2': {
-        'reader': iiif_downloader.read_iiif_manifest2,
-        'tot': 10
-    },
-    '3': {
-        'reader': iiif_downloader.read_iiif_manifest3,
-        'tot': 18
-    }
-}
+from test_common import ver_dict
 
 # Configure logger
 logging.basicConfig(level=logging.INFO, format="%(message)s")
