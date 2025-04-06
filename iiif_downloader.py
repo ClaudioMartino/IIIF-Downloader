@@ -40,12 +40,13 @@ def print_statistics(downloaded_cnt: int, total_time: float,
     logging.info("- Elapsed time: " + str(round(total_time)) + " s")
     if (downloaded_cnt > 0):
         logging.info(
-            "- Avg time/file: " + str(round(total_time/downloaded_cnt)) + " s")
+            "- Avg time/file: "
+            + str(round(total_time / downloaded_cnt)) + " s")
         logging.info(
-            "- Disc usage: " + str(round(total_filesize/1000)) + " kB")
+            "- Disc usage: " + str(round(total_filesize / 1000)) + " kB")
         logging.info(
-            "- Avg file size: " +
-            str(round(total_filesize/(downloaded_cnt * 1000))) + " kB")
+            "- Avg file size: "
+            + str(round(total_filesize / (downloaded_cnt * 1000))) + " kB")
     logging.info("-------------")
 
 
@@ -63,7 +64,7 @@ def open_url(u: str):
 def download_file(u: str, filepath: str) -> int:
     """Open a remote file and save it locally."""
     u = u.replace(" ", "%20")
-    logging.info("- Downloading " + u)
+    logging.debug("- Downloading " + u)
 
     # Read the remote file from url
     res = open_url(u)
@@ -255,7 +256,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
 def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
                                       conf: Conf = Conf()) -> None:
     """Download all the files from a manifest."""
-    # Read manifest
+    # Parse manifest
     if (api == 2):
         manifest_label, manifest_id, infos = read_iiif_manifest2(d)
     elif (api == 3):
@@ -264,8 +265,8 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
         raise Exception("Unsupported API (api: " + str(api) + ')')
 
     # Print manifest features
-    logging.info('- API: ' + str(api) + '.0')
-    logging.info('- Manifest ID: ' + manifest_id)
+    logging.debug('- API: ' + str(api) + '.0')
+    logging.debug('- Manifest ID: ' + manifest_id)
     logging.info('- Title: ' + manifest_label)
     logging.info('- Files: ' + str(len(infos)))
 
@@ -274,15 +275,18 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
         subdir = maindir + '/' + sanitize_name(manifest_label)
         if (not os.path.exists(subdir)):
             os.mkdir(subdir)
+            logging.debug(
+                '- ' + sanitize_name(manifest_label) + ' created in '
+                + maindir)
 
         # Create sub-array (conf.firstpage, conf.lastpage)
         totpages = len(infos)
         if (conf.firstpage != 1 or conf.lastpage != -1):
-            infos = infos[conf.firstpage-1:]
-            infos = infos[:conf.lastpage-conf.firstpage+1]
+            infos = infos[conf.firstpage - 1:]
+            infos = infos[:conf.lastpage - conf.firstpage + 1]
             logging.info(
-                "- Downloading pages " + str(conf.firstpage) + "-" +
-                str(conf.lastpage) + " from a total of " + str(totpages))
+                "- Downloading pages " + str(conf.firstpage) + "-"
+                + str(conf.lastpage) + " from a total of " + str(totpages))
 
         # Loop over each id
         some_error = False
@@ -291,16 +295,16 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
         downloaded_cnt = 0
         start_time = time.time()
         for cnt, info in enumerate(infos):
+            # Print counters and label
             percentage = round((cnt + 1) / len(infos) * 100, 1)
             cnt = cnt + conf.firstpage - 1
-
-            # Print counters and label
-            logging.info('[n.' + str(cnt + 1) + '/' + str(totpages) + '; ' +
-                         str(percentage) + '%] Label: ' + info.label)
+            logging.info('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '
+                         + str(percentage) + '%] Label: ' + info.label)
 
             # Print file ID
             logging.info('- ID: ' + info.id)
             if (info.id == 'NA'):
+                logging.debug('- File not available in the manifest, skip')
                 continue
 
             # Print file extension
@@ -319,8 +323,9 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
                 filename = sanitize_name(info.label) + ext
             else:
                 filename = 'p' + str(cnt + 1).zfill(3) + ext
+
             if (os.path.exists(subdir + '/' + filename) and not conf.force):
-                logging.info('- ' + subdir + '/' + filename + " exists, skip.")
+                logging.debug('- ' + subdir + '/' + filename + " exists, skip")
                 continue
 
             # Priority to image id, but if it doesn't work, we move
@@ -329,22 +334,22 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
             if (try_with_id):
                 filesize = download_file(info.id, subdir + '/' + filename)
                 if (filesize <= 0):
-                    logging.info("- Cannot download " + info.id)
+                    logging.debug("- Cannot download " + info.id)
                     try_with_id = False
 
             if (filesize <= 0):
                 img_url = get_img_url(info.id, ext)
                 filesize = download_file(img_url, subdir + '/' + filename)
 
-            # Print final message and upload counters
+            # Print final message and update counters
             if (filesize <= 0):
                 logging.error('\033[91m' + '- Error!' + '\033[0m')
                 some_error = True
             else:
                 logging.info(
-                    '\033[92m' + '- ' + filename + ' (' +
-                    str(round(filesize / 1000)) + ' KB) saved in ' +
-                    subdir + '.' + '\033[0m')
+                    '\033[92m' + '- ' + filename + ' ('
+                    + str(round(filesize / 1000)) + ' KB) saved in '
+                    + subdir + '.' + '\033[0m')
                 total_filesize += filesize
                 downloaded_cnt = downloaded_cnt + 1
 
@@ -360,8 +365,8 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
                 rmtree(err_subdir)
             os.rename(subdir, err_subdir)
             logging.error(
-                '\033[91m' + 'Some error with ' +
-                sanitize_name(manifest_label) + '.\033[0m')
+                '\033[91m' + 'Some error with '
+                + sanitize_name(manifest_label) + '.\033[0m')
 
 
 def download_iiif_files(input_name: str, maindir: str,
@@ -411,8 +416,8 @@ def download_iiif_files(input_name: str, maindir: str,
             download_iiif_files_from_manifest(api, d, maindir, conf)
     else:
         raise Exception(
-            "Not a manifest or a collection of manifests (type: " +
-            iiif_type + ')')
+            "Not a manifest or a collection of manifests (type: "
+            + iiif_type + ')')
 
 
 def get_pages(pages: str) -> Tuple[int, int]:
@@ -439,9 +444,13 @@ if __name__ == "__main__":
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
+        "-v", "--verbose",
+        action='store_true',
+        help="Print more information about what is happening")
+    parser.add_argument(
         "-m", "--manifest",
         default='manifest',
-        help="Manifest or collection of manifests (name or url)")
+        help="Manifest or collection of manifests (local file name or url)")
     parser.add_argument(
         "-d", "--directory",
         default='.',
@@ -449,7 +458,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-p", "--pages",
         default='all',
-        help="Page range (e.g. 3-27)")
+        help="Range of pages to download (e.g. 3-27)")
     parser.add_argument(
         "-f", "--force",
         action='store_true',
@@ -457,7 +466,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--use-labels",
         action='store_true',
-        help="Name the files with the labels")
+        help="Name the files with their labels")
 
     # Create configuration structure
     config = vars(parser.parse_args())
@@ -469,7 +478,11 @@ if __name__ == "__main__":
     conf = Conf(firstpage, lastpage, use_labels, force)
 
     # Configure logger
-    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    if (config['verbose']):
+        logging_level = logging.DEBUG
+    else:
+        logging_level = logging.INFO
+    logging.basicConfig(level=logging_level, format="%(message)s")
 
     # Call download function
     download_iiif_files(manifest_name, main_dir, conf)
