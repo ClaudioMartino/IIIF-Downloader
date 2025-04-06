@@ -22,7 +22,7 @@ class Conf:
 
 
 class Info:
-    """A class containing a file features."""
+    """A class containing the features of an IIIF file."""
     def __init__(self, label: str, iiif_id: str, iiif_format: str,
                  iiif_w: int, iiif_h: int):
         self.label = label
@@ -51,7 +51,7 @@ def print_statistics(downloaded_cnt: int, total_time: float,
 
 
 def open_url(u: str):
-    """Open Url."""
+    """Open url."""
     headers = {'User-Agent': "Mozilla/5.0"}
     try:
         response = urlopen(Request(u, headers=headers), timeout=30)
@@ -253,19 +253,19 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     return manifest_label, manifest_id, infos
 
 
-def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
+def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                                       conf: Conf = Conf()) -> None:
     """Download all the files from a manifest."""
     # Parse manifest
-    if (api == 2):
+    if (version == 2):
         manifest_label, manifest_id, infos = read_iiif_manifest2(d)
-    elif (api == 3):
+    elif (version == 3):
         manifest_label, manifest_id, infos = read_iiif_manifest3(d)
     else:
-        raise Exception("Unsupported API (api: " + str(api) + ')')
+        raise Exception('Unsupported IIIF version (' + str(version) + ')')
 
     # Print manifest features
-    logging.debug('- API: ' + str(api) + '.0')
+    logging.debug('- IIIF version: ' + str(version) + '.0')
     logging.debug('- Manifest ID: ' + manifest_id)
     logging.info('- Title: ' + manifest_label)
     logging.info('- Files: ' + str(len(infos)))
@@ -369,51 +369,63 @@ def download_iiif_files_from_manifest(api: int, d: Dict, maindir: str,
                 + sanitize_name(manifest_label) + '.\033[0m')
 
 
-def download_iiif_files(input_name: str, maindir: str,
-                        conf: Conf = Conf()) -> None:
-    """Download all the files from a manifest or a collection."""
-    # Check if input is a file or an url and open it
-    if (is_url(input_name)):
-        d = json.loads(open_url(input_name).read())
-    else:
-        with open(input_name) as f:
-            d = json.load(f)
-
-    # Check API version and define json dictionary elements accordingly
+def get_iiif_version(d: Dict) -> int:
+    """ Check IIIF version from a manifest or a collection."""
+    # Get context
     context = d.get('@context')
+
     # 3.0 API: "The value of the @context property must be either the URI or a
     # JSON array with the URI as the last item"
     if (isinstance(context, list)):
         context = context[-1]
 
     if (context.endswith('2/context.json')):
-        api = 2
+        version = 2
+    elif (context.endswith('3/context.json')):
+        version = 3
+    else:
+        raise Exception("Unsupported IIIF version (context: " + context + ')')
+
+    return version
+
+
+def download_iiif_files(json_file: str, maindir: str,
+                        conf: Conf = Conf()) -> None:
+    """Download all the files from a manifest or a collection."""
+    # Check if json file is local or remote and read it
+    if (is_url(json_file)):
+        d = json.loads(open_url(json_file).read())
+    else:
+        with open(json_file) as f:
+            d = json.load(f)
+
+    # Check IIIF version
+    version = get_iiif_version(d)
+
+    # Check if the input file is a manifest or a collection
+    if (version == 2):
         type_key = '@type'
         manifest_string = 'sc:Manifest'
         collection_string = 'sc:Collection'
         manifests_key = 'manifests'
         id_key = '@id'
-    elif (context.endswith('3/context.json')):
-        api = 3
+    else:
         type_key = 'type'
         manifest_string = 'Manifest'
         collection_string = 'Collection'
         manifests_key = 'items'
         id_key = 'id'
-    else:
-        raise Exception("Unsupported API (context: " + context + ')')
 
-    # Check if input file is manifest or a collection
     iiif_type = d.get(type_key)
     if (iiif_type == manifest_string):
-        download_iiif_files_from_manifest(api, d, maindir, conf)
+        download_iiif_files_from_manifest(version, d, maindir, conf)
     elif (iiif_type == collection_string):
         # TODO: one directory for same collection?
         manifests = d.get(manifests_key)
         for m in manifests:
             manifest_id = m.get(id_key)
             d = json.loads(open_url(manifest_id).read())
-            download_iiif_files_from_manifest(api, d, maindir, conf)
+            download_iiif_files_from_manifest(version, d, maindir, conf)
     else:
         raise Exception(
             "Not a manifest or a collection of manifests (type: "
@@ -446,36 +458,33 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v", "--verbose",
         action='store_true',
-        help="Print more information about what is happening")
+        help="print more information about what is happening")
     parser.add_argument(
         "-m", "--manifest",
         default='manifest',
-        help="Manifest or collection of manifests (local file name or url)")
+        help="manifest or collection of manifests (local file name or url)")
     parser.add_argument(
         "-d", "--directory",
         default='.',
-        help="Directory")
+        help="target directory")
     parser.add_argument(
         "-p", "--pages",
         default='all',
-        help="Range of pages to download (e.g. 3-27)")
+        help="range of pages to download (e.g. 3-27)")
     parser.add_argument(
         "-f", "--force",
         action='store_true',
-        help="Overwrite existing files")
+        help="overwrite existing files")
     parser.add_argument(
         "--use-labels",
         action='store_true',
-        help="Name the files with their labels")
+        help="name the downloaded files with their labels")
+
+    config = vars(parser.parse_args())
 
     # Create configuration structure
-    config = vars(parser.parse_args())
-    manifest_name = config['manifest']
-    main_dir = config['directory']
     firstpage, lastpage = get_pages(config['pages'])
-    use_labels = config['use_labels']
-    force = config['force']
-    conf = Conf(firstpage, lastpage, use_labels, force)
+    conf = Conf(firstpage, lastpage, config['use_labels'], config['force'])
 
     # Configure logger
     if (config['verbose']):
@@ -484,5 +493,5 @@ if __name__ == "__main__":
         logging_level = logging.INFO
     logging.basicConfig(level=logging_level, format="%(message)s")
 
-    # Call download function
-    download_iiif_files(manifest_name, main_dir, conf)
+    # Call main function
+    download_iiif_files(config['manifest'], config['directory'], conf)

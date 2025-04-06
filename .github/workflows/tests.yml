@@ -43,7 +43,7 @@ jobs:
         run: unzip manifests2/archive.zip -d manifests2
 
       - name: Run 2.0 manifest tests
-        run: python3 test_read_manifest.py --api 2
+        run: python3 test_read_manifest.py -v 2
 
   Read-manifests-3:
     runs-on: ubuntu-latest
@@ -62,4 +62,45 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run 3.0 manifest tests
-        run: python3 test_read_manifest.py --api 3
+        run: python3 test_read_manifest.py -v 3
+
+  Get-version-2:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: testing
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Unzip archive
+        run: unzip manifests2/archive.zip -d manifests2
+
+      - name: Run 2.0 version tests
+        run: python3 test_get_version.py -v 2
+
+  Get-version-3:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: testing
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run 3.0 version tests
+        run: python3 test_get_version.py -v 3

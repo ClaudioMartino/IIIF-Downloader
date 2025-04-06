@@ -7,11 +7,9 @@ import argparse
 
 ver_dict = {
     '2': {
-        'reader': iiif_downloader.read_iiif_manifest2,
         'tot': 10
     },
     '3': {
-        'reader': iiif_downloader.read_iiif_manifest3,
         'tot': 18
     }
 }
@@ -30,4 +28,6 @@ for i in range(ver_dict[ver]['tot']):
     file_name = 'manifests' + str(ver) + '/manifest' + str(i).zfill(2) + '.json'
     logging.info(file_name)
     with open(file_name) as f:
-        manifest_label, manifest_id, infos = ver_dict[ver]['reader'](json.load(f))
+        ver2 = iiif_downloader.get_iiif_version(json.load(f))
+        if (ver2 != int(ver)):
+            raise Exception("Read " + str(ver2) + ", expected " + ver)
