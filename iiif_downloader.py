@@ -23,8 +23,8 @@ class Conf:
 
 class Info:
     """A class containing the features of an IIIF file."""
-    def __init__(self, label: str, iiif_id: str, iiif_format: str,
-                 iiif_w: int, iiif_h: int):
+    def __init__(self, label: str = "NA", iiif_id: str = "NA",
+                 iiif_format: str = "NA", iiif_w: int = 0, iiif_h: int = 0):
         self.label = label
         self.id = iiif_id
         self.format = iiif_format
@@ -95,6 +95,7 @@ def get_extension(mime_type: str) -> str:
     """Return the extension given the MIME type (IIIF format)."""
     mime_to_extension = {
         'image/jpeg': '.jpg',
+        'image/jpg': '.jpg',  # 'image/jpg' is wrong, nevertheless it is used
         'image/tiff': '.tif',
         'image/png': '.png',
         'image/gif': '.gif',
@@ -134,8 +135,8 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - @id
     #         - format
 
-    # Read label
-    manifest_label = d.get('label')
+    # Read label (it is not guaranteed to be a string)
+    manifest_label = str(d.get('label'))
     assert manifest_label is not None, "'label' not found."
 
     # Read id
@@ -145,7 +146,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # Read sequences
     sequences = d.get('sequences')
     assert sequences is not None, "'sequences' not found."
-    # Assumption #1: 1 sequence in sequences
+    # [Assumption #1] 1 sequence in sequences
     sequence = sequences[0]
     # assert sequence.get("@type") == 'sc:Sequence'
 
@@ -155,28 +156,44 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     for c in canvases:
         # assert c.get("@type") == 'sc:Canvas'
 
+        # Create empty info node
+        i = Info()
+
         # Read label
-        label = c.get("label")
+        label = c.get("label", "NA")
+        i.label = label
 
         # Read width and height
-        iiif_w = c.get('width')
-        iiif_h = c.get('height')
+        iiif_w = c.get('width', 0)
+        iiif_h = c.get('height', 0)
+        i.w = iiif_w
+        i.h = iiif_h
 
-        # Read images
+        # Read image
         images = c.get("images")
-        assert images is not None, "'images' not found."
-        # Assumption #2: 1 image in images
-        i = images[0]
-        # assert i.get('@type') == "oa:Annotation"
-        # assert (i.get('motivation')).lower() == "sc:painting"
-        resource = i.get("resource")
-        # "The image MUST have an @id field [...] Its media type MAY be listed
-        # in format"
-        iiif_id = resource.get('@id')
-        assert iiif_id is not None, "'@id' not found."
-        iiif_format = resource.get('format', 'NA')
+        if (images is not None):
+            # [Assumption #2] 1 image in images
+            img = images[0]
+            # assert img.get('@type') == "oa:Annotation"
+            # assert img.get('motivation') == "sc:painting"
 
-        infos.append(Info(label, iiif_id, iiif_format, iiif_w, iiif_h))
+            resource = img.get("resource")
+
+            # if resource has multiple images (choice), take default only
+            if (resource.get('@type') == "oa:Choice"):
+                resource = resource.get('default')
+
+            # "The image MUST have an @id field [...] Its media
+            # type MAY be listed in format"
+            iiif_id = resource.get('@id')
+            assert iiif_id is not None, "'@id' not found."
+            i.id = iiif_id
+
+            iiif_format = resource.get('format', 'NA')
+            i.format = iiif_format
+
+        # Append info to list
+        infos.append(i)
 
     return manifest_label, manifest_id, infos
 
@@ -209,33 +226,37 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     # Read canvas
     items: Any = d.get('items')
     infos = []
-    for i in items:
-        # assert i.get('type') == "Canvas"
-        label = i.get('label', 'NA')
+    for it in items:
+        # assert it.get('type') == "Canvas"
+
+        # Create empty info node
+        i = Info()
+
+        label = it.get('label', 'NA')
         if (isinstance(label, dict)):
             label = next(iter(label.values()))  # First value
         label = label[0]
+        i.label = label
 
-        if (len(i.get('items')) == 0):
-            infos.append(Info(label, 'NA', 'NA', 0, 0))
-        else:
+        if (len(it.get('items')) > 0):
             # Read annotation page
-            annotation_page = i.get('items')
+            annotation_page = it.get('items')
             assert annotation_page is not None, \
                 "'items' (annotation page) not found."
-            # Assumption #1: 1 annotation page in canvas
+            # [Assumption #1] 1 annotation page in canvas
             annotation_page = annotation_page[0]
 
             # Read annotation
             # assert annotation_page.get('type') == "AnnotationPage"
             annotation = annotation_page.get('items')
             assert annotation is not None, "'items' (annotation) not found."
-            # Assumption #2: 1 annotation in annotation page
+            # [Assumption #2] 1 annotation in annotation page
             annotation = annotation[0]
             # assert annotation.get('type') == "Annotation"
 
             # Read body or body.source
             body = annotation.get('body')
+
             body_type = body.get('type')
             if (body_type == 'Image'):
                 source = body
@@ -243,12 +264,21 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
                 source = body.get('source')
             else:
                 raise Exception("Unsupported body type: " + body_type)
-            iiif_id = source.get('id')
-            iiif_format = source.get('format')
-            iiif_w = source.get('width')
-            iiif_h = source.get('height')
 
-            infos.append(Info(label, iiif_id, iiif_format, iiif_w, iiif_h))
+            iiif_id = source.get('id')
+            i.id = iiif_id
+
+            iiif_format = source.get('format')
+            i.format = iiif_format
+
+            iiif_w = source.get('width')
+            i.w = iiif_w
+
+            iiif_h = source.get('height')
+            i.h = iiif_h
+
+        # Append info to list
+        infos.append(i)
 
     return manifest_label, manifest_id, infos
 
@@ -416,10 +446,10 @@ def download_iiif_files(json_file: str, maindir: str,
         manifests_key = 'items'
         id_key = 'id'
 
-    iiif_type = d.get(type_key)
-    if (iiif_type == manifest_string):
+    iiif_type = str(d.get(type_key))
+    if (iiif_type.lower() == manifest_string.lower()):
         download_iiif_files_from_manifest(version, d, maindir, conf)
-    elif (iiif_type == collection_string):
+    elif (iiif_type.lower() == collection_string.lower()):
         # TODO: one directory for same collection?
         manifests = d.get(manifests_key)
         for m in manifests:
@@ -429,7 +459,7 @@ def download_iiif_files(json_file: str, maindir: str,
     else:
         raise Exception(
             "Not a manifest or a collection of manifests (type: "
-            + iiif_type + ')')
+            + str(iiif_type) + ")")
 
 
 def get_pages(pages: str) -> Tuple[int, int]:

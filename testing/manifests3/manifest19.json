@@ -1,0 +1,5414 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json",
+  "type": "Manifest",
+  "label": {
+    "none": [
+      "E1004.1#1000/9#14057*"
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "de": [
+          "Titel"
+        ],
+        "fr": [
+          "Titre"
+        ],
+        "it": [
+          "Titolo"
+        ],
+        "en": [
+          "Title"
+        ]
+      },
+      "value": {
+        "de": [
+          "Beschlussprotokoll(-e) 08.05.1945"
+        ],
+        "fr": [
+          "Procès-verbal(-aux) des décisions 08.05.1945"
+        ],
+        "it": [
+          "Verbale(-i) delle decisioni 08.05.1945"
+        ],
+        "en": [
+          "Minutes of decision(s)  08.05.1945"
+        ]
+      }
+    },
+    {
+      "label": {
+        "de": [
+          "Datum"
+        ],
+        "fr": [
+          "Date"
+        ],
+        "it": [
+          "Data"
+        ],
+        "en": [
+          "Date"
+        ]
+      },
+      "value": {
+        "de": [
+          "1945-05-08 00:00"
+        ],
+        "fr": [
+          "1945-05-08 00:00"
+        ],
+        "it": [
+          "1945-05-08 00:00"
+        ],
+        "en": [
+          "1945-05-08 00:00"
+        ]
+      }
+    }
+  ],
+  "service": {
+    "id": "https://web.chgov.bar.admin.ch/iiif/search/manifest/32328752",
+    "profile": "http://iiif.io/api/search/1/search",
+    "type": "SearchService1"
+  },
+  "summary": {
+    "de": [
+      "Beschlussprotokoll(-e) 08.05.1945"
+    ],
+    "fr": [
+      "Procès-verbal(-aux) des décisions 08.05.1945"
+    ],
+    "it": [
+      "Verbale(-i) delle decisioni 08.05.1945"
+    ],
+    "en": [
+      "Minutes of decision(s)  08.05.1945"
+    ]
+  },
+  "thumbnail": [
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-0.jpg/full/!100,100/0/default.jpg",
+      "type": "Image",
+      "format": "image/jpeg"
+    }
+  ],
+  "rendering": [
+    {
+      "id": "https://www.amtsdruckschriften.bar.admin.ch/viewOrigDoc/70014410.pdf?id=70014410",
+      "type": "Text",
+      "label": {
+        "de": [
+          "Download PDF"
+        ],
+        "fr": [
+          "Download PDF"
+        ],
+        "it": [
+          "Download PDF"
+        ],
+        "en": [
+          "Download PDF"
+        ]
+      },
+      "format": "text/plain"
+    },
+    {
+      "id": "https://api.chgov.bar.admin.ch//ocr/32328752/32328752.txt",
+      "type": "Text",
+      "label": {
+        "de": [
+          "Download OCR"
+        ],
+        "fr": [
+          "Download OCR"
+        ],
+        "it": [
+          "Download OCR"
+        ],
+        "en": [
+          "Download OCR"
+        ]
+      },
+      "format": "text/plain"
+    },
+    {
+      "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+      "type": "Text",
+      "label": {
+        "none": [
+          "E1004.1#1000/9#14057*"
+        ]
+      },
+      "format": "application/pdf"
+    }
+  ],
+  "partOf": [
+    {
+      "id": "https://api.chgov.bar.admin.ch/manifests/32328752/manifest.json",
+      "type": "Collection"
+    },
+    {
+      "id": "https://api.chgov.bar.admin.ch/manifests/root.json",
+      "type": "Collection"
+    },
+    {
+      "id": "https://api.chgov.bar.admin.ch/manifests/yearly/1945/manifest.json",
+      "type": "Collection"
+    },
+    {
+      "id": "https://api.chgov.bar.admin.ch/manifests/yearly/1945/5.json",
+      "type": "Collection"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-0.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "0"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-0",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-0",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-0",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-0.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-0.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-0",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-0",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-0",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-0.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-0.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-1.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "1"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-1",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-1",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-1.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-1.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-1",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-1",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-1.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-1.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-2.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "2"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-2",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-2",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-2",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-2.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-2.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-2",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-2",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-2",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-2.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-2.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-3.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "3"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-3",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-3",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-3",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-3.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-3.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-3",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-3",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-3",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-3.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-3.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-4.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "4"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-4",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-4",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-4",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-4.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-4.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-4",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-4",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-4",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-4.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-4.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-5.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "5"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-5",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-5",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-5",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-5.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-5.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-5",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-5",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-5",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-5.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-5.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-6.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "6"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-6",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-6",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-6",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-6.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-6.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-6",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-6",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-6",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-6.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-6.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-7.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "7"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-7",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-7",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-7",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-7.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-7.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-7",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-7",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-7",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-7.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-7.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-8.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "8"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-8",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-8",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-8",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-8.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-8.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-8",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-8",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-8",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-8.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-8.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-9.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "9"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-9",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-9",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-9",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-9.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-9.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-9",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-9",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-9",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-9.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-9.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-10.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "10"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-10",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-10",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-10",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-10.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-10.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-10",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-10",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-10",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-10.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-10.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-11.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "11"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-11",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-11",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-11",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-11.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-11.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-11",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-11",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-11",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-11.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-11.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-12.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "12"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-12",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-12",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-12",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-12.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-12.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-12",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-12",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-12",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-12.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-12.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-13.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "13"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-13",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-13",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-13",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-13.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-13.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-13",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-13",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-13",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-13.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-13.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-14.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "14"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-14",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-14",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-14",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-14.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-14.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-14",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-14",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-14",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-14.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-14.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-15.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "15"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-15",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-15",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-15",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-15.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-15.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-15",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-15",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-15",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-15.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-15.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-16.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "16"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-16",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-16",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-16",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-16.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-16.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-16",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-16",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-16",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-16.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-16.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-17.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "17"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-17",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-17",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-17",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-17.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-17.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-17",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-17",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-17",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-17.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-17.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-18.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "18"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-18",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-18",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-18",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-18.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-18.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-18",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-18",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-18",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-18.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-18.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-19.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "19"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-19",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-19",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-19",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-19.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-19.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-19",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-19",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-19",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-19.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-19.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-20.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "20"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-20",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-20",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-20",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-20.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-20.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-20",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-20",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-20",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-20.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-20.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-21.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "21"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-21",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-21",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-21",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-21.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-21.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-21",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-21",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-21",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-21.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-21.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-22.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "22"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-22",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-22",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-22",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-22.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-22.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-22",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-22",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-22",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-22.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-22.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-23.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "23"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-23",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-23",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-23",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-23.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-23.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-23",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-23",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-23",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-23.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-23.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-24.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "24"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-24",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-24",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-24",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-24.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-24.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-24",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-24",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-24",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-24.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-24.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-25.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "25"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-25",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-25",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-25",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-25.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-25.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-25",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-25",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-25",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-25.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-25.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-26.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "26"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-26",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-26",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-26",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-26.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-26.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-26",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-26",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-26",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-26.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-26.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-27.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "27"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-27",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-27",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-27",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-27.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-27.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-27",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-27",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-27",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-27.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-27.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-28.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "28"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-28",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-28",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-28",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-28.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-28.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-28",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-28",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-28",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-28.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-28.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-29.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "29"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-29",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-29",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-29",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-29.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-29.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-29",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-29",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-29",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-29.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-29.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-30.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "30"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-30",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-30",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-30",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-30.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-30.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-30",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-30",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-30",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-30.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-30.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-31.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "31"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-31",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-31",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-31",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-31.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-31.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-31",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-31",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-31",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-31.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-31.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-32.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "32"
+        ]
+      },
+      "width": 1422,
+      "height": 1908,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-32",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-32",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-32",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-32.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-32.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1908
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-32",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-32",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-32",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-32.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-32.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-33.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "33"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-33",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-33",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-33",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-33.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-33.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-33",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-33",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-33",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-33.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-33.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-34.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "34"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-34",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-34",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-34",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-34.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-34.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-34",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-34",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-34",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-34.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-34.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-35.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "35"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-35",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-35",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-35",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-35.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-35.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-35",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-35",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-35",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-35.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-35.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-36.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "36"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-36",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-36",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-36",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-36.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-36.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-36",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-36",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-36",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-36.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-36.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-37.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "37"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-37",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-37",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-37",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-37.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-37.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-37",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-37",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-37",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-37.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-37.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-38.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "38"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-38",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-38",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-38",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-38.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-38.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-38",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-38",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-38",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-38.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-38.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-39.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "39"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-39",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-39",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-39",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-39.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-39.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-39",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-39",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-39",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-39.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-39.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-40.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "40"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-40",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-40",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-40",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-40.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-40.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-40",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-40",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-40",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-40.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-40.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-41.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "41"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-41",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-41",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-41",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-41.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-41.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-41",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-41",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-41",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-41.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-41.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-42.jpg",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "42"
+        ]
+      },
+      "width": 1422,
+      "height": 1907,
+      "items": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-painting-32328752-42",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-painting-32328752-42",
+              "type": "Annotation",
+              "motivation": "painting",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-42",
+              "body": {
+                "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-42.jpg/full/full/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "service": [
+                  {
+                    "id": "https://image.chgov.bar.admin.ch/iiif/2/32328752%2F32328752-42.jpg",
+                    "type": "ImageService2",
+                    "profile": "level2"
+                  }
+                ],
+                "width": 1422,
+                "height": 1907
+              }
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-page-supplementing-32328752-42",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "@context": "http://iiif.io/api/presentation/3/context.json",
+              "id": "https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json#annotations-content-supplementing-32328752-42",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "target": "https://api.chgov.bar.admin.ch/manifests/32328752/canvasses/32328752-42",
+              "body": {
+                "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-42.hocr",
+                "type": "Text",
+                "format": "text/vnd.hocr+html"
+              }
+            }
+          ]
+        }
+      ],
+      "seeAlso": [
+        {
+          "id": "https://api.chgov.bar.admin.ch/ocr/32328752/hocr/32328752-42.hocr",
+          "type": "Text",
+          "format": "text/vnd.hocr+html",
+          "profile": "http://kba.cloud/hocr-spec/1.2/"
+        }
+      ],
+      "renderings": [
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/de/archiv/einheit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original Dokument im Archiv"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "de"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/fr/archive/unite/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Document original en archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "fr"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/it/archivio/unita/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Documento originale in archivio"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "it"
+          ]
+        },
+        {
+          "id": "https://www.recherche.bar.admin.ch/recherche/#/en/archive/unit/32328752",
+          "type": "Text",
+          "label": {
+            "none": [
+              "Original document in archive"
+            ]
+          },
+          "format": "application/pdf",
+          "language": [
+            "en"
+          ]
+        }
+      ]
+    }
+  ]
+}
