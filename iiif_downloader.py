@@ -11,6 +11,11 @@ from urllib.request import urlopen, Request
 from typing import List, Tuple, Dict, Any
 
 
+issue_str = "\nPLEASE submit a bug report to \
+https://github.com/ClaudioMartino/IIIF-Downloader/issues \
+and include the manifest."
+
+
 class Conf:
     """A class containing all user configurations."""
     def __init__(self, firstpage: int = 1, lastpage: int = -1,
@@ -151,17 +156,20 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # Read manifest label
     manifest_label = str(d.get('label'))
     # "A manifest must have a label"
-    assert manifest_label is not None, "Manifest label ('label') not found."
+    assert manifest_label is not None, \
+        "Manifest label ('label') not found." + issue_str
 
     # Read manifest id
     manifest_id = d.get('@id')
     # "A manifest must have an id"
-    assert manifest_id is not None, "Manifest id ('@id') not found."
+    assert manifest_id is not None, \
+        "Manifest id ('@id') not found." + issue_str
 
     # Read first sequence
     sequences = d.get('sequences')
     # "Each manifest must, and is very likely to, have one sequence"
-    assert sequences is not None, "Manifest sequences ('sequences') not found."
+    assert sequences is not None, \
+        "Manifest sequences ('sequences') not found." + issue_str
     # [Assumption #1] 1 sequence in sequences
     sequence = sequences[0]
     debug_check('sequence type', sequence.get("@type"), 'sc:Sequence')
@@ -169,7 +177,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # Read all canvases
     canvases = sequence.get("canvases")
     # "Each sequence must have at least one canvas"
-    assert canvases is not None
+    assert canvases is not None, "Canvases not found. " + issue_str
     infos = []
     for c in canvases:
         debug_check('canvas type', c.get("@type"), "sc:Canvas")
@@ -212,7 +220,8 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
 
             iiif_id = resource.get('@id')
             # "The image must have an @id field"
-            assert iiif_id is not None, "Image id ('@id') not found"
+            assert iiif_id is not None, \
+                "Image id ('@id') not found." + issue_str
             i.id = iiif_id
 
             i.format = resource.get('format', 'NA')
@@ -239,14 +248,14 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
 
     # Read label
     manifest_label = d.get('label')
-    assert manifest_label is not None, "'label' not found."
+    assert manifest_label is not None, "'label' not found." + issue_str
     if (isinstance(manifest_label, dict)):
         manifest_label = next(iter(manifest_label.values()))  # First value
     manifest_label = manifest_label[0]
 
     # Read id
     manifest_id = d.get('id')
-    assert manifest_id is not None, "'id' not found."
+    assert manifest_id is not None, "'id' not found." + issue_str
 
     # Read canvas
     items: Any = d.get('items')
@@ -267,14 +276,15 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
             # Read annotation page
             annotation_page = it.get('items')
             assert annotation_page is not None, \
-                "'items' (annotation page) not found."
+                "'items' (annotation page) not found." + issue_str
             # [Assumption #1] 1 annotation page in canvas
             annotation_page = annotation_page[0]
 
             # Read annotation
             # assert annotation_page.get('type') == "AnnotationPage"
             annotation = annotation_page.get('items')
-            assert annotation is not None, "'items' (annotation) not found."
+            assert annotation is not None, \
+                "'items' (annotation) not found." + issue_str
             # [Assumption #2] 1 annotation in annotation page
             annotation = annotation[0]
             # assert annotation.get('type') == "Annotation"
