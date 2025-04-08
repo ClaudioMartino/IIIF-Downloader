@@ -68,9 +68,10 @@ def download_file(u: str, filepath: str) -> int:
 
     # Read the remote file from url
     res = open_url(u)
-    # logging.info(res.getcode())
     if (res is None):
         return -1
+    else:
+        logging.debug("- HTTP status code: " + str(res.getcode()))
 
     # file_size = res.headers['Content-Length']
 
@@ -121,6 +122,18 @@ def sanitize_name(title: str) -> str:
     return title
 
 
+def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
+    """Check if a value has been found or compare it with the expected one."""
+    if expected is None:
+        if (to_check is None):
+            logging.debug(name.capitalize() + " not found.")
+    else:
+        if (to_check != expected):
+            logging.debug(
+                "Unexpected " + name + " value: " + str(to_check)
+                + " instead of " + str(expected) + ".")
+
+
 def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     """Download all the files from a 2.0 manifest."""
     # - label
@@ -135,37 +148,48 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - @id
     #         - format
 
-    # Read label (it is not guaranteed to be a string)
+    # Read manifest label
     manifest_label = str(d.get('label'))
-    assert manifest_label is not None, "'label' not found."
+    # "A manifest must have a label"
+    assert manifest_label is not None, "Manifest label ('label') not found."
 
-    # Read id
+    # Read manifest id
     manifest_id = d.get('@id')
-    assert manifest_id is not None, "'@id' not found."
+    # "A manifest must have an id"
+    assert manifest_id is not None, "Manifest id ('@id') not found."
 
-    # Read sequences
+    # Read first sequence
     sequences = d.get('sequences')
-    assert sequences is not None, "'sequences' not found."
+    # "Each manifest must, and is very likely to, have one sequence"
+    assert sequences is not None, "Manifest sequences ('sequences') not found."
     # [Assumption #1] 1 sequence in sequences
     sequence = sequences[0]
-    # assert sequence.get("@type") == 'sc:Sequence'
+    debug_check('sequence type', sequence.get("@type"), 'sc:Sequence')
 
-    # Read canvases
+    # Read all canvases
     canvases = sequence.get("canvases")
+    # "Each sequence must have at least one canvas"
+    assert canvases is not None
     infos = []
     for c in canvases:
-        # assert c.get("@type") == 'sc:Canvas'
+        debug_check('canvas type', c.get("@type"), "sc:Canvas")
 
-        # Create empty info node
+        # "A canvas must have an id"
+        debug_check('canvas ID', c.get("@id"))
+
+        # Create an empty info node
         i = Info()
 
-        # Read label
-        label = c.get("label", "NA")
+        # Read label, width and height
+        label = c.get("label")
+        iiif_w = c.get('width')
+        iiif_h = c.get('height')
+        # "Every canvas must have a label to display, and a height and a
+        # width as integers"
+        debug_check('canvas label', label)
+        debug_check('canvas width', iiif_w)
+        debug_check('canvas height', iiif_h)
         i.label = label
-
-        # Read width and height
-        iiif_w = c.get('width', 0)
-        iiif_h = c.get('height', 0)
         i.w = iiif_w
         i.h = iiif_h
 
@@ -174,23 +198,24 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
         if (images is not None):
             # [Assumption #2] 1 image in images
             img = images[0]
-            # assert img.get('@type') == "oa:Annotation"
-            # assert img.get('motivation') == "sc:painting"
+            # "All resources must have a type specified"
+            debug_check('image type', img.get('@type'), "oa:Annotation")
+            # "Each association of a content resource must have the motivation
+            # field and the value must be “sc:painting”
+            debug_check(
+                'image motivation', img.get('motivation'), "sc:painting")
 
             resource = img.get("resource")
-
-            # if resource has multiple images (choice), take default only
+            # If the resource has multiple images (choice), take default only
             if (resource.get('@type') == "oa:Choice"):
                 resource = resource.get('default')
 
-            # "The image MUST have an @id field [...] Its media
-            # type MAY be listed in format"
             iiif_id = resource.get('@id')
-            assert iiif_id is not None, "'@id' not found."
+            # "The image must have an @id field"
+            assert iiif_id is not None, "Image id ('@id') not found"
             i.id = iiif_id
 
-            iiif_format = resource.get('format', 'NA')
-            i.format = iiif_format
+            i.format = resource.get('format', 'NA')
 
         # Append info to list
         infos.append(i)
@@ -414,6 +439,7 @@ def get_iiif_version(d: Dict) -> int:
     elif (context.endswith('3/context.json')):
         version = 3
     else:
+        # "The top level resource must have the @context property"
         raise Exception("Unsupported IIIF version (context: " + context + ')')
 
     return version
