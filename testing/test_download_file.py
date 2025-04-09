@@ -5,7 +5,7 @@ import json
 import logging
 
 # Configure logger
-logging.basicConfig(level=logging.INFO, format="%(message)s")
+logging.basicConfig(level=logging.DEBUG, format="%(message)s")
 
 # Download Lenna
 src_url = 'https://raw.githubusercontent.com/ClaudioMartino/IIIF-Downloader/refs/heads/main/testing/lenna.jpg'
