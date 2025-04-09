@@ -170,26 +170,26 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # "Each manifest must, and is very likely to, have one sequence"
     assert sequences is not None, \
         "Manifest sequences ('sequences') not found." + issue_str
-    # [Assumption #1] 1 sequence in sequences
+    # [Assumption #1] 1 sequence in sequences ("very likely")
     sequence = sequences[0]
-    debug_check('sequence type', sequence.get("@type"), 'sc:Sequence')
+    debug_check('sequence type', sequence.get('@type'), 'sc:Sequence')
 
     # Read all canvases
-    canvases = sequence.get("canvases")
+    canvases = sequence.get('canvases')
     # "Each sequence must have at least one canvas"
     assert canvases is not None, "Canvases not found. " + issue_str
     infos = []
     for c in canvases:
-        debug_check('canvas type', c.get("@type"), "sc:Canvas")
+        debug_check('canvas type', c.get('@type'), 'sc:Canvas')
 
         # "A canvas must have an id"
-        debug_check('canvas ID', c.get("@id"))
+        debug_check('canvas ID', c.get('@id'))
 
         # Create an empty info node
         i = Info()
 
         # Read label, width and height
-        label = c.get("label")
+        label = c.get('label')
         iiif_w = c.get('width')
         iiif_h = c.get('height')
         # "Every canvas must have a label to display, and a height and a
@@ -203,19 +203,19 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
 
         # Read image
         images = c.get("images")
-        if (images is not None):
+        if (images):
             # [Assumption #2] 1 image in images
             img = images[0]
             # "All resources must have a type specified"
-            debug_check('image type', img.get('@type'), "oa:Annotation")
+            debug_check('image type', img.get('@type'), 'oa:Annotation')
             # "Each association of a content resource must have the motivation
             # field and the value must be “sc:painting”
             debug_check(
-                'image motivation', img.get('motivation'), "sc:painting")
+                'image motivation', img.get('motivation'), 'sc:painting')
 
-            resource = img.get("resource")
+            resource = img.get('resource')
             # If the resource has multiple images (choice), take default only
-            if (resource.get('@type') == "oa:Choice"):
+            if (resource.get('@type') == 'oa:Choice'):
                 resource = resource.get('default')
 
             iiif_id = resource.get('@id')
@@ -246,71 +246,106 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - width
     #         - height
 
-    # Read label
+    # Read manifest label
     manifest_label = d.get('label')
-    assert manifest_label is not None, "'label' not found." + issue_str
-    if (isinstance(manifest_label, dict)):
-        manifest_label = next(iter(manifest_label.values()))  # First value
+    # "A Manifest must have the label property with at least one entry"
+    assert manifest_label is not None, \
+        "Manifest label ('label') not found." + issue_str
+    # "The value of the property [label] must be a JSON object"
+    assert isinstance(manifest_label, dict), \
+        "Manifest label is not a JSON object." + issue_str
+    manifest_label = next(iter(manifest_label.values()))  # Take first value
     manifest_label = manifest_label[0]
 
-    # Read id
+    # Read manifest id
     manifest_id = d.get('id')
-    assert manifest_id is not None, "'id' not found." + issue_str
+    assert manifest_id is not None, "Manifest id ('id') not found." + issue_str
 
-    # Read canvas
-    items: Any = d.get('items')
+    # Read canvases
+    canvases: Any = d.get('items')
+    # "A Manifest must have the items property with at least one item"
+    assert canvases is not None, \
+        "Manifest items ('items') not found." + issue_str
     infos = []
-    for it in items:
-        # assert it.get('type') == "Canvas"
+    for c in canvases:
+        debug_check('canvas type', c.get('type'), 'Canvas')
+
+        # "Canvases must be identified by a URI"
+        debug_check('canvas id', c.get('id'))
 
         # Create empty info node
         i = Info()
 
-        label = it.get('label', 'NA')
-        if (isinstance(label, dict)):
-            label = next(iter(label.values()))  # First value
-        label = label[0]
+        # Read canvas label
+        label = c.get('label', 'NA')
+        if (label != 'NA'):
+            # "A Canvas should have the label property [...] The value must be
+            # a JSON object"
+            assert isinstance(label, dict), \
+                "Canvas label is not a JSON object." + issue_str
+            label = next(iter(label.values()))  # Take first value
+            label = label[0]
         i.label = label
 
-        if (len(it.get('items')) > 0):
-            # Read annotation page
-            annotation_page = it.get('items')
-            assert annotation_page is not None, \
-                "'items' (annotation page) not found." + issue_str
+        # "A Canvas must have a rectangular aspect ratio"
+        debug_check('canvas height', c.get('height'))
+        debug_check('canvas width', c.get('width'))
+
+        # Read annotation page
+        annotation_page = c.get('items')
+        # "A Canvas should have the items property with at least one item. Each
+        # item must be an Annotation Page"
+        debug_check("annotation page ('items')", annotation_page)
+        if (annotation_page):
             # [Assumption #1] 1 annotation page in canvas
             annotation_page = annotation_page[0]
+            debug_check(
+                "annotation page type", annotation_page.get('type'),
+                'AnnotationPage')
+
+            # "Annotation Pages must have the id"
+            debug_check("annotation page id", annotation_page.get('id'))
 
             # Read annotation
-            # assert annotation_page.get('type') == "AnnotationPage"
             annotation = annotation_page.get('items')
-            assert annotation is not None, \
-                "'items' (annotation) not found." + issue_str
-            # [Assumption #2] 1 annotation in annotation page
-            annotation = annotation[0]
-            # assert annotation.get('type') == "Annotation"
+            # "An Annotation Page should have the items property with at
+            # least one item. Each item must be an Annotation"
+            debug_check("annotation ('items')", annotation)
+            if (annotation):
+                # [Assumption #2] 1 annotation in annotation page
+                annotation = annotation[0]
+                debug_check(
+                    'annotation type', annotation.get('type'), 'Annotation')
 
-            # Read body or body.source
-            body = annotation.get('body')
+                # "Annotations must have their own HTTP(S) URIs, conveyed
+                # in the id property"
+                debug_check('annotation id', annotation.get('id'))
+                # Content [...] must be associated by an Annotation that has
+                # the motivation value painting"
+                debug_check(
+                    'annotation motivation', annotation.get('motivation'),
+                    'painting')
 
-            body_type = body.get('type')
-            if (body_type == 'Image'):
-                source = body
-            elif (body_type == 'SpecificResource'):
-                source = body.get('source')
-            else:
-                raise Exception("Unsupported body type: " + body_type)
+                # Read body or body.source for "specific resources"
+                body = annotation.get('body')
+                body_type = body.get('type')
+                if (body_type == 'Image'):
+                    source = body
+                elif (body_type == 'SpecificResource'):
+                    source = body.get('source')
+                else:
+                    raise Exception(
+                        "Unsupported body type: " + body_type + issue_str)
 
-            iiif_id = source.get('id')
-            i.id = iiif_id
-
-            iiif_format = source.get('format')
-            i.format = iiif_format
-
-            iiif_w = source.get('width')
-            i.w = iiif_w
-
-            iiif_h = source.get('height')
-            i.h = iiif_h
+                # Read image id, format, and dimensions
+                iiif_id = source.get('id')
+                i.id = iiif_id
+                iiif_format = source.get('format')
+                i.format = iiif_format
+                iiif_w = source.get('width')
+                i.w = iiif_w
+                iiif_h = source.get('height')
+                i.h = iiif_h
 
         # Append info to list
         infos.append(i)
