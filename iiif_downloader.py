@@ -467,6 +467,27 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 + sanitize_name(manifest_label) + '.\033[0m')
 
 
+def download_iiif_files_from_collection(version: int, d: Dict, maindir: str,
+                                        conf: Conf = Conf()) -> None:
+    """Download all the files from a collection of manifests."""
+    if (version == 2):
+        manifests_key = 'manifests'
+        id_key = '@id'
+    else:
+        manifests_key = 'items'
+        id_key = 'id'
+
+    manifests = d.get(manifests_key)
+    if (manifests):
+        for m in manifests:
+            manifest_id = m.get(id_key)
+            d = json.loads(open_url(manifest_id).read())
+            download_iiif_files_from_manifest(version, d, maindir, conf)
+    else:
+        raise Exception(
+            "Cannot find manifests (" + manifests_key + ") in collection")
+
+
 def get_iiif_version(d: Dict) -> int:
     """ Check IIIF version from a manifest or a collection."""
     # Get context
@@ -489,7 +510,7 @@ def get_iiif_version(d: Dict) -> int:
 
 
 def open_json_file(json_file: str) -> Dict:
-    """Check if json file is local or remote and read it"""
+    """Check if json file is local or remote and read it."""
     if (is_url(json_file)):
         response = open_url(json_file)
         if (response is not None):
@@ -518,31 +539,19 @@ def download_iiif_files(json_file: str, maindir: str,
     # Check if the input file is a manifest or a collection
     if (version == 2):
         type_key = '@type'
-        manifest_string = 'sc:Manifest'
-        collection_string = 'sc:Collection'
-        manifests_key = 'manifests'
-        id_key = '@id'
+        type_val_manifest = 'sc:Manifest'
+        type_val_collection = 'sc:Collection'
     else:
         type_key = 'type'
-        manifest_string = 'Manifest'
-        collection_string = 'Collection'
-        manifests_key = 'items'
-        id_key = 'id'
+        type_val_manifest = 'Manifest'
+        type_val_collection = 'Collection'
 
     iiif_type = str(d.get(type_key))
-    if (iiif_type.lower() == manifest_string.lower()):
+    if (iiif_type.lower() == type_val_manifest.lower()):
         download_iiif_files_from_manifest(version, d, maindir, conf)
-    elif (iiif_type.lower() == collection_string.lower()):
-        # TODO: one directory for same collection?
-        manifests = d.get(manifests_key)
-        if (manifests):
-            for m in manifests:
-                manifest_id = m.get(id_key)
-                d = json.loads(open_url(manifest_id).read())
-                download_iiif_files_from_manifest(version, d, maindir, conf)
-        else:
-            raise Exception(
-                "Cannot find manifests (" + manifests_key + ") in collection")
+    elif (iiif_type.lower() == type_val_collection.lower()):
+        # TODO: one directory for the same collection?
+        download_iiif_files_from_collection(version, d, maindir, conf)
     else:
         raise Exception(
             "Not a manifest or a collection of manifests (type: "
