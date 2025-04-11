@@ -69,7 +69,7 @@ def open_url(u: str):
 def download_file(u: str, filepath: str) -> int:
     """Open a remote file and save it locally."""
     u = u.replace(" ", "%20")
-    logging.debug("- Downloading " + u)
+    logging.debug("- Downloading " + u + "...")
 
     # Read the remote file from url
     res = open_url(u)
@@ -130,7 +130,7 @@ def sanitize_name(title: str) -> str:
 def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
     """Check if a value has been found or compare it with the expected one."""
     if expected is None:
-        if (to_check is None):
+        if (to_check is None or to_check == 'NA'):
             logging.debug(name.capitalize() + " not found.")
     else:
         if (to_check != expected):
@@ -154,16 +154,14 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - format
 
     # Read manifest label
-    manifest_label = str(d.get('label'))
+    manifest_label = str(d.get('label', "NA"))
     # "A manifest must have a label"
-    assert manifest_label is not None, \
-        "Manifest label ('label') not found." + issue_str
+    debug_check("manifest label ('label')", manifest_label)
 
     # Read manifest id
-    manifest_id = d.get('@id')
+    manifest_id = d.get('@id', "NA")
     # "A manifest must have an id"
-    assert manifest_id is not None, \
-        "Manifest id ('@id') not found." + issue_str
+    debug_check("manifest id ('@id')", manifest_id)
 
     # Read first sequence
     sequences = d.get('sequences')
@@ -247,25 +245,25 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - height
 
     # Read manifest label
-    manifest_label = d.get('label')
+    manifest_label = d.get('label', "NA")
     # "A Manifest must have the label property with at least one entry"
-    assert manifest_label is not None, \
-        "Manifest label ('label') not found." + issue_str
-    # "The value of the property [label] must be a JSON object"
-    assert isinstance(manifest_label, dict), \
-        "Manifest label is not a JSON object." + issue_str
-    manifest_label = next(iter(manifest_label.values()))  # Take first value
-    manifest_label = manifest_label[0]
+    debug_check("Manifest label ('label')", manifest_label)
+    if (manifest_label != "NA"):
+        # "The value of the property [label] must be a JSON object"
+        assert isinstance(manifest_label, dict), \
+            "Manifest label is not a JSON object." + issue_str
+        manifest_label = next(iter(manifest_label.values()))  # Take first val
+        manifest_label = manifest_label[0]
 
     # Read manifest id
-    manifest_id = d.get('id')
-    assert manifest_id is not None, "Manifest id ('id') not found." + issue_str
+    manifest_id = d.get('id', "NA")
+    debug_check("Manifest id ('id')", manifest_id)
 
     # Read canvases
     canvases: Any = d.get('items')
     # "A Manifest must have the items property with at least one item"
     assert canvases is not None, \
-        "Manifest items ('items') not found." + issue_str
+        "Manifest canvases ('items') not found." + issue_str
     infos = []
     for c in canvases:
         debug_check('canvas type', c.get('type'), 'Canvas')
@@ -362,12 +360,12 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
     elif (version == 3):
         manifest_label, manifest_id, infos = read_iiif_manifest3(d)
     else:
-        raise Exception('Unsupported IIIF version (' + str(version) + ')')
+        raise Exception("Unsupported IIIF version (" + str(version) + ")")
 
     # Print manifest features
     logging.debug('- IIIF version: ' + str(version) + '.0')
     logging.debug('- Manifest ID: ' + manifest_id)
-    logging.info('- Title: ' + manifest_label)
+    logging.info('- Document title: ' + manifest_label)
     logging.info('- Files: ' + str(len(infos)))
 
     if (len(infos) > 0):
