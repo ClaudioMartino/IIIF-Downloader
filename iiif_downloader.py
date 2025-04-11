@@ -66,13 +66,13 @@ def open_url(u: str):
         return None
 
 
-def download_file(u: str, filepath: str) -> int:
+def download_file(url: str, filepath: str) -> int:
     """Open a remote file and save it locally."""
-    u = u.replace(" ", "%20")
-    logging.debug("- Downloading " + u + "...")
+    url = url.replace(" ", "%20")
+    logging.debug("- Downloading " + url + "...")
 
-    # Read the remote file from url
-    res = open_url(u)
+    # Open connection to remote file
+    res = open_url(url)
     if (res is None):
         return -1
     else:
@@ -488,15 +488,29 @@ def get_iiif_version(d: Dict) -> int:
     return version
 
 
+def open_json_file(json_file: str) -> Dict:
+    """Check if json file is local or remote and read it"""
+    if (is_url(json_file)):
+        response = open_url(json_file)
+        if (response is not None):
+            d = json.loads(response.read())
+        else:
+            raise Exception("Cannot read remote manifest " + json_file)
+    else:
+        if (os.path.isfile(json_file)):
+            with open(json_file) as f:
+                d = json.load(f)
+        else:
+            raise Exception("Cannot open manifest " + json_file)
+
+    return d
+
+
 def download_iiif_files(json_file: str, maindir: str,
                         conf: Conf = Conf()) -> None:
     """Download all the files from a manifest or a collection."""
-    # Check if json file is local or remote and read it
-    if (is_url(json_file)):
-        d = json.loads(open_url(json_file).read())
-    else:
-        with open(json_file) as f:
-            d = json.load(f)
+    # Open json file
+    d = open_json_file(json_file)
 
     # Check IIIF version
     version = get_iiif_version(d)
@@ -521,10 +535,14 @@ def download_iiif_files(json_file: str, maindir: str,
     elif (iiif_type.lower() == collection_string.lower()):
         # TODO: one directory for same collection?
         manifests = d.get(manifests_key)
-        for m in manifests:
-            manifest_id = m.get(id_key)
-            d = json.loads(open_url(manifest_id).read())
-            download_iiif_files_from_manifest(version, d, maindir, conf)
+        if (manifests):
+            for m in manifests:
+                manifest_id = m.get(id_key)
+                d = json.loads(open_url(manifest_id).read())
+                download_iiif_files_from_manifest(version, d, maindir, conf)
+        else:
+            raise Exception(
+                "Cannot find manifests (" + manifests_key + ") in collection")
     else:
         raise Exception(
             "Not a manifest or a collection of manifests (type: "
@@ -549,7 +567,7 @@ def get_pages(pages: str) -> Tuple[int, int]:
 
 
 if __name__ == "__main__":
-    # Parse arguments
+    # Parse user defined arguments
     parser = argparse.ArgumentParser(
         description="IIIF Downloader",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -581,16 +599,16 @@ if __name__ == "__main__":
 
     config = vars(parser.parse_args())
 
-    # Create configuration structure
-    firstpage, lastpage = get_pages(config['pages'])
-    conf = Conf(firstpage, lastpage, config['use_labels'], config['force'])
-
     # Configure logger
     if (config['verbose']):
         logging_level = logging.DEBUG
     else:
         logging_level = logging.INFO
     logging.basicConfig(level=logging_level, format="%(message)s")
+
+    # Create configuration structure
+    firstpage, lastpage = get_pages(config['pages'])
+    conf = Conf(firstpage, lastpage, config['use_labels'], config['force'])
 
     # Call main function
     download_iiif_files(config['manifest'], config['directory'], conf)
