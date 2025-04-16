@@ -24,3 +24,6 @@ https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb10139933/manifest
 https://iiif.bodleian.ox.ac.uk/iiif/manifest/748a9d50-5a3a-440e-ab9d-567dd68b6abb.json
 https://demos.biblissima.fr/iiif/metadata/florus-dispersus/manifest.json
 https://dvp.prtd.app/hamilton/manifest.json
+https://iiif-test.github.io/Space/manifests/ganymede-2021-06-07.json
+https://iiif-test.github.io/Space/manifests/ganymede-layers-2021-06-07.json
+https://iiif-test.github.io/Space/manifests/manifest_test.json

@@ -19,4 +19,8 @@ with open(ver_dict[ver]['dir'] + '/' + ver_dict[ver]['txt']) as f:
 # Download them in .json files
 for i, manifest in enumerate(manifests):
     print(manifest)
-    iiif_downloader.download_file(manifest, ver_dict[ver]['dir'] + '/' + "manifest" + str(i).zfill(2) + ".json")
+    output_file = ver_dict[ver]['dir'] + '/' + "manifest" + str(i).zfill(2) + ".json"
+    if(not os.path.isfile(output_file)):
+        iiif_downloader.download_file(manifest, output_file)
+    else:
+        print("File exists, skip.")
