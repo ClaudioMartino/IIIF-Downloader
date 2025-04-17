@@ -8,8 +8,9 @@ import time
 import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
+from urllib.error import URLError
 from typing import List, Tuple, Dict, Any
-
+from ssl import create_default_context, CERT_NONE
 
 issue_str = "\nPLEASE submit a bug report to \
 https://github.com/ClaudioMartino/IIIF-Downloader/issues \
@@ -55,15 +56,36 @@ def print_statistics(downloaded_cnt: int, total_time: float,
     logging.info("-------------")
 
 
-def open_url(u: str):
+def open_url(url: str, timeout: int = 30):
     """Open url."""
-    headers = {'User-Agent': "Mozilla/5.0"}
+    # Create url request
+    headers = {"User-Agent": "Mozilla/5.0"}
+    url_req = Request(url, headers=headers)
+
+    # Create default SSL context
+    ctx = create_default_context()
+
+    # Open the url
     try:
-        response = urlopen(Request(u, headers=headers), timeout=30)
+        response = urlopen(url_req, timeout=timeout, context=ctx)
         return response
-    except Exception as err:
-        logging.error(err)
-        return None
+    except Exception as e:
+        logging.debug("- Exception: " + str(e))
+
+        # If SSL certificate verification fails, try disabling it
+        if isinstance(e, URLError):
+            if 'CERTIFICATE_VERIFY_FAILED' in str(e.reason):
+                logging.debug("- Disabling SSL certificate verification")
+                ctx.check_hostname = False
+                ctx.verify_mode = CERT_NONE
+                try:
+                    response = urlopen(url_req, timeout=timeout, context=ctx)
+                    return response
+                except Exception as e:
+                    logging.debug("- Exception: " + str(e))
+                    return None
+        else:
+            return None
 
 
 def download_file(url: str, filepath: str) -> int:
