@@ -153,11 +153,11 @@ def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
     """Check if a value has been found or compare it with the expected one."""
     if expected is None:
         if (to_check is None or to_check == 'NA'):
-            logging.debug(name.capitalize() + " not found.")
+            logging.debug("- " + name.capitalize() + " not found.")
     else:
         if (to_check != expected):
             logging.debug(
-                "Unexpected " + name + " value: " + str(to_check)
+                "- Unexpected " + name + " value: " + str(to_check)
                 + " instead of " + str(expected) + ".")
 
 
@@ -191,6 +191,10 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     assert sequences is not None, \
         "Manifest sequences ('sequences') not found." + issue_str
     # [Assumption #1] 1 sequence in sequences ("very likely")
+    if (len(sequences) > 1):
+        logging.debug(
+            '- There are ' + str(len(sequences)) +
+            ' sequences in the manifest, but only the first is read.')
     sequence = sequences[0]
     debug_check('sequence type', sequence.get('@type'), 'sc:Sequence')
 
@@ -199,7 +203,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # "Each sequence must have at least one canvas"
     assert canvases is not None, "Canvases not found. " + issue_str
     infos = []
-    for c in canvases:
+    for nc, c in enumerate(canvases):
         debug_check('canvas type', c.get('@type'), 'sc:Canvas')
 
         # "A canvas must have an id"
@@ -225,11 +229,16 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
         images = c.get("images")
         if (images):
             # [Assumption #2] 1 image in images
+            if (len(images) > 1):
+                logging.debug(
+                    '- There are ' + str(len(images))
+                    + ' images in canvas ' + str(nc) +
+                    ', but only the first one is read.')
             img = images[0]
             # "All resources must have a type specified"
             debug_check('image type', img.get('@type'), 'oa:Annotation')
             # "Each association of a content resource must have the motivation
-            # field and the value must be “sc:painting”
+            # field and the value must be “sc:painting”"
             debug_check(
                 'image motivation', img.get('motivation'), 'sc:painting')
 
@@ -237,6 +246,9 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
             # If the resource has multiple images (choice), take default only
             if (resource.get('@type') == 'oa:Choice'):
                 resource = resource.get('default')
+                logging.debug(
+                    '- The image in canvas ' + str(nc) +
+                    ' has multiple choices, but only the default one is read.')
 
             iiif_id = resource.get('@id')
             # "The image must have an @id field"
@@ -287,7 +299,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
     assert canvases is not None, \
         "Manifest canvases ('items') not found." + issue_str
     infos = []
-    for c in canvases:
+    for nc, c in enumerate(canvases):
         debug_check('canvas type', c.get('type'), 'Canvas')
 
         # "Canvases must be identified by a URI"
@@ -318,6 +330,11 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
         debug_check("annotation page ('items')", annotation_page)
         if (annotation_page):
             # [Assumption #1] 1 annotation page in canvas
+            if (len(annotation_page) > 1):
+                logging.debug(
+                    '- There are ' + str(len(annotation_page)) +
+                    ' annotation pages in canvas ' + str(nc) +
+                    ', but only the first one is read.')
             annotation_page = annotation_page[0]
             debug_check(
                 "annotation page type", annotation_page.get('type'),
@@ -333,6 +350,11 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
             debug_check("annotation ('items')", annotation)
             if (annotation):
                 # [Assumption #2] 1 annotation in annotation page
+                if (len(annotation) > 1):
+                    logging.debug(
+                        '- There are ' + str(len(annotation)) +
+                        ' annotation in the annotation page of canvas ' +
+                        str(nc) + ', but only the first one is read.')
                 annotation = annotation[0]
                 debug_check(
                     'annotation type', annotation.get('type'), 'Annotation')
