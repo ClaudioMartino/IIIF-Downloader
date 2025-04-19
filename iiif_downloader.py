@@ -20,17 +20,20 @@ and include the manifest."
 class Conf:
     """A class containing all user configurations."""
     def __init__(self, firstpage: int = 1, lastpage: int = -1,
-                 use_labels: bool = False, force: bool = False):
+                 force: bool = False, use_labels: bool = False,
+                 all_images: bool = False):
         self.firstpage = firstpage
         self.lastpage = lastpage
-        self.use_labels = use_labels
         self.force = force
+        self.use_labels = use_labels
+        self.all_images = all_images
 
 
 class Info:
     """A class containing the features of an IIIF file."""
-    def __init__(self, label: str = "NA", iiif_id: str = "NA",
-                 iiif_format: str = "NA", iiif_w: int = 0, iiif_h: int = 0):
+    def __init__(self, label: str = "NA", iiif_id: List[str] = [],
+                 iiif_format: List[str] = [], iiif_w: int = 0,
+                 iiif_h: int = 0):
         self.label = label
         self.id = iiif_id
         self.format = iiif_format
@@ -190,7 +193,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # "Each manifest must, and is very likely to, have one sequence"
     assert sequences is not None, \
         "Manifest sequences ('sequences') not found." + issue_str
-    # [Assumption #1] 1 sequence in sequences ("very likely")
+    # [Assumption] One sequence in sequences ("very likely")
     if (len(sequences) > 1):
         logging.debug(
             '- There are ' + str(len(sequences)) +
@@ -225,38 +228,44 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
         i.w = iiif_w
         i.h = iiif_h
 
-        # Read image
+        # Read images
         images = c.get("images")
         if (images):
-            # [Assumption #2] 1 image in images
             if (len(images) > 1):
                 logging.debug(
-                    '- There are ' + str(len(images))
-                    + ' images in canvas ' + str(nc) +
-                    ', but only the first one is read.')
-            img = images[0]
-            # "All resources must have a type specified"
-            debug_check('image type', img.get('@type'), 'oa:Annotation')
-            # "Each association of a content resource must have the motivation
-            # field and the value must be “sc:painting”"
-            debug_check(
-                'image motivation', img.get('motivation'), 'sc:painting')
+                    '- There are ' + str(len(images)) + ' images in canvas ' +
+                    str(nc) + '.')
 
-            resource = img.get('resource')
-            # If the resource has multiple images (choice), take default only
-            if (resource.get('@type') == 'oa:Choice'):
-                resource = resource.get('default')
-                logging.debug(
-                    '- The image in canvas ' + str(nc) +
-                    ' has multiple choices, but only the default one is read.')
+            id_list = []
+            format_list = []
+            for img in images:
+                # "All resources must have a type specified"
+                debug_check('image type', img.get('@type'), 'oa:Annotation')
+                # "Each association of a content resource must have the
+                # motivation field and the value must be “sc:painting”
+                debug_check(
+                    'image motivation', img.get('motivation'), 'sc:painting')
 
-            iiif_id = resource.get('@id')
-            # "The image must have an @id field"
-            assert iiif_id is not None, \
-                "Image id ('@id') not found." + issue_str
-            i.id = iiif_id
+                resource = img.get('resource')
+                # If resource has multiple images (choice), take just default
+                if (resource.get('@type') == 'oa:Choice'):
+                    resource = resource.get('default')
+                    logging.debug(
+                        '- The image in canvas ' + str(nc) + ' has multiple \
+choices, but only the default one is read.')
 
-            i.format = resource.get('format', 'NA')
+                iiif_id = resource.get('@id')
+                # "The image must have an @id field"
+                assert iiif_id is not None, \
+                    "Image id ('@id') not found." + issue_str
+
+                iiif_format = resource.get('format', 'NA')
+
+                id_list.append(iiif_id)
+                format_list.append(iiif_format)
+
+            i.id = id_list
+            i.format = format_list
 
         # Append info to list
         infos.append(i)
@@ -329,7 +338,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
         # item must be an Annotation Page"
         debug_check("annotation page ('items')", annotation_page)
         if (annotation_page):
-            # [Assumption #1] 1 annotation page in canvas
+            # [Assumption #1] One annotation page in canvas
             if (len(annotation_page) > 1):
                 logging.debug(
                     '- There are ' + str(len(annotation_page)) +
@@ -349,7 +358,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
             # least one item. Each item must be an Annotation"
             debug_check("annotation ('items')", annotation)
             if (annotation):
-                # [Assumption #2] 1 annotation in annotation page
+                # [Assumption #2] One annotation in annotation page
                 if (len(annotation) > 1):
                     logging.debug(
                         '- There are ' + str(len(annotation)) +
@@ -381,9 +390,9 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
 
                 # Read image id, format, and dimensions
                 iiif_id = source.get('id')
-                i.id = iiif_id
+                i.id = [iiif_id]
                 iiif_format = source.get('format')
-                i.format = iiif_format
+                i.format = [iiif_format]
                 iiif_w = source.get('width')
                 i.w = iiif_w
                 iiif_h = source.get('height')
@@ -410,7 +419,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
     logging.debug('- IIIF version: ' + str(version) + '.0')
     logging.debug('- Manifest ID: ' + manifest_id)
     logging.info('- Document title: ' + manifest_label)
-    logging.info('- Files: ' + str(len(infos)))
+    logging.info('- Pages: ' + str(len(infos)))
 
     if (len(infos) > 0):
         # Create subdirectory from manifest label
@@ -421,7 +430,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 '- ' + sanitize_name(manifest_label) + ' created in '
                 + maindir)
 
-        # Create sub-array (conf.firstpage, conf.lastpage)
+        # Create image sub-list (conf.firstpage, conf.lastpage)
         totpages = len(infos)
         if (conf.firstpage != 1 or conf.lastpage != -1):
             infos = infos[conf.firstpage - 1:]
@@ -430,7 +439,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 "- Downloading pages " + str(conf.firstpage) + "-"
                 + str(conf.lastpage) + " from a total of " + str(totpages))
 
-        # Loop over each id
+        # Loop over each page
         some_error = False
         try_with_id = True
         total_filesize = 0
@@ -440,60 +449,78 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
             # Print counters and label
             percentage = round((cnt + 1) / len(infos) * 100, 1)
             cnt = cnt + conf.firstpage - 1
-            logging.info('[n.' + str(cnt + 1) + '/' + str(totpages) + '; '
-                         + str(percentage) + '%] Label: ' + info.label)
-
-            # Print file ID
-            logging.info('- ID: ' + info.id)
-            if (info.id == 'NA'):
-                logging.debug('- File not available in the manifest, skip')
-                continue
-
-            # Print file extension
-            ext = get_extension(info.format)
-            # If the format was not found, try to take extension from file name
-            if (ext == 'NA' and '.' in info.id):
-                ext = '.' + info.id.split('.')[-1]
-            logging.info('- Format: ' + info.format + ' => Extension: ' + ext)
+            logging.info(
+                '[n.' + str(cnt + 1) + '/' + str(totpages) + '; '
+                + str(percentage) + '%] Label: ' + info.label)
 
             # Print file dimensions
             logging.info('- Width: ' + str(info.w) + ' px')
             logging.info('- Height: ' + str(info.h) + ' px')
 
-            # Download file
-            if (conf.use_labels):
-                filename = sanitize_name(info.label) + ext
-            else:
-                filename = 'p' + str(cnt + 1).zfill(3) + ext
+            # Take just the first file when 'all-images' is not set
+            if (len(info.id) > 1 and not conf.all_images):
+                logging.debug(
+                    '- There are ' + str(len(info.id)) +
+                    ' images for this page, but only the first one is \
+downloaded. Use the --all-images option to download everything.')
+                info.id = [info.id[0]]
 
-            if (os.path.exists(subdir + '/' + filename) and not conf.force):
-                logging.debug('- ' + subdir + '/' + filename + " exists, skip")
-                continue
+            for n, i in enumerate(info.id):
+                # Print file ID
+                logging.info('- ID: ' + i)
+                if (i == 'NA'):
+                    logging.debug('- File not available in the manifest, skip')
+                    continue
 
-            # Priority to image id, but if it doesn't work, we move
-            # to URI template and we stop trying with it
-            filesize = -1
-            if (try_with_id):
-                filesize = download_file(info.id, subdir + '/' + filename)
+                # Print file format and extension
+                logging.info('- Format: ' + info.format[n])
+                ext = get_extension(info.format[n])
+                # If the format has not been found in the manifest, try to take
+                # the extension from the file name
+                if (ext == 'NA' and '.' in i):
+                    ext = '.' + i.split('.')[-1]
+                logging.info('- Extension: ' + ext)
+
+                # Create file name
+                if (conf.use_labels):
+                    filename = sanitize_name(info.label)
+                else:
+                    filename = 'p' + str(cnt + 1).zfill(3)
+                if (len(info.id) > 1):
+                    filename += '_' + str(n + 1)
+                filename += ext
+                subdir_filename = subdir + '/' + filename
+
+                # Download file
+                if (os.path.exists(subdir_filename) and not conf.force):
+                    logging.debug(
+                        '- ' + subdir_filename + ' exists, skip')
+                    continue
+
+                # Priority to the image id, but if it doesn't work, we move
+                # to the URI template and we stop trying with the image id
+                filesize = -1
+                if (try_with_id):
+                    filesize = download_file(i, subdir_filename)
+                    if (filesize <= 0):
+                        logging.debug("- Cannot download " + i)
+                        try_with_id = False
+
                 if (filesize <= 0):
-                    logging.debug("- Cannot download " + info.id)
-                    try_with_id = False
+                    img_url = get_img_url(i, ext)
+                    filesize = download_file(img_url, subdir_filename)
 
-            if (filesize <= 0):
-                img_url = get_img_url(info.id, ext)
-                filesize = download_file(img_url, subdir + '/' + filename)
-
-            # Print final message and update counters
-            if (filesize <= 0):
-                logging.error('\033[91m' + '- Error!' + '\033[0m')
-                some_error = True
-            else:
-                logging.info(
-                    '\033[92m' + '- ' + filename + ' ('
-                    + str(round(filesize / 1000)) + ' KB) saved in '
-                    + subdir + '.' + '\033[0m')
-                total_filesize += filesize
-                downloaded_cnt = downloaded_cnt + 1
+                # Print final message and update counters
+                if (filesize <= 0):
+                    logging.error('\033[91m' + '- Error!' + '\033[0m')
+                    some_error = True
+                else:
+                    logging.info(
+                        '\033[92m' + '- ' + filename + ' ('
+                        + str(round(filesize / 1000)) + ' kB) saved in '
+                        + subdir + '.' + '\033[0m')
+                    total_filesize += filesize
+                    downloaded_cnt = downloaded_cnt + 1
 
         total_time = time.time() - start_time
 
@@ -649,6 +676,11 @@ if __name__ == "__main__":
         "--use-labels",
         action='store_true',
         help="name the downloaded files with their labels")
+    parser.add_argument(
+        "--all-images",
+        action='store_true',
+        help="download all images related to the pages in 2.0 manifests, not \
+just the first one")
 
     config = vars(parser.parse_args())
 
@@ -661,7 +693,8 @@ if __name__ == "__main__":
 
     # Create configuration structure
     firstpage, lastpage = get_pages(config['pages'])
-    conf = Conf(firstpage, lastpage, config['use_labels'], config['force'])
+    conf = Conf(firstpage, lastpage, config['force'], config['use_labels'],
+                config['all_images'])
 
     # Call main function
     download_iiif_files(config['manifest'], config['directory'], conf)

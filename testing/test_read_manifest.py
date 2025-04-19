@@ -24,11 +24,12 @@ for i in range(len(ver_dict[ver]['ids'])):
 
         na_cnt = 0
         for info in infos:
-            if (info.id == 'NA'):
+            if (len(info.id) == 0):
                 na_cnt = na_cnt + 1
             else:
-                if(not iiif_downloader.is_url(info.id)):
-                    raise Exception(info.id + " is not an URL.")
+                for id_i in info.id:
+                    if(not iiif_downloader.is_url(id_i)):
+                        raise Exception(id_i + " is not an URL.")
 
         #print("{ \"tot\" : " + str(len(infos))+ ", \"na\": " + str(na_cnt) + " }")
 
