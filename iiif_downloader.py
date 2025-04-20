@@ -32,11 +32,10 @@ class Conf:
 class Info:
     """A class containing the features of an IIIF file."""
     def __init__(self, label: str = "NA", iiif_id: List[str] = [],
-                 iiif_format: List[str] = [], iiif_w: int = 0,
-                 iiif_h: int = 0):
+                 ext: List[str] = [], iiif_w: int = 0, iiif_h: int = 0):
         self.label = label
         self.id = iiif_id
-        self.format = iiif_format
+        self.ext = ext
         self.w = iiif_w
         self.h = iiif_h
 
@@ -122,8 +121,9 @@ def is_url(url: str) -> bool:
     return (url[:4] == 'http')
 
 
-def get_extension(mime_type: str) -> str:
+def get_extension(mime_type: str, file_id: str, nc: int) -> str:
     """Return the extension given the MIME type (IIIF format)."""
+    # Take the extension from the format
     mime_to_extension = {
         'image/jpeg': '.jpg',
         'image/jpg': '.jpg',  # 'image/jpg' is wrong, nevertheless it is used
@@ -134,7 +134,30 @@ def get_extension(mime_type: str) -> str:
         'application/pdf': '.pdf',
         'image/webp': '.webp'
     }
-    return mime_to_extension.get(mime_type, 'NA')
+    ext = mime_to_extension.get(mime_type, 'NA')
+    if (ext == 'NA'):
+        logging.debug(
+            '- File extension of canvas ' + str(nc) +
+            ' is not correctly defined.')
+
+    # Try to take the extension from the file name
+    if ('/default.' in file_id):
+        ext_from_id = '.' + file_id.split('.')[-1]
+        if (ext != ext_from_id):
+            if (ext == 'NA'):
+                logging.debug(
+                    '- File extension of canvas ' + str(nc) +
+                    ' extracted from file id (' + ext_from_id + ').')
+            else:
+                logging.debug(
+                    '- File id of canvas ' + str(nc) +
+                    ' defines an extension (' + ext_from_id +
+                    ') different from the format defined one ('
+                    + mime_type + ' => ' + ext + '). ' + ext_from_id +
+                    ' has been taken into account.')
+            ext = ext_from_id
+
+    return ext
 
 
 def get_img_url(iiif_id: str, ext: str, region: str = 'full',
@@ -254,7 +277,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
                     str(nc) + '.')
 
             id_list = []
-            format_list = []
+            ext_list = []
             for img in images:
                 # "All resources must have a type specified"
                 debug_check('image type', img.get('@type'), 'oa:Annotation')
@@ -276,13 +299,14 @@ choices, but only the default one is read.')
                 assert iiif_id is not None, \
                     "Image id ('@id') not found." + issue_str
 
-                iiif_format = resource.get('format', 'NA')
+                iiif_format = resource.get('format')
+                ext = get_extension(iiif_format, iiif_id, nc)
 
                 id_list.append(iiif_id)
-                format_list.append(iiif_format)
+                ext_list.append(ext)
 
             i.id = id_list
-            i.format = format_list
+            i.ext = ext_list
 
         # Append info to list
         infos.append(i)
@@ -409,7 +433,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
                 iiif_id = source.get('id')
                 i.id = [iiif_id]
                 iiif_format = source.get('format')
-                i.format = [iiif_format]
+                i.ext = [get_extension(iiif_format, iiif_id, nc)]
                 iiif_w = source.get('width')
                 i.w = iiif_w
                 iiif_h = source.get('height')
@@ -489,13 +513,8 @@ downloaded. Use the --all-images option to download everything.')
                     logging.debug('- File not available in the manifest, skip')
                     continue
 
-                # Print file format and extension
-                logging.info('- Format: ' + info.format[n])
-                ext = get_extension(info.format[n])
-                # If the format has not been found in the manifest, try to take
-                # the extension from the file name
-                if (ext == 'NA' and '.' in i):
-                    ext = '.' + i.split('.')[-1]
+                # Print file extension
+                ext = info.ext[n]
                 logging.info('- Extension: ' + ext)
 
                 # Create file name
