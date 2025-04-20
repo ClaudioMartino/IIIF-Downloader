@@ -152,6 +152,11 @@ def sanitize_name(title: str) -> str:
     return title
 
 
+def first_value(d: Dict) -> Any:
+    """Return first value of a dictionary"""
+    return next(iter(d.values()))
+
+
 def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
     """Check if a value has been found or compare it with the expected one."""
     if expected is None:
@@ -179,9 +184,21 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     #         - format
 
     # Read manifest label
-    manifest_label = str(d.get('label', "NA"))
+    manifest_label = d.get('label', "NA")
     # "A manifest must have a label"
     debug_check("manifest label ('label')", manifest_label)
+    if (not isinstance(manifest_label, str)):
+        logging.debug(
+            '- Manifest label is not a string: ' + str(manifest_label) + '.')
+    if (isinstance(manifest_label, list)):
+        manifest_label = manifest_label[0]
+    # "Language may be associated with strings [...] This pattern may be used
+    # in label"
+    if (isinstance(manifest_label, Dict)):
+        manifest_label = str(manifest_label.get('@value'))
+        logging.debug(
+            "- Taking just the first '@value' of the manifest label: " +
+            manifest_label)
 
     # Read manifest id
     manifest_id = d.get('@id', "NA")
@@ -295,8 +312,8 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
         # "The value of the property [label] must be a JSON object"
         assert isinstance(manifest_label, dict), \
             "Manifest label is not a JSON object." + issue_str
-        manifest_label = next(iter(manifest_label.values()))  # Take first val
-        manifest_label = manifest_label[0]
+        manifest_label = first_value(manifest_label)  # Take first value
+        manifest_label = str(manifest_label[0])
 
     # Read manifest id
     manifest_id = d.get('id', "NA")
@@ -324,8 +341,8 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
             # a JSON object"
             assert isinstance(label, dict), \
                 "Canvas label is not a JSON object." + issue_str
-            label = next(iter(label.values()))  # Take first value
-            label = label[0]
+            label = first_value(label)  # Take first value
+            label = str(label[0])
         i.label = label
 
         # "A Canvas must have a rectangular aspect ratio"
