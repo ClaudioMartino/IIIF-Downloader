@@ -1,7 +1,7 @@
 """Download all images from an IIIF manifest."""
 
 import logging
-from re import match
+from re import match, Match
 import argparse
 import json
 import time
@@ -74,7 +74,7 @@ def open_url(url: str, timeout: int = 30):
     except Exception as e:
         logging.debug("- Exception: " + str(e))
 
-        # If SSL certificate verification fails, try disabling it
+        # If the SSL certificate verification fails, try disabling it
         if isinstance(e, URLError):
             if 'CERTIFICATE_VERIFY_FAILED' in str(e.reason):
                 logging.debug("- Disabling SSL certificate verification")
@@ -91,7 +91,7 @@ def open_url(url: str, timeout: int = 30):
 
 
 def download_file(url: str, filepath: str) -> int:
-    """Open a remote file and save it locally."""
+    """Open a connection to a remote file and save it locally."""
     url = url.replace(" ", "%20")
     logging.debug("- Downloading " + url + "...")
 
@@ -160,12 +160,23 @@ def get_extension(mime_type: str, file_id: str, nc: int) -> str:
     return ext
 
 
-def get_img_url(iiif_id: str, ext: str, region: str = 'full',
-                size: str = 'max', rotation: str = '0',
-                quality: str = 'default') -> str:
-    """Return image url given its parts."""
-    return iiif_id + '/' + region + '/' + size + '/' + rotation + '/' + \
-        quality + ext
+def get_img_uri(begin: str, region: str, size: str, rotation: str,
+                quality_format: str) -> str:
+    """Return an image URI given all the components."""
+    # URI: {begin}/{region}/{size}/{rotation}/{quality}.{format}
+    return begin + '/' + region + '/' + size + '/' + rotation + '/' + \
+        quality_format
+
+
+def match_uri_pattern(uri: str) -> Match | None:
+    """Check if a string conforms to the URI template."""
+    # "The URI for requesting image information must conform to the following
+    # URI template: {scheme}://{server}{/prefix}/{identifier}/{region}/{size}/
+    # {rotation}/{quality}.{format}"
+    pattern = r'(?P<begin>.*)\/(?P<region>[a-zA-Z,:]+)\/' \
+        r'(?P<size>[a-zA-Z0-9,!^:]+)\/(?P<rotation>[0-9!]+)\/' \
+        r'(?P<quality>[a-zA-Z]+)\.(?P<format>[a-zA-Z0-9]+)$'
+    return match(pattern, uri)
 
 
 def sanitize_name(title: str) -> str:
@@ -244,7 +255,8 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     # Read all canvases
     canvases = sequence.get('canvases')
     # "Each sequence must have at least one canvas"
-    assert canvases is not None, "Canvases not found. " + issue_str
+    assert canvases is not None, \
+        "Canvases ('canvases') not found. " + issue_str
     infos = []
     for nc, c in enumerate(canvases):
         debug_check('canvas type', c.get('@type'), 'sc:Canvas')
@@ -462,7 +474,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
     logging.info('- Document title: ' + manifest_label)
     logging.info('- Pages: ' + str(len(infos)))
 
-    if (len(infos) > 0):
+    if (infos):
         # Create subdirectory from manifest label
         subdir = maindir + '/' + sanitize_name(manifest_label)
         if (not os.path.exists(subdir)):
@@ -481,10 +493,18 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 + str(conf.lastpage) + " from a total of " + str(totpages))
 
         # Loop over each page
-        some_error = False
+        if (version == 2):
+            try_with_id_full = True
+        else:
+            try_with_id_full = False  # size = 'full' not in the 3.0 API
+        try_with_id_max = True
         try_with_id = True
+        try_with_uri_full = True
+
+        some_error = False
         total_filesize = 0
         downloaded_cnt = 0
+
         start_time = time.time()
         for cnt, info in enumerate(infos):
             # Print counters and label
@@ -506,6 +526,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
 downloaded. Use the --all-images option to download everything.')
                 info.id = [info.id[0]]
 
+            # Loop over each id (usually one iteration)
             for n, i in enumerate(info.id):
                 # Print file ID
                 logging.info('- ID: ' + i)
@@ -527,24 +548,84 @@ downloaded. Use the --all-images option to download everything.')
                 filename += ext
                 subdir_filename = subdir + '/' + filename
 
-                # Download file
+                # Skip download if the file exists
                 if (os.path.exists(subdir_filename) and not conf.force):
                     logging.debug(
                         '- ' + subdir_filename + ' exists, skip')
                     continue
 
-                # Priority to the image id, but if it doesn't work, we move
-                # to the URI template and we stop trying with the image id
+                # Download the file. Five priority levels have been defined:
+                # - If the image id is formatted as the URI template:
+                #   - 1. image id with size = full (not for 3.0 API)
+                #   - 2. image id with size = max (not for 2.0 API)
+                # - 3. image id as it is written in the manifest, URI or else
+                # - 4. URI obtained appending strings to id with size = full
+                # - 5. URI obtained appending strings to id with size = max
+                # If one level doesn't work, move to the lower and stop trying
+                # with the higher (we assume that all the images of the
+                # manifest behave in the same way).
+
                 filesize = -1
-                if (try_with_id):
+
+                # Check if the image id is formatted as URI pattern
+                regex_match_id = match_uri_pattern(i)
+                if ((try_with_id_full or try_with_id_max) and
+                        regex_match_id is not None):
+                    id_begin = regex_match_id.group('begin')
+                    id_size = regex_match_id.group('size')
+                    if (id_size == 'full'):
+                        try_with_id_full = False
+                        try_with_id_max = False
+                    if (id_size == 'max'):
+                        try_with_id_max = False
+
+                    # 1. Image id (formatted as URI) with size = full
+                    if (try_with_id_full):
+                        logging.debug(
+                            "- File id has size = '" + id_size +
+                            "', however with size = 'full' it should have \
+higher quality.")
+                        img_uri = get_img_uri(
+                            id_begin, 'full', 'full', '0', 'default' + ext)
+                        filesize = download_file(img_uri, subdir_filename)
+                        if (filesize <= 0):
+                            logging.debug("- Cannot download " + img_uri)
+                            try_with_id_full = False
+
+                    # 2. Image id (formatted as URI) with size = max
+                    if (try_with_id_max and filesize <= 0):
+                        logging.debug(
+                            "- File id has size = '" + id_size +
+                            "', however with size = 'max' it should have \
+higher quality.")
+                        img_uri = get_img_uri(
+                            id_begin, 'full', 'max', '0', 'default' + ext)
+                        filesize = download_file(img_uri, subdir_filename)
+                        if (filesize <= 0):
+                            logging.debug("- Cannot download " + img_uri)
+                            try_with_id_max = False
+
+                # 3. Image id as it is, URI or something else
+                if (try_with_id and filesize <= 0):
                     filesize = download_file(i, subdir_filename)
                     if (filesize <= 0):
                         logging.debug("- Cannot download " + i)
                         try_with_id = False
 
+                # 4. URI obtained appending strings to the id, with size = full
+                if (try_with_uri_full and filesize <= 0):
+                    img_uri = get_img_uri(
+                        i, 'full', 'full', '0', 'default' + ext)
+                    filesize = download_file(img_uri, subdir_filename)
+                    if (filesize <= 0):
+                        logging.debug("- Cannot download " + img_uri)
+                        try_with_uri_full = False
+
+                # 5. URI obtained appending strings to the id, with size = max
                 if (filesize <= 0):
-                    img_url = get_img_url(i, ext)
-                    filesize = download_file(img_url, subdir_filename)
+                    img_uri = get_img_uri(
+                        i, 'full', 'max', '0', 'default' + ext)
+                    filesize = download_file(img_uri, subdir_filename)
 
                 # Print final message and update counters
                 if (filesize <= 0):
