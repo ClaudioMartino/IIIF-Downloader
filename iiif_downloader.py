@@ -173,8 +173,8 @@ def match_uri_pattern(uri: str) -> Match | None:
     # "The URI for requesting image information must conform to the following
     # URI template: {scheme}://{server}{/prefix}/{identifier}/{region}/{size}/
     # {rotation}/{quality}.{format}"
-    pattern = r'(?P<begin>.*)\/(?P<region>[a-zA-Z,:]+)\/' \
-        r'(?P<size>[a-zA-Z0-9,!^:]+)\/(?P<rotation>[0-9!]+)\/' \
+    pattern = r'(?P<begin>.*)\/(?P<region>[a-zA-Z0-9,:.]+)\/' \
+        r'(?P<size>[a-zA-Z0-9,!^:]+)\/(?P<rotation>[0-9!.]+)\/' \
         r'(?P<quality>[a-zA-Z]+)\.(?P<format>[a-zA-Z0-9]+)$'
     return match(pattern, uri)
 
