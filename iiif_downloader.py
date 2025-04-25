@@ -147,10 +147,10 @@ def get_extension(mime_type: str, file_id: str, nc: int) -> str:
             if (ext == 'NA'):
                 logging.debug(
                     '- File extension of canvas ' + str(nc) +
-                    ' extracted from file id (' + ext_from_id + ').')
+                    ' extracted from file ID (' + ext_from_id + ').')
             else:
                 logging.debug(
-                    '- File id of canvas ' + str(nc) +
+                    '- File ID of canvas ' + str(nc) +
                     ' defines an extension (' + ext_from_id +
                     ') different from the format defined one ('
                     + mime_type + ' => ' + ext + '). ' + ext_from_id +
@@ -234,10 +234,10 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
             "- Taking just the first '@value' of the manifest label: " +
             manifest_label)
 
-    # Read manifest id
+    # Read manifest ID
     manifest_id = d.get('@id', "NA")
     # "A manifest must have an id"
-    debug_check("manifest id ('@id')", manifest_id)
+    debug_check("manifest ID ('@id')", manifest_id)
 
     # Read first sequence
     sequences = d.get('sequences')
@@ -256,7 +256,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     canvases = sequence.get('canvases')
     # "Each sequence must have at least one canvas"
     assert canvases is not None, \
-        "Canvases ('canvases') not found. " + issue_str
+        "Canvases ('canvases') not found." + issue_str
     infos = []
     for nc, c in enumerate(canvases):
         debug_check('canvas type', c.get('@type'), 'sc:Canvas')
@@ -309,7 +309,7 @@ choices, but only the default one is read.')
                 iiif_id = resource.get('@id')
                 # "The image must have an @id field"
                 assert iiif_id is not None, \
-                    "Image id ('@id') not found." + issue_str
+                    "Image ID ('@id') not found." + issue_str
 
                 iiif_format = resource.get('format')
                 ext = get_extension(iiif_format, iiif_id, nc)
@@ -351,9 +351,9 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
         manifest_label = first_value(manifest_label)  # Take first value
         manifest_label = str(manifest_label[0])
 
-    # Read manifest id
+    # Read manifest ID
     manifest_id = d.get('id', "NA")
-    debug_check("Manifest id ('id')", manifest_id)
+    debug_check("Manifest ID ('id')", manifest_id)
 
     # Read canvases
     canvases: Any = d.get('items')
@@ -365,7 +365,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
         debug_check('canvas type', c.get('type'), 'Canvas')
 
         # "Canvases must be identified by a URI"
-        debug_check('canvas id', c.get('id'))
+        debug_check('canvas ID', c.get('id'))
 
         # Create empty info node
         i = Info()
@@ -403,7 +403,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
                 'AnnotationPage')
 
             # "Annotation Pages must have the id"
-            debug_check("annotation page id", annotation_page.get('id'))
+            debug_check("annotation page ID", annotation_page.get('id'))
 
             # Read annotation
             annotation = annotation_page.get('items')
@@ -423,7 +423,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
 
                 # "Annotations must have their own HTTP(S) URIs, conveyed
                 # in the id property"
-                debug_check('annotation id', annotation.get('id'))
+                debug_check('annotation ID', annotation.get('id'))
                 # Content [...] must be associated by an Annotation that has
                 # the motivation value painting"
                 debug_check(
@@ -441,7 +441,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
                     raise Exception(
                         "Unsupported body type: " + body_type + issue_str)
 
-                # Read image id, format, and dimensions
+                # Read image ID, format, and dimensions
                 iiif_id = source.get('id')
                 i.id = [iiif_id]
                 iiif_format = source.get('format')
@@ -526,7 +526,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
 downloaded. Use the --all-images option to download everything.')
                 info.id = [info.id[0]]
 
-            # Loop over each id (usually one iteration)
+            # Loop over each ID (usually one iteration)
             for n, i in enumerate(info.id):
                 # Print file ID
                 logging.info('- ID: ' + i)
@@ -555,19 +555,19 @@ downloaded. Use the --all-images option to download everything.')
                     continue
 
                 # Download the file. Five priority levels have been defined:
-                # - If the image id is formatted as the URI template:
-                #   - 1. image id with size = full (not for 3.0 API)
-                #   - 2. image id with size = max (not for 2.0 API)
-                # - 3. image id as it is written in the manifest, URI or else
-                # - 4. URI obtained appending strings to id with size = full
-                # - 5. URI obtained appending strings to id with size = max
+                # - If the image ID is formatted as the URI template:
+                #   - 1. image ID with size = full (not for 3.0 API)
+                #   - 2. image ID with size = max (not for 2.0 API)
+                # - 3. image ID as it is written in the manifest, URI or else
+                # - 4. URI obtained appending strings to ID with size = full
+                # - 5. URI obtained appending strings to ID with size = max
                 # If one level doesn't work, move to the lower and stop trying
                 # with the higher (we assume that all the images of the
                 # manifest behave in the same way).
 
                 filesize = -1
 
-                # Check if the image id is formatted as URI pattern
+                # Check if the image ID is formatted as URI pattern
                 regex_match_id = match_uri_pattern(i)
                 if ((try_with_id_full or try_with_id_max) and
                         regex_match_id is not None):
@@ -579,10 +579,10 @@ downloaded. Use the --all-images option to download everything.')
                     if (id_size == 'max'):
                         try_with_id_max = False
 
-                    # 1. Image id (formatted as URI) with size = full
+                    # 1. Image ID (formatted as URI) with size = full
                     if (try_with_id_full):
                         logging.debug(
-                            "- File id has size = '" + id_size +
+                            "- File ID has size = '" + id_size +
                             "', however with size = 'full' it should have \
 higher quality.")
                         img_uri = get_img_uri(
@@ -592,10 +592,10 @@ higher quality.")
                             logging.debug("- Cannot download " + img_uri)
                             try_with_id_full = False
 
-                    # 2. Image id (formatted as URI) with size = max
+                    # 2. Image ID (formatted as URI) with size = max
                     if (try_with_id_max and filesize <= 0):
                         logging.debug(
-                            "- File id has size = '" + id_size +
+                            "- File ID has size = '" + id_size +
                             "', however with size = 'max' it should have \
 higher quality.")
                         img_uri = get_img_uri(
@@ -605,14 +605,14 @@ higher quality.")
                             logging.debug("- Cannot download " + img_uri)
                             try_with_id_max = False
 
-                # 3. Image id as it is, URI or something else
+                # 3. Image ID as it is, URI or something else
                 if (try_with_id and filesize <= 0):
                     filesize = download_file(i, subdir_filename)
                     if (filesize <= 0):
                         logging.debug("- Cannot download " + i)
                         try_with_id = False
 
-                # 4. URI obtained appending strings to the id, with size = full
+                # 4. URI obtained appending strings to the ID, with size = full
                 if (try_with_uri_full and filesize <= 0):
                     img_uri = get_img_uri(
                         i, 'full', 'full', '0', 'default' + ext)
@@ -621,7 +621,7 @@ higher quality.")
                         logging.debug("- Cannot download " + img_uri)
                         try_with_uri_full = False
 
-                # 5. URI obtained appending strings to the id, with size = max
+                # 5. URI obtained appending strings to the ID, with size = max
                 if (filesize <= 0):
                     img_uri = get_img_uri(
                         i, 'full', 'max', '0', 'default' + ext)
