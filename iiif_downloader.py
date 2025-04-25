@@ -187,7 +187,7 @@ def sanitize_name(title: str) -> str:
 
 
 def first_value(d: Dict) -> Any:
-    """Return first value of a dictionary"""
+    """Return first value of a dictionary."""
     return next(iter(d.values()))
 
 
@@ -526,19 +526,18 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
 downloaded. Use the --all-images option to download everything.')
                 info.id = [info.id[0]]
 
+            if (len(info.id) == 0):
+                logging.info('- File not available in the manifest.')
+                continue
+
             # Loop over each ID (usually one iteration)
             for n, i in enumerate(info.id):
-                # Print file ID
+                # Print file ID and extension
                 logging.info('- ID: ' + i)
-                if (i == 'NA'):
-                    logging.debug('- File not available in the manifest, skip')
-                    continue
-
-                # Print file extension
                 ext = info.ext[n]
                 logging.info('- Extension: ' + ext)
 
-                # Create file name
+                # Create output file name
                 if (conf.use_labels):
                     filename = sanitize_name(info.label)
                 else:
