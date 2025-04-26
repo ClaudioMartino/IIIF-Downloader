@@ -181,9 +181,10 @@ def match_uri_pattern(uri: str) -> Match | None:
 
 def sanitize_name(title: str) -> str:
     """Sanitize file name in order to avoid errors."""
+    max_len = 100
     title = title.replace("/", " ")
     title = title.replace(":", "")
-    return title
+    return title[:max_len]
 
 
 def first_value(d: Dict) -> Any:
