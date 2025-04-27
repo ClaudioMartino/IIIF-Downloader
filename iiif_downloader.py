@@ -204,6 +204,28 @@ def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
                 + " instead of " + str(expected) + ".")
 
 
+def sanitize_label(label: Any, source: str) -> str:
+    """Sanitize manifest or canvas labels in 2.0 manifests."""
+    if (not isinstance(label, str)):
+        logging.debug(
+            '- ' + source.capitalize() + ' label is not a string: ' +
+            str(label) + '.')
+
+    if (isinstance(label, list)):
+        label = label[0]
+
+    # "Language may be associated with strings that are intended to be
+    # displayed to the user with the following pattern of @value plus the RFC
+    # 5646 code in @language, instead of a plain string. This pattern may be
+    # used in label"
+    if (isinstance(label, Dict)):
+        label = str(label.get('@value'))
+        logging.debug(
+            "- Taking just the first '@value' of " + source + ' label.')
+
+    return str(label)
+
+
 def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     """Download all the files from a 2.0 manifest."""
     # - label
@@ -222,18 +244,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     manifest_label = d.get('label', "NA")
     # "A manifest must have a label"
     debug_check("manifest label ('label')", manifest_label)
-    if (not isinstance(manifest_label, str)):
-        logging.debug(
-            '- Manifest label is not a string: ' + str(manifest_label) + '.')
-    if (isinstance(manifest_label, list)):
-        manifest_label = manifest_label[0]
-    # "Language may be associated with strings [...] This pattern may be used
-    # in label"
-    if (isinstance(manifest_label, Dict)):
-        manifest_label = str(manifest_label.get('@value'))
-        logging.debug(
-            "- Taking just the first '@value' of the manifest label: " +
-            manifest_label)
+    manifest_label = sanitize_label(manifest_label, 'manifest')
 
     # Read manifest ID
     manifest_id = d.get('@id', "NA")
@@ -277,7 +288,7 @@ def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
         debug_check('canvas label', label)
         debug_check('canvas width', iiif_w)
         debug_check('canvas height', iiif_h)
-        i.label = label
+        i.label = sanitize_label(label, 'canvas ' + str(nc))
         i.w = iiif_w
         i.h = iiif_h
 
