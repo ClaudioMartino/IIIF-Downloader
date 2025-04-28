@@ -18,3 +18,12 @@ https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases/manifest.json
 https://iiif.io/api/cookbook/recipe/0234-provider/manifest.json
 https://polona.pl/api/search-index/search/iiif/a399f131-4051-4562-8d46-c0004717c879/manifest.json
 https://api.chgov.bar.admin.ch/manifests/32328752/32328752.json
+https://adore.ugent.be/IIIF/v3/manifests/archive.ugent.be:018970A2-B1E8-11DF-A2E0-A70579F64438
+https://iiif.archive.org/iiif/3/b29000427_0001/manifest.json
+https://api.dc.library.northwestern.edu/api/v2/works/1e493b9e-7da0-484d-bdc5-66abe20f5601?as=iiif
+https://data.artmuseum.princeton.edu/iiif/objects/33737
+https://objects.library.uu.nl/manifest/iiif/v3/1874-349709
+https://manifests.collections.yale.edu/ycba/obj/6346
+https://manifests.collections.yale.edu/yuag/obj/69
+https://collections.library.yale.edu/manifests/16144050
+https://iiif.library.ucla.edu/ark%3A%2F21198%2Fz1087zv3/manifest
