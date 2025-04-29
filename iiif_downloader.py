@@ -768,6 +768,8 @@ def download_iiif_files_from_collection(version: int, d: Dict, maindir: str,
 
     manifests = d.get(manifests_key)
     if (manifests):
+        logging.info(
+            str(len(manifests)) + " manifests found in the collection")
         for m in manifests:
             manifest_id = m.get(id_key)
             d = json.loads(open_url(manifest_id).read())
