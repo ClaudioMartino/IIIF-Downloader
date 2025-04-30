@@ -33,7 +33,7 @@ class Info:
     """A class containing the features of an IIIF file."""
     def __init__(self, label: str = "NA", iiif_id: List[str] = [],
                  ext: List[str] = [], iiif_w: int = 0, iiif_h: int = 0,
-                 service_id: List[str] = []):
+                 service_id: List[str | None] = []):
         self.label = label
         self.id = iiif_id
         self.ext = ext
@@ -485,7 +485,7 @@ def read_iiif_manifest3(d: Dict) -> Tuple[str, str, List[Info]]:
                         service = service[0]
                     i.service_id = [service.get("@id")]
                 else:
-                    i.service_id = []
+                    i.service_id = [None]
 
         # Append info to list
         infos.append(i)
