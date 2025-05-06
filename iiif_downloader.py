@@ -521,31 +521,42 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
         # Create image sub-list (conf.firstpage, conf.lastpage)
         totpages = len(infos)
         if (conf.firstpage != 1 or conf.lastpage != -1):
-            infos = infos[conf.firstpage - 1:]
-            infos = infos[:conf.lastpage - conf.firstpage + 1]
+            infos = infos[conf.firstpage - 1:conf.lastpage]
             logging.info(
                 "Downloading pages " + str(conf.firstpage) + "-"
                 + str(conf.lastpage) + " from a total of " + str(totpages))
 
-        # Set up default priority flags (size = full not in the 3.0 API)
+        # Set up the default priority flags (size = full not in the 3.0 API).
+        # These flags correspond to different download strategies:
+        # 1. If the service ID is defined in the manifest, try to download the
+        # formatted URI with service ID as base and size = "full" (1a),
+        # size = "max" (1b), or size = "width," (1c).
         if (version == 2):
-            download_service_id_uri_full = True
+            uri_base_serv_id_full = True
         else:
-            download_service_id_uri_full = False
-        download_service_id_uri_max = True
-        download_service_id_uri_width = True
-        download_id = True
+            uri_base_serv_id_full = False
+        uri_base_serv_id_max = True
+        uri_base_serv_id_width = True
+        # 2. Try to download the image ID as it is written in the manifest, it
+        # may be a formatted URI or another type of URI.
+        uri_img_id = True
+        # 3. If the image ID is a formatted URI, try to download it with size
+        # changed to "full" (3a), "max" (3b), or "width," (3c).
         if (version == 2):
-            download_uri_full = True
+            uri_base_b_img_id_full = True
         else:
-            download_uri_full = False
-        download_uri_max = True
-        download_uri_width = True
+            uri_base_b_img_id_full = False
+        uri_base_b_img_id_max = True
+        uri_base_b_img_id_width = True
+        # 4. Lastly, only if the image ID is not the service ID, try to
+        # download the formatted URI with image ID as base and size = "full"
+        # (4a), size = "max" (4b), or size = "width," (4c).
         if (version == 2):
-            download_id_full = True
+            uri_base_img_id_full = True
         else:
-            download_id_full = False
-        download_id_max = True
+            uri_base_img_id_full = False
+        uri_base_img_id_max = True
+        uri_base_img_id_width = True
 
         # Loop over each document page
         some_error = False
@@ -555,14 +566,18 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
         for cnt, info in enumerate(infos):
             # Print counters and label
             percentage = round((cnt + 1) / len(infos) * 100, 1)
-            cnt = cnt + conf.firstpage - 1
             logging.info(
-                "[n." + str(cnt + 1) + "/" + str(totpages) + "; "
+                "[n." + str(cnt + conf.firstpage) + "/" + str(totpages) + "; "
                 + str(percentage) + "%] Label: " + info.label)
 
             # Print file dimensions
             logging.debug("Width: " + str(info.w) + " px")
             logging.debug("Height: " + str(info.h) + " px")
+
+            # Check if one image ID (or more) was defined in the manifest
+            if (len(info.id) == 0):
+                logging.info("File not available in the manifest")
+                continue
 
             # Take just the first file when '--all-images' is not set
             if (len(info.id) > 1 and not conf.all_images):
@@ -572,11 +587,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
 downloaded. Use the --all-images option to download everything")
                 info.id = [info.id[0]]
 
-            if (len(info.id) == 0):
-                logging.info("File not available in the manifest")
-                continue
-
-            # Loop over each ID (usually one iteration)
+            # Loop over each image ID (usually one iteration)
             for n, i in enumerate(info.id):
                 # Print IDs and file extension
                 logging.debug("Image ID: " + i)
@@ -590,7 +601,7 @@ downloaded. Use the --all-images option to download everything")
                 if (conf.use_labels):
                     filename = sanitize_name(info.label)
                 else:
-                    filename = "p" + str(cnt + 1).zfill(3)
+                    filename = "p" + str(cnt + conf.firstpage).zfill(3)
                 if (len(info.id) > 1):
                     filename += "_" + str(n + 1)
                 filename += ext
@@ -599,129 +610,123 @@ downloaded. Use the --all-images option to download everything")
 
                 # Skip download if the file exists
                 if (os.path.exists(subdir_filename) and not conf.force):
-                    logging.debug(subdir_filename + " exists, skip")
+                    logging.debug(
+                        subdir_filename +
+                        " exists, skip. Use the -f option to force overwrite.")
                     continue
 
                 # Download the file.
-                # 10 priority levels have been defined:
-                # - 1. if the service ID is defined in the manifest:
-                #   - URI with service ID as base and size = full (not for 3.0)
-                #   - URI with service ID as base and size = max (not for 2.0)
-                #   - URI with service ID as base and size = width,
-                # - 2. image ID as it is written in the manifest, URI or else
-                # - 3. if the image ID is formatted as the URI template:
-                #   - image ID with size changed to full (not for 3.0)
-                #   - image ID with size changed to max (not for 2.0)
-                #   - image ID with size changed to width,
-                # - 4. if the image ID is not the service ID:
-                #   - URI with image ID as base and size = full (not for 3.0)
-                #   - URI with image ID as base and size = max (not for 2.0)
-                #   - URI with image ID as base and size = width,
-                # If one level doesn't work, move to the lower and stop trying
-                # with the higher (we assume that all the images of the
-                # manifest behave in the same way).
-
                 filesize = -1
-
-                # If a service ID has been defined in the manifest
-                download_service_id_uri = download_service_id_uri_full or \
-                    download_service_id_uri_max or \
-                    download_service_id_uri_width
-                if (service_id is not None and download_service_id_uri):
-                    # 1a. URI with service ID as base and size = full
-                    if (download_service_id_uri_full):
+                uri_base_serv_id = uri_base_serv_id_full or \
+                    uri_base_serv_id_max or uri_base_serv_id_width
+                # Check if a service ID has been defined in the manifest
+                if (service_id is not None and uri_base_serv_id):
+                    # 1a. formatted URI, base = service ID, size = full
+                    if (uri_base_serv_id_full):
                         img_uri = get_default_img_uri(service_id, "full", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            download_service_id_uri_full = False
+                            if (cnt == 0):
+                                uri_base_serv_id_full = False
 
-                    # 1b. URI with service ID as base and size = max
-                    if (download_service_id_uri_max and filesize <= 0):
+                    # 1b. formatted URI, base = service ID, size = max
+                    if (uri_base_serv_id_max and filesize <= 0):
                         img_uri = get_default_img_uri(service_id, "max", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            download_service_id_uri_max = False
+                            if (cnt == 0):
+                                uri_base_serv_id_max = False
 
-                    # 1c. URI with service ID as base and size = width,
-                    if (download_service_id_uri_width and filesize <= 0):
+                    # 1c. formatted URI, base = service ID, size = width,
+                    if (uri_base_serv_id_width and filesize <= 0):
                         img_uri = get_default_img_uri(
                             service_id, str(info.w) + ",", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            download_service_id_uri_width = False
+                            if (cnt == 0):
+                                uri_base_serv_id_width = False
 
-                # 2. Image ID as it is, URI or something else
-                if (download_id and filesize <= 0):
+                # 2. Image ID as it is
+                if (uri_img_id and filesize <= 0):
                     filesize = download_file(i, subdir_filename)
                     if (filesize <= 0):
                         logging.debug("Cannot download " + i)
-                        download_id = False
+                        if (cnt == 0):
+                            uri_img_id = False
 
-                # If the image ID is formatted as the URI pattern
+                uri_base_b_img_id = uri_base_b_img_id_full or \
+                    uri_base_b_img_id_max or uri_base_b_img_id_width
+                # Check if the image ID is formatted as the URI pattern
                 regex_match_id = match_uri_pattern(i)
-                download_uri = download_uri_full or download_uri_max or \
-                    download_uri_width
-                if (regex_match_id is not None and download_uri and
-                        service_id != i):
+                if (regex_match_id is not None and uri_base_b_img_id):
                     id_base = regex_match_id.group("base")
                     if (service_id != id_base):
-                        # 3a. Image ID (URI) with size changed to full
-                        if (download_uri_full and filesize <= 0):
+                        # 3a. Image ID (formatted URI), size changed to full
+                        if (uri_base_b_img_id_full and filesize <= 0):
                             img_uri = get_default_img_uri(id_base, "full", ext)
                             filesize = download_file(img_uri, subdir_filename)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                download_uri_full = False
+                                if (cnt == 0):
+                                    uri_base_b_img_id_full = False
 
-                        # 3b. Image ID (URI) with size changed to max
-                        if (download_uri_max and filesize <= 0):
+                        # 3b. Image ID (formatted URI), size changed to max
+                        if (uri_base_b_img_id_max and filesize <= 0):
                             img_uri = get_default_img_uri(id_base, "max", ext)
                             filesize = download_file(img_uri, subdir_filename)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                download_uri_max = False
+                                if (cnt == 0):
+                                    uri_base_b_img_id_max = False
 
-                        # 3c. Image ID (URI) with size changed to width,
-                        if (download_uri_width and filesize <= 0):
+                        # 3c. Image ID (formatted URI), size changed to width,
+                        if (uri_base_b_img_id_width and filesize <= 0):
                             img_uri = get_default_img_uri(
                                 id_base, str(info.w) + ",", ext)
                             filesize = download_file(img_uri, subdir_filename)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                download_uri_width = False
+                                if (cnt == 0):
+                                    uri_base_b_img_id_width = False
 
-                # If image ID is not the service ID
-                if (i != service_id):
-                    # 4a. URI with image ID as base and size = full
-                    if (download_id_full and filesize <= 0):
+                uri_base_img_id = uri_base_img_id_full or uri_base_img_id_max \
+                    or uri_base_img_id_width
+                # Check if the image ID is different from the service ID
+                if (i != service_id and uri_base_img_id):
+                    # 4a. formatted URI, base = image ID, size = full
+                    if (uri_base_img_id_full and filesize <= 0):
                         img_uri = get_default_img_uri(i, "full", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            download_id_full = False
+                            if (cnt == 0):
+                                uri_base_img_id_full = False
 
-                    # 4b. URI with image ID as base and size = max
-                    if (download_id_max and filesize <= 0):
+                    # 4b. formatted URI, base = image ID, size = max
+                    if (uri_base_img_id_max and filesize <= 0):
                         img_uri = get_default_img_uri(i, "max", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            download_id_max = False
+                            if (cnt == 0):
+                                uri_base_img_id_max = False
 
-                    # 4c. URI with image ID as base and size = width,
+                    # 4c. formatted URI, base = image ID, size = width,
                     if (filesize <= 0):
                         img_uri = get_default_img_uri(
                             i, str(info.w) + ",", ext)
                         filesize = download_file(img_uri, subdir_filename)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
+                            if (cnt == 0):
+                                uri_base_img_id_width = False
 
                 # Print final message and update counters
                 if (filesize <= 0):
-                    logging.error("\033[91m" + "Error!" + "\033[0m")
+                    logging.error("\033[91mError!\033[0m")
                     some_error = True
                 else:
                     logging.info(
