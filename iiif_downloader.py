@@ -74,7 +74,7 @@ def open_url(url: str, timeout: int = 30):
         response = urlopen(url_req, timeout=timeout, context=ctx)
         return response
     except Exception as e:
-        logging.debug("Exception: " + str(e))
+        logging.warning("Exception: " + str(e))
 
         # If the SSL certificate verification fails, try disabling it
         if isinstance(e, URLError):
@@ -86,7 +86,7 @@ def open_url(url: str, timeout: int = 30):
                     response = urlopen(url_req, timeout=timeout, context=ctx)
                     return response
                 except Exception as e:
-                    logging.debug("Exception: " + str(e))
+                    logging.warning("Exception: " + str(e))
                     return None
         else:
             return None
@@ -112,8 +112,8 @@ def download_file(url: str, filepath: str) -> int:
             file.write(res.read())
             file_size = os.path.getsize(filepath)
             return file_size
-        except Exception as err:
-            logging.error(err)
+        except Exception as e:
+            logging.warning("Exception: " + str(e))
             os.remove(filepath)
             return -1
 
@@ -508,7 +508,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
     logging.debug("IIIF version: " + str(version) + ".0")
     logging.debug("Manifest ID: " + manifest_id)
     logging.info("Document title: " + manifest_label)
-    logging.info("Pages: " + str(len(infos)))
+    logging.debug("Pages: " + str(len(infos)))
 
     if (infos):
         # Create subdirectory from manifest label
@@ -726,7 +726,9 @@ downloaded. Use the --all-images option to download everything")
 
                 # Print final message and update counters
                 if (filesize <= 0):
-                    logging.error("\033[91mError!\033[0m")
+                    logging.error(
+                        "\033[91mCannot download page n." +
+                        str(cnt + conf.firstpage) + "\033[0m")
                     some_error = True
                 else:
                     logging.info(
@@ -736,9 +738,8 @@ downloaded. Use the --all-images option to download everything")
                     total_filesize += filesize
                     downloaded_cnt = downloaded_cnt + 1
 
-        total_time = time.time() - start_time
-
         # Print some statistics
+        total_time = time.time() - start_time
         print_statistics(downloaded_cnt, total_time, total_filesize)
 
         # Rename the directory if something was wrong
@@ -862,50 +863,55 @@ def get_pages(pages: str) -> Tuple[int, int]:
     return firstpage, lastpage
 
 
-if __name__ == "__main__":
-    # Parse user defined arguments
+def set_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="IIIF Downloader",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter, add_help=False)
 
-    parser.add_argument(
-        "-v", "--verbose",
-        action="store_true",
-        help="print more information about what is happening")
-    parser.add_argument(
-        "-m", "--manifest",
-        default="manifest",
-        help="manifest or collection of manifests (local file name or url)")
-    parser.add_argument(
-        "-d", "--directory",
-        default=".",
-        help="target directory")
-    parser.add_argument(
-        "-p", "--pages",
-        default="all",
-        help="range of pages to download (e.g. 3-27)")
-    parser.add_argument(
-        "-f", "--force",
-        action="store_true",
-        help="overwrite existing files")
-    parser.add_argument(
-        "--use-labels",
-        action="store_true",
-        help="name the downloaded files with their labels")
-    parser.add_argument(
-        "--all-images",
-        action="store_true",
-        help="download all images related to the pages in 2.0 manifests, not \
+    general = parser.add_argument_group("General options")
+    general.add_argument(
+        "-m", "--manifest", metavar="FILE", default="manifest",
+        help="Manifest or collection of manifests (local or url)")
+    general.add_argument(
+        "-d", "--directory", metavar="PATH", default=".",
+        help="Output directory")
+    general.add_argument(
+        "-p", "--pages", default="all",
+        help="Range of pages to download (e.g. 3-27)")
+    general.add_argument(
+        "-f", "--force", action="store_true",
+        help="Overwrite existing files")
+    general.add_argument(
+        "--use-labels", action="store_true",
+        help="Name the downloaded files with their labels")
+    general.add_argument(
+        "--all-images", action="store_true",
+        help="Download all images related to the pages in 2.0 manifests, not \
 just the first one")
+    general.add_argument(
+        "-h", "--help", action="help",
+        help="Print this help message and exit",
+    )
 
+    output = parser.add_argument_group("Output options")
+    output.add_argument(
+        "-v", "--verbose", default=logging.INFO, action="store_const",
+        dest="logging_level", const=logging.DEBUG,
+        help="Print more information about what is happening")
+    output.add_argument(
+        "-q", "--quiet", default=logging.INFO, action="store_const",
+        dest="logging_level", const=logging.ERROR,
+        help="Activate quiet mode and print only error messages")
+
+    return parser
+
+
+if __name__ == "__main__":
+    # Configure parser for user defined command line options
+    parser = set_parser()
     config = vars(parser.parse_args())
 
-    # Configure logger
-    if (config["verbose"]):
-        logging_level = logging.DEBUG
-    else:
-        logging_level = logging.INFO
-    logging.basicConfig(level=logging_level, format="%(message)s")
+    # Configure logger with user defined logging level
+    logging.basicConfig(level=config["logging_level"], format="%(message)s")
 
     # Create configuration structure
     firstpage, lastpage = get_pages(config["pages"])
