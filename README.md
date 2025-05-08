@@ -15,7 +15,7 @@ python3 iiif_downloader.py -m <manifest>
 
 All the images of the document at the highest available quality will be downloaded on your computer, named with a progressive number (`p001.jpg` et cetera).
 
-The manifest can be a file on your computer or a http(s) link. `manifest` is the default value. You can also use a collection of manifests: the script will recognize it and download all the files from the manifests in different directories.
+The manifest can be a file on your computer or a http(s) link. You can also use a collection of manifests: the script will recognize it and download all the files from the manifests in different directories.
 
 ![Screenshot of the downloader.](img.png)
 

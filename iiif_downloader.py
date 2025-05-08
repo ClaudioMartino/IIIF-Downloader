@@ -869,7 +869,7 @@ def set_parser() -> argparse.ArgumentParser:
 
     general = parser.add_argument_group("General options")
     general.add_argument(
-        "-m", "--manifest", metavar="FILE", default="manifest",
+        "-m", "--manifest", metavar="FILE", required=True,
         help="Manifest or collection of manifests (local or url)")
     general.add_argument(
         "-d", "--directory", metavar="PATH", default=".",
