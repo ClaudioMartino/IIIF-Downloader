@@ -21,12 +21,14 @@ class Conf:
     """A class containing all user configurations."""
     def __init__(self, firstpage: int = 1, lastpage: int = -1,
                  force: bool = False, use_labels: bool = False,
-                 all_images: bool = False):
+                 all_images: bool = False, width: int | None = 0):
         self.firstpage = firstpage
         self.lastpage = lastpage
         self.force = force
         self.use_labels = use_labels
         self.all_images = all_images
+        # width = 0 (default) when -w is not used; = None for -w without arg
+        self.width = width
 
 
 class Info:
@@ -110,6 +112,9 @@ def download_file(url: str, filepath: str) -> int:
     with open(filepath, "wb") as file:
         try:
             file.write(res.read())
+            # Flush the write buffer to ensure that its content is dumped to
+            # the file before calling getsize
+            file.flush()
             file_size = os.path.getsize(filepath)
             return file_size
         except Exception as e:
@@ -558,6 +563,12 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
         uri_base_img_id_max = True
         uri_base_img_id_width = True
 
+        # Unset all flags except width-related ones if '-w' has been set
+        if (conf.width != 0):
+            uri_base_serv_id_full = uri_base_serv_id_max = uri_img_id = \
+                uri_base_b_img_id_full = uri_base_b_img_id_max = \
+                uri_base_img_id_full = uri_base_img_id_max = False
+
         # Loop over each document page
         some_error = False
         total_filesize = 0
@@ -569,6 +580,15 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
             logging.info(
                 "[n." + str(cnt + conf.firstpage) + "/" + str(totpages) + "; "
                 + str(percentage) + "%] Label: " + info.label)
+
+            # Change the width if the user defined a new one with '-w'
+            if (isinstance(conf.width, int) and conf.width != 0):
+                if (isinstance(info.w, int) and isinstance(info.h, int)):
+                    info.h = round(conf.width / info.w * info.h)
+                logging.debug(
+                    "Width is changed from " + str(info.w) + " px to " +
+                    str(conf.width) + " px")
+                info.w = conf.width
 
             # Print file dimensions
             logging.debug("Width: " + str(info.w) + " px")
@@ -610,7 +630,7 @@ downloaded. Use the --all-images option to download everything")
 
                 # Skip download if the file exists
                 if (os.path.exists(subdir_filename) and not conf.force):
-                    logging.debug(
+                    logging.info(
                         subdir_filename +
                         " exists, skip. Use the -f option to force overwrite.")
                     continue
@@ -881,6 +901,10 @@ def set_parser() -> argparse.ArgumentParser:
         "-f", "--force", action="store_true",
         help="Overwrite existing files")
     general.add_argument(
+        "-w", "--width", nargs="?", default=0, type=int,
+        help="Width of the images; use it without the argument to use the \
+width of the manifest")
+    general.add_argument(
         "--use-labels", action="store_true",
         help="Name the downloaded files with their labels")
     general.add_argument(
@@ -916,7 +940,7 @@ if __name__ == "__main__":
     # Create configuration structure
     firstpage, lastpage = get_pages(config["pages"])
     conf = Conf(firstpage, lastpage, config["force"], config["use_labels"],
-                config["all_images"])
+                config["all_images"], config["width"])
 
     # Call main function
     download_iiif_files(config["manifest"], config["directory"], conf)
