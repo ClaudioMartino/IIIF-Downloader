@@ -884,37 +884,35 @@ def get_pages(pages: str) -> Tuple[int, int]:
 
 
 def set_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter, add_help=False)
+    parser = argparse.ArgumentParser(add_help=False)
 
     general = parser.add_argument_group("General options")
     general.add_argument(
-        "-m", "--manifest", metavar="FILE", required=True,
-        help="Manifest or collection of manifests (local or url)")
+        "-m", metavar="<file>", required=True,
+        help="Manifest or collection of manifests (local file or url)")
     general.add_argument(
-        "-d", "--directory", metavar="PATH", default=".",
+        "-d", metavar="<path>", default=".",
         help="Output directory")
     general.add_argument(
-        "-p", "--pages", default="all",
-        help="Range of pages to download (e.g. 3-27)")
+        "-p", metavar="<first>-<last>", default="all",
+        help="Range of pages to download")
+    general.add_argument(
+        "-w", nargs="?", metavar="<width>", default=0, type=int,
+        help="Width of the images; without argument for the width defined in \
+the manifest")
     general.add_argument(
         "-f", "--force", action="store_true",
         help="Overwrite existing files")
-    general.add_argument(
-        "-w", "--width", nargs="?", default=0, type=int,
-        help="Width of the images; use it without the argument to use the \
-width of the manifest")
     general.add_argument(
         "--use-labels", action="store_true",
         help="Name the downloaded files with their labels")
     general.add_argument(
         "--all-images", action="store_true",
-        help="Download all images related to the pages in 2.0 manifests, not \
-just the first one")
+        help="Download all the images related to the same page in 2.0/2.1 \
+manifests, not just the first one")
     general.add_argument(
         "-h", "--help", action="help",
-        help="Print this help message and exit",
-    )
+        help="Print this help message and exit")
 
     output = parser.add_argument_group("Output options")
     output.add_argument(
@@ -938,9 +936,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=config["logging_level"], format="%(message)s")
 
     # Create configuration structure
-    firstpage, lastpage = get_pages(config["pages"])
+    firstpage, lastpage = get_pages(config["p"])
     conf = Conf(firstpage, lastpage, config["force"], config["use_labels"],
-                config["all_images"], config["width"])
+                config["all_images"], config["w"])
 
     # Call main function
-    download_iiif_files(config["manifest"], config["directory"], conf)
+    download_iiif_files(config["m"], config["d"], conf)
