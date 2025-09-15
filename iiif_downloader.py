@@ -788,7 +788,7 @@ def download_iiif_files_from_collection(version: int, d: Dict, maindir: str,
             str(len(manifests)) + " manifests found in the collection")
         for m in manifests:
             manifest_id = m.get(id_key)
-            d = json.loads(open_url(manifest_id).read())
+            d = json.loads(open_url(manifest_id).read().decode("utf-8"))
             download_iiif_files_from_manifest(version, d, maindir, conf)
     else:
         raise Exception(
@@ -822,12 +822,12 @@ def open_json_file(json_file: str) -> Dict:
     if (is_url(json_file)):
         response = open_url(json_file)
         if (response is not None):
-            d = json.loads(response.read())
+            d = json.loads(response.read().decode("utf-8"))
         else:
             raise Exception("Cannot read remote manifest " + json_file)
     else:
         if (os.path.isfile(json_file)):
-            with open(json_file) as f:
+            with open(json_file, encoding="utf8") as f:
                 d = json.load(f)
         else:
             raise Exception("Cannot open manifest " + json_file)
