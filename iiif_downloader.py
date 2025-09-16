@@ -47,11 +47,13 @@ class Info:
         self.service_id = service_id
 
 
-def print_statistics(downloaded_cnt: int, total_time: float,
-                     total_filesize: int) -> None:
+def print_statistics(downloaded_cnt: int, skipped_cnt: int, failed_cnt: int,
+                     total_time: float, total_filesize: int) -> None:
     """Print useful statistics."""
     logging.info("--- Stats ---")
     logging.info("- Downloaded files: " + str(downloaded_cnt))
+    logging.info("- Skipped downloads: " + str(skipped_cnt))
+    logging.info("- Failed downloads: " + str(failed_cnt))
     logging.info("- Elapsed time: " + str(round(total_time)) + " s")
     if (downloaded_cnt > 0):
         logging.info(
@@ -582,9 +584,10 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 uri_base_img_id_full = uri_base_img_id_max = False
 
         # Loop over each document page
-        some_error = False
         total_filesize = 0
         downloaded_cnt = 0
+        skipped_cnt = 0
+        failed_cnt = 0
         start_time = time.time()
         for cnt, info in enumerate(infos):
             # Print counters and label
@@ -593,7 +596,7 @@ def download_iiif_files_from_manifest(version: int, d: Dict, maindir: str,
                 "[n." + str(cnt + conf.firstpage) + "/" + str(totpages) + "; "
                 + str(percentage) + "%] Label: " + info.label)
 
-            # Change the width if the user defined a new one with '-w'
+            # Change the width if the user defined a new one with '-w <width>'
             if (isinstance(conf.width, int) and conf.width != 0):
                 if (isinstance(info.w, int) and isinstance(info.h, int)):
                     info.h = round(conf.width / info.w * info.h)
@@ -645,10 +648,9 @@ downloaded. Use the --all-images option to download everything")
                     logging.info(
                         subdir_filename +
                         " exists, skip. Use the -f option to force overwrite.")
+                    skipped_cnt += 1
                     continue
 
-                # TODO Checking if cnt == 0 does not work when files are
-                # skipped because already downloaded
                 # Download the file.
                 filesize = -1
                 uri_base_serv_id = uri_base_serv_id_full or \
@@ -662,7 +664,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_serv_id_full = False
 
                     # 1b. formatted URI, base = service ID, size = max
@@ -672,7 +674,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_serv_id_max = False
 
                     # 1c. formatted URI, base = service ID, size = width,
@@ -683,7 +685,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_serv_id_width = False
 
                 # 2. Image ID as it is
@@ -691,7 +693,7 @@ downloaded. Use the --all-images option to download everything")
                     filesize = download_file(i, subdir_filename, conf.referer)
                     if (filesize <= 0):
                         logging.debug("Cannot download " + i)
-                        if (cnt == 0):
+                        if (downloaded_cnt == 0):
                             uri_img_id = False
 
                 uri_base_b_img_id = uri_base_b_img_id_full or \
@@ -708,7 +710,7 @@ downloaded. Use the --all-images option to download everything")
                                 img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                if (cnt == 0):
+                                if (downloaded_cnt == 0):
                                     uri_base_b_img_id_full = False
 
                         # 3b. Image ID (formatted URI), size changed to max
@@ -718,7 +720,7 @@ downloaded. Use the --all-images option to download everything")
                                 img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                if (cnt == 0):
+                                if (downloaded_cnt == 0):
                                     uri_base_b_img_id_max = False
 
                         # 3c. Image ID (formatted URI), size changed to width,
@@ -729,7 +731,7 @@ downloaded. Use the --all-images option to download everything")
                                 img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
-                                if (cnt == 0):
+                                if (downloaded_cnt == 0):
                                     uri_base_b_img_id_width = False
 
                 uri_base_img_id = uri_base_img_id_full or uri_base_img_id_max \
@@ -743,7 +745,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_img_id_full = False
 
                     # 4b. formatted URI, base = image ID, size = max
@@ -753,7 +755,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_img_id_max = False
 
                     # 4c. formatted URI, base = image ID, size = width,
@@ -764,7 +766,7 @@ downloaded. Use the --all-images option to download everything")
                             img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
-                            if (cnt == 0):
+                            if (downloaded_cnt == 0):
                                 uri_base_img_id_width = False
 
                 # Print final message and update counters
@@ -772,21 +774,23 @@ downloaded. Use the --all-images option to download everything")
                     logging.error(
                         "\033[91mCannot download page n." +
                         str(cnt + conf.firstpage) + "\033[0m")
-                    some_error = True
+                    failed_cnt += 1
                 else:
                     logging.info(
                         "\033[92m" + filename + " (" +
                         str(round(filesize / 1000)) + " kB) saved in " +
                         subdir + "\033[0m")
                     total_filesize += filesize
-                    downloaded_cnt = downloaded_cnt + 1
+                    downloaded_cnt += 1
 
         # Print some statistics
         total_time = time.time() - start_time
-        print_statistics(downloaded_cnt, total_time, total_filesize)
+        print_statistics(
+            downloaded_cnt, skipped_cnt, failed_cnt, total_time,
+            total_filesize)
 
         # Rename the directory if something was wrong
-        if (some_error):
+        if (failed_cnt > 0):
             err_subdir = maindir + "/" + "ERR_" + manifest_label
             if os.path.exists(err_subdir):
                 rmtree(err_subdir)
