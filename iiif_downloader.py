@@ -9,6 +9,7 @@ import os
 from shutil import rmtree
 from urllib.request import urlopen, Request
 from urllib.error import URLError
+from urllib.parse import urlsplit
 from typing import List, Tuple, Dict, Any
 from ssl import create_default_context, CERT_NONE
 
@@ -21,7 +22,8 @@ class Conf:
     """A class containing all user configurations."""
     def __init__(self, firstpage: int = 1, lastpage: int = -1,
                  force: bool = False, use_labels: bool = False,
-                 all_images: bool = False, width: int | None = 0):
+                 all_images: bool = False, width: int | None = 0,
+                 referer: str = ""):
         self.firstpage = firstpage
         self.lastpage = lastpage
         self.force = force
@@ -29,6 +31,7 @@ class Conf:
         self.all_images = all_images
         # width = 0 (default) when -w is not used; = None for -w without arg
         self.width = width
+        self.referer = referer
 
 
 class Info:
@@ -62,10 +65,19 @@ def print_statistics(downloaded_cnt: int, total_time: float,
     logging.info("-------------")
 
 
-def open_url(url: str, timeout: int = 30):
+def open_url(url: str, referer: str = "", timeout: int = 30):
     """Open url."""
     # Create url request
-    headers = {"User-Agent": "Mozilla/5.0"}
+    headers = {}
+    headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 \
+Edg/138.0.0.0"
+    if (not referer):
+        split_url = urlsplit(url)
+        default_referer = split_url.scheme + "://" + split_url.netloc
+        headers["Referer"] = default_referer
+    else:
+        headers["Referer"] = referer
     url_req = Request(url, headers=headers)
 
     # Create default SSL context
@@ -94,13 +106,13 @@ def open_url(url: str, timeout: int = 30):
             return None
 
 
-def download_file(url: str, filepath: str) -> int:
+def download_file(url: str, filepath: str, referer: str) -> int:
     """Open a connection to a remote file and save it locally."""
     url = url.replace(" ", "%20")
     logging.debug("Downloading " + url + "...")
 
     # Open connection to remote file
-    res = open_url(url)
+    res = open_url(url, referer)
     if (res is None):
         return -1
     else:
@@ -635,6 +647,8 @@ downloaded. Use the --all-images option to download everything")
                         " exists, skip. Use the -f option to force overwrite.")
                     continue
 
+                # TODO Checking if cnt == 0 does not work when files are
+                # skipped because already downloaded
                 # Download the file.
                 filesize = -1
                 uri_base_serv_id = uri_base_serv_id_full or \
@@ -644,7 +658,8 @@ downloaded. Use the --all-images option to download everything")
                     # 1a. formatted URI, base = service ID, size = full
                     if (uri_base_serv_id_full):
                         img_uri = get_default_img_uri(service_id, "full", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -653,7 +668,8 @@ downloaded. Use the --all-images option to download everything")
                     # 1b. formatted URI, base = service ID, size = max
                     if (uri_base_serv_id_max and filesize <= 0):
                         img_uri = get_default_img_uri(service_id, "max", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -663,7 +679,8 @@ downloaded. Use the --all-images option to download everything")
                     if (uri_base_serv_id_width and filesize <= 0):
                         img_uri = get_default_img_uri(
                             service_id, str(info.w) + ",", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -671,7 +688,7 @@ downloaded. Use the --all-images option to download everything")
 
                 # 2. Image ID as it is
                 if (uri_img_id and filesize <= 0):
-                    filesize = download_file(i, subdir_filename)
+                    filesize = download_file(i, subdir_filename, conf.referer)
                     if (filesize <= 0):
                         logging.debug("Cannot download " + i)
                         if (cnt == 0):
@@ -687,7 +704,8 @@ downloaded. Use the --all-images option to download everything")
                         # 3a. Image ID (formatted URI), size changed to full
                         if (uri_base_b_img_id_full and filesize <= 0):
                             img_uri = get_default_img_uri(id_base, "full", ext)
-                            filesize = download_file(img_uri, subdir_filename)
+                            filesize = download_file(
+                                img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
                                 if (cnt == 0):
@@ -696,7 +714,8 @@ downloaded. Use the --all-images option to download everything")
                         # 3b. Image ID (formatted URI), size changed to max
                         if (uri_base_b_img_id_max and filesize <= 0):
                             img_uri = get_default_img_uri(id_base, "max", ext)
-                            filesize = download_file(img_uri, subdir_filename)
+                            filesize = download_file(
+                                img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
                                 if (cnt == 0):
@@ -706,7 +725,8 @@ downloaded. Use the --all-images option to download everything")
                         if (uri_base_b_img_id_width and filesize <= 0):
                             img_uri = get_default_img_uri(
                                 id_base, str(info.w) + ",", ext)
-                            filesize = download_file(img_uri, subdir_filename)
+                            filesize = download_file(
+                                img_uri, subdir_filename, conf.referer)
                             if (filesize <= 0):
                                 logging.debug("Cannot download " + img_uri)
                                 if (cnt == 0):
@@ -719,7 +739,8 @@ downloaded. Use the --all-images option to download everything")
                     # 4a. formatted URI, base = image ID, size = full
                     if (uri_base_img_id_full and filesize <= 0):
                         img_uri = get_default_img_uri(i, "full", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -728,7 +749,8 @@ downloaded. Use the --all-images option to download everything")
                     # 4b. formatted URI, base = image ID, size = max
                     if (uri_base_img_id_max and filesize <= 0):
                         img_uri = get_default_img_uri(i, "max", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -738,7 +760,8 @@ downloaded. Use the --all-images option to download everything")
                     if (filesize <= 0):
                         img_uri = get_default_img_uri(
                             i, str(info.w) + ",", ext)
-                        filesize = download_file(img_uri, subdir_filename)
+                        filesize = download_file(
+                            img_uri, subdir_filename, conf.referer)
                         if (filesize <= 0):
                             logging.debug("Cannot download " + img_uri)
                             if (cnt == 0):
@@ -788,7 +811,8 @@ def download_iiif_files_from_collection(version: int, d: Dict, maindir: str,
             str(len(manifests)) + " manifests found in the collection")
         for m in manifests:
             manifest_id = m.get(id_key)
-            d = json.loads(open_url(manifest_id).read().decode("utf-8"))
+            d = json.loads(
+                open_url(manifest_id, conf.referer).read().decode("utf-8"))
             download_iiif_files_from_manifest(version, d, maindir, conf)
     else:
         raise Exception(
@@ -817,10 +841,10 @@ def get_iiif_version(d: Dict) -> int:
     return version
 
 
-def open_json_file(json_file: str) -> Dict:
+def open_json_file(json_file: str, referer: str = "") -> Dict:
     """Check if json file is local or remote and read it."""
     if (is_url(json_file)):
-        response = open_url(json_file)
+        response = open_url(json_file, referer)
         if (response is not None):
             d = json.loads(response.read().decode("utf-8"))
         else:
@@ -839,7 +863,7 @@ def download_iiif_files(json_file: str, maindir: str,
                         conf: Conf = Conf()) -> None:
     """Download all the files from a manifest or a collection."""
     # Open json file
-    d = open_json_file(json_file)
+    d = open_json_file(json_file, conf.referer)
 
     # Check IIIF version
     version = get_iiif_version(d)
@@ -901,6 +925,8 @@ def set_parser() -> argparse.ArgumentParser:
         help="Width of the images; without argument for the width defined in \
 the manifest")
     general.add_argument(
+        "-r", metavar="<referer>", help="Referer of the HTTP requests header")
+    general.add_argument(
         "-f", "--force", action="store_true",
         help="Overwrite existing files")
     general.add_argument(
@@ -938,7 +964,7 @@ if __name__ == "__main__":
     # Create configuration structure
     firstpage, lastpage = get_pages(config["p"])
     conf = Conf(firstpage, lastpage, config["force"], config["use_labels"],
-                config["all_images"], config["w"])
+                config["all_images"], config["w"], config["r"])
 
     # Call main function
     download_iiif_files(config["m"], config["d"], conf)
