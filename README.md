@@ -27,7 +27,7 @@ The manifest can be a file on your computer or a http(s) link. You can also use 
 * If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined in the manifest use simply `-w`, without argument. Images defined this way may not be available for download, depending on the website configurations.
 * You can use the `--use-labels` option to name the files with the manifest labels, instead of a progressive number. Use this option only if all the labels are different, otherwise the files are going to be overwritten or not downloaded.
 * When 2.0 canvases contain multiple images, you can use the `--all-images` option to download them all, otherwise only the first image is downloaded. The files will be identified by their position in the canvas (e.g. `p001_01.jpg`).
-* You can specify the [https://en.wikipedia.org/wiki/HTTP_referer](referer) of the HTTP requests header with `-r <referer>`. The default value is the hostname of the url you are opening.
+* You can specify the [referer of the HTTP requests header](https://en.wikipedia.org/wiki/HTTP_referer) with `-r <referer>`. The default value is the hostname of the url you are opening.
 * Use the `-v` option to print a verbose output.
 * Use the `-q` option to activate the quiet mode and print only the error messages.
 
