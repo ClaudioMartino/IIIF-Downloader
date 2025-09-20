@@ -22,9 +22,6 @@ parser = argparse.ArgumentParser(add_help=False)
 
 general = parser.add_argument_group("General options")
 general.add_argument(
-    "-w", metavar="<width>", default=2000, type=int,
-    help="Width of the images")
-general.add_argument(
     "-f", "--force", action="store_true",
     help="Overwrite existing files")
 general.add_argument(
@@ -34,7 +31,7 @@ general.add_argument(
 config = vars(parser.parse_args())
 
 c = iiif_downloader.Conf()
-c.width = config["w"]
+c.width = None
 c.force = config["force"]
 c.referer = "https://antenati.cultura.gov.it/"
 

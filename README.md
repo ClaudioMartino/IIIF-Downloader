@@ -1,4 +1,5 @@
 # IIIF Downloader
+
 A Python 3 script to download all the images from an IIIF manifest.
 
 IIIF is the [International Image Interoperability Framework](https://iiif.io/), a set of open standards for digital objects online. Most of the Python scripts out there ask you to install plenty of heavy external libraries. This script needs only standard libraries! It is compliant with the [2.0](https://iiif.io/api/presentation/2.0), the [2.1](https://iiif.io/api/presentation/2.1), and the [3.0](https://iiif.io/api/presentation/3.0) standards.
@@ -13,7 +14,7 @@ Run the script as:
 python3 iiif_downloader.py -m <manifest>
 ```
 
-All the images of the document at the highest available size will be downloaded on your computer, named with a progressive number (`p001.jpg` et cetera). See the [Appendix](Appendix.md) for more information about the discovery of the sources.
+All the images of the document at the highest available size[^1] will be downloaded on your computer, named with a progressive number (`p001.jpg` et cetera).
 
 The manifest can be a file on your computer or a http(s) link. You can also use a collection of manifests: the script will recognize it and download all the files from the manifests in different directories.
 
@@ -24,7 +25,7 @@ The manifest can be a file on your computer or a http(s) link. You can also use 
 * You can specify the output directory with `-d <directory>`. The default value is the working directory (`.`).
 * You can specify the range of the pages you want to download with `-p <first>-<last>` (e.g. `-p 10-20` for pages from 10 to 20, or `-p 10-10` for page 10 only).
 * You can use the `-f` option to force overwriting the files when they are already present in your working directory.
-* If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined in the manifest use simply `-w`, without argument. Images defined this way may not be available for download, depending on the website configurations.
+* If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined by the website[^2] use simply `-w`, without the argument. Images defined this way may not be available for download, depending on the website configurations.
 * You can use the `--use-labels` option to name the files with the manifest labels, instead of a progressive number. Use this option only if all the labels are different, otherwise the files are going to be overwritten or not downloaded.
 * When 2.0 canvases contain multiple images, you can use the `--all-images` option to download them all, otherwise only the first image is downloaded. The files will be identified by their position in the canvas (e.g. `p001_01.jpg`).
 * You can specify the [referer of the HTTP requests header](https://en.wikipedia.org/wiki/HTTP_referer) with `-r <referer>`. The default value is the hostname of the url you are opening.
@@ -44,3 +45,6 @@ The library has been tested with the manifests listed in the [testing](testing) 
 ## Contributing
 
 Contributions are most welcome by forking the repository and sending a pull request. Errors and new features proposals can be reported [opening an issue](https://github.com/ClaudioMartino/IIIF-Downloader/issues/new/choose) as well.
+
+[^1]: See the [Appendix](blob/main/Appendix.md) for more information about the discovery of the image sources.
+[^2]: The host can define two widths for each image: one in the manifest and one in the [Image Information](https://iiif.io/api/image/2.0/#image-information-request-uri-syntax) file. The script takes the biggest of the two.

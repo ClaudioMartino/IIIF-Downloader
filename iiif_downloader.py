@@ -247,6 +247,39 @@ def sanitize_label(label: Any, source: str) -> str:
     return str(label)
 
 
+def check_image_information_width(path: str, conf: Conf, info: Info):
+    """Look for the Image Information from a path, look for the width in it and
+    use it instead of the manifest's width if it's bigger."""
+    img_information_uri = path + "/info.json"
+    img_information_uri = img_information_uri.replace(" ", "%20")
+    # TODO common url sanitizer for %20
+    try:
+        img_information_file = open_json_file(
+            img_information_uri, conf.referer)
+        try:
+            img_information_w = img_information_file.get("width")
+            if (isinstance(img_information_w, int)):
+                if (info.w is None):
+                    info.w = img_information_w
+                    logging.debug(
+                        "Using Image Information width (" +
+                        str(img_information_w) + ")")
+                else:
+                    if (img_information_w > info.w):
+                        logging.debug(
+                            "Using Image Information width (" +
+                            str(img_information_w) +
+                            ") instead of the manifest width (" + str(info.w) +
+                            ")")
+                        info.w = img_information_w
+        except Exception as e:
+            logging.warning("Exception: " + str(e))
+            logging.debug("'width' not found in " + img_information_uri)
+    except Exception as e:
+        logging.warning("Exception: " + str(e))
+        logging.debug("Cannot access info.json file at " + img_information_uri)
+
+
 def read_iiif_manifest2(d: Dict) -> Tuple[str, str, List[Info]]:
     """Download all the files from a 2.0 manifest."""
     # - label
@@ -651,12 +684,16 @@ downloaded. Use the --all-images option to download everything")
                     skipped_cnt += 1
                     continue
 
-                # Download the file.
+                # Download the file
                 filesize = -1
                 uri_base_serv_id = uri_base_serv_id_full or \
                     uri_base_serv_id_max or uri_base_serv_id_width
                 # Check if a service ID has been defined in the manifest
                 if (service_id is not None and uri_base_serv_id):
+                    # Look for Image Information width using service ID
+                    if (conf.width == 0 or conf.width is None):
+                        check_image_information_width(service_id, conf, info)
+
                     # 1a. formatted URI, base = service ID, size = full
                     if (uri_base_serv_id_full):
                         img_uri = get_default_img_uri(service_id, "full", ext)
@@ -703,6 +740,10 @@ downloaded. Use the --all-images option to download everything")
                 if (regex_match_id is not None and uri_base_b_img_id):
                     id_base = regex_match_id.group("base")
                     if (service_id != id_base):
+                        # Look for Image Information width using the base
+                        if (conf.width == 0 or conf.width is None):
+                            check_image_information_width(id_base, conf, info)
+
                         # 3a. Image ID (formatted URI), size changed to full
                         if (uri_base_b_img_id_full and filesize <= 0):
                             img_uri = get_default_img_uri(id_base, "full", ext)
