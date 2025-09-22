@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -30,10 +28,10 @@ general.add_argument(
 
 config = vars(parser.parse_args())
 
-c = iiif_downloader.Conf()
-c.width = None
-c.force = config["force"]
-c.referer = "https://antenati.cultura.gov.it/"
+downloader = iiif_downloader.IIIF_Downloader()
+downloader.force = config["force"]
+downloader.width = None  # -w without argument
+downloader.referer = "https://antenati.cultura.gov.it/"
 
 # Configure logger
 logging.basicConfig(level=logging.DEBUG, format="%(message)s")
@@ -60,4 +58,6 @@ for i, manifest in enumerate(manifests):
         "\033[95m" + "[" + str(i+1) + "/" + str(len(manifests)) + "] " +
         manifest + '\033[0m')
 
-    iiif_downloader.download_iiif_files(manifest, maindir, c)
+    downloader.json_file = manifest
+    downloader.maindir = maindir
+    downloader.run()

@@ -7,19 +7,24 @@ import argparse
 from test_common import ver_dict
 
 # Configure logger
-logging.basicConfig(level=logging.DEBUG, format="%(message)s")
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 # Parse arguments
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("-v", default='3')
 config = vars(parser.parse_args())
-ver = config['v']
+version = config['v']
 
 # Read manifests
-for i in range(len(ver_dict[ver]['ids'])):
-    file_name = 'manifests' + str(ver) + '/manifest' + str(i).zfill(2) + '.json'
-    logging.info(file_name)
+for i in range(len(ver_dict[version]['ids'])):
+    file_name = 'manifests' + str(version) + '/manifest' + str(i).zfill(2) + '.json'
+
+    downloader = iiif_downloader.IIIF_Downloader()
+    downloader.json_file = file_name
+    logging.info(downloader.json_file)
+
     with open(file_name) as f:
-        ver2 = iiif_downloader.get_iiif_version(json.load(f))
-        if (ver2 != int(ver)):
-            raise Exception("Read " + str(ver2) + ", expected " + ver)
+        d = iiif_downloader.open_json_file(file_name, "")
+        downloader.get_iiif_version(d)
+        if (downloader.version != int(version)):
+            raise Exception("Read " + str(downloader.version) + ", expected " + version)

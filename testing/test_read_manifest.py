@@ -7,7 +7,7 @@ import argparse
 from test_common import ver_dict
 
 # Configure logger
-logging.basicConfig(level=logging.DEBUG, format="%(message)s")
+logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 # Parse arguments
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -18,9 +18,18 @@ ver = config['v']
 # Read manifests
 for i in range(len(ver_dict[ver]['ids'])):
     file_name = 'manifests' + str(ver) + '/manifest' + str(i).zfill(2) + '.json'
-    logging.info(file_name)
-    with open(file_name) as f:
-        manifest_label, manifest_id, infos = ver_dict[ver]['reader'](json.load(f))
+
+    downloader = iiif_downloader.IIIF_Downloader()
+    downloader.json_file = file_name
+    logging.info(downloader.json_file)
+
+    if(ver == '2'):
+        reader = downloader.read_iiif_manifest2
+    else:
+        reader = downloader.read_iiif_manifest3
+
+    with open(downloader.json_file) as f:
+        infos = reader(json.load(f))
 
         na_cnt = 0
         for info in infos:
@@ -31,9 +40,8 @@ for i in range(len(ver_dict[ver]['ids'])):
                     if(not iiif_downloader.is_url(id_i)):
                         raise Exception(id_i + " is not an URL.")
 
-        #print("{ \"tot\" : " + str(len(infos))+ ", \"na\": " + str(na_cnt) + " }")
-
         if(ver_dict[ver]['ids'][i]['tot'] != len(infos)):
             raise Exception("Wrong tot infos: " + str(len(infos)) + " instead of " + str(ver_dict[ver]['ids'][i]['tot']))
+
         if(ver_dict[ver]['ids'][i]['na'] != na_cnt):
             raise Exception("Wrong tot NA: " + str(na_cnt) + " instead of " + str(ver_dict[ver]['ids'][i]['na']))

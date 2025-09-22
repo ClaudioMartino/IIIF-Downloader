@@ -2,7 +2,6 @@ import iiif_downloader
 
 ver_dict = {
     "2": {
-        "reader": iiif_downloader.read_iiif_manifest2,
         'dir': 'manifests2',
         'txt': 'manifests2.txt',
         "ids" : [
@@ -80,7 +79,6 @@ ver_dict = {
     },
 
     "3": {
-        "reader": iiif_downloader.read_iiif_manifest3,
         'dir': 'manifests3',
         'txt': 'manifests3.txt',
         "ids" : [
