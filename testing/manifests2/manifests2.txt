@@ -68,3 +68,4 @@ https://digitalcollections.lib.washington.edu/iiif/2/iww:568/manifest.json
 https://digital.library.villanova.edu/Item/vudl:745706/Manifest
 https://iiif.collectionsbase.org.uk/GB61/GB61_BAD_1/manifest
 https://digi.vatlib.it/iiif/MSS_Vat.lat.3225/manifest.json
+https://dam-antenati.cultura.gov.it/antenati/containers/02dPqrK/manifest

@@ -46,5 +46,5 @@ The library has been tested with the manifests listed in the [testing](testing) 
 
 Contributions are most welcome by forking the repository and sending a pull request. Errors and new features proposals can be reported [opening an issue](https://github.com/ClaudioMartino/IIIF-Downloader/issues/new/choose) as well.
 
-[^1]: See the [Appendix](blob/main/Appendix.md) for more information about the discovery of the image sources.
+[^1]: See the [Appendix](https://github.com/ClaudioMartino/IIIF-Downloader/blob/main/Appendix.md) for more information about the discovery of the image sources.
 [^2]: The host can define two widths for each image: one in the manifest and one in the [Image Information](https://iiif.io/api/image/2.0/#image-information-request-uri-syntax) file. The script takes the biggest of the two.
