@@ -216,6 +216,12 @@ def download_file(url: str, filepath: str, referer: str) -> int:
     else:
         logging.debug("HTTP status code: " + str(res.getcode()))
 
+    # Check the MIME type
+    file_type = res.headers["Content-Type"].split('/')[0]
+    if (file_type != "image" and file_type != "application"):
+        logging.warning("Invalid content-type (" + str(file_type) + ")")
+        return -1
+
     # file_size = res.headers["Content-Length"]
 
     # Create the file (binary mode) even when it exists
