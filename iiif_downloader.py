@@ -447,16 +447,12 @@ overwrite the files.")
 
                     # Try to download the file
                     filesize = -1
+
                     uri_base_serv_id = self.uri_base_serv_id_full or \
                         self.uri_base_serv_id_max or \
                         self.uri_base_serv_id_width
                     # Check if a service ID has been defined in the manifest
                     if (service_id is not None and uri_base_serv_id):
-                        # Look for Image Information width using the service ID
-                        if (self.width == 0 or self.width is None):
-                            self.check_image_information_width(
-                                service_id, info)
-
                         # 1a. Formatted URI: base = service ID, size = full
                         if (self.uri_base_serv_id_full):
                             img_uri = get_default_img_uri(
@@ -481,6 +477,11 @@ overwrite the files.")
 
                         # 1c. Formatted URI: base = service ID, size = <width>,
                         if (self.uri_base_serv_id_width and filesize <= 0):
+                            # Check Image Information width using service ID
+                            if (self.width == 0 or self.width is None):
+                                self.check_image_information_width(
+                                    service_id, info)
+
                             img_uri = get_default_img_uri(
                                 service_id, str(info.w) + ",", ext)
                             filesize = download_file(
@@ -507,11 +508,6 @@ overwrite the files.")
                     if (regex_match_id is not None and uri_base_b_img_id):
                         id_base = regex_match_id.group("base")
                         if (service_id != id_base):
-                            # Look for Image Information width using the base
-                            if (self.width == 0 or self.width is None):
-                                self.check_image_information_width(
-                                    id_base, info)
-
                             # 3a. Image ID (formatted URI), size changed to
                             # full
                             if (self.uri_base_b_img_id_full and filesize <= 0):
@@ -539,6 +535,12 @@ overwrite the files.")
                             # <width>,
                             if (self.uri_base_b_img_id_width and
                                     filesize <= 0):
+                                # Check Image Information width using the base
+                                # of the image ID
+                                if (self.width == 0 or self.width is None):
+                                    self.check_image_information_width(
+                                        id_base, info)
+
                                 img_uri = get_default_img_uri(
                                     id_base, str(info.w) + ",", ext)
                                 filesize = download_file(
