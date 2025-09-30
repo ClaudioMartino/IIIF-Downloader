@@ -4,7 +4,7 @@ A Python 3 script to download all the images from an IIIF manifest.
 
 IIIF is the [International Image Interoperability Framework](https://iiif.io/), a set of open standards for digital objects online. Most of the Python scripts out there ask you to install plenty of heavy external libraries. This script needs only standard libraries! It is compliant with the [2.0](https://iiif.io/api/presentation/2.0), the [2.1](https://iiif.io/api/presentation/2.1), and the [3.0](https://iiif.io/api/presentation/3.0) standards.
 
-[![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/MIT) [![Tests status](https://github.com/ClaudioMartino/IIIF-Downloader/actions/workflows/tests.yml/badge.svg)](https://github.com/ClaudioMartino/IIIF-Downloader/actions)
+[![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/MIT)
 
 ## Basic usage
 
