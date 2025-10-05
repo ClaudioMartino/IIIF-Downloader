@@ -27,7 +27,7 @@ The manifest can be a file on your computer or a http(s) link. You can also use 
 * You can use the `-f` option to force overwriting the files when they are already present in your working directory.
 * If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined by the website[^2] use simply `-w`, without the argument. Images defined this way may not be available for download, depending on the website configurations.
 * You can specify the [referer of the HTTP requests header](https://en.wikipedia.org/wiki/HTTP_referer) with `-r <referer>`. The default value is the hostname of the url you are opening.
-* Use `-t <threads>` to set the number of threads used to download the pages of the document (one thread per page). Log may become unclear and you may encounter more 429 errors (Too Many Requests).
+* Use `-t <threads>` to set the number of threads used to download the pages of the document (one thread per page). Log may become unclear and you may encounter more 429 errors (Too Many Requests).[^3]
 * You can use the `--use-labels` option to name the files with the manifest labels, instead of a progressive number. Use this option only if all the labels are different, otherwise the files are going to be overwritten or not downloaded.
 * When 2.0/2.1 canvases contain multiple images, you can use the `--all-images` option to download them all, otherwise only the first image is downloaded. The files will be identified by their position in the canvas (e.g. `p001_01.jpg`).
 * Use the `-v` option to print a verbose output.
@@ -49,3 +49,4 @@ Contributions are most welcome by forking the repository and sending a pull requ
 
 [^1]: See the [Appendix](https://github.com/ClaudioMartino/IIIF-Downloader/blob/main/docs/Appendix.md) for more information about the discovery of the image sources.
 [^2]: The host can define two widths for each image: one in the manifest and one in the [Image Information](https://iiif.io/api/image/2.0/#image-information-request-uri-syntax) file. The script takes the biggest of the two.
+[^3]: See [the analysis](https://github.com/ClaudioMartino/IIIF-Downloader/blob/main/docs/Threading.md) for more information about the effects of threading.
