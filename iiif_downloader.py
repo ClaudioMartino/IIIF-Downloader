@@ -12,7 +12,7 @@ from urllib.error import URLError
 from urllib.parse import urlsplit
 from typing import List, Tuple, Dict, Any
 from ssl import create_default_context, CERT_NONE
-import threading
+from concurrent.futures import ThreadPoolExecutor
 
 issue_str = "\nPLEASE submit a bug report to \
 https://github.com/ClaudioMartino/IIIF-Downloader/issues \
@@ -267,7 +267,7 @@ class IIIF_Downloader:
     version = 0
     manifest_label = ""
     manifest_id = ""
-    pages : list[Page] = []
+    pages: list[Page] = []
     orig_num_pages = 0
 
     # Download counters
@@ -390,7 +390,6 @@ class IIIF_Downloader:
 
             # Loop over each page
             start_time = time.time()
-
             tot_pages = len(self.pages)
             if (self.num_threads is None):
                 for cnt in range(tot_pages):
@@ -403,30 +402,13 @@ class IIIF_Downloader:
                     self.download_single_page(offset, subdir)
                     offset += 1
                 thread_pages_cnt -= offset
-                # Download num_threads pages in parallel
-                main_loop_cnt = int(thread_pages_cnt / self.num_threads)
-                tail_cnt = thread_pages_cnt - main_loop_cnt*self.num_threads
-                for cnt in range(main_loop_cnt):
-                    threads = []
-                    for i in range(self.num_threads):
-                        thread = threading.Thread(
-                            target=self.download_single_page,
-                            args=[offset + self.num_threads*cnt + i, subdir])
-                        thread.start()
-                        threads.append(thread)
-                    for thread in threads:
-                        thread.join()
-                # Tail of n < num_threads pages downloaded in parallel
-                threads = []
-                for i in range(tail_cnt):
-                    thread = threading.Thread(
-                        target=self.download_single_page,
-                        args=[offset + main_loop_cnt*self.num_threads + i,
-                              subdir])
-                    thread.start()
-                    threads.append(thread)
-                for thread in threads:
-                    thread.join()
+
+                # Download remaining pages in parallel
+                executor = ThreadPoolExecutor(max_workers=self.num_threads)
+                for cnt in range(thread_pages_cnt):
+                    executor.submit(
+                        self.download_single_page, offset + cnt, subdir)
+                executor.shutdown()
 
             total_time = time.time() - start_time
 
