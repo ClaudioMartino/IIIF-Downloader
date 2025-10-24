@@ -391,7 +391,7 @@ class IIIF_Downloader:
             # Loop over each page
             start_time = time.time()
             tot_pages = len(self.pages)
-            if (self.num_threads is None):
+            if (self.num_threads <= 1):
                 for cnt in range(tot_pages):
                     self.download_single_page(cnt, subdir)
             else:
@@ -1042,7 +1042,8 @@ the host")
     general.add_argument(
         "-r", metavar="<referer>", help="Referer of the HTTP requests header")
     general.add_argument(
-        "-t", metavar="<threads>", type=int, help="Number of threads")
+        "-t", metavar="<threads>", default=1, type=int,
+        help="Number of threads")
     general.add_argument(
         "-f", "--force", action="store_true",
         help="Overwrite existing files")
