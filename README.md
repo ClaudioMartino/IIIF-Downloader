@@ -24,7 +24,7 @@ The manifest can be a file on your computer or a http(s) link. You can also use 
 
 * You can specify the output directory with `-d <directory>`. The default value is the working directory (`.`).
 * You can specify the range of the pages you want to download with `-p <first>-<last>` (e.g. `-p 10-20` for pages from 10 to 20, or `-p 10-10` for page 10 only).
-* You can use the `-f` option to force overwriting the files when they are already present in your working directory.
+* You can use the `-f` option to force the overwriting of the files when they are already present in your working directory.
 * If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined by the website[^2] use simply `-w`, without the argument. Images defined this way may not be available for download, depending on the website configurations.
 * You can specify the [referer of the HTTP requests header](https://en.wikipedia.org/wiki/HTTP_referer) with `-r <referer>`. The default value is the hostname of the url you are opening.
 * Use `-t <threads>` to set the number of threads used to download the pages of the document (one thread per page). Log may become unclear and you may encounter more 429 errors (Too Many Requests).[^3]
@@ -38,6 +38,18 @@ All these options can be displayed by running the helper with `-h`.
 ## Advanced usage
 
 You can include the library in your project and run more complicated tasks. You can also set what level of log messages you want to record. Have a look at the [examples](examples) directory.
+
+## Graphical user interface
+
+<p align="center">
+  <img src="gui.png" width=400>
+</p>
+
+A graphical user interface (GUI) has been implemented with [TkInter](https://wiki.python.org/moin/TkInter). You can run it as:
+
+```
+python3 iiif_downloader_gui.py
+```
 
 ## Testing
 
