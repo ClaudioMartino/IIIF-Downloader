@@ -104,8 +104,15 @@ def match_uri_pattern(uri: str) -> Match | None:
 def sanitize_name(title: str) -> str:
     """Sanitize file name in order to avoid errors."""
     max_len = 100
+    title = title.replace("\\", " ")
     title = title.replace("/", " ")
     title = title.replace(":", "")
+    title = title.replace("*", " ")
+    title = title.replace("?", "")
+    title = title.replace("\"", "")
+    title = title.replace("<", "")
+    title = title.replace(">", "")
+    title = title.replace("|", " ")
     return title[:max_len]
 
 
@@ -361,12 +368,12 @@ class IIIF_Downloader:
 
         if (self.pages):
             # Create subdirectory from manifest label
-            self.manifest_label = sanitize_name(self.manifest_label)
-            subdir = self.maindir + "/" + self.manifest_label
+            subdir = self.maindir + "/" + sanitize_name(self.manifest_label)
             if (not os.path.exists(subdir)):
                 os.mkdir(subdir)
                 logging.debug(
-                    self.manifest_label + " created in " + self.maindir)
+                    sanitize_name(self.manifest_label) + " created in " +
+                    self.maindir)
 
             # Create image sub-list [firstpage, lastpage]
             totpages = len(self.pages)
@@ -419,7 +426,8 @@ class IIIF_Downloader:
 
             # Rename the directory if something was wrong
             if (self.failed_cnt > 0):
-                err_subdir = self.maindir + "/" + "ERR_" + self.manifest_label
+                err_subdir = self.maindir + "/" + "ERR_" + \
+                    sanitize_name(self.manifest_label)
                 if os.path.exists(err_subdir):
                     rmtree(err_subdir)
                 os.rename(subdir, err_subdir)

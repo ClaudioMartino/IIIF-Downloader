@@ -217,15 +217,27 @@ for r in region_list:
 logging.info("Test sanitize name")
 
 names = [
+    "name\\with\\backslashes",
     "name/with/slashes",
     "name:with:colon",
+    "name*with*asterisk",
+    "name?with?question?marks",
+    "name\"with\"quotation\"marks",
+    "name<with<less-than<sign",
+    "name>with>greater-than>sign",
     "verylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongname",
     "verylongname/with/slashes:and:colonverylongname/with/slashes:and:colonverylongname/with/slashes:and:colonverylongname/with/slashes:and:colon",
 ]
 
 refs = [
+    "name with backslashes",
     "name with slashes",
     "namewithcolon",
+    "name with asterisk",
+    "namewithquestionmarks",
+    "namewithquotationmarks",
+    "namewithless-thansign",
+    "namewithgreater-thansign",
     "verylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnamevery",
     "verylongname with slashesandcolonverylongname with slashesandcolonverylongname with slashesandcolonv"
 ]
