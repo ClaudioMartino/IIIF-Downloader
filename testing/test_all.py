@@ -63,9 +63,10 @@ class TestReadManifest_GetVersion(Test):
         d = iiif_downloader.open_json_file(file_name, "")
         downloader.get_iiif_version(d)
         self.result = downloader.version
+        downloader.pages.clear()
 
 
-class TestReadManifest_TotInfo(Test):
+class TestReadManifest_TotPages(Test):
     def run(self, file_name, version):
         downloader = iiif_downloader.IIIF_Downloader()
         downloader.json_file = file_name
@@ -76,8 +77,9 @@ class TestReadManifest_TotInfo(Test):
             reader = downloader.read_iiif_manifest3
 
         with open(downloader.json_file) as f:
-            infos = reader(json.load(f))
-            self.result = len(infos)
+            reader(json.load(f))
+            self.result = len(downloader.pages)
+        downloader.pages.clear()
 
 
 class TestReadManifest_TotNA(Test):
@@ -91,12 +93,13 @@ class TestReadManifest_TotNA(Test):
             reader = downloader.read_iiif_manifest3
 
         with open(downloader.json_file) as f:
-            infos = reader(json.load(f))
+            reader(json.load(f))
             na_cnt = 0
-            for info in infos:
-                if (len(info.id) == 0):
+            for p in downloader.pages:
+                if (len(p.id) == 0):
                     na_cnt += 1
             self.result = na_cnt
+        downloader.pages.clear()
 
 
 # MAIN
@@ -282,9 +285,9 @@ for version in ["2", "3"]:
         test.run(file_name)
         test.check_ref()
 
-        # TEST TOT INFO
+        # TEST TOT PAGES
         ref = ver_dict[version]['ids'][i]['tot']
-        test = TestReadManifest_TotInfo(ref)
+        test = TestReadManifest_TotPages(ref)
         test.run(file_name, version)
         test.check_ref()
 
