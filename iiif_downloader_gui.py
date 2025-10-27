@@ -1,12 +1,19 @@
 import iiif_downloader
 import logging
-import tkinter as tk
+from tkinter import Tk, Menu, Toplevel, StringVar, IntVar
+from tkinter import ttk
 import tkinter.filedialog as tkfile
 import tkinter.messagebox as tkmsgbox
 
 
 class GUI:
     def __init__(self, window):
+        # Custom styles
+        ttk.Style().configure("TRadiobutton", padding=(0, 0, 10, 0))
+        ttk.Style().configure("WithEntry.TRadiobutton", padding=(0, 0, 5, 0))
+        ttk.Style().configure("TCheckbutton", padding=(0, 0, 5, 0))
+        ttk.Style().configure("TButton", margins=(10, 0, 10, 0))
+
         # Window
         self.window = window
         self.window.title("IIIF Downloader")
@@ -15,183 +22,188 @@ class GUI:
         # TODO change default window icon
 
         # Menu
-        self.menu = tk.Menu(self.window)
+        self.menu = Menu(self.window)
         self.window.configure(menu=self.menu)
-        menu2 = tk.Menu(self.menu, tearoff=0)
+        menu2 = Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label='Help', menu=menu2)
         menu2.add_command(label='About', command=self.about)
 
-        frame = tk.Frame(master=self.window)
+        frame = ttk.Frame(master=self.window)
         frame.columnconfigure(index=1, weight=1)
 
         # Manifest
-        self.manifest_radio = tk.StringVar()
-        self.manifest_url = tk.StringVar()
-        self.manifest_file = tk.StringVar()
+        self.manifest_radio = StringVar()
+        self.manifest_url = StringVar()
+        self.manifest_file = StringVar()
 
-        lbl_manifest = tk.Label(master=frame, text="Manifest path")
+        lbl_manifest = ttk.Label(master=frame, text="Manifest path")
         lbl_manifest.grid(row=0, column=0, padx=10, pady=5, sticky="w")
-        manifest_frame = tk.Frame(master=frame)
+        manifest_frame = ttk.Frame(master=frame)
         manifest_frame.grid(row=0, column=1, padx=10, pady=5, sticky="ew")
         manifest_frame.columnconfigure(index=1, weight=1)
 
-        self.ent_manifest_url = tk.Entry(
+        self.ent_manifest_url = ttk.Entry(
             master=manifest_frame, textvariable=self.manifest_url)
-        self.ent_manifest_file = tk.Entry(
+        self.ent_manifest_file = ttk.Entry(
             master=manifest_frame, textvariable=self.manifest_file)
-        self.btn2_manifest = tk.Button(
+        self.btn2_manifest = ttk.Button(
             master=manifest_frame, text='Browse', command=self.browse_manifest)
-        btn_manifest_url = tk.Radiobutton(
+        btn_manifest_url = ttk.Radiobutton(
             master=manifest_frame, text="URL", variable=self.manifest_radio,
-            value="url", command=self.enableManifestURLEntry)
+            value="url", command=self.enableManifestURLEntry,
+            style="WithEntry.TRadiobutton")
         btn_manifest_url.invoke()  # url radio button set by default
         btn_manifest_url.grid(row=0, column=0, sticky="w")
         self.ent_manifest_url.grid(row=0, column=1, columnspan=2, sticky="ew")
-        btn_manifest_file = tk.Radiobutton(
+        btn_manifest_file = ttk.Radiobutton(
             master=manifest_frame, text="File", variable=self.manifest_radio,
             value="file", command=self.enableManifestFileEntry)
         btn_manifest_file.grid(row=1, column=0, sticky="w")
         self.ent_manifest_file.grid(row=1, column=1, sticky="ew")
-        self.btn2_manifest.grid(row=1, column=2)
+        self.btn2_manifest.grid(row=1, column=2, padx=(5, 0))
 
         # Output folder
-        self.path = tk.StringVar()
+        self.path = StringVar()
 
-        lbl_path = tk.Label(master=frame, text="Destination folder")
+        lbl_path = ttk.Label(master=frame, text="Destination folder")
         lbl_path.grid(row=2, column=0, padx=10, pady=5, sticky="w")
-        path_frame = tk.Frame(master=frame)
+        path_frame = ttk.Frame(master=frame)
         path_frame.grid(row=2, column=1, padx=10, pady=5, sticky="ew")
         path_frame.columnconfigure(index=0, weight=1)
 
-        ent_path = tk.Entry(master=path_frame, textvariable=self.path)
-        btn_browse = tk.Button(
+        ent_path = ttk.Entry(master=path_frame, textvariable=self.path)
+        btn_browse = ttk.Button(
             master=path_frame, text='Browse', command=self.browse_path)
         ent_path.grid(row=0, column=0, sticky="ew")
-        btn_browse.grid(row=0, column=1)
+        btn_browse.grid(row=0, column=1, padx=(5, 0))
 
         # Pages
-        self.pages_radio = tk.StringVar()
-        self.pages_range = tk.StringVar()
+        self.pages_radio = StringVar()
+        self.pages_range = StringVar()
 
-        lbl_pages = tk.Label(master=frame, text="Pages")
+        lbl_pages = ttk.Label(master=frame, text="Pages")
         lbl_pages.grid(row=3, column=0, padx=10, pady=5, sticky="w")
-        pages_frame = tk.Frame(master=frame)
+        pages_frame = ttk.Frame(master=frame)
         pages_frame.grid(row=3, column=1, padx=10, pady=5, sticky="w")
 
-        ent_pages = tk.Entry(
+        ent_pages = ttk.Entry(
             master=pages_frame, textvariable=self.pages_range, width=5)
-        btn_all_pages = tk.Radiobutton(
+        btn_all_pages = ttk.Radiobutton(
             master=pages_frame, text="All", variable=self.pages_radio,
             value="all", command=lambda: self.disableEntry(ent_pages))
         btn_all_pages.invoke()  # all pages button set by default
-        btn_range_pages = tk.Radiobutton(
+        btn_range_pages = ttk.Radiobutton(
             master=pages_frame, text="Range", variable=self.pages_radio,
-            value="range", command=lambda: self.enableEntry(ent_pages))
+            value="range", command=lambda: self.enableEntry(ent_pages),
+            style="WithEntry.TRadiobutton")
         btn_all_pages.pack(side="left")
         btn_range_pages.pack(side="left")
         ent_pages.pack(side="left")
 
         # Width
-        self.width_radio = tk.StringVar()
-        self.custom_width = tk.StringVar()
+        self.width_radio = StringVar()
+        self.custom_width = StringVar()
 
-        lbl_width = tk.Label(master=frame, text="Images width")
+        lbl_width = ttk.Label(master=frame, text="Images width")
         lbl_width.grid(row=4, column=0, padx=10, pady=5, sticky="w")
-        width_frame = tk.Frame(master=frame)
+        width_frame = ttk.Frame(master=frame)
         width_frame.grid(row=4, column=1, padx=10, pady=5, sticky="w")
 
-        ent_width = tk.Entry(
+        ent_width = ttk.Entry(
             master=width_frame, textvariable=self.custom_width, width=5)
-        btn_highest_width = tk.Radiobutton(
+        btn_highest_width = ttk.Radiobutton(
             master=width_frame, text="Highest", variable=self.width_radio,
             value="highest", command=lambda: self.disableEntry(ent_width))
         btn_highest_width.invoke()  # highest width button set by default
-        btn_host_width = tk.Radiobutton(
+        btn_host_width = ttk.Radiobutton(
             master=width_frame, text="Website-defined",
             variable=self.width_radio, value="host",
             command=lambda: self.disableEntry(ent_width))
-        btn_custom_width = tk.Radiobutton(
+        btn_custom_width = ttk.Radiobutton(
             master=width_frame, text="Custom", variable=self.width_radio,
-            value="custom", command=lambda: self.enableEntry(ent_width))
+            value="custom", command=lambda: self.enableEntry(ent_width),
+            style="WithEntry.TRadiobutton")
         btn_highest_width.pack(side="left")
         btn_host_width.pack(side="left")
         btn_custom_width.pack(side="left")
         ent_width.pack(side="left")
 
         # Threads
-        self.threads = tk.StringVar(value="1")
+        self.threads = StringVar(value="1")
 
-        lbl_threads = tk.Label(master=frame, text="Threads")
+        lbl_threads = ttk.Label(master=frame, text="Threads")
         lbl_threads.grid(row=5, column=0, padx=10, pady=5, sticky="w")
-        ent_threads = tk.Entry(
+        ent_threads = ttk.Entry(
             master=frame, textvariable=self.threads, width=5)
         ent_threads.grid(row=5, column=1, padx=10, pady=5, sticky="w")
 
         # Referer
-        self.referer_radio = tk.StringVar()
-        self.referer = tk.StringVar()
+        self.referer_radio = StringVar()
+        self.referer = StringVar()
 
-        lbl_referer = tk.Label(master=frame, text="HTTP referer")
+        lbl_referer = ttk.Label(master=frame, text="HTTP referer")
         lbl_referer.grid(row=6, column=0, padx=10, pady=5, sticky="w")
-        referer_frame = tk.Frame(master=frame)
+        referer_frame = ttk.Frame(master=frame)
         referer_frame.grid(row=6, column=1, padx=10, pady=5, sticky="ew")
 
-        ent_referer = tk.Entry(master=referer_frame, textvariable=self.referer)
-        btn_default_referer = tk.Radiobutton(
+        ent_referer = ttk.Entry(
+            master=referer_frame, textvariable=self.referer)
+        btn_default_referer = ttk.Radiobutton(
             master=referer_frame, text="Default", variable=self.referer_radio,
             value="default", command=lambda: self.disableEntry(ent_referer))
         btn_default_referer.invoke()  # all pages button set by default
-        btn_custom_referer = tk.Radiobutton(
+        btn_custom_referer = ttk.Radiobutton(
             master=referer_frame, text="Custom", variable=self.referer_radio,
-            value="custom", command=lambda: self.enableEntry(ent_referer))
+            value="custom", command=lambda: self.enableEntry(ent_referer),
+            style="WithEntry.TRadiobutton")
         btn_default_referer.pack(side="left")
         btn_custom_referer.pack(side="left")
         ent_referer.pack(fill="x")
 
         # Overwrite check button
-        self.force = tk.IntVar()
+        self.force = IntVar()
 
-        cbtn_force = tk.Checkbutton(
+        cbtn_force = ttk.Checkbutton(
             master=frame, variable=self.force, onvalue=1, offvalue=0,
-            text="Overwrite existing files", anchor="w")
+            text="Overwrite existing files")
         cbtn_force.grid(
             row=7, column=0, columnspan=2, padx=10, pady=5, sticky="w")
 
         # Use labels check button
-        self.uselabels = tk.IntVar()
+        self.uselabels = IntVar()
 
-        cbtn_uselabels = tk.Checkbutton(
+        cbtn_uselabels = ttk.Checkbutton(
             master=frame, variable=self.uselabels, onvalue=1, offvalue=0,
-            text="Use manifest labels as file names", anchor="w")
+            text="Use manifest labels as file names")
         cbtn_uselabels.grid(
             row=8, column=0, columnspan=2, padx=10, pady=5, sticky="w")
 
         # All images check button
-        self.allimages = tk.IntVar()
+        self.allimages = IntVar()
 
-        cbtn_allimages = tk.Checkbutton(
+        cbtn_allimages = ttk.Checkbutton(
             master=frame, variable=self.allimages, onvalue=1, offvalue=0,
-            text="Download all files in multiple files canvases", anchor="w")
+            text="Download all files in multiple files canvases")
         cbtn_allimages.grid(
             row=9, column=0, columnspan=2, padx=10, pady=5, sticky="w")
 
         # Log file check button
-        self.log = tk.IntVar()
-        self.log_file = tk.StringVar(value="iiif_downloader.log")
+        self.log = IntVar()
+        self.log_file = StringVar(value="iiif_downloader.log")
 
-        log_frame = tk.Frame(master=frame)
+        log_frame = ttk.Frame(master=frame)
         log_frame.grid(
             row=10, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
-        self.cbtn_log = tk.Checkbutton(
+        self.cbtn_log = ttk.Checkbutton(
             master=log_frame, variable=self.log, onvalue=1, offvalue=0,
-            text="Save log file", anchor="w", command=self.enableLogEntry)
-        self.ent_log = tk.Entry(master=log_frame, textvariable=self.log_file)
+            text="Save log file", command=self.enableLogEntry)
+        self.ent_log = ttk.Entry(master=log_frame, textvariable=self.log_file)
         self.ent_log.config(state="disabled")
         self.cbtn_log.pack(side="left")
         self.ent_log.pack(fill="x")
 
         # Download button
-        btn_download = tk.Button(
+        btn_download = ttk.Button(
             master=frame, text="Download document", command=self.run)
         btn_download.grid(row=11, column=0, columnspan=2, padx=5, pady=5)
 
@@ -202,10 +214,10 @@ class GUI:
         txt = "IIIF Downloader v1.0.0\n"
         txt += "Copyright (C) 2025 Claudio Martino\n"
         txt += "github.com/ClaudioMartino/IIIF-Downloader"
-        new_window = tk.Toplevel()
+        new_window = Toplevel()
         new_window.title("About")
         new_window.resizable(False, False)
-        tk.Label(new_window, text=txt).pack(padx=10, pady=5)
+        ttk.Label(new_window, text=txt).pack(padx=10, pady=5)
 
     def browse_path(self):
         selected_path = tkfile.askdirectory()
@@ -367,7 +379,7 @@ class GUI:
 
 
 if __name__ == '__main__':
-    window = tk.Tk()
+    window = Tk()
     gui = GUI(window)
 
     window.mainloop()
