@@ -129,13 +129,15 @@ class GUI:
         ent_width.pack(side="left")
 
         # Threads
-        self.threads = StringVar(value="1")
+        self.threads = StringVar(value=1)
 
-        lbl_threads = ttk.Label(master=frame, text="Threads")
+        lbl_threads = ttk.Label(master=frame, text="Threads (max: 64)")
         lbl_threads.grid(row=5, column=0, padx=10, pady=5, sticky="w")
-        ent_threads = ttk.Entry(
-            master=frame, textvariable=self.threads, width=5)
-        ent_threads.grid(row=5, column=1, padx=10, pady=5, sticky="w")
+        box_threads = ttk.Spinbox(
+            master=frame, from_=1, to=64, textvariable=self.threads, width=5)
+        vcmd_threads = (frame.register(self.validateThreads), "%P")
+        box_threads.config(validate="key", validatecommand=vcmd_threads)
+        box_threads.grid(row=5, column=1, padx=10, pady=5, sticky="w")
 
         # Referer
         self.referer_radio = StringVar()
@@ -261,6 +263,17 @@ class GUI:
             self.ent_log.config(state="disabled")
             self.ent_log.update()
 
+    def validateThreads(self, user_input):
+        if (user_input.isdigit()):
+            if int(user_input) not in range(1, 64+1):
+                return False
+            return True
+        elif (user_input == ""):
+            # We accept temporarily an emtpy string and check later
+            return True
+        else:
+            return False
+
     def bindEnter(self, event):
         self.run()
 
@@ -323,10 +336,10 @@ class GUI:
                     raise Exception('Please enter a valid width.')
 
             threads = 1
-            if (threads_value.isdigit() and threads_value != "0"):
-                threads = int(threads_value)
+            if (threads_value == ""):
+                raise Exception('Please enter a thread number.')
             else:
-                raise Exception('Please enter a valid thread number.')
+                threads = int(threads_value)
 
             referer = None
             if (referer_radio_value == "custom"):
