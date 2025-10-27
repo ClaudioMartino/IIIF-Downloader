@@ -34,6 +34,7 @@ class GUI:
         # Manifest
         self.manifest_radio = StringVar()
         self.manifest_url = StringVar()
+        self.manifest_url.trace_add('write', self.checkAntenati)
         self.manifest_file = StringVar()
 
         lbl_manifest = ttk.Label(master=frame, text="Manifest path")
@@ -150,16 +151,16 @@ class GUI:
 
         ent_referer = ttk.Entry(
             master=referer_frame, textvariable=self.referer)
-        btn_default_referer = ttk.Radiobutton(
+        self.btn_default_referer = ttk.Radiobutton(
             master=referer_frame, text="Default", variable=self.referer_radio,
             value="default", command=lambda: self.disableEntry(ent_referer))
-        btn_default_referer.invoke()  # all pages button set by default
-        btn_custom_referer = ttk.Radiobutton(
+        self.btn_default_referer.invoke()  # all pages button set by default
+        self.btn_custom_referer = ttk.Radiobutton(
             master=referer_frame, text="Custom", variable=self.referer_radio,
             value="custom", command=lambda: self.enableEntry(ent_referer),
             style="WithEntry.TRadiobutton")
-        btn_default_referer.pack(side="left")
-        btn_custom_referer.pack(side="left")
+        self.btn_default_referer.pack(side="left")
+        self.btn_custom_referer.pack(side="left")
         ent_referer.pack(fill="x")
 
         # Overwrite check button
@@ -246,6 +247,14 @@ class GUI:
         self.ent_manifest_url.configure(state="disabled")
         self.ent_manifest_url.update()
         self.btn2_manifest.config(state="normal")
+
+    def checkAntenati(self, var, index, mode):
+        if("dam-antenati.cultura.gov.it" in self.manifest_url.get()):
+            self.btn_custom_referer.invoke()
+            self.referer.set("https://antenati.cultura.gov.it/")
+        else:
+            self.btn_default_referer.invoke()
+            self.referer.set("")
 
     def enableEntry(self, entry):
         entry.configure(state="normal")
