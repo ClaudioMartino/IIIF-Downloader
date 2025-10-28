@@ -376,7 +376,7 @@ class IIIF_Downloader:
                     self.maindir)
 
             # Create image sub-list [firstpage, lastpage]
-            totpages = len(self.pages)
+            totpages = len(self.pages)  # TODO self.orig_num_pages
             if (self.firstpage != 1 or self.lastpage != -1):
                 self.pages = self.pages[self.firstpage - 1:self.lastpage]
                 logging.info(
@@ -674,6 +674,7 @@ files.")
                 d = json.loads(
                     open_url(manifest_id, self.referer).read().decode("utf-8"))
                 self.download_iiif_files_from_manifest(d)
+                self.pages.clear()
         else:
             raise Exception(
                 "Cannot find manifests ('" + manifests_key +
