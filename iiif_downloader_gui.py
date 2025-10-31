@@ -4,6 +4,8 @@ from tkinter import Tk, Menu, Toplevel, StringVar, IntVar
 from tkinter import ttk
 import tkinter.filedialog as tkfile
 import tkinter.messagebox as tkmsgbox
+import threading
+import time
 
 
 class GUI:
@@ -206,9 +208,9 @@ class GUI:
         self.ent_log.pack(fill="x")
 
         # Download button
-        btn_download = ttk.Button(
+        self.btn_download = ttk.Button(
             master=frame, text="Download document", command=self.run)
-        btn_download.grid(row=11, column=0, columnspan=2, padx=5, pady=5)
+        self.btn_download.grid(row=11, column=0, columnspan=2, padx=5, pady=5)
 
         # Pack the frame in the window, as small as possible, responsive on x
         frame.pack(fill="x")
@@ -249,7 +251,7 @@ class GUI:
         self.btn2_manifest.config(state="normal")
 
     def checkAntenati(self, var, index, mode):
-        if("dam-antenati.cultura.gov.it" in self.manifest_url.get()):
+        if ("dam-antenati.cultura.gov.it" in self.manifest_url.get()):
             self.btn_custom_referer.invoke()
             self.referer.set("https://antenati.cultura.gov.it/")
         else:
@@ -285,6 +287,14 @@ class GUI:
 
     def bindEnter(self, event):
         self.run()
+
+    def check_downloader_thread(self):
+        while (True):
+            time.sleep(1)
+            # TODO read downloader.downloaded_cnt for progress bar here
+            if (not self.thread_downloader.is_alive()):
+                self.btn_download.config(state="normal")
+                break
 
     def run(self):
         try:
@@ -379,7 +389,7 @@ class GUI:
                     fileHandler.setLevel(logging.DEBUG)
                     rootLogger.addHandler(fileHandler)
 
-            # Create downloader and run
+            # Create downloader
             downloader = iiif_downloader.IIIF_Downloader()
 
             downloader.json_file = manifest
@@ -394,7 +404,17 @@ class GUI:
             downloader.width = width  # -w not used: 0; -w without arg: None
 
             downloader.pages.clear()  # clear page list
-            downloader.run()
+
+            # Disable download button and run downloader in daemonic thread
+            self.btn_download.config(state="disabled")
+            self.thread_downloader = threading.Thread(
+                target=downloader.run, daemon=True)
+            self.thread_downloader.start()
+
+            # Enable button when downloads are complete
+            thread_button = threading.Thread(
+                target=self.check_downloader_thread, daemon=True)
+            thread_button.start()
 
         except Exception as e:
             tkmsgbox.showwarning(title="Error", message="Error", detail=str(e))
