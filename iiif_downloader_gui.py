@@ -210,7 +210,18 @@ class GUI:
         # Download button
         self.btn_download = ttk.Button(
             master=frame, text="Download document", command=self.run)
-        self.btn_download.grid(row=11, column=0, columnspan=2, padx=5, pady=5)
+        self.btn_download.grid(row=11, column=0, columnspan=2, padx=0, pady=5)
+
+        # Progress bar
+        progress_bar_frame = ttk.Frame(master=frame)
+        progress_bar_frame.grid(
+            row=12, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
+        self.progress_bar = ttk.Progressbar(
+            master=progress_bar_frame, orient="horizontal", mode="determinate")
+        self.lbl_progress_bar = ttk.Label(
+            master=progress_bar_frame, width=7, anchor="e", text="0.0%")
+        self.lbl_progress_bar.pack(side="right")
+        self.progress_bar.pack(fill="x")
 
         # Pack the frame in the window, as small as possible, responsive on x
         frame.pack(fill="x")
@@ -290,8 +301,17 @@ class GUI:
 
     def check_downloader_thread(self):
         while (True):
-            time.sleep(1)
-            # TODO read downloader.downloaded_cnt for progress bar here
+            time.sleep(0.5)
+
+            # Update progress bar
+            tot_pages = len(self.downloader.pages)
+            tot_cnt = self.downloader.downloaded_cnt + \
+                self.downloader.skipped_cnt + self.downloader.failed_cnt
+            self.progress_bar.config(value=round(tot_cnt / tot_pages * 100, 1))
+            self.lbl_progress_bar.config(
+                text=str(self.progress_bar["value"]) + "%")
+
+            # Enable download button
             if (not self.thread_downloader.is_alive()):
                 self.btn_download.config(state="normal")
                 break
@@ -390,28 +410,28 @@ class GUI:
                     rootLogger.addHandler(fileHandler)
 
             # Create downloader
-            downloader = iiif_downloader.IIIF_Downloader()
+            self.downloader = iiif_downloader.IIIF_Downloader()
 
-            downloader.json_file = manifest
-            downloader.maindir = path_value
-            downloader.firstpage = firstpage
-            downloader.lastpage = lastpage
-            downloader.force = force_value
-            downloader.use_labels = uselabels_value
-            downloader.all_images = allimages_value
-            downloader.referer = referer
-            downloader.num_threads = threads
-            downloader.width = width  # -w not used: 0; -w without arg: None
+            self.downloader.json_file = manifest
+            self.downloader.maindir = path_value
+            self.downloader.firstpage = firstpage
+            self.downloader.lastpage = lastpage
+            self.downloader.force = force_value
+            self.downloader.use_labels = uselabels_value
+            self.downloader.all_images = allimages_value
+            self.downloader.referer = referer
+            self.downloader.num_threads = threads
+            self.downloader.width = width  # -w unused: 0; -w without arg: None
 
-            downloader.pages.clear()  # clear page list
+            self.downloader.pages.clear()  # clear page list
 
             # Disable download button and run downloader in daemonic thread
             self.btn_download.config(state="disabled")
             self.thread_downloader = threading.Thread(
-                target=downloader.run, daemon=True)
+                target=self.downloader.run, daemon=True)
             self.thread_downloader.start()
 
-            # Enable button when downloads are complete
+            # Thread to update the progress bar and enable the download button
             thread_button = threading.Thread(
                 target=self.check_downloader_thread, daemon=True)
             thread_button.start()
