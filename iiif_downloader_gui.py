@@ -305,11 +305,13 @@ class GUI:
 
             # Update progress bar
             tot_pages = len(self.downloader.pages)
-            tot_cnt = self.downloader.downloaded_cnt + \
-                self.downloader.skipped_cnt + self.downloader.failed_cnt
-            self.progress_bar.config(value=round(tot_cnt / tot_pages * 100, 1))
-            self.lbl_progress_bar.config(
-                text=str(self.progress_bar["value"]) + "%")
+            if (tot_pages != 0):
+                tot_cnt = self.downloader.downloaded_cnt + \
+                    self.downloader.skipped_cnt + self.downloader.failed_cnt
+                self.progress_bar.config(
+                    value=round(tot_cnt / tot_pages * 100, 1))
+                self.lbl_progress_bar.config(
+                    text=str(self.progress_bar["value"]) + "%")
 
             # Enable download button
             if (not self.thread_downloader.is_alive()):
