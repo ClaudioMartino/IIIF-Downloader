@@ -156,7 +156,7 @@ class GUI:
         self.btn_default_referer = ttk.Radiobutton(
             master=referer_frame, text="Default", variable=self.referer_radio,
             value="default", command=lambda: self.disableEntry(ent_referer))
-        self.btn_default_referer.invoke()  # all pages button set by default
+        self.btn_default_referer.invoke()  # default referer button set
         self.btn_custom_referer = ttk.Radiobutton(
             master=referer_frame, text="Custom", variable=self.referer_radio,
             value="custom", command=lambda: self.enableEntry(ent_referer),
@@ -265,9 +265,6 @@ class GUI:
         if ("dam-antenati.cultura.gov.it" in self.manifest_url.get()):
             self.btn_custom_referer.invoke()
             self.referer.set("https://antenati.cultura.gov.it/")
-        else:
-            self.btn_default_referer.invoke()
-            self.referer.set("")
 
     def enableEntry(self, entry):
         entry.configure(state="normal")
