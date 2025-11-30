@@ -315,113 +315,115 @@ class GUI:
                 self.btn_download.config(state="normal")
                 break
 
+    def read_and_check_values(self):
+        # Read all values
+        manifest_radio = self.manifest_radio.get()
+        manifest_url = self.manifest_url.get()
+        manifest_file = self.manifest_file.get()
+
+        path_value = self.path.get()
+
+        pages_radio_value = self.pages_radio.get()
+        pages_range_value = self.pages_range.get()
+
+        force_value = bool(self.force.get())
+        uselabels_value = bool(self.uselabels.get())
+        allimages_value = bool(self.allimages.get())
+
+        referer_radio_value = self.referer_radio.get()
+        referer_value = self.referer.get()
+
+        width_radio_value = self.width_radio.get()
+        custom_width_value = self.custom_width.get()
+
+        threads_value = self.threads.get()
+
+        log_value = bool(self.log.get())
+        log_file_value = self.log_file.get()
+
+        # Check values
+        manifest = ""
+        if (manifest_radio == "url"):
+            if (iiif_downloader.is_url(manifest_url)):
+                manifest = manifest_url
+            else:
+                raise Exception('Please enter a valid manifest URL.')
+        elif (manifest_radio == "file"):
+            manifest = manifest_file
+        if (len(manifest) == 0):
+            raise Exception('Please enter a manifest.')
+
+        if (len(path_value) == 0):
+            raise Exception('Please enter a destination folder.')
+
+        pages_range = ""
+        if (pages_radio_value == "all"):
+            pages_range = "all"
+        elif (pages_radio_value == "range"):
+            pages_range = pages_range_value
+        firstpage, lastpage = iiif_downloader.get_pages(pages_range)
+
+        width = 0
+        if (width_radio_value == "host"):
+            width = None
+        elif (width_radio_value == "custom"):
+            if (custom_width_value.isdigit()):
+                width = int(custom_width_value)
+            else:
+                raise Exception('Please enter a valid width.')
+
+        threads = 1
+        if (threads_value == ""):
+            raise Exception('Please enter a thread number.')
+        else:
+            threads = int(threads_value)
+
+        referer = None
+        if (referer_radio_value == "custom"):
+            if (len(referer_value) == 0):
+                raise Exception('Please enter an HTTP referer.')
+            elif (not iiif_downloader.is_url(referer_value)):
+                raise Exception('Please enter a valid HTTP referer.')
+            else:
+                referer = referer_value
+
+        rootLogger = logging.getLogger()
+        rootLogger.setLevel(logging.DEBUG)
+        rootLogger.handlers.clear()  # delete all previous handlers
+        logFormatter = logging.Formatter("%(message)s")
+        # When the root logger has no handlers, basicConfig() is called.
+        # We might as well create a StreamHandler for the console.
+        consoleHandler = logging.StreamHandler()
+        consoleHandler.setFormatter(logFormatter)
+        consoleHandler.setLevel(logging.DEBUG)
+        rootLogger.addHandler(consoleHandler)
+        if (log_value):
+            if (len(log_file_value) == 0):
+                raise Exception('Please enter a valid log file name.')
+            else:
+                fileHandler = logging.FileHandler(
+                    path_value + "/" + log_file_value)
+                fileHandler.setFormatter(logFormatter)
+                fileHandler.setLevel(logging.DEBUG)
+                rootLogger.addHandler(fileHandler)
+
+        # Set up downloader
+        self.downloader.json_file = manifest
+        self.downloader.maindir = path_value
+        self.downloader.firstpage = firstpage
+        self.downloader.lastpage = lastpage
+        self.downloader.force = force_value
+        self.downloader.use_labels = uselabels_value
+        self.downloader.all_images = allimages_value
+        self.downloader.referer = referer
+        self.downloader.num_threads = threads
+        self.downloader.width = width  # -w unused: 0; -w without arg: None
+
     def run(self):
         try:
-            # Read all values
-            manifest_radio = self.manifest_radio.get()
-            manifest_url = self.manifest_url.get()
-            manifest_file = self.manifest_file.get()
-
-            path_value = self.path.get()
-
-            pages_radio_value = self.pages_radio.get()
-            pages_range_value = self.pages_range.get()
-
-            force_value = bool(self.force.get())
-            uselabels_value = bool(self.uselabels.get())
-            allimages_value = bool(self.allimages.get())
-
-            referer_radio_value = self.referer_radio.get()
-            referer_value = self.referer.get()
-
-            width_radio_value = self.width_radio.get()
-            custom_width_value = self.custom_width.get()
-
-            threads_value = self.threads.get()
-
-            log_value = bool(self.log.get())
-            log_file_value = self.log_file.get()
-
-            # Check values
-            manifest = ""
-            if (manifest_radio == "url"):
-                if (iiif_downloader.is_url(manifest_url)):
-                    manifest = manifest_url
-                else:
-                    raise Exception('Please enter a valid manifest URL.')
-            elif (manifest_radio == "file"):
-                manifest = manifest_file
-            if (len(manifest) == 0):
-                raise Exception('Please enter a manifest.')
-
-            if (len(path_value) == 0):
-                raise Exception('Please enter a destination folder.')
-
-            pages_range = ""
-            if (pages_radio_value == "all"):
-                pages_range = "all"
-            elif (pages_radio_value == "range"):
-                pages_range = pages_range_value
-            firstpage, lastpage = iiif_downloader.get_pages(pages_range)
-
-            width = 0
-            if (width_radio_value == "host"):
-                width = None
-            elif (width_radio_value == "custom"):
-                if (custom_width_value.isdigit()):
-                    width = int(custom_width_value)
-                else:
-                    raise Exception('Please enter a valid width.')
-
-            threads = 1
-            if (threads_value == ""):
-                raise Exception('Please enter a thread number.')
-            else:
-                threads = int(threads_value)
-
-            referer = None
-            if (referer_radio_value == "custom"):
-                if (len(referer_value) == 0):
-                    raise Exception('Please enter an HTTP referer.')
-                elif (not iiif_downloader.is_url(referer_value)):
-                    raise Exception('Please enter a valid HTTP referer.')
-                else:
-                    referer = referer_value
-
-            rootLogger = logging.getLogger()
-            rootLogger.setLevel(logging.DEBUG)
-            rootLogger.handlers.clear()  # delete all previous handlers
-            logFormatter = logging.Formatter("%(message)s")
-            # When the root logger has no handlers, basicConfig() is called.
-            # We might as well create a StreamHandler for the console.
-            consoleHandler = logging.StreamHandler()
-            consoleHandler.setFormatter(logFormatter)
-            consoleHandler.setLevel(logging.DEBUG)
-            rootLogger.addHandler(consoleHandler)
-            if (log_value):
-                if (len(log_file_value) == 0):
-                    raise Exception('Please enter a valid log file name.')
-                else:
-                    fileHandler = logging.FileHandler(
-                        path_value + "/" + log_file_value)
-                    fileHandler.setFormatter(logFormatter)
-                    fileHandler.setLevel(logging.DEBUG)
-                    rootLogger.addHandler(fileHandler)
-
-            # Create downloader
+            # Read values and save them in downloader
             self.downloader = iiif_downloader.IIIF_Downloader()
-
-            self.downloader.json_file = manifest
-            self.downloader.maindir = path_value
-            self.downloader.firstpage = firstpage
-            self.downloader.lastpage = lastpage
-            self.downloader.force = force_value
-            self.downloader.use_labels = uselabels_value
-            self.downloader.all_images = allimages_value
-            self.downloader.referer = referer
-            self.downloader.num_threads = threads
-            self.downloader.width = width  # -w unused: 0; -w without arg: None
-
+            self.read_and_check_values()
             self.downloader.pages.clear()  # clear page list
 
             # Disable download button and run downloader in daemonic thread
