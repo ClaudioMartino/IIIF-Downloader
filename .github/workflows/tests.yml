@@ -12,7 +12,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+
+    env:
+      DISPLAY: ":99.0"
 
     defaults:
       run:
@@ -27,11 +30,18 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Unzip manifest2 archive
-        run: unzip manifests2/archive2.zip -d manifests2
-
-      - name: Unzip manifest3 archive
-        run: unzip manifests3/archive3.zip -d manifests3
+      - name: Unzip manifest archives
+        run: |
+          unzip manifests2/archive2.zip -d manifests2
+          unzip manifests3/archive3.zip -d manifests3
 
       - name: Run all tests
         run: python3 test_all.py
+
+      - name: Install Xvfb display for GUI tests
+        run: |
+          sudo apt-get install -y xvfb
+          sudo Xvfb $DISPLAY -screen 0 1280x1024x24 &
+
+      - name: Run all GUI tests
+        run: python3 test_gui_all.py
