@@ -2,7 +2,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import iiif_downloader # import ../iiif_downloader.py
 import argparse
-from test_data import ver_dict
+from test_manifests_data import ver_dict
 
 # Parse arguments
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)

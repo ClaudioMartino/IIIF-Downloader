@@ -1,26 +1,12 @@
-import os, sys
+from test_common import Test
+from test_manifests_data import ver_dict
+import os
+import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import iiif_downloader  # import ../iiif_downloader.py
 import json
 import logging
 import argparse
-from test_data import ver_dict
-
-
-class Test:
-    def __init__(self, ref):
-        self.ref = ref
-        self.result = None
-
-    def check_ref(self):
-        if (self.result != self.ref):
-            raise Exception(
-                "Error! Result: " + str(self.result) + " (" +
-                str(type(self.result)) + "). Ref.: " + str(self.ref) + " (" +
-                str(type(self.ref)) + ")")
-
-
-# Test child classes
 
 
 class TestSanitizeLabel(Test):
@@ -102,9 +88,6 @@ class TestReadManifest_TotNA(Test):
         downloader.pages.clear()
 
 
-# MAIN
-
-
 # Set parser and verbosity
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -119,10 +102,7 @@ parser.add_argument(
 parser_args = vars(parser.parse_args())
 logging.basicConfig(level=parser_args["logging_level"], format="%(message)s")
 
-
-# TEST SANITIZE LABEL
 logging.info("Test sanitize label")
-
 labels = [
     "string_to_test",
     ["string_to_test"],
@@ -131,7 +111,6 @@ labels = [
     {"key": "val"},
     100,
 ]
-
 refs = [
     "string_to_test",
     "string_to_test",
@@ -140,15 +119,12 @@ refs = [
     "None",
     "100",
 ]
-
 for label, ref in zip(labels, refs):
     test = TestSanitizeLabel(ref)
     test.run(label)
     test.check_ref()
 
-# TEST GET EXTENSION
 logging.info("Test get extension")
-
 mime_types = [
     "image/jpeg",
     "image/jpg",
@@ -160,7 +136,6 @@ mime_types = [
     "image/webp",
     "something/else",
 ]
-
 refs = [
     ".jpg",
     ".jpg",
@@ -172,12 +147,10 @@ refs = [
     ".webp",
     "NA",
 ]
-
 for mime_type, ref in zip(mime_types, refs):
     test = TestGetExtension(ref)
     test.run(mime_type, "file_id")
     test.check_ref()
-
 # Checking priority to extension taken from default.ext file ID
 for mime_type in mime_types:
     for ref in refs[:-1]:  # remove NA from refs
@@ -185,10 +158,7 @@ for mime_type in mime_types:
         test.run(mime_type, "path/to/file/default" + ref)
         test.check_ref()
 
-
-# TEST MATCH URI PATTERN
 logging.info("Test match URI pattern")
-
 uri_base = "https://content.staatsbibliothek-berlin.de/dc/785884734-0001"
 region_list = ["full", "square", "125,15,120,140", "pct:41.6,7.5,40,70"]
 size_list = ["full", "max", "^max", "150,", "^360,", ",150", ",^240", "pct:50",
@@ -196,7 +166,6 @@ size_list = ["full", "max", "^max", "150,", "^360,", ",150", ",^240", "pct:50",
 rotation_list = ["0", "22.5", "!0"]
 quality_list = ["color", "gray", "bitonal", "default"]
 format_list = ["jpg", "tif", "png", "gif", "jp2", "pdf", "webp"]
-
 for r in region_list:
     for s in size_list:
         for rot in rotation_list:
@@ -215,10 +184,7 @@ for r in region_list:
                     test.run(uri)
                     test.check_ref()
 
-
-# TEST SANITIZE NAME
 logging.info("Test sanitize name")
-
 names = [
     "name\\with\\backslashes",
     "name/with/slashes",
@@ -231,7 +197,6 @@ names = [
     "verylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongname",
     "verylongname/with/slashes:and:colonverylongname/with/slashes:and:colonverylongname/with/slashes:and:colonverylongname/with/slashes:and:colon",
 ]
-
 refs = [
     "name with backslashes",
     "name with slashes",
@@ -244,22 +209,17 @@ refs = [
     "verylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnameverylongnamevery",
     "verylongname with slashesandcolonverylongname with slashesandcolonverylongname with slashesandcolonv"
 ]
-
 for name, ref in zip(names, refs):
     test = TestSanitizeName(ref)
     test.run(name)
     test.check_ref()
 
-
-# TEST IS URL
 logging.info("Test is url")
-
 urls = [
     "https://www.wikipedia.org",
     "http://www.wikipedia.org",
     "not_an_url",
 ]
-
 refs = [
     True,
     True,
@@ -272,26 +232,24 @@ for url, ref in zip(urls, refs):
     test.check_ref()
 
 
-# TEST READING MANIFESTS
 logging.info("Test manifests")
-
 for version in ["2", "3"]:
     for i in range(len(ver_dict[version]['ids'])):
         file_name = 'manifests' + version + '/manifest' + str(i).zfill(2) + '.json'
 
-        # TEST GET VERSION
+        # Get version
         ref = int(version)
         test = TestReadManifest_GetVersion(ref)
         test.run(file_name)
         test.check_ref()
 
-        # TEST TOT PAGES
+        # Tot pages
         ref = ver_dict[version]['ids'][i]['tot']
         test = TestReadManifest_TotPages(ref)
         test.run(file_name, version)
         test.check_ref()
 
-        # TEST TOT N/A
+        # Tot N/A
         ref = ver_dict[version]['ids'][i]['na']
         test = TestReadManifest_TotNA(ref)
         test.run(file_name, version)
