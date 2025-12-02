@@ -947,7 +947,11 @@ choices, but only the default one is read")
                     if (service is not None):
                         if (isinstance(service, list)):
                             service = service[0]
-                        p.service_id = [service.get("@id")]
+                        p.service_id = [service.get("id")]
+                        if (p.service_id == [None]):
+                            # "The @id property may be used in service objects
+                            # for backwards compatibility"
+                            p.service_id = [service.get("@id")]
                     else:
                         p.service_id = [None]
 
