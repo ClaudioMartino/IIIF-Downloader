@@ -27,3 +27,4 @@ https://manifests.collections.yale.edu/ycba/obj/6346
 https://manifests.collections.yale.edu/yuag/obj/69
 https://collections.library.yale.edu/manifests/16144050
 https://iiif.library.ucla.edu/ark%3A%2F21198%2Fz1087zv3/manifest
+https://iiif.micr.io/tEPzT/manifest
