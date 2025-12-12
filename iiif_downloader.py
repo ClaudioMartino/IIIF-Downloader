@@ -376,12 +376,12 @@ class IIIF_Downloader:
                     self.maindir)
 
             # Create image sub-list [firstpage, lastpage]
-            totpages = len(self.pages)  # TODO self.orig_num_pages
             if (self.firstpage != 1 or self.lastpage != -1):
                 self.pages = self.pages[self.firstpage - 1:self.lastpage]
                 logging.info(
-                    "Downloading pages " + str(self.firstpage) + "-"
-                    + str(self.lastpage) + " from a total of " + str(totpages))
+                    "Downloading pages " + str(self.firstpage) + "-" +
+                    str(self.lastpage) + " from a total of " +
+                    str(self.orig_num_pages))
 
             # size = 'full' is not part of the 3.0 API standard
             if (self.version == 3):
