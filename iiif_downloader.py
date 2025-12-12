@@ -1032,7 +1032,7 @@ def get_pages(pages: str) -> Tuple[int, int]:
     else:
         firstpage, lastpage = 1, -1
 
-    return firstpage, lastpage
+    return [firstpage, lastpage]
 
 
 def set_parser() -> argparse.ArgumentParser:

@@ -9,6 +9,11 @@ import logging
 import argparse
 
 
+class TestGetPages(Test):
+    def run(self, pages_string):
+        self.result = iiif_downloader.get_pages(pages_string)
+
+
 class TestSanitizeLabel(Test):
     def run(self, label):
         self.result = iiif_downloader.sanitize_label(label, "")
@@ -88,6 +93,8 @@ class TestReadManifest_TotNA(Test):
         downloader.pages.clear()
 
 
+# MAIN
+
 # Set parser and verbosity
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -101,6 +108,24 @@ parser.add_argument(
     help="Activate quiet mode and print only error messages")
 parser_args = vars(parser.parse_args())
 logging.basicConfig(level=parser_args["logging_level"], format="%(message)s")
+
+logging.info("Test page range")
+pages_strings = [
+    "1-2",
+    "10-20",
+    "10-10",
+    "all",
+]
+refs = [
+    [1, 2],
+    [10, 20],
+    [10, 10],
+    [1, -1]
+]
+for pages_string, ref in zip(pages_strings, refs):
+    test = TestGetPages(ref)
+    test.run(pages_string)
+    test.check_ref()
 
 logging.info("Test sanitize label")
 labels = [
