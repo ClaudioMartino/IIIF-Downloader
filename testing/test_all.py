@@ -124,8 +124,23 @@ refs = [
 ]
 for pages_string, ref in zip(pages_strings, refs):
     test = TestGetPages(ref)
-    test.run(pages_string)
-    test.check_ref()
+    test.run_and_check_ref(pages_string)
+test = TestGetPages("no-ref")
+err_pages_strings = [
+    "5-1",  # lastpage < firstpage
+    "",
+    "-10-20",
+    "10--20",
+    "-10--20",
+    "a-b",
+    "a-1",
+    "1-b",
+    "string",
+    "10",
+    10,
+]
+for err_pages_string in err_pages_strings:
+    test.run_and_check_exception(err_pages_string)
 
 logging.info("Test sanitize label")
 labels = [
@@ -146,8 +161,7 @@ refs = [
 ]
 for label, ref in zip(labels, refs):
     test = TestSanitizeLabel(ref)
-    test.run(label)
-    test.check_ref()
+    test.run_and_check_ref(label)
 
 logging.info("Test get extension")
 mime_types = [
@@ -174,14 +188,12 @@ refs = [
 ]
 for mime_type, ref in zip(mime_types, refs):
     test = TestGetExtension(ref)
-    test.run(mime_type, "file_id")
-    test.check_ref()
+    test.run_and_check_ref(mime_type, "file_id")
 # Checking priority to extension taken from default.ext file ID
 for mime_type in mime_types:
     for ref in refs[:-1]:  # remove NA from refs
         test = TestGetExtension(ref)
-        test.run(mime_type, "path/to/file/default" + ref)
-        test.check_ref()
+        test.run_and_check_ref(mime_type, "path/to/file/default" + ref)
 
 logging.info("Test match URI pattern")
 uri_base = "https://content.staatsbibliothek-berlin.de/dc/785884734-0001"
@@ -206,8 +218,7 @@ for r in region_list:
                         'format': f
                     }
                     test = TestMatchURIPattern(ref)
-                    test.run(uri)
-                    test.check_ref()
+                    test.run_and_check_ref(uri)
 
 logging.info("Test sanitize name")
 names = [
@@ -236,8 +247,7 @@ refs = [
 ]
 for name, ref in zip(names, refs):
     test = TestSanitizeName(ref)
-    test.run(name)
-    test.check_ref()
+    test.run_and_check_ref(name)
 
 logging.info("Test is url")
 urls = [
@@ -253,8 +263,7 @@ refs = [
 
 for url, ref in zip(urls, refs):
     test = TestIsUrl(ref)
-    test.run(url)
-    test.check_ref()
+    test.run_and_check_ref(url)
 
 
 logging.info("Test manifests")
@@ -265,17 +274,14 @@ for version in ["2", "3"]:
         # Get version
         ref = int(version)
         test = TestReadManifest_GetVersion(ref)
-        test.run(file_name)
-        test.check_ref()
+        test.run_and_check_ref(file_name)
 
         # Tot pages
         ref = ver_dict[version]['ids'][i]['tot']
         test = TestReadManifest_TotPages(ref)
-        test.run(file_name, version)
-        test.check_ref()
+        test.run_and_check_ref(file_name, version)
 
         # Tot N/A
         ref = ver_dict[version]['ids'][i]['na']
         test = TestReadManifest_TotNA(ref)
-        test.run(file_name, version)
-        test.check_ref()
+        test.run_and_check_ref(file_name, version)
