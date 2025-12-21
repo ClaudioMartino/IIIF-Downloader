@@ -27,6 +27,7 @@ The manifest can be a file on your computer or a http(s) link. You can also use 
 * If you wish to download the images with a specific width use `-w <width>`. If you want to use the width defined by the website[^2] use simply `-w`, without the argument. Images defined this way may not be available for download, depending on the website configurations.
 * You can specify the [referer of the HTTP requests header](https://en.wikipedia.org/wiki/HTTP_referer) with `-r <referer>`. The default value is the hostname of the url you are opening.
 * Use `-t <threads>` to set the number of threads used to download the pages of the document (one thread per page). Log may become unclear and you may encounter more 429 errors (Too Many Requests).[^3]
+* With `-j <file>` you can save a .json file containing the metadata of the document.
 * You can use the `--use-labels` option to name the files with the manifest labels, instead of a progressive number. Use this option only if all the labels are different, otherwise the files are going to be overwritten or not downloaded.
 * When 2.0/2.1 canvases contain multiple images, you can use the `--all-images` option to download them all, otherwise only the first image is downloaded. The files will be identified by their position in the canvas (e.g. `p001_01.jpg`).
 * Use the `-v` option to print a verbose output.

@@ -10,7 +10,7 @@ from shutil import rmtree
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 from urllib.parse import urlsplit
-from typing import List, Tuple, Dict, Any
+from typing import List, Dict, Any
 from ssl import create_default_context, CERT_NONE
 from concurrent.futures import ThreadPoolExecutor
 
@@ -309,7 +309,7 @@ class IIIF_Downloader:
                  firstpage: int = 1, lastpage: int = -1, force: bool = False,
                  use_labels: bool = False, all_images: bool = False,
                  width: int | None = 0, referer: str = "",
-                 num_threads: int | None = None):
+                 num_threads: int = 1, metadata_json: str = ""):
         # User defined parameters
         self.json_file = json_file  # manifest or collection
         self.maindir = maindir
@@ -321,6 +321,7 @@ class IIIF_Downloader:
         self.width = width  # -w not used: 0 (default); -w without arg: None
         self.referer = referer
         self.num_threads = num_threads
+        self.metadata_json = metadata_json
 
     def run(self) -> None:
         """Download all the files from a manifest or a collection."""
@@ -374,6 +375,10 @@ class IIIF_Downloader:
                 logging.debug(
                     sanitize_name(self.manifest_label) + " created in " +
                     self.maindir)
+
+            # Export json file
+            if (self.metadata_json):
+                self.export_metadata(subdir + "/" + self.metadata_json)
 
             # Create image sub-list [firstpage, lastpage]
             if (self.firstpage != 1 or self.lastpage != -1):
@@ -995,7 +1000,7 @@ choices, but only the default one is read")
                 "Cannot access info.json file at " + img_information_uri)
 
     def get_iiif_version(self, d: Dict):
-        """ Check IIIF version from a manifest or a collection."""
+        """Check IIIF version from a manifest or a collection."""
         # Get context
         context = d.get("@context")
 
@@ -1015,10 +1020,24 @@ choices, but only the default one is read")
 
         self.version = version
 
+    def export_metadata(self, filename: str):
+        """Export document metadata in .json file."""
+        metadata = {
+            "manifest_label": self.manifest_label,
+            "manifest_id": self.manifest_id,
+            "pages": [{
+                "label": p.label,
+                "id": p.id[0] if len(p.id) == 1 else p.id
+                } for p in self.pages]
+        }
+
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(metadata, f, indent=4)
+
 
 # Main function
 
-def get_pages(pages: str) -> Tuple[int, int]:
+def get_pages(pages: str) -> List[int]:
     """Return the first and the last page as integers given one string."""
     if (pages != "all"):
         # Two positive numbers separated by -
@@ -1057,6 +1076,9 @@ the host")
     general.add_argument(
         "-t", metavar="<threads>", default=1, type=int,
         help="Number of threads")
+    general.add_argument(
+        "-j", metavar="<file>",
+        help="Export the document metadata in a .json file")
     general.add_argument(
         "-f", "--force", action="store_true",
         help="Overwrite existing files")
@@ -1099,7 +1121,7 @@ if __name__ == "__main__":
         parser_args["m"], parser_args["d"], firstpage, lastpage,
         parser_args["force"], parser_args["use_labels"],
         parser_args["all_images"], parser_args["w"], parser_args["r"],
-        parser_args["t"])
+        parser_args["t"], parser_args["j"])
 
     # Run IIIF Downloader
     downloader.run()
