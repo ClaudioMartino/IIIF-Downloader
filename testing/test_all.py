@@ -73,6 +73,26 @@ class TestReadManifest_TotPages(Test):
         downloader.pages.clear()
 
 
+class TestReadManifest_Metadata(Test):
+    def run(self, file_name, version):
+        downloader = iiif_downloader.IIIF_Downloader()
+        downloader.json_file = file_name
+
+        if (version == '2'):
+            reader = downloader.read_iiif_manifest2
+        else:
+            reader = downloader.read_iiif_manifest3
+
+        with open(downloader.json_file) as f:
+            reader(json.load(f))
+        downloader.export_metadata("tmp.json")
+        with open("tmp.json") as f:
+            d = json.load(f)
+            self.result = len(d["pages"])
+        os.remove("tmp.json")
+        downloader.pages.clear()
+
+
 class TestReadManifest_TotNA(Test):
     def run(self, file_name, version):
         downloader = iiif_downloader.IIIF_Downloader()
@@ -280,6 +300,11 @@ for version in ["2", "3"]:
         ref = ver_dict[version]['ids'][i]['tot']
         test = TestReadManifest_TotPages(ref)
         test.run_and_check_ref(file_name, version)
+
+        # Metadata (commented, file is saved multiple times, resource-consuming)
+        #ref = ver_dict[version]['ids'][i]['tot']
+        #test = TestReadManifest_Metadata(ref)
+        #test.run_and_check_ref(file_name, version)
 
         # Tot N/A
         ref = ver_dict[version]['ids'][i]['na']
