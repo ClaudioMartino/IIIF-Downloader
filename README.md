@@ -59,6 +59,8 @@ The library has been tested with the manifests listed in the [testing](testing) 
 
 Contributions are most welcome by forking the repository and sending a pull request. Errors and new features proposals can be reported [opening an issue](https://github.com/ClaudioMartino/IIIF-Downloader/issues/new/choose) as well.
 
+Before committing, please run the tests. Run [Flake8](https://flake8.pycqa.org/) and [Mypy](https://mypy-lang.org/) to check the style and the typing of the scripts, too. You can use the provided [pre-commit git hook](tools/pre-commit) for simplicity.
+
 [^1]: See the [Appendix](https://github.com/ClaudioMartino/IIIF-Downloader/blob/main/docs/Appendix.md) for more information about the discovery of the image sources.
 [^2]: The host can define two widths for each image: one in the manifest and one in the [Image Information](https://iiif.io/api/image/2.0/#image-information-request-uri-syntax) file. The script takes the biggest of the two.
 [^3]: See [the analysis](https://github.com/ClaudioMartino/IIIF-Downloader/blob/main/docs/Threading.md) for more information about the effects of threading.

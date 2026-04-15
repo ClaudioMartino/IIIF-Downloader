@@ -1,0 +1,59 @@
+#!/bin/sh
+
+errors=0
+
+# Run flake8 on Python codes
+echo "Running flake8"
+flake8 iiif_downloader.py
+exit_code=$?
+((errors+=exit_code))
+flake8 iiif_downloader_gui.py
+exit_code=$?
+((errors+=exit_code))
+
+# Run mypy on Python codes
+echo "Running mypy"
+mypy iiif_downloader_gui.py  # it checks iiif_downloader.py too
+exit_code=$?
+((errors+=exit_code))
+
+# Go to testing directory
+cd testing 
+
+# Unzip manifest archives, if needed
+if [ ! -f manifests2/manifest00.json ]; then
+  echo "Unzipping manifests2 archive"
+  unzip -q manifests2/archive2.zip -d manifests2
+else
+  echo "No need to unzip manifests2 archive"
+fi
+if [ ! -f manifests3/manifest00.json ]; then
+  echo "Unzipping manifests3 archive"
+  unzip -q manifests3/archive3.zip -d manifests3
+else
+  echo "No need to unzip manifests3 archive"
+fi
+
+# Run python tests
+echo "Running basic tests"
+python3 test_all.py
+exit_code=$?
+((errors+=exit_code))
+echo "Running GUI tests"
+python3 test_gui_all.py
+exit_code=$?
+((errors+=exit_code))
+
+# Delete unzipped files
+echo "Deleting unzipped manifests"
+rm manifests2/*.json
+rm manifests3/*.json
+
+# Check final errors
+if [ $errors -ne 0 ]; then
+  echo "Some error occured. Cannot commit."
+  exit 1
+else
+  echo "No errors occured. You can commit."
+  exit 0
+fi
