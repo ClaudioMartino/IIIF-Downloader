@@ -15,7 +15,7 @@ To run the unit tests:
 python3 test_all.py
 ```
 
-Use `-v` for a verbose output or `-q` for a quiet execution.
+Use `-m` to run the metadata tests, too. Use `-v` for a verbose output or `-q` for a quiet execution.
 
 The [from_txt_to_json.py](from_txt_to_json.py) script can be used to download the manifests listed in the .txt files and to name them with progressive numbers:
 ```

@@ -36,7 +36,7 @@ fi
 
 # Run python tests
 echo "Running basic tests"
-python3 test_all.py
+python3 test_all.py --metadata
 exit_code=$?
 ((errors+=exit_code))
 echo "Running GUI tests"

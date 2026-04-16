@@ -119,6 +119,9 @@ class TestReadManifest_TotNA(Test):
 parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument(
+    "-m", "--metadata", action="store_true",
+    help="Run metadata tests")
+parser.add_argument(
     "-v", "--verbose", default=logging.INFO, action="store_const",
     dest="logging_level", const=logging.DEBUG,
     help="Print a verbose output")
@@ -301,10 +304,11 @@ for version in ["2", "3"]:
         test = TestReadManifest_TotPages(ref)
         test.run_and_check_ref(file_name, version)
 
-        # Metadata (commented, file is saved multiple times, resource-consuming)
-        #ref = ver_dict[version]['ids'][i]['tot']
-        #test = TestReadManifest_Metadata(ref)
-        #test.run_and_check_ref(file_name, version)
+        # Metadata (file is saved multiple times, it can be resource-consuming)
+        if (parser_args['metadata']):
+            ref = ver_dict[version]['ids'][i]['tot']
+            test = TestReadManifest_Metadata(ref)
+            test.run_and_check_ref(file_name, version)
 
         # Tot N/A
         ref = ver_dict[version]['ids'][i]['na']
