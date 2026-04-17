@@ -1,4 +1,4 @@
-# Appendix
+# Image discovery
 
 The images of the document can be obtained at different URIs, it depends on how the hosting website has been configured. Sometimes the same image can be obtained at different URIs, sometimes different qualities can be found at different paths, and sometimes some URIs simply return nothing.
 
