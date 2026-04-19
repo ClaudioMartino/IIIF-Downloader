@@ -74,6 +74,7 @@ ver_dict = {
             { "tot" : 2,   "na": 0 },
             { "tot" : 162, "na": 0 },
             { "tot" : 138, "na": 0, "referer": "https://antenati.cultura.gov.it/" },
+            { "tot" : 395, "na": 0 },
          ]
     },
 
