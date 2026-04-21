@@ -42,6 +42,10 @@ def sanitize_label(label: Any, source: str) -> str:
     return str(label)
 
 
+def sanitize_uri(uri: str) -> str:
+    return uri.replace(" ", "%20")
+
+
 def get_extension(mime_type: str, file_id: str, nc: int) -> str:
     """Return the extension given the MIME type (IIIF format)."""
     # Take the extension from the format
@@ -212,13 +216,13 @@ Edg/138.0.0.0"
             return None
 
 
-def download_file(url: str, filepath: str, referer: str) -> int:
+def download_file(uri: str, filepath: str, referer: str) -> int:
     """Open a connection to a remote file and save it locally."""
-    url = url.replace(" ", "%20")
-    logging.debug("Downloading " + url + "...")
+    uri = sanitize_uri(uri)
+    logging.debug("Downloading " + uri + "...")
 
     # Open connection to remote file
-    res = open_url(url, referer)
+    res = open_url(uri, referer)
     if (res is None):
         return -1
     else:
@@ -968,9 +972,7 @@ choices, but only the default one is read")
     def check_image_information_width(self, path: str, page_w: int | None):
         """Look for the Image Information from a path, look for the width in it
         and use it instead of the manifest's width if it's bigger."""
-        img_information_uri = path + "/info.json"
-        img_information_uri = img_information_uri.replace(" ", "%20")
-        # TODO common url sanitizer for %20
+        img_information_uri = sanitize_uri(path) + "/info.json"
         try:
             img_information_file = open_json_file(
                 img_information_uri, self.referer)
