@@ -545,7 +545,7 @@ files.")
                     # Check Image Information width using service ID
                     if (self.width == 0 or self.width is None):
                         self.check_image_information_width(
-                            service_id, page.w)
+                            service_id, page)
 
                     img_uri = get_default_img_uri(
                         service_id, str(page.w) + ",", ext)
@@ -604,7 +604,7 @@ files.")
                         # of the image ID
                         if (self.width == 0 or self.width is None):
                             self.check_image_information_width(
-                                id_base, page.w)
+                                id_base, page)
 
                         img_uri = get_default_img_uri(
                             id_base, str(page.w) + ",", ext)
@@ -969,7 +969,7 @@ choices, but only the default one is read")
         self.manifest_label = manifest_label
         self.manifest_id = manifest_id
 
-    def check_image_information_width(self, path: str, page_w: int | None):
+    def check_image_information_width(self, path: str, page: Page):
         """Look for the Image Information from a path, look for the width in it
         and use it instead of the manifest's width if it's bigger."""
         img_information_uri = sanitize_uri(path) + "/info.json"
@@ -979,19 +979,19 @@ choices, but only the default one is read")
             try:
                 img_information_w = img_information_file.get("width")
                 if (isinstance(img_information_w, int)):
-                    if (page_w is None):
-                        page_w = img_information_w
+                    if (page.w is None):
+                        page.w = img_information_w
                         logging.debug(
                             "Using Image Information width (" +
                             str(img_information_w) + ")")
                     else:
-                        if (img_information_w > page_w):
+                        if (img_information_w > page.w):
                             logging.debug(
                                 "Using Image Information width (" +
                                 str(img_information_w) +
                                 ") instead of the manifest width (" +
-                                str(page_w) + ")")
-                            page_w = img_information_w
+                                str(page.w) + ")")
+                            page.w = img_information_w
             except Exception as e:
                 logging.warning("Exception: " + str(e))
                 logging.debug("'width' not found in " + img_information_uri)
