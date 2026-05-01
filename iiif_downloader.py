@@ -10,6 +10,7 @@ from shutil import rmtree
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 from urllib.parse import urlsplit
+from http.client import HTTPResponse
 from typing import List, Dict, Any
 from ssl import create_default_context, CERT_NONE
 from concurrent.futures import ThreadPoolExecutor
@@ -175,9 +176,10 @@ def print_statistics(downloaded_cnt: int, skipped_cnt: int, failed_cnt: int,
     logging.info("-------------")
 
 
-def open_url(url: str, referer: str = "", timeout: int = 30):
-    """Open url."""
-    # Create url request
+def open_url(url: str, referer: str = "",
+             timeout: int = 30) -> HTTPResponse | None:
+    """Open the given URL and return the response."""
+    # Create URL request
     headers = {}
     headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 \
@@ -193,7 +195,7 @@ Edg/138.0.0.0"
     # Create default SSL context
     ctx = create_default_context()
 
-    # Open the url
+    # Open the URL
     try:
         response = urlopen(url_req, timeout=timeout, context=ctx)
         return response
@@ -211,9 +213,7 @@ Edg/138.0.0.0"
                     return response
                 except Exception as e:
                     logging.warning("Exception: " + str(e))
-                    return None
-        else:
-            return None
+    return None
 
 
 def download_file(uri: str, filepath: str, referer: str) -> int:
@@ -262,7 +262,8 @@ class Page:
     """A class containing the features of one page."""
     def __init__(self, label: str = "NA", iiif_id: List[str] = [],
                  ext: List[str] = [], iiif_w: int | None = None,
-                 iiif_h: int | None = None, service_id: List[str | None] = []):
+                 iiif_h: int | None = None,
+                 service_id: List[str | None] = []) -> None:
         self.label = label
         self.id = iiif_id
         self.ext = ext
@@ -313,7 +314,7 @@ class IIIF_Downloader:
                  firstpage: int = 1, lastpage: int = -1, force: bool = False,
                  use_labels: bool = False, all_images: bool = False,
                  width: int | None = 0, referer: str = "",
-                 num_threads: int = 1, metadata_json: str = ""):
+                 num_threads: int = 1, metadata_json: str = "") -> None:
         # User defined parameters
         self.json_file = json_file  # manifest or collection
         self.maindir = maindir
@@ -443,7 +444,8 @@ class IIIF_Downloader:
                     "\033[91m" + "Some error with " + self.manifest_label +
                     "\033[0m")
 
-    def download_single_page(self, cnt, subdir):
+    def download_single_page(self, cnt: int, subdir: str) -> None:
+        """Download one page given its position in the pages list."""
         page = self.pages[cnt]
         tot_pages = len(self.pages)
 
@@ -679,16 +681,20 @@ files.")
                 str(len(manifests)) + " manifests found in the collection")
             for m in manifests:
                 manifest_id = m.get(id_key)
-                d = json.loads(
-                    open_url(manifest_id, self.referer).read().decode("utf-8"))
-                self.download_iiif_files_from_manifest(d)
-                self.pages.clear()
+                response = open_url(manifest_id, self.referer)
+                if response is not None:
+                    d = json.loads(response.read().decode("utf-8"))
+                    self.download_iiif_files_from_manifest(d)
+                    self.pages.clear()
+                else:
+                    raise Exception(
+                        "Cannot read remote manifest " + manifest_id)
         else:
             raise Exception(
                 "Cannot find manifests ('" + manifests_key +
                 "') in collection")
 
-    def read_iiif_manifest2(self, d: Dict):
+    def read_iiif_manifest2(self, d: Dict) -> None:
         """Download all the files from a 2.0/2.1 manifest."""
         # - label
         # - @id
@@ -820,7 +826,7 @@ choices, but only the default one is read")
         self.manifest_label = manifest_label
         self.manifest_id = manifest_id
 
-    def read_iiif_manifest3(self, d: Dict):
+    def read_iiif_manifest3(self, d: Dict) -> None:
         """Download all the files from a 3.0 manifest."""
         # - label
         # - id
@@ -969,7 +975,7 @@ choices, but only the default one is read")
         self.manifest_label = manifest_label
         self.manifest_id = manifest_id
 
-    def check_image_information_width(self, path: str, page: Page):
+    def check_image_information_width(self, path: str, page: Page) -> None:
         """Look for the Image Information from a path, look for the width in it
         and use it instead of the manifest's width if it's bigger."""
         img_information_uri = sanitize_uri(path) + "/info.json"
@@ -1000,7 +1006,7 @@ choices, but only the default one is read")
             logging.debug(
                 "Cannot access info.json file at " + img_information_uri)
 
-    def get_iiif_version(self, d: Dict):
+    def get_iiif_version(self, d: Dict) -> None:
         """Check IIIF version from a manifest or a collection."""
         # Get context
         context = d.get("@context")
@@ -1021,7 +1027,7 @@ choices, but only the default one is read")
 
         self.version = version
 
-    def export_metadata(self, filename: str):
+    def export_metadata(self, filename: str) -> None:
         """Export document metadata in .json file."""
         metadata = {
             "manifest_label": self.manifest_label,
