@@ -199,20 +199,20 @@ Edg/138.0.0.0"
     try:
         response = urlopen(url_req, timeout=timeout, context=ctx)
         return response
-    except Exception as e:
-        logging.warning("Exception: " + str(e))
+    except Exception as e1:
+        logging.warning("Exception: " + str(e1))
 
         # If the SSL certificate verification fails, try disabling it
-        if isinstance(e, URLError):
-            if "CERTIFICATE_VERIFY_FAILED" in str(e.reason):
+        if isinstance(e1, URLError):
+            if "CERTIFICATE_VERIFY_FAILED" in str(e1.reason):
                 logging.debug("Disabling SSL certificate verification")
                 ctx.check_hostname = False
                 ctx.verify_mode = CERT_NONE
                 try:
                     response = urlopen(url_req, timeout=timeout, context=ctx)
                     return response
-                except Exception as e:
-                    logging.warning("Exception: " + str(e))
+                except Exception as e2:
+                    logging.warning("Exception: " + str(e2))
     return None
 
 
@@ -308,15 +308,15 @@ class IIIF_Downloader:
     uri_base_img_id_width = True
 
     def __init__(self, json_file: str = "", maindir: str = ".",
-                 firstpage: int = 1, lastpage: int = -1, force: bool = False,
+                 first_page: int = 1, last_page: int = -1, force: bool = False,
                  use_labels: bool = False, all_images: bool = False,
                  width: int | None = 0, referer: str = "",
                  num_threads: int = 1, metadata_json: str = "") -> None:
         # User defined parameters
         self.json_file = json_file  # manifest or collection
         self.maindir = maindir
-        self.firstpage = firstpage
-        self.lastpage = lastpage
+        self.firstpage = first_page
+        self.lastpage = last_page
         self.force = force
         self.use_labels = use_labels
         self.all_images = all_images
@@ -1036,21 +1036,21 @@ def get_pages(pages: str) -> List[int]:
         # Two positive numbers separated by -
         pattern = r"^(?!0-0)([1-9]\d*)-([1-9]\d*)$"
         if match(pattern, pages):
-            firstpage, lastpage = map(int, pages.split("-"))
-            if lastpage < firstpage:
+            first_page, last_page = map(int, pages.split("-"))
+            if last_page < first_page:
                 raise Exception("Invalid page range (invalid pages)")
         else:
             raise Exception("Invalid page range (invalid format)")
     else:
-        firstpage, lastpage = 1, -1
+        first_page, last_page = 1, -1
 
-    return [firstpage, lastpage]
+    return [first_page, last_page]
 
 
 def set_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(add_help=False)
+    parser_ = argparse.ArgumentParser(add_help=False)
 
-    general = parser.add_argument_group("General options")
+    general = parser_.add_argument_group("General options")
     general.add_argument(
         "-m", metavar="<file>", required=True,
         help="Manifest or collection of manifests (local file or url)")
@@ -1086,7 +1086,7 @@ manifests, not just the first one")
         "-h", "--help", action="help",
         help="Print this help message and exit")
 
-    output = parser.add_argument_group("Output options")
+    output = parser_.add_argument_group("Output options")
     output.add_argument(
         "-v", "--verbose", default=logging.INFO, action="store_const",
         dest="logging_level", const=logging.DEBUG,
@@ -1096,7 +1096,7 @@ manifests, not just the first one")
         dest="logging_level", const=logging.ERROR,
         help="Activate quiet mode and print only error messages")
 
-    return parser
+    return parser_
 
 
 if __name__ == "__main__":

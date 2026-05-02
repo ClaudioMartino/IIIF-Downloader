@@ -9,7 +9,7 @@ import time
 
 
 class GUI:
-    def __init__(self, window):
+    def __init__(self, w):
         # Custom styles
         ttk.Style().configure("TRadiobutton", padding=(0, 0, 10, 0))
         ttk.Style().configure("WithEntry.TRadiobutton", padding=(0, 0, 5, 0))
@@ -17,7 +17,7 @@ class GUI:
         ttk.Style().configure("TButton", margins=(10, 0, 10, 0))
 
         # Window
-        self.window = window
+        self.window = w
         self.window.title("IIIF Downloader")
         self.window.resizable(True, False)  # block vertical resizing
         self.window.bind("<Return>", self.bindEnter)  # bind Return key to run
