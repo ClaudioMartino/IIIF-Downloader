@@ -260,16 +260,13 @@ def is_url(url: str) -> bool:
 
 class Page:
     """A class containing the features of one page."""
-    def __init__(self, label: str = "NA", iiif_id: List[str] = [],
-                 ext: List[str] = [], iiif_w: int | None = None,
-                 iiif_h: int | None = None,
-                 service_id: List[str | None] = []) -> None:
-        self.label = label
-        self.id = iiif_id
-        self.ext = ext
-        self.w = iiif_w
-        self.h = iiif_h
-        self.service_id = service_id
+    def __init__(self) -> None:
+        self.label: str = "NA"
+        self.id: List[str] = []
+        self.ext: List[str] = []
+        self.w: int | None = None
+        self.h: int | None = None
+        self.service_id: List[str | None] = []
 
 
 class IIIF_Downloader:
