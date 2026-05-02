@@ -48,7 +48,7 @@ def sanitize_uri(uri: str) -> str:
 
 
 def get_extension(mime_type: str, file_id: str, nc: int) -> str:
-    """Return the extension given the MIME type (IIIF format)."""
+    """Return the extension given the MIME type or from the IIIF file name."""
     # Take the extension from the format
     mime_to_extension = {
         "image/jpeg": ".jpg",
@@ -228,13 +228,15 @@ def download_file(uri: str, filepath: str, referer: str) -> int:
     else:
         logging.debug("HTTP status code: " + str(res.getcode()))
 
-    # Check the MIME type
-    file_type = res.headers["Content-Type"].split('/')[0]
-    if file_type not in ("image", "application"):
-        logging.warning("Invalid content-type (" + str(file_type) + ")")
+    # Check the response header (file size, MIME type)
+    if res.headers["Content-Length"]:
+        logging.debug(
+            "Remote file size: " + res.headers["Content-Length"] + " bytes")
+    content_type_subtype = res.headers["Content-Type"]
+    content_type = content_type_subtype.split('/')[0]
+    if content_type not in ("image", "application"):
+        logging.warning("Invalid content type (" + str(content_type) + ")")
         return -1
-
-    # file_size = res.headers["Content-Length"]
 
     # Create the file (binary mode) even when it exists
     with open(filepath, "wb") as file:
