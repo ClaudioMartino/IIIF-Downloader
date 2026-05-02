@@ -24,18 +24,18 @@ and include the manifest"
 
 def sanitize_label(label: Any, source: str) -> str:
     """Sanitize manifest or canvas labels in 2.0/2.1 manifests."""
-    if (not isinstance(label, str)):
+    if not isinstance(label, str):
         logging.debug(
             source.capitalize() + " label is not a string: " + str(label))
 
-    if (isinstance(label, list)):
+    if isinstance(label, list):
         label = label[0]
 
     # "Language may be associated with strings that are intended to be
     # displayed to the user with the following pattern of @value plus the RFC
     # 5646 code in @language, instead of a plain string. This pattern may be
     # used in label"
-    if (isinstance(label, Dict)):
+    if isinstance(label, Dict):
         label = str(label.get("@value"))
         logging.debug(
             "Taking just the first '@value' of " + source + " label")
@@ -61,16 +61,16 @@ def get_extension(mime_type: str, file_id: str, nc: int) -> str:
         "image/webp": ".webp"
     }
     ext = mime_to_extension.get(mime_type, "NA")
-    if (ext == "NA"):
+    if ext == "NA":
         logging.debug(
             "File extension of canvas " + str(nc) +
             " is not correctly defined")
 
     # Try to take the extension from the file name
-    if ("/default." in file_id):
+    if "/default." in file_id:
         ext_from_id = "." + file_id.split(".")[-1]
-        if (ext != ext_from_id):
-            if (ext == "NA"):
+        if ext != ext_from_id:
+            if ext == "NA":
                 logging.debug(
                     "File extension of canvas " + str(nc) +
                     " extracted from file ID ('" + ext_from_id + "')")
@@ -132,7 +132,7 @@ def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
         if (to_check is None or to_check == "NA"):
             logging.debug(name.capitalize() + " not found")
     else:
-        if (to_check != expected):
+        if to_check != expected:
             logging.debug(
                 "Unexpected " + name + " value: " + str(to_check) +
                 " instead of " + str(expected))
@@ -140,14 +140,14 @@ def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
 
 def open_json_file(json_file: str, referer: str = "") -> Dict:
     """Check if json file is local or remote and read it."""
-    if (is_url(json_file)):
+    if is_url(json_file):
         response = open_url(json_file, referer)
-        if (response is not None):
+        if response is not None:
             d = json.loads(response.read().decode("utf-8"))
         else:
             raise Exception("Cannot read remote manifest " + json_file)
     else:
-        if (os.path.isfile(json_file)):
+        if os.path.isfile(json_file):
             with open(json_file, encoding="utf8") as f:
                 d = json.load(f)
         else:
@@ -164,7 +164,7 @@ def print_statistics(downloaded_cnt: int, skipped_cnt: int, failed_cnt: int,
     logging.info("- Skipped downloads: " + str(skipped_cnt))
     logging.info("- Failed downloads: " + str(failed_cnt))
     logging.info("- Elapsed time: " + str(round(total_time)) + " s")
-    if (downloaded_cnt > 0):
+    if downloaded_cnt > 0:
         logging.info(
             "- Avg time/file: " + str(round(total_time / downloaded_cnt, 1)) +
             " s")
@@ -184,7 +184,7 @@ def open_url(url: str, referer: str = "",
     headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 \
 Edg/138.0.0.0"
-    if (not referer):
+    if not referer:
         split_url = urlsplit(url)
         default_referer = split_url.scheme + "://" + split_url.netloc
         headers["Referer"] = default_referer
@@ -223,14 +223,14 @@ def download_file(uri: str, filepath: str, referer: str) -> int:
 
     # Open connection to remote file
     res = open_url(uri, referer)
-    if (res is None):
+    if res is None:
         return -1
     else:
         logging.debug("HTTP status code: " + str(res.getcode()))
 
     # Check the MIME type
     file_type = res.headers["Content-Type"].split('/')[0]
-    if (file_type != "image" and file_type != "application"):
+    if file_type not in ("image", "application"):
         logging.warning("Invalid content-type (" + str(file_type) + ")")
         return -1
 
@@ -253,7 +253,7 @@ def download_file(uri: str, filepath: str, referer: str) -> int:
 
 def is_url(url: str) -> bool:
     """Check if string is an URL."""
-    return (url[:4] == "http")
+    return url[:4] == "http"
 
 
 # Main classes
@@ -334,7 +334,7 @@ class IIIF_Downloader:
         self.get_iiif_version(d)
 
         # Check if the input file is a manifest or a collection
-        if (self.version == 2):
+        if self.version == 2:
             type_key = "@type"
             type_val_manifest = "sc:Manifest"
             type_val_collection = "sc:Collection"
@@ -344,9 +344,9 @@ class IIIF_Downloader:
             type_val_collection = "Collection"
 
         iiif_type = str(d.get(type_key))
-        if (iiif_type.lower() == type_val_manifest.lower()):
+        if iiif_type.lower() == type_val_manifest.lower():
             self.download_iiif_files_from_manifest(d)
-        elif (iiif_type.lower() == type_val_collection.lower()):
+        elif iiif_type.lower() == type_val_collection.lower():
             self.download_iiif_files_from_collection(d)
         else:
             raise Exception(
@@ -356,7 +356,7 @@ class IIIF_Downloader:
     def download_iiif_files_from_manifest(self, d: Dict) -> None:
         """Download all the files from a manifest."""
         # Parse manifest
-        if (self.version == 2):
+        if self.version == 2:
             self.read_iiif_manifest2(d)
         else:
             self.read_iiif_manifest3(d)
@@ -368,21 +368,21 @@ class IIIF_Downloader:
         logging.info("Document title: " + self.manifest_label)
         logging.debug("Pages: " + str(len(self.pages)))
 
-        if (self.pages):
+        if self.pages:
             # Create subdirectory from manifest label
             subdir = self.maindir + "/" + sanitize_name(self.manifest_label)
-            if (not os.path.exists(subdir)):
+            if not os.path.exists(subdir):
                 os.mkdir(subdir)
                 logging.debug(
                     sanitize_name(self.manifest_label) + " created in " +
                     self.maindir)
 
             # Export json file
-            if (self.metadata_json):
+            if self.metadata_json:
                 self.export_metadata(subdir + "/" + self.metadata_json)
 
             # Create image sub-list [firstpage, lastpage]
-            if (self.firstpage != 1 or self.lastpage != -1):
+            if self.firstpage != 1 or self.lastpage != -1:
                 self.pages = self.pages[self.firstpage - 1:self.lastpage]
                 logging.info(
                     "Downloading pages " + str(self.firstpage) + "-" +
@@ -390,12 +390,12 @@ class IIIF_Downloader:
                     str(self.orig_num_pages))
 
             # size = 'full' is not part of the 3.0 API standard
-            if (self.version == 3):
+            if self.version == 3:
                 self.uri_base_serv_id_full = self.uri_base_b_img_id_full = \
                     self.uri_base_img_id_full = False
 
             # Unset all flags except width-related ones if '-w' has been set
-            if (self.width != 0):
+            if self.width != 0:
                 self.uri_base_serv_id_full = self.uri_base_serv_id_max = \
                     self.uri_img_id = self.uri_base_b_img_id_full = \
                     self.uri_base_b_img_id_max = self.uri_base_img_id_full = \
@@ -404,7 +404,7 @@ class IIIF_Downloader:
             # Loop over each page
             start_time = time.time()
             tot_pages = len(self.pages)
-            if (self.num_threads <= 1):
+            if self.num_threads <= 1:
                 for cnt in range(tot_pages):
                     self.download_single_page(cnt, subdir)
             else:
@@ -431,7 +431,7 @@ class IIIF_Downloader:
                 total_time, self.total_filesize)
 
             # Rename the directory if something was wrong
-            if (self.failed_cnt > 0):
+            if self.failed_cnt > 0:
                 err_subdir = self.maindir + "/" + "ERR_" + \
                     sanitize_name(self.manifest_label)
                 if os.path.exists(err_subdir):
@@ -454,8 +454,8 @@ class IIIF_Downloader:
             page.label)
 
         # Change the width if the user used '-w <width>'
-        if (isinstance(self.width, int) and self.width != 0):
-            if (isinstance(page.w, int) and isinstance(page.h, int)):
+        if isinstance(self.width, int) and self.width != 0:
+            if isinstance(page.w, int) and isinstance(page.h, int):
                 page.h = round(self.width / page.w * page.h)
             logging.debug(
                 "Width is changed from " + str(page.w) + " px to " +
@@ -467,12 +467,12 @@ class IIIF_Downloader:
         logging.debug("Height: " + str(page.h) + " px")
 
         # Check if one image ID (or more) was defined in the manifest
-        if (len(page.id) == 0):
+        if len(page.id) == 0:
             logging.info("File not available in the manifest")
             return
 
         # Take just the first file when '--all-images' is not set
-        if (len(page.id) > 1 and not self.all_images):
+        if len(page.id) > 1 and not self.all_images:
             logging.debug(
                 "There are " + str(len(page.id)) +
                 " images for this page, but only the first one is downloaded. \
@@ -484,24 +484,24 @@ Use the --all-images option to download everything")
             # Print IDs and file extension
             logging.debug("Image ID: " + i)
             service_id = page.service_id[n]
-            if (service_id is not None):
+            if service_id is not None:
                 logging.debug("Service ID: " + service_id)
             ext = page.ext[n]
             logging.debug("Extension: " + ext)
 
             # Create output file name
-            if (self.use_labels):
+            if self.use_labels:
                 filename = sanitize_name(page.label)
             else:
                 filename = "p" + str(cnt + self.firstpage).zfill(3)
-            if (len(page.id) > 1):
+            if len(page.id) > 1:
                 filename += "_" + str(n + 1)
             filename += ext
             logging.debug("Output file name: " + filename)
             subdir_filename = subdir + "/" + filename
 
             # Skip the download if the file exists and '-f' is not set
-            if (os.path.exists(subdir_filename) and not self.force):
+            if os.path.exists(subdir_filename) and not self.force:
                 logging.info(
                     subdir_filename +
                     " exists, skip. Use the -f option to force overwrite the \
@@ -516,52 +516,48 @@ files.")
                 self.uri_base_serv_id_max or \
                 self.uri_base_serv_id_width
             # Check if a service ID has been defined in the manifest
-            if (service_id is not None and uri_base_serv_id):
+            if service_id is not None and uri_base_serv_id:
                 # 1a. Formatted URI: base = service ID, size = full
-                if (self.uri_base_serv_id_full):
-                    img_uri = get_default_img_uri(
-                        service_id, "full", ext)
+                if self.uri_base_serv_id_full:
+                    img_uri = get_default_img_uri(service_id, "full", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_serv_id_full = False
 
                 # 1b. Formatted URI: base = service ID, size = max
-                if (self.uri_base_serv_id_max and filesize <= 0):
-                    img_uri = get_default_img_uri(
-                        service_id, "max", ext)
+                if self.uri_base_serv_id_max and filesize <= 0:
+                    img_uri = get_default_img_uri(service_id, "max", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_serv_id_max = False
 
                 # 1c. Formatted URI: base = service ID, size = <width>,
-                if (self.uri_base_serv_id_width and filesize <= 0):
+                if self.uri_base_serv_id_width and filesize <= 0:
                     # Check Image Information width using service ID
-                    if (self.width == 0 or self.width is None):
-                        self.check_image_information_width(
-                            service_id, page)
+                    if self.width == 0 or self.width is None:
+                        self.check_image_information_width(service_id, page)
 
                     img_uri = get_default_img_uri(
                         service_id, str(page.w) + ",", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_serv_id_width = False
 
             # 2. Image ID as it is
-            if (self.uri_img_id and filesize <= 0):
-                filesize = download_file(
-                    i, subdir_filename, self.referer)
-                if (filesize <= 0):
+            if self.uri_img_id and filesize <= 0:
+                filesize = download_file(i, subdir_filename, self.referer)
+                if filesize <= 0:
                     logging.debug("Cannot download " + i)
-                    if (self.downloaded_cnt == 0):
+                    if self.downloaded_cnt == 0:
                         self.uri_img_id = False
 
             uri_base_b_img_id = self.uri_base_b_img_id_full or \
@@ -569,88 +565,81 @@ files.")
                 self.uri_base_b_img_id_width
             # Check if the image ID is formatted as the URI pattern
             regex_match_id = match_uri_pattern(i)
-            if (regex_match_id is not None and uri_base_b_img_id):
+            if regex_match_id is not None and uri_base_b_img_id:
                 id_base = regex_match_id.group("base")
-                if (service_id != id_base):
-                    # 3a. Image ID (formatted URI), size changed to
-                    # full
-                    if (self.uri_base_b_img_id_full and filesize <= 0):
-                        img_uri = get_default_img_uri(
-                            id_base, "full", ext)
+                if service_id != id_base:
+                    # 3a. Image ID (formatted URI), size changed to full
+                    if self.uri_base_b_img_id_full and filesize <= 0:
+                        img_uri = get_default_img_uri(id_base, "full", ext)
                         filesize = download_file(
                             img_uri, subdir_filename, self.referer)
-                        if (filesize <= 0):
+                        if filesize <= 0:
                             logging.debug("Cannot download " + img_uri)
-                            if (self.downloaded_cnt == 0):
+                            if self.downloaded_cnt == 0:
                                 self.uri_base_b_img_id_full = False
 
                     # 3b. Image ID (formatted URI), size changed to max
-                    if (self.uri_base_b_img_id_max and filesize <= 0):
-                        img_uri = get_default_img_uri(
-                            id_base, "max", ext)
+                    if self.uri_base_b_img_id_max and filesize <= 0:
+                        img_uri = get_default_img_uri(id_base, "max", ext)
                         filesize = download_file(
                             img_uri, subdir_filename, self.referer)
-                        if (filesize <= 0):
+                        if filesize <= 0:
                             logging.debug("Cannot download " + img_uri)
-                            if (self.downloaded_cnt == 0):
+                            if self.downloaded_cnt == 0:
                                 self.uri_base_b_img_id_max = False
 
-                    # 3c. Image ID (formatted URI), size changed to
-                    # <width>,
-                    if (self.uri_base_b_img_id_width and
-                            filesize <= 0):
-                        # Check Image Information width using the base
-                        # of the image ID
-                        if (self.width == 0 or self.width is None):
-                            self.check_image_information_width(
-                                id_base, page)
+                    # 3c. Image ID (formatted URI), size changed to <width>,
+                    if self.uri_base_b_img_id_width and filesize <= 0:
+                        # Check Image Information width using the base of the
+                        # image ID
+                        if self.width == 0 or self.width is None:
+                            self.check_image_information_width(id_base, page)
 
                         img_uri = get_default_img_uri(
                             id_base, str(page.w) + ",", ext)
                         filesize = download_file(
                             img_uri, subdir_filename, self.referer)
-                        if (filesize <= 0):
+                        if filesize <= 0:
                             logging.debug("Cannot download " + img_uri)
-                            if (self.downloaded_cnt == 0):
+                            if self.downloaded_cnt == 0:
                                 self.uri_base_b_img_id_width = False
 
             uri_base_img_id = self.uri_base_img_id_full or \
                 self.uri_base_img_id_max or self.uri_base_img_id_width
             # Check if the image ID is different from the service ID
-            if (i != service_id and uri_base_img_id):
+            if i != service_id and uri_base_img_id:
                 # 4a. formatted URI, base = image ID, size = full
-                if (self.uri_base_img_id_full and filesize <= 0):
+                if self.uri_base_img_id_full and filesize <= 0:
                     img_uri = get_default_img_uri(i, "full", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_img_id_full = False
 
                 # 4b. formatted URI, base = image ID, size = max
-                if (self.uri_base_img_id_max and filesize <= 0):
+                if self.uri_base_img_id_max and filesize <= 0:
                     img_uri = get_default_img_uri(i, "max", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_img_id_max = False
 
                 # 4c. formatted URI, base = image ID, size = <width>,
-                if (filesize <= 0):
-                    img_uri = get_default_img_uri(
-                        i, str(page.w) + ",", ext)
+                if filesize <= 0:
+                    img_uri = get_default_img_uri(i, str(page.w) + ",", ext)
                     filesize = download_file(
                         img_uri, subdir_filename, self.referer)
-                    if (filesize <= 0):
+                    if filesize <= 0:
                         logging.debug("Cannot download " + img_uri)
-                        if (self.downloaded_cnt == 0):
+                        if self.downloaded_cnt == 0:
                             self.uri_base_img_id_width = False
 
             # Print the final message and update the counters
-            if (filesize <= 0):
+            if filesize <= 0:
                 logging.error(
                     "\033[91mCannot download page n." +
                     str(cnt + self.firstpage) + "\033[0m")
@@ -665,7 +654,7 @@ files.")
 
     def download_iiif_files_from_collection(self, d: Dict) -> None:
         """Download all the files from a collection of manifests."""
-        if (self.version == 2):
+        if self.version == 2:
             manifests_key = "manifests"
             id_key = "@id"
         else:
@@ -673,7 +662,7 @@ files.")
             id_key = "id"
 
         manifests = d.get(manifests_key)
-        if (manifests):
+        if manifests:
             logging.info(
                 str(len(manifests)) + " manifests found in the collection")
             for m in manifests:
@@ -724,7 +713,7 @@ files.")
         assert sequences is not None, \
             "Manifest sequences ('sequences') not found" + issue_str
         # [Assumption] One sequence in sequences ("very likely")
-        if (len(sequences) > 1):
+        if len(sequences) > 1:
             logging.debug(
                 "There are " + str(len(sequences)) +
                 " sequences in the manifest, but only the first is read")
@@ -749,10 +738,10 @@ files.")
             # Read label, width and height
             label = c.get("label")
             iiif_w = c.get("width")
-            if (isinstance(iiif_w, str)):
+            if isinstance(iiif_w, str):
                 iiif_w = int(iiif_w)
             iiif_h = c.get("height")
-            if (isinstance(iiif_h, str)):
+            if isinstance(iiif_h, str):
                 iiif_h = int(iiif_h)
             # "Every canvas must have a label to display, and a height and a
             # width as integers"
@@ -765,8 +754,8 @@ files.")
 
             # Read images
             images = c.get("images")
-            if (images):
-                if (len(images) > 1):
+            if images:
+                if len(images) > 1:
                     logging.debug(
                         "There are " + str(len(images)) +
                         " images in canvas " + str(nc))
@@ -789,7 +778,7 @@ files.")
                     resource = img.get("resource")
                     # If resource has multiple images (choice), take just the
                     # default one
-                    if (resource.get("@type") == "oa:Choice"):
+                    if resource.get("@type") == "oa:Choice":
                         resource = resource.get("default")
                         logging.debug(
                             "The image in canvas " + str(nc) + " has multiple \
@@ -804,7 +793,7 @@ choices, but only the default one is read")
                     ext = get_extension(iiif_format, iiif_id, nc)
 
                     service = resource.get("service")
-                    if (service is not None):
+                    if service is not None:
                         service_id = service.get("@id")
                     else:
                         service_id = None
@@ -843,7 +832,7 @@ choices, but only the default one is read")
         manifest_label = d.get("label", "NA")
         # "A Manifest must have the label property with at least one entry"
         debug_check("Manifest label ('label')", manifest_label)
-        if (manifest_label != "NA"):
+        if manifest_label != "NA":
             # "The value of the property [label] must be a JSON object"
             assert isinstance(manifest_label, dict), \
                 "Manifest label is not a JSON object" + issue_str
@@ -871,7 +860,7 @@ choices, but only the default one is read")
 
             # Read canvas label
             label = c.get("label", "NA")
-            if (label != "NA"):
+            if label != "NA":
                 # "A Canvas should have the label property [...] The value must
                 # be a JSON object"
                 assert isinstance(label, dict), \
@@ -889,9 +878,9 @@ choices, but only the default one is read")
             # "A Canvas should have the items property with at least one item.
             # Each item must be an Annotation Page"
             debug_check("annotation page ('items')", annotation_page)
-            if (annotation_page):
+            if annotation_page:
                 # [Assumption #1] One annotation page in canvas
-                if (len(annotation_page) > 1):
+                if len(annotation_page) > 1:
                     logging.debug(
                         "There are " + str(len(annotation_page)) +
                         " annotation pages in canvas " + str(nc) +
@@ -909,9 +898,9 @@ choices, but only the default one is read")
                 # "An Annotation Page should have the items property with at
                 # least one item. Each item must be an Annotation"
                 debug_check("annotation ('items')", annotation)
-                if (annotation):
+                if annotation:
                     # [Assumption #2] One annotation in annotation page
-                    if (len(annotation) > 1):
+                    if len(annotation) > 1:
                         logging.debug(
                             "There are " + str(len(annotation)) +
                             " annotation in the annotation page of canvas " +
@@ -933,9 +922,9 @@ choices, but only the default one is read")
                     # Read body or body.source for "specific resources"
                     body = annotation.get("body")
                     body_type = body.get("type")
-                    if (body_type == "Image"):
+                    if body_type == "Image":
                         source = body
-                    elif (body_type == "SpecificResource"):
+                    elif body_type == "SpecificResource":
                         source = body.get("source")
                     else:
                         raise Exception(
@@ -947,19 +936,19 @@ choices, but only the default one is read")
                     iiif_format = source.get("format")
                     p.ext = [get_extension(iiif_format, iiif_id, nc)]
                     iiif_w = source.get("width")
-                    if (isinstance(iiif_w, str)):
+                    if isinstance(iiif_w, str):
                         iiif_w = int(iiif_w)
                     p.w = iiif_w
                     iiif_h = source.get("height")
-                    if (isinstance(iiif_h, str)):
+                    if isinstance(iiif_h, str):
                         iiif_h = int(iiif_h)
                     p.h = iiif_h
                     service = source.get("service")
-                    if (service is not None):
-                        if (isinstance(service, list)):
+                    if service is not None:
+                        if isinstance(service, list):
                             service = service[0]
                         p.service_id = [service.get("id")]
-                        if (p.service_id == [None]):
+                        if p.service_id == [None]:
                             # "The @id property may be used in service objects
                             # for backwards compatibility"
                             p.service_id = [service.get("@id")]
@@ -981,14 +970,14 @@ choices, but only the default one is read")
                 img_information_uri, self.referer)
             try:
                 img_information_w = img_information_file.get("width")
-                if (isinstance(img_information_w, int)):
-                    if (page.w is None):
+                if isinstance(img_information_w, int):
+                    if page.w is None:
                         page.w = img_information_w
                         logging.debug(
                             "Using Image Information width (" +
                             str(img_information_w) + ")")
                     else:
-                        if (img_information_w > page.w):
+                        if img_information_w > page.w:
                             logging.debug(
                                 "Using Image Information width (" +
                                 str(img_information_w) +
@@ -1010,12 +999,12 @@ choices, but only the default one is read")
 
         # 3.0 API: "The value of the @context property must be either the URI
         # or a JSON array with the URI as the last item"
-        if (isinstance(context, list)):
+        if isinstance(context, list):
             context = context[-1]
 
-        if (context.endswith("2/context.json")):
+        if context.endswith("2/context.json"):
             version = 2
-        elif (context.endswith("3/context.json")):
+        elif context.endswith("3/context.json"):
             version = 3
         else:
             # "The top level resource must have the @context property"
@@ -1043,12 +1032,12 @@ choices, but only the default one is read")
 
 def get_pages(pages: str) -> List[int]:
     """Return the first and the last page as integers given one string."""
-    if (pages != "all"):
+    if pages != "all":
         # Two positive numbers separated by -
         pattern = r"^(?!0-0)([1-9]\d*)-([1-9]\d*)$"
-        if (match(pattern, pages)):
+        if match(pattern, pages):
             firstpage, lastpage = map(int, pages.split("-"))
-            if (lastpage < firstpage):
+            if lastpage < firstpage:
                 raise Exception("Invalid page range (invalid pages)")
         else:
             raise Exception("Invalid page range (invalid format)")

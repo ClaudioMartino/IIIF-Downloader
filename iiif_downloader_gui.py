@@ -228,7 +228,7 @@ class GUI:
 
     def about(self):
         txt = "IIIF Downloader v1.0.0\n"
-        txt += "Copyright (C) 2025 Claudio Martino\n"
+        txt += "Copyright (C) 2026 Claudio Martino\n"
         txt += "github.com/ClaudioMartino/IIIF-Downloader"
         new_window = Toplevel()
         new_window.title("About")
@@ -262,7 +262,7 @@ class GUI:
         self.btn2_manifest.config(state="normal")
 
     def checkAntenati(self, var, index, mode):
-        if ("dam-antenati.cultura.gov.it" in self.manifest_url.get()):
+        if "dam-antenati.cultura.gov.it" in self.manifest_url.get():
             self.btn_custom_referer.invoke()
             self.referer.set("https://antenati.cultura.gov.it/")
 
@@ -275,19 +275,19 @@ class GUI:
         entry.update()
 
     def enableLogEntry(self):
-        if (self.log.get() == 1):
+        if self.log.get() == 1:
             self.ent_log.config(state="normal")
             self.ent_log.update()
-        elif (self.log.get() == 0):
+        elif self.log.get() == 0:
             self.ent_log.config(state="disabled")
             self.ent_log.update()
 
     def validateThreads(self, user_input):
-        if (user_input.isdigit()):
+        if user_input.isdigit():
             if int(user_input) not in range(1, 64+1):
                 return False
             return True
-        elif (user_input == ""):
+        elif user_input == "":
             # We accept temporarily an emtpy string and check later
             return True
         else:
@@ -297,12 +297,12 @@ class GUI:
         self.run()
 
     def check_downloader_thread(self):
-        while (True):
+        while True:
             time.sleep(0.5)
 
             # Update progress bar
             tot_pages = len(self.downloader.pages)
-            if (tot_pages != 0):
+            if tot_pages != 0:
                 tot_cnt = self.downloader.downloaded_cnt + \
                     self.downloader.skipped_cnt + self.downloader.failed_cnt
                 self.progress_bar.config(
@@ -311,7 +311,7 @@ class GUI:
                     text=str(self.progress_bar["value"]) + "%")
 
             # Enable download button
-            if (not self.thread_downloader.is_alive()):
+            if not self.thread_downloader.is_alive():
                 self.btn_download.config(state="normal")
                 break
 
@@ -343,46 +343,46 @@ class GUI:
 
         # Check values
         manifest = ""
-        if (manifest_radio == "url"):
-            if (iiif_downloader.is_url(manifest_url)):
+        if manifest_radio == "url":
+            if iiif_downloader.is_url(manifest_url):
                 manifest = manifest_url
             else:
                 raise Exception('Please enter a valid manifest URL.')
-        elif (manifest_radio == "file"):
+        elif manifest_radio == "file":
             manifest = manifest_file
-        if (len(manifest) == 0):
+        if len(manifest) == 0:
             raise Exception('Please enter a manifest.')
 
-        if (len(path_value) == 0):
+        if len(path_value) == 0:
             raise Exception('Please enter a destination folder.')
 
         pages_range = ""
-        if (pages_radio_value == "all"):
+        if pages_radio_value == "all":
             pages_range = "all"
-        elif (pages_radio_value == "range"):
+        elif pages_radio_value == "range":
             pages_range = pages_range_value
         firstpage, lastpage = iiif_downloader.get_pages(pages_range)
 
         width = 0
-        if (width_radio_value == "host"):
+        if width_radio_value == "host":
             width = None
-        elif (width_radio_value == "custom"):
-            if (custom_width_value.isdigit()):
+        elif width_radio_value == "custom":
+            if custom_width_value.isdigit():
                 width = int(custom_width_value)
             else:
                 raise Exception('Please enter a valid width.')
 
         threads = 1
-        if (threads_value == ""):
+        if threads_value == "":
             raise Exception('Please enter a thread number.')
         else:
             threads = int(threads_value)
 
         referer = None
-        if (referer_radio_value == "custom"):
-            if (len(referer_value) == 0):
+        if referer_radio_value == "custom":
+            if len(referer_value) == 0:
                 raise Exception('Please enter an HTTP referer.')
-            elif (not iiif_downloader.is_url(referer_value)):
+            elif not iiif_downloader.is_url(referer_value):
                 raise Exception('Please enter a valid HTTP referer.')
             else:
                 referer = referer_value
@@ -397,8 +397,8 @@ class GUI:
         consoleHandler.setFormatter(logFormatter)
         consoleHandler.setLevel(logging.DEBUG)
         rootLogger.addHandler(consoleHandler)
-        if (log_value):
-            if (len(log_file_value) == 0):
+        if log_value:
+            if len(log_file_value) == 0:
                 raise Exception('Please enter a valid log file name.')
             else:
                 fileHandler = logging.FileHandler(
