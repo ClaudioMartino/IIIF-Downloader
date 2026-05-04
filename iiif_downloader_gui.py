@@ -261,7 +261,8 @@ class GUI:
         self.ent_manifest_url.update()
         self.btn2_manifest.config(state="normal")
 
-    def checkAntenati(self, var, index, mode):
+    # trace_add callback functions have 3 args (var, index, mode), not needed
+    def checkAntenati(self, _, __, ___):
         if "dam-antenati.cultura.gov.it" in self.manifest_url.get():
             self.btn_custom_referer.invoke()
             self.referer.set("https://antenati.cultura.gov.it/")
@@ -293,7 +294,8 @@ class GUI:
         else:
             return False
 
-    def bindEnter(self, event):
+    # bind callback functions have 1 argument (event), not needed
+    def bindEnter(self, _):
         self.run()
 
     def check_downloader_thread(self):
