@@ -142,12 +142,11 @@ class TestGUI_width(TestGui):
 
 
 # MAIN: Check if the values set in the GUI are correctly passed to downloader
-# TODO log file tests
 
 # Set logger level
 logging.basicConfig(level=logging.DEBUG, format="%(message)s")
 
-logging.info("Test GUI manifest")
+logging.info("GUI manifest tests")
 manifest_radios = ["url", "file"]
 manifest_urls = ["https://www.manifest.test", "not-used"]
 manifest_files = ["not-used", "path/to/manifest/file"]
@@ -162,7 +161,7 @@ test.run_and_check_exception("url", "not-a-manifest-url", "not-used")
 test = TestGUI_manifest("not-used")
 test.run_and_check_exception("url", "", "not-used")
 
-logging.info("Test GUI main directory")
+logging.info("GUI main directory tests")
 gui_maindir = "main/directory/"
 ref = gui_maindir
 test = TestGUI_maindir(ref)
@@ -171,7 +170,7 @@ test.run_and_check_ref(gui_maindir)
 test = TestGUI_maindir("not-used")
 test.run_and_check_exception("")
 
-logging.info("Test GUI pages")
+logging.info("GUI pages tests")
 gui_pages_radios = ["range", "range", "all"]
 gui_pages_ranges = ["1-99", "1-1", "not-used"]
 refs = [[1, 99], [1, 1], [1, -1]]
@@ -179,7 +178,7 @@ for pages_radio, pages_range, ref in zip(gui_pages_radios, gui_pages_ranges, ref
     test = TestGUI_pages(ref)
     test.run_and_check_ref(pages_radio, pages_range)
 
-logging.info("Test GUI check buttons")
+logging.info("GUI check buttons tests")
 check_buttons = [True, False]
 refs = check_buttons
 for check_button, ref in zip(check_buttons, refs):
@@ -192,7 +191,7 @@ for check_button, ref in zip(check_buttons, refs):
     test = TestGUI_allimages(ref)
     test.run_and_check_ref(check_button)
 
-logging.info("Test GUI referer")
+logging.info("GUI referer tests")
 referer_radios = ["default", "custom"]
 referers = [None, "https://custom.referer"]
 refs = referers
@@ -206,7 +205,7 @@ test.run_and_check_exception("custom", "")
 test = TestGUI_referer("not-used")
 test.run_and_check_exception("custom", "not-an-url")
 
-logging.info("Test GUI threads")
+logging.info("GUI threads tests")
 gui_threads = "16"
 ref = int(gui_threads)
 test = TestGUI_threads(ref)
@@ -215,7 +214,7 @@ test.run_and_check_ref(gui_threads)
 test = TestGUI_threads("not-used")
 test.run_and_check_exception("")
 
-logging.info("Test GUI width")
+logging.info("GUI width tests")
 width_radios = ["highest", "host", "custom"]
 custom_widths = ["not-used", "not-used", 1024]
 refs = [0, None, 1024]  # -w unused: 0; -w without arg: None

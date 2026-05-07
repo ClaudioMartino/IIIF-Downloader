@@ -426,7 +426,6 @@ class GUI:
             # Read values and save them in downloader
             self.downloader = iiif_downloader.IIIF_Downloader()
             self.read_and_check_values()
-            self.downloader.pages.clear()  # clear page list
 
             # Disable download button and run downloader in daemonic thread
             self.btn_download.config(state="disabled")

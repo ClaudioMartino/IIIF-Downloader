@@ -269,58 +269,58 @@ class Page:
 class IIIF_Downloader:
     """A class containing the downloader features: the manifest parameters,
     the download strategy flags and the user configuration."""
-    # Manifest parameters
-    version = 0
-    manifest_label = ""
-    manifest_id = ""
-    pages: list[Page] = []
-    orig_num_pages = 0
-
-    # Download counters
-    total_filesize = 0
-    downloaded_cnt = 0
-    skipped_cnt = 0
-    failed_cnt = 0
-
-    # Download strategy flags, true by default
-    # 1. If the service ID is defined in the manifest, try to download the
-    # formatted URI with service ID as base and size = 'full' (1a),
-    # size = 'max' (1b), or size = '<width>,' (1c).
-    uri_base_serv_id_full = True
-    uri_base_serv_id_max = True
-    uri_base_serv_id_width = True
-    # 2. Try to download the image ID as it is written in the manifest, it may
-    # be a formatted URI or another type of URI.
-    uri_img_id = True
-    # 3. If the image ID is a formatted URI, try to download it with size
-    # changed to 'full' (3a), 'max' (3b), or '<width>,' (3c).
-    uri_base_b_img_id_full = True
-    uri_base_b_img_id_max = True
-    uri_base_b_img_id_width = True
-    # 4. Lastly, only if the image ID is not the service ID, try to download
-    # the formatted URI with image ID as base and size = 'full' (4a),
-    # size = 'max' (4b), or size = '<width>,' (4c).
-    uri_base_img_id_full = True
-    uri_base_img_id_max = True
-    uri_base_img_id_width = True
-
     def __init__(self, json_file: str = "", maindir: str = ".",
                  first_page: int = 1, last_page: int = -1, force: bool = False,
                  use_labels: bool = False, all_images: bool = False,
                  width: int | None = 0, referer: str = "",
                  num_threads: int = 1, metadata_json: str = "") -> None:
         # User defined parameters
-        self.json_file = json_file  # manifest or collection
-        self.maindir = maindir
-        self.firstpage = first_page
-        self.lastpage = last_page
-        self.force = force
-        self.use_labels = use_labels
-        self.all_images = all_images
-        self.width = width  # -w not used: 0 (default); -w without arg: None
-        self.referer = referer
-        self.num_threads = num_threads
-        self.metadata_json = metadata_json
+        self.json_file: str = json_file  # manifest or collection
+        self.maindir: str = maindir
+        self.firstpage: int = first_page
+        self.lastpage: int = last_page
+        self.force: bool = force
+        self.use_labels: bool = use_labels
+        self.all_images: bool = all_images
+        self.width: int | None = width  # -w unused: 0 (default); no arg.: None
+        self.referer: str = referer
+        self.num_threads: int = num_threads
+        self.metadata_json: str = metadata_json
+
+        # Manifest parameters
+        self.version: int = 0
+        self.manifest_label: str = ""
+        self.manifest_id: str = ""
+        self.pages: list[Page] = []
+        self.orig_num_pages: int = 0
+
+        # Download counters
+        self.total_filesize: int = 0
+        self.downloaded_cnt: int = 0
+        self.skipped_cnt: int = 0
+        self.failed_cnt: int = 0
+
+        # Download strategy flags, true by default
+        # 1. If the service ID is defined in the manifest, try to download the
+        # formatted URI with service ID as base and size = 'full' (1a),
+        # size = 'max' (1b), or size = '<width>,' (1c).
+        self.uri_base_serv_id_full: bool = True
+        self.uri_base_serv_id_max: bool = True
+        self.uri_base_serv_id_width: bool = True
+        # 2. Try to download the image ID as it is written in the manifest, it
+        # may be a formatted URI or another type of URI.
+        self.uri_img_id: bool = True
+        # 3. If the image ID is a formatted URI, try to download it with size
+        # changed to 'full' (3a), 'max' (3b), or '<width>,' (3c).
+        self.uri_base_b_img_id_full: bool = True
+        self.uri_base_b_img_id_max: bool = True
+        self.uri_base_b_img_id_width: bool = True
+        # 4. Lastly, only if the image ID is not the service ID, try to
+        # download the formatted URI with image ID as base and
+        # size = 'full' (4a), size = 'max' (4b), or size = '<width>,' (4c).
+        self.uri_base_img_id_full: bool = True
+        self.uri_base_img_id_max: bool = True
+        self.uri_base_img_id_width: bool = True
 
     def run(self) -> None:
         """Download all the files from a manifest or a collection."""

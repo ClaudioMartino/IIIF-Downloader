@@ -54,7 +54,6 @@ class TestReadManifest_GetVersion(Test):
         d = iiif_downloader.open_json_file(file_name, "")
         downloader.get_iiif_version(d)
         self.result = downloader.version
-        downloader.pages.clear()
 
 
 class TestReadManifest_TotPages(Test):
@@ -70,7 +69,6 @@ class TestReadManifest_TotPages(Test):
         with open(downloader.json_file) as f:
             reader(json.load(f))
             self.result = len(downloader.pages)
-        downloader.pages.clear()
 
 
 class TestReadManifest_Metadata(Test):
@@ -90,7 +88,6 @@ class TestReadManifest_Metadata(Test):
             d = json.load(f)
             self.result = len(d["pages"])
         os.remove("tmp.json")
-        downloader.pages.clear()
 
 
 class TestReadManifest_TotNA(Test):
@@ -110,7 +107,6 @@ class TestReadManifest_TotNA(Test):
                 if (len(p.id) == 0):
                     na_cnt += 1
             self.result = na_cnt
-        downloader.pages.clear()
 
 
 # MAIN
@@ -132,7 +128,17 @@ parser.add_argument(
 parser_args = vars(parser.parse_args())
 logging.basicConfig(level=parser_args["logging_level"], format="%(message)s")
 
-logging.info("Test page range")
+# Page property (mutable) initialization
+logging.info("Page property initialization test")
+default_downloader = iiif_downloader.IIIF_Downloader()
+default_page = iiif_downloader.Page()
+default_downloader.pages.append(default_page)
+assert len(default_downloader.pages) == 1
+default_downloader = iiif_downloader.IIIF_Downloader()
+assert len(default_downloader.pages) == 0
+
+# Page range
+logging.info("Page range tests")
 pages_strings = [
     "1-2",
     "10-20",
@@ -165,7 +171,8 @@ err_pages_strings = [
 for err_pages_string in err_pages_strings:
     test.run_and_check_exception(err_pages_string)
 
-logging.info("Test sanitize label")
+# Sanitize label
+logging.info("Sanitize label tests")
 labels = [
     "string_to_test",
     ["string_to_test"],
@@ -186,7 +193,8 @@ for label, ref in zip(labels, refs):
     test = TestSanitizeLabel(ref)
     test.run_and_check_ref(label)
 
-logging.info("Test get extension")
+# Get extension
+logging.info("Get extension tests")
 mime_types = [
     "image/jpeg",
     "image/jpg",
@@ -218,7 +226,8 @@ for mime_type in mime_types:
         test = TestGetExtension(ref)
         test.run_and_check_ref(mime_type, "path/to/file/default" + ref)
 
-logging.info("Test match URI pattern")
+# Match URI pattern
+logging.info("Match URI pattern tests")
 uri_base = "https://content.staatsbibliothek-berlin.de/dc/785884734-0001"
 region_list = ["full", "square", "125,15,120,140", "pct:41.6,7.5,40,70"]
 size_list = ["full", "max", "^max", "150,", "^360,", ",150", ",^240", "pct:50",
@@ -243,7 +252,8 @@ for r in region_list:
                     test = TestMatchURIPattern(ref)
                     test.run_and_check_ref(uri)
 
-logging.info("Test sanitize name")
+# Sanitize name
+logging.info("Sanitize name tests")
 names = [
     "name\\with\\backslashes",
     "name/with/slashes",
@@ -272,7 +282,8 @@ for name, ref in zip(names, refs):
     test = TestSanitizeName(ref)
     test.run_and_check_ref(name)
 
-logging.info("Test is url")
+# Is url
+logging.info("Is url tests")
 urls = [
     "https://www.wikipedia.org",
     "http://www.wikipedia.org",
@@ -288,8 +299,8 @@ for url, ref in zip(urls, refs):
     test = TestIsUrl(ref)
     test.run_and_check_ref(url)
 
-
-logging.info("Test manifests")
+# Manifests
+logging.info("Manifests tests")
 for version in ["2", "3"]:
     for i in range(len(ver_dict[version]['ids'])):
         file_name = 'manifests' + version + '/manifest' + str(i).zfill(2) + '.json'
