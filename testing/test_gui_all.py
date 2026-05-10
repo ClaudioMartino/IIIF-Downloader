@@ -193,7 +193,7 @@ for check_button, ref in zip(check_buttons, refs):
 
 logging.info("GUI referer tests")
 referer_radios = ["default", "custom"]
-referers = [None, "https://custom.referer"]
+referers = ["", "https://custom.referer"]
 refs = referers
 for referer_radio, referer, ref in zip(referer_radios, referers, refs):
     test = TestGUI_referer(ref)

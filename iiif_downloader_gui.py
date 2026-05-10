@@ -1,6 +1,6 @@
 import iiif_downloader
 import logging
-from tkinter import Tk, Menu, Toplevel, StringVar, IntVar
+from tkinter import Tk, Menu, Toplevel, StringVar, IntVar, Event, Misc
 from tkinter import ttk
 import tkinter.filedialog as tkfile
 import tkinter.messagebox as tkmsgbox
@@ -9,7 +9,7 @@ import time
 
 
 class GUI:
-    def __init__(self, w):
+    def __init__(self, w: Tk) -> None:
         # Custom styles
         ttk.Style().configure("TRadiobutton", padding=(0, 0, 10, 0))
         ttk.Style().configure("WithEntry.TRadiobutton", padding=(0, 0, 5, 0))
@@ -132,14 +132,14 @@ class GUI:
         ent_width.pack(side="left")
 
         # Threads
-        self.threads = StringVar(value=1)
+        self.threads = StringVar(value="1")
 
         lbl_threads = ttk.Label(master=frame, text="Threads (max: 64)")
         lbl_threads.grid(row=5, column=0, padx=10, pady=5, sticky="w")
         box_threads = ttk.Spinbox(
             master=frame, from_=1, to=64, textvariable=self.threads, width=5)
         vcmd_threads = (frame.register(self.validateThreads), "%P")
-        box_threads.config(validate="key", validatecommand=vcmd_threads)
+        box_threads.configure(validate="key", validatecommand=vcmd_threads)
         box_threads.grid(row=5, column=1, padx=10, pady=5, sticky="w")
 
         # Referer
@@ -203,7 +203,7 @@ class GUI:
             master=log_frame, variable=self.log, onvalue=1, offvalue=0,
             text="Save log file", command=self.enableLogEntry)
         self.ent_log = ttk.Entry(master=log_frame, textvariable=self.log_file)
-        self.ent_log.config(state="disabled")
+        self.ent_log.configure(state="disabled")
         self.cbtn_log.pack(side="left")
         self.ent_log.pack(fill="x")
 
@@ -226,7 +226,11 @@ class GUI:
         # Pack the frame in the window, as small as possible, responsive on x
         frame.pack(fill="x")
 
-    def about(self):
+        # Finally, create downloader and thread_downloader attributes as None
+        self.downloader: None | iiif_downloader.IIIF_Downloader = None
+        self.thread_downloader: None | threading.Thread = None
+
+    def about(self) -> None:
         txt = "IIIF Downloader v1.0.0\n"
         txt += "Copyright (C) 2026 Claudio Martino\n"
         txt += "github.com/ClaudioMartino/IIIF-Downloader"
@@ -235,55 +239,55 @@ class GUI:
         new_window.resizable(False, False)
         ttk.Label(new_window, text=txt).pack(padx=10, pady=5)
 
-    def browse_path(self):
+    def browse_path(self) -> None:
         selected_path = tkfile.askdirectory()
         if selected_path:
             self.path.set(selected_path)
 
-    def browse_manifest(self):
+    def browse_manifest(self) -> None:
         filepath = tkfile.askopenfilename(
             filetypes=[("JSON Files", "*.json"), ("All Files", "*.*")]
         )
         if filepath:
             self.manifest_file.set(filepath)
 
-    def enableManifestURLEntry(self):
+    def enableManifestURLEntry(self) -> None:
         self.ent_manifest_url.configure(state="normal")
         self.ent_manifest_url.update()
         self.ent_manifest_file.configure(state="disabled")
         self.ent_manifest_file.update()
-        self.btn2_manifest.config(state="disabled")
+        self.btn2_manifest.configure(state="disabled")
 
-    def enableManifestFileEntry(self):
+    def enableManifestFileEntry(self) -> None:
         self.ent_manifest_file.configure(state="normal")
         self.ent_manifest_file.update()
         self.ent_manifest_url.configure(state="disabled")
         self.ent_manifest_url.update()
-        self.btn2_manifest.config(state="normal")
+        self.btn2_manifest.configure(state="normal")
 
     # trace_add callback functions have 3 args (var, index, mode), not needed
-    def checkAntenati(self, _, __, ___):
+    def checkAntenati(self, _: str, __: str, ___: str) -> None:
         if "dam-antenati.cultura.gov.it" in self.manifest_url.get():
             self.btn_custom_referer.invoke()
             self.referer.set("https://antenati.cultura.gov.it/")
 
-    def enableEntry(self, entry):
+    def enableEntry(self, entry: ttk.Entry) -> None:
         entry.configure(state="normal")
         entry.update()
 
-    def disableEntry(self, entry):
+    def disableEntry(self, entry: ttk.Entry) -> None:
         entry.configure(state="disabled")
         entry.update()
 
-    def enableLogEntry(self):
+    def enableLogEntry(self) -> None:
         if self.log.get() == 1:
-            self.ent_log.config(state="normal")
+            self.ent_log.configure(state="normal")
             self.ent_log.update()
         elif self.log.get() == 0:
-            self.ent_log.config(state="disabled")
+            self.ent_log.configure(state="disabled")
             self.ent_log.update()
 
-    def validateThreads(self, user_input):
+    def validateThreads(self, user_input: str) -> bool:
         if user_input.isdigit():
             if int(user_input) not in range(1, 64+1):
                 return False
@@ -295,29 +299,32 @@ class GUI:
             return False
 
     # bind callback functions have 1 argument (event), not needed
-    def bindEnter(self, _):
+    def bindEnter(self, _: 'Event[Misc]') -> None:
         self.run()
 
-    def check_downloader_thread(self):
-        while True:
-            time.sleep(0.5)
+    def check_downloader_thread(self) -> None:
+        if self.downloader is not None:
+            while True:
+                time.sleep(0.5)
 
-            # Update progress bar
-            tot_pages = len(self.downloader.pages)
-            if tot_pages != 0:
-                tot_cnt = self.downloader.downloaded_cnt + \
-                    self.downloader.skipped_cnt + self.downloader.failed_cnt
-                self.progress_bar.config(
-                    value=round(tot_cnt / tot_pages * 100, 1))
-                self.lbl_progress_bar.config(
-                    text=str(self.progress_bar["value"]) + "%")
+                # Update progress bar
+                tot_pages = len(self.downloader.pages)
+                if tot_pages != 0:
+                    tot_cnt = self.downloader.downloaded_cnt + \
+                        self.downloader.skipped_cnt + \
+                        self.downloader.failed_cnt
+                    self.progress_bar.configure(
+                        value=round(tot_cnt / tot_pages * 100, 1))
+                    self.lbl_progress_bar.configure(
+                        text=str(self.progress_bar["value"]) + "%")
 
-            # Enable download button
-            if not self.thread_downloader.is_alive():
-                self.btn_download.config(state="normal")
-                break
+                # Enable download button
+                if self.thread_downloader is not None:
+                    if not self.thread_downloader.is_alive():
+                        self.btn_download.configure(state="normal")
+                        break
 
-    def read_and_check_values(self):
+    def read_and_check_values(self) -> None:
         # Read all values
         manifest_radio = self.manifest_radio.get()
         manifest_url = self.manifest_url.get()
@@ -365,7 +372,7 @@ class GUI:
             pages_range = pages_range_value
         firstpage, lastpage = iiif_downloader.get_pages(pages_range)
 
-        width = 0
+        width: int | None = 0
         if width_radio_value == "host":
             width = None
         elif width_radio_value == "custom":
@@ -380,7 +387,7 @@ class GUI:
         else:
             threads = int(threads_value)
 
-        referer = None
+        referer = ""
         if referer_radio_value == "custom":
             if len(referer_value) == 0:
                 raise Exception('Please enter an HTTP referer.')
@@ -410,25 +417,26 @@ class GUI:
                 rootLogger.addHandler(fileHandler)
 
         # Set up downloader
-        self.downloader.json_file = manifest
-        self.downloader.maindir = path_value
-        self.downloader.firstpage = firstpage
-        self.downloader.lastpage = lastpage
-        self.downloader.force = force_value
-        self.downloader.use_labels = uselabels_value
-        self.downloader.all_images = allimages_value
-        self.downloader.referer = referer
-        self.downloader.num_threads = threads
-        self.downloader.width = width  # -w unused: 0; -w without arg: None
+        if self.downloader is not None:
+            self.downloader.json_file = manifest
+            self.downloader.maindir = path_value
+            self.downloader.firstpage = firstpage
+            self.downloader.lastpage = lastpage
+            self.downloader.force = force_value
+            self.downloader.use_labels = uselabels_value
+            self.downloader.all_images = allimages_value
+            self.downloader.referer = referer
+            self.downloader.num_threads = threads
+            self.downloader.width = width  # -w unused: 0; -w without arg: None
 
-    def run(self):
+    def run(self) -> None:
         try:
             # Read values and save them in downloader
             self.downloader = iiif_downloader.IIIF_Downloader()
             self.read_and_check_values()
 
             # Disable download button and run downloader in daemonic thread
-            self.btn_download.config(state="disabled")
+            self.btn_download.configure(state="disabled")
             self.thread_downloader = threading.Thread(
                 target=self.downloader.run, daemon=True)
             self.thread_downloader.start()

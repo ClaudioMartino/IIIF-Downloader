@@ -89,7 +89,7 @@ def get_default_img_uri(base: str, size: str, extension: str) -> str:
     return base + "/full/" + size + "/0/default" + extension
 
 
-def match_uri_pattern(uri: str) -> Match | None:
+def match_uri_pattern(uri: str) -> Match[str] | None:
     """Check if a string conforms to the URI template."""
     # "The URI for requesting image information must conform to the following
     # URI template: {scheme}://{server}{/prefix}/{identifier}/{region}/{size}/
@@ -117,7 +117,7 @@ def sanitize_name(title: str) -> str:
     return title[:max_len]
 
 
-def first_value(d: Dict) -> Any:
+def first_value(d: Dict[str, Any]) -> Any:
     """Return first value of a dictionary."""
     return next(iter(d.values()))
 
@@ -134,7 +134,7 @@ def debug_check(name: str, to_check: str, expected: str | None = None) -> None:
                 str(expected))
 
 
-def open_json_file(json_file: str, referer: str = "") -> Dict:
+def open_json_file(json_file: str, referer: str = "") -> Dict[str, Any]:
     """Check if json file is local or remote and read it."""
     if is_url(json_file):
         response = open_url(json_file, referer)
@@ -149,7 +149,10 @@ def open_json_file(json_file: str, referer: str = "") -> Dict:
         else:
             raise Exception("Cannot open manifest " + json_file)
 
-    return d
+    if isinstance(d, Dict):
+        return d
+    else:
+        raise Exception("Cannot decode JSON object from " + json_file)
 
 
 def print_statistics(downloaded_cnt: int, skipped_cnt: int, failed_cnt: int,
@@ -193,7 +196,10 @@ Edg/138.0.0.0"
     # Open the URL
     try:
         response = urlopen(url_req, timeout=timeout, context=ctx)
-        return response
+        if isinstance(response, HTTPResponse):
+            return response
+        else:
+            logging.warning("Cannot return HTTPResponse object from %s", url)
     except Exception as e1:
         logging.warning("Exception: %s", str(e1))
 
@@ -205,7 +211,11 @@ Edg/138.0.0.0"
                 ctx.verify_mode = CERT_NONE
                 try:
                     response = urlopen(url_req, timeout=timeout, context=ctx)
-                    return response
+                    if isinstance(response, HTTPResponse):
+                        return response
+                    else:
+                        logging.warning(
+                            "Cannot return HTTPResponse object from %s", url)
                 except Exception as e2:
                     logging.warning("Exception: %s", str(e2))
     return None
@@ -350,7 +360,7 @@ class IIIF_Downloader:
                 "Not a manifest or a collection of manifests (type: '"
                 + str(iiif_type) + "')")
 
-    def download_iiif_files_from_manifest(self, d: Dict) -> None:
+    def download_iiif_files_from_manifest(self, d: Dict[str, Any]) -> None:
         """Download all the files from a manifest."""
         # Parse manifest
         if self.version == 2:
@@ -645,7 +655,7 @@ the files.", subdir_filename)
                 self.total_filesize += filesize
                 self.downloaded_cnt += 1
 
-    def download_iiif_files_from_collection(self, d: Dict) -> None:
+    def download_iiif_files_from_collection(self, d: Dict[str, Any]) -> None:
         """Download all the files from a collection of manifests."""
         if self.version == 2:
             manifests_key = "manifests"
@@ -673,7 +683,7 @@ the files.", subdir_filename)
                 "Cannot find manifests ('" + manifests_key +
                 "') in collection")
 
-    def read_iiif_manifest2(self, d: Dict) -> None:
+    def read_iiif_manifest2(self, d: Dict[str, Any]) -> None:
         """Download all the files from a 2.0/2.1 manifest."""
         # - label
         # - @id
@@ -805,7 +815,7 @@ only the default one is read", str(nc))
         self.manifest_label = manifest_label
         self.manifest_id = manifest_id
 
-    def read_iiif_manifest3(self, d: Dict) -> None:
+    def read_iiif_manifest3(self, d: Dict[str, Any]) -> None:
         """Download all the files from a 3.0 manifest."""
         # - label
         # - id
@@ -981,7 +991,7 @@ of the manifest width (%s)", str(img_information_w), str(page.w))
             logging.debug(
                 "Cannot access info.json file at %s", img_information_uri)
 
-    def get_iiif_version(self, d: Dict) -> None:
+    def get_iiif_version(self, d: Dict[str, Any]) -> None:
         """Check IIIF version from a manifest or a collection."""
         # Get context
         context = d.get("@context")

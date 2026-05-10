@@ -13,7 +13,7 @@ exit_code=$?
 
 # Run mypy on Python codes
 echo "Running mypy"
-mypy iiif_downloader_gui.py  # it checks iiif_downloader.py too
+mypy iiif_downloader_gui.py --strict  # it checks iiif_downloader.py too
 exit_code=$?
 ((errors+=exit_code))
 
