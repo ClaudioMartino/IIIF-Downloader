@@ -434,20 +434,33 @@ class GUI:
             # Read values and save them in downloader
             self.downloader = iiif_downloader.IIIF_Downloader()
             self.read_and_check_values()
-
-            # Disable download button and run downloader in daemonic thread
+        except Exception as e:
+            self.handle_error(str(e))
+        else:
+            # If the downloader has been configured, disable download button
             self.btn_download.configure(state="disabled")
+
+            # Run downloader in daemonic thread
             self.thread_downloader = threading.Thread(
-                target=self.downloader.run, daemon=True)
+                target=self.run_downloader, daemon=True)
             self.thread_downloader.start()
 
-            # Thread to update the progress bar and enable the download button
+            # Update progress bar and enable download button in thread
             thread_button = threading.Thread(
                 target=self.check_downloader_thread, daemon=True)
             thread_button.start()
 
+    def run_downloader(self) -> None:
+        # Child thread exceptions cannot be caught in parent, it is done here
+        try:
+            if self.downloader is not None:
+                self.downloader.run()
         except Exception as e:
-            tkmsgbox.showwarning(title="Error", message="Error", detail=str(e))
+            self.handle_error(str(e))
+
+    def handle_error(self, error_msg: str) -> None:
+        tkmsgbox.showwarning(title="Error", message="Error", detail=error_msg)
+        self.btn_download.configure(state="normal")
 
 
 if __name__ == '__main__':
