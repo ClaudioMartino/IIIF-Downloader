@@ -1,9 +1,10 @@
 #!/bin/sh
 
+# Initialize errors
 errors=0
 
 # Run flake8 on Python codes
-echo "Running flake8"
+echo "[Info] Running flake8"
 flake8 iiif_downloader.py
 exit_code=$?
 ((errors+=exit_code))
@@ -12,8 +13,20 @@ exit_code=$?
 ((errors+=exit_code))
 
 # Run mypy on Python codes
-echo "Running mypy"
+echo "[Info] Running mypy"
 mypy iiif_downloader_gui.py --strict  # it checks iiif_downloader.py too
+exit_code=$?
+((errors+=exit_code))
+
+# Run pylint on Python codes
+# pylint returns bit-encoded exit codes where fatals=1, errors=2, warnings=4...
+# We ignore convention and refactoring checks, hence the exit code is always < 7
+# We ignore some warnings (too general exceptions). The exit code should be 0.
+echo "[Info] Running pylint"
+pylint iiif_downloader.py --enable=all --disable=C,R,W0718,W0719
+exit_code=$?
+((errors+=exit_code))
+pylint iiif_downloader_gui.py --enable=all --disable=C,R,W0718,W0719
 exit_code=$?
 ((errors+=exit_code))
 
@@ -22,38 +35,38 @@ cd testing
 
 # Unzip manifest archives, if needed
 if [ ! -f manifests2/manifest00.json ]; then
-  echo "Unzipping manifests2 archive"
+  echo "[Info] Unzipping manifests2 archive"
   unzip -q manifests2/archive2.zip -d manifests2
 else
-  echo "No need to unzip manifests2 archive"
+  echo "[Info] No need to unzip manifests2 archive"
 fi
 if [ ! -f manifests3/manifest00.json ]; then
-  echo "Unzipping manifests3 archive"
+  echo "[Info] Unzipping manifests3 archive"
   unzip -q manifests3/archive3.zip -d manifests3
 else
-  echo "No need to unzip manifests3 archive"
+  echo "[Info] No need to unzip manifests3 archive"
 fi
 
-# Run python tests
-echo "Running basic tests"
+# Run unit tests
+echo "[Info] Running basic tests"
 python3 test_all.py --metadata
 exit_code=$?
 ((errors+=exit_code))
-echo "Running GUI tests"
+echo "[Info] Running GUI tests"
 python3 test_gui_all.py
 exit_code=$?
 ((errors+=exit_code))
 
 # Delete unzipped files
-echo "Deleting unzipped manifests"
+echo "[Info] Deleting unzipped manifests"
 rm manifests2/*.json
 rm manifests3/*.json
 
-# Check final errors
+# Final check (errors should be zero)
 if [ $errors -ne 0 ]; then
-  echo "Some error occured. Cannot commit."
+  echo "[Verdict] Something is wrong. You can't commit."
   exit 1
 else
-  echo "No errors occured. You can commit."
+  echo "[Verdict] Everything is good. You can commit."
   exit 0
 fi
