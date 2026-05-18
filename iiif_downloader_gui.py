@@ -1,11 +1,13 @@
 import iiif_downloader
 import logging
-from tkinter import Tk, Menu, Toplevel, StringVar, IntVar, Event, Misc
+from tkinter import Tk, Menu, Toplevel, StringVar, IntVar, PhotoImage
 from tkinter import ttk
+from tkinter import Event, Misc
 import tkinter.filedialog as tkfile
 import tkinter.messagebox as tkmsgbox
 import threading
-import time
+from time import sleep
+from os.path import dirname, realpath
 
 
 class GUI:
@@ -19,9 +21,10 @@ class GUI:
         # Window
         self.window = w
         self.window.title("IIIF Downloader")
+        icon = PhotoImage(file=dirname(realpath(__file__)) + "/icon.png")
+        self.window.iconphoto(True, icon)
         self.window.resizable(True, False)  # block vertical resizing
         self.window.bind("<Return>", self.bindEnter)  # bind Return key to run
-        # TODO change default window icon
 
         # Menu
         self.menu = Menu(self.window)
@@ -305,7 +308,7 @@ class GUI:
     def check_downloader_thread(self) -> None:
         if self.downloader is not None:
             while True:
-                time.sleep(0.5)
+                sleep(0.5)
 
                 # Update progress bar
                 tot_pages = len(self.downloader.pages)
