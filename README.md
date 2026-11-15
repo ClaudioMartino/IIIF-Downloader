@@ -4,7 +4,7 @@
 
 <h1 align="center">IIIF Downloader</h1>
 
-[![Python](https://img.shields.io/badge/python-3.10-blue)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/MIT) [![Tests status](https://github.com/ClaudioMartino/IIIF-Downloader/actions/workflows/tests.yml/badge.svg)](https://github.com/ClaudioMartino/IIIF-Downloader/actions)
+[![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/) [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/license/MIT) [![Tests status](https://github.com/ClaudioMartino/IIIF-Downloader/actions/workflows/tests.yml/badge.svg)](https://github.com/ClaudioMartino/IIIF-Downloader/actions)
 
 A single-file Python script and importable module for downloading all the images of a document described by the [International Image Interoperability Framework](https://iiif.io/) (IIIF) standard. This script requires only the Python Standard Library and supports IIIF APIs 2.0, 2.1, and 3.0.
 
